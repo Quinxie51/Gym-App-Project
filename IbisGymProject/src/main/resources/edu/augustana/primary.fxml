@@ -9,7 +9,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrimaryController">
    <center>
-      <VBox alignment="CENTER" spacing="20.0">
+      <VBox alignment="CENTER" prefHeight="624.0" prefWidth="916.0" spacing="20.0">
          <children>
             <Label text="Primary View" />
             <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Switch to Secondary View" />
