@@ -21,7 +21,7 @@ public class PrimaryController {
     @FXML private Button settingsButton;
 
     @FXML
-    private void switchToSecondary() throws IOException {
+    private void openNewLessonPlan() throws IOException {
         App.setRoot("secondary");
     }
 }

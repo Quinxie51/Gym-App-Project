@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -11,10 +10,6 @@
 <BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrimaryController">
    <center>
       <VBox alignment="CENTER" prefHeight="624.0" prefWidth="654.0" spacing="20.0">
-         <children>
-            <Label text="Primary View" />
-            <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Switch to Secondary View" />
-         </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
@@ -27,7 +22,7 @@
          </BorderPane.margin>
          <children>
             <Line endX="100.89286804199219" startX="-100.0" />
-            <Button fx:id="newLessonButton" mnemonicParsing="false" text="+ New Lesson" />
+            <Button fx:id="newLessonButton" onAction="#openNewLessonPlan" text="+ New Lesson" />
             <Button fx:id="folderButton" mnemonicParsing="false" text="Folder" />
             <Button fx:id="deletedButton" mnemonicParsing="false" text="Deleted" />
             <Button fx:id="favoritesButton" mnemonicParsing="false" text="Favorites" />
