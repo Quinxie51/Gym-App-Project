@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 
 <BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrimaryController">
    <center>
@@ -16,18 +15,17 @@
       </VBox>
    </center>
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="411.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="624.0" prefWidth="150.0" spacing="25.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
          <children>
-            <Line endX="100.89286804199219" startX="-100.0" />
-            <Button fx:id="newLessonButton" onAction="#openNewLessonPlan" text="+ New Lesson" />
-            <Button fx:id="folderButton" mnemonicParsing="false" text="Folder" />
-            <Button fx:id="deletedButton" mnemonicParsing="false" text="Deleted" />
-            <Button fx:id="favoritesButton" mnemonicParsing="false" text="Favorites" />
-            <Button fx:id="qaButton" mnemonicParsing="false" text="Q&amp;A" />
-            <Button fx:id="settingsButton" mnemonicParsing="false" text="Settings" />
+            <Button fx:id="newLessonButton" onAction="#openNewLessonPlan" style="-fx-background-color: pink;" text="+ New Lesson" />
+            <Button fx:id="folderButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Folder" />
+            <Button fx:id="deletedButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Deleted" />
+            <Button fx:id="favoritesButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Favorites" />
+            <Button fx:id="qaButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Q&amp;A" />
+            <Button fx:id="settingsButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Settings" />
          </children>
       </VBox>
    </left>
