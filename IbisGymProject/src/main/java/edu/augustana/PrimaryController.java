@@ -21,7 +21,7 @@ public class PrimaryController {
     @FXML private Button settingsButton;
 
     @FXML
-    private void openNewLessonPlan() throws IOException {
+    private void openFolderView() throws IOException {
         App.setRoot("secondary");
     }
 }
