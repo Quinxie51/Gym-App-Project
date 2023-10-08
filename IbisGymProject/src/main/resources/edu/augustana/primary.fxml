@@ -2,15 +2,22 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrimaryController">
+   <center>
+      <VBox alignment="CENTER" prefHeight="624.0" prefWidth="654.0" spacing="20.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </center>
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="624.0" prefWidth="150.0" spacing="25.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -27,18 +34,22 @@
       </VBox>
    </left>
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </top>
-   <center>
-      <AnchorPane prefHeight="624.0" prefWidth="895.0" style="-fx-background-color: #85B7CC;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="35.0" layoutY="46.0" text="Recent View">
-               <font>
-                  <Font size="31.0" />
-               </font>
-            </Label>
-            <ListView layoutX="35.0" layoutY="148.0" orientation="HORIZONTAL" prefHeight="143.0" prefWidth="495.0" />
-         </children>
-      </AnchorPane>
-   </center>
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="57.0" prefWidth="737.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="83.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/logo.png" />
+                     </image>
+                  </ImageView>
+                  <ComboBox prefHeight="26.0" prefWidth="75.0" promptText="Level" style="-fx-background-color: transparent;" />
+                  <ComboBox prefHeight="26.0" prefWidth="89.0" promptText="Gender" style="-fx-background-color: transparent;" />
+                  <ComboBox prefHeight="26.0" prefWidth="80.0" promptText="Event" style="-fx-background-color: transparent;" />
+                  <ComboBox prefHeight="26.0" prefWidth="113.0" promptText="Equipment" style="-fx-background-color: transparent;" />
+                  <TextField text="Search" />
+               </children>
+            </HBox>
+         </children></HBox>
+   </top>
 </BorderPane>
