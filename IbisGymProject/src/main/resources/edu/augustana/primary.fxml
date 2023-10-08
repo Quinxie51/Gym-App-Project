@@ -2,41 +2,38 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<<<<<<< HEAD
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+=======
+>>>>>>> cb691a33ce4b4c18c21c2f419451a0b4fb7ba057
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 
 <BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrimaryController">
    <center>
       <VBox alignment="CENTER" prefHeight="624.0" prefWidth="654.0" spacing="20.0">
-         <children>
-            <Label text="Primary View" />
-            <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Switch to Secondary View" />
-         </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
    </center>
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="411.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="624.0" prefWidth="150.0" spacing="25.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
          <children>
-            <Line endX="100.89286804199219" startX="-100.0" />
-            <Button fx:id="newLessonButton" mnemonicParsing="false" text="+ New Lesson" />
-            <Button fx:id="folderButton" mnemonicParsing="false" text="Folder" />
-            <Button fx:id="deletedButton" mnemonicParsing="false" text="Deleted" />
-            <Button fx:id="favoritesButton" mnemonicParsing="false" text="Favorites" />
-            <Button fx:id="qaButton" mnemonicParsing="false" text="Q&amp;A" />
-            <Button fx:id="settingsButton" mnemonicParsing="false" text="Settings" />
+            <Button fx:id="newLessonButton" onAction="#openNewLessonPlan" style="-fx-background-color: pink;" text="+ New Lesson" />
+            <Button fx:id="folderButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Folder" />
+            <Button fx:id="deletedButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Deleted" />
+            <Button fx:id="favoritesButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Favorites" />
+            <Button fx:id="qaButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Q&amp;A" />
+            <Button fx:id="settingsButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Settings" />
          </children>
       </VBox>
    </left>
