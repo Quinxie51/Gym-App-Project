@@ -2,14 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<<<<<<< HEAD
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-=======
->>>>>>> cb691a33ce4b4c18c21c2f419451a0b4fb7ba057
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -38,18 +30,6 @@
       </VBox>
    </left>
    <top>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="83.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../Downloads/Thiết%20kế%20chưa%20có%20tên-15.png" />
-               </image>
-            </ImageView>
-            <ComboBox prefHeight="26.0" prefWidth="81.0" promptText="Level" style="-fx-background-color: transparent;" />
-            <ComboBox prefHeight="26.0" prefWidth="87.0" promptText="Gender" style="-fx-background-color: transparent;" />
-            <ComboBox prefHeight="26.0" prefWidth="80.0" promptText="Event" style="-fx-background-color: transparent;" />
-            <ComboBox prefHeight="26.0" prefWidth="106.0" promptText="Equipment" style="-fx-background-color: transparent;" />
-            <TextField text="Search " />
-         </children></HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </top>
 </BorderPane>
