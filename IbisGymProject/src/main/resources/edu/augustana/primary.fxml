@@ -36,11 +36,11 @@
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="700.0" spacing="20.0">
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="57.0" prefWidth="737.0" spacing="20.0">
                <children>
-                  <ImageView fitHeight="71.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="83.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Downloads/Thiết%20kế%20chưa%20có%20tên-15.png" />
+                        <Image url="@../../../../../../../../Downloads/logo.png" />
                      </image>
                   </ImageView>
                   <ComboBox prefHeight="26.0" prefWidth="75.0" promptText="Level" style="-fx-background-color: transparent;" />
