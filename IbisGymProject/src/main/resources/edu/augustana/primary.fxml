@@ -2,18 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrimaryController">
-   <center>
-      <VBox alignment="CENTER" prefHeight="624.0" prefWidth="654.0" spacing="20.0">
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-         </padding>
-      </VBox>
-   </center>
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="624.0" prefWidth="150.0" spacing="25.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -32,4 +29,16 @@
    <top>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </top>
+   <center>
+      <AnchorPane prefHeight="624.0" prefWidth="895.0" style="-fx-background-color: #85B7CC;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="35.0" layoutY="46.0" text="Recent View">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+            <ListView layoutX="35.0" layoutY="148.0" orientation="HORIZONTAL" prefHeight="143.0" prefWidth="495.0" />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>
