@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrimaryController">
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.MainHomepageController">
    <center>
       <VBox alignment="CENTER" prefHeight="624.0" prefWidth="654.0" spacing="20.0">
          <padding>
@@ -24,7 +24,7 @@
             <Insets />
          </BorderPane.margin>
          <children>
-            <Button fx:id="newLessonButton" style="-fx-background-color: pink;" text="+ New Lesson" />
+            <Button fx:id="newLessonButton" onAction="#handleCreateNewLesson" style="-fx-background-color: pink;" text="+ New Lesson" />
             <Button fx:id="folderButton" mnemonicParsing="false" onAction="#openFolderView" style="-fx-background-color: transparent;" text="Folder" />
             <Button fx:id="deletedButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Deleted" />
             <Button fx:id="favoritesButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Favorites" />
