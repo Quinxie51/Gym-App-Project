@@ -18,14 +18,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrimaryController">
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.MainHomepageController">
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="624.0" prefWidth="150.0" spacing="25.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
          <children>
-            <Button fx:id="newLessonButton" onAction="#openNewLessonPlan" style="-fx-background-color: pink;" text="+ New Lesson" />
+            <Button fx:id="newLessonButton" onAction="#handleCreateNewLesson" style="-fx-background-color: pink;" text="+ New Lesson" />
             <Button fx:id="folderButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Folder" />
             <Button fx:id="deletedButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Deleted" />
             <Button fx:id="favoritesButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Favorites" />

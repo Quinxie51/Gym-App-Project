@@ -35,7 +35,7 @@ public class MainHomepageController {
 
     @FXML
     private void backToHome() throws IOException {
-        MainApp.setRoot("mainHomepage");
+        MainApp.setRoot("primary");
     }
 
     @FXML

@@ -20,6 +20,18 @@
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
+         <children>
+            <AnchorPane prefHeight="624.0" prefWidth="674.0" style="-fx-background-color: #85B7CC;">
+               <children>
+                  <ListView layoutX="78.0" layoutY="112.0" orientation="HORIZONTAL" prefHeight="225.0" prefWidth="593.0" />
+                  <Label layoutX="78.0" layoutY="51.0" text="Recent View">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
       </VBox>
    </center>
 
@@ -45,7 +57,7 @@
                <children>
                   <ImageView fitHeight="83.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../Downloads/logo.png" />
+                        <Image url="@../../../../../Image/logo.png" />
                      </image>
                   </ImageView>
                   <ComboBox prefHeight="26.0" prefWidth="75.0" promptText="Level" style="-fx-background-color: transparent;" />
@@ -57,16 +69,4 @@
             </HBox>
          </children></HBox>
    </top>
-   <right>
-      <AnchorPane prefHeight="624.0" prefWidth="674.0" style="-fx-background-color: #85B7CC;" BorderPane.alignment="CENTER">
-         <children>
-            <ListView layoutX="78.0" layoutY="112.0" orientation="HORIZONTAL" prefHeight="225.0" prefWidth="593.0" />
-            <Label layoutX="78.0" layoutY="51.0" text="Recent View">
-               <font>
-                  <Font size="28.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-   </right>
 </BorderPane>
