@@ -16,6 +16,7 @@ public class MainHomepageController {
     @FXML private Button newLessonButton;
     @FXML private Button qaButton;
     @FXML private Button settingsButton;
+    @FXML private TextField searchBar;
 
     //for newLessonPopup.fxml
     @FXML private Button doneMakingLesson;
