@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 public class MainHomepageController {
 
     // for mainHomepage.fxml
+    @FXML private Button allCardsButton;
     @FXML private Button deletedButton;
     @FXML private Button favoritesButton;
     @FXML private Button folderButton;
@@ -42,5 +43,10 @@ public class MainHomepageController {
     @FXML
     private void handleCreateNewLesson() throws IOException {
         MainApp.setRoot("newLessonPopup");
+    }
+
+    @FXML
+    private void openAllCardsView() throws IOException {
+        MainApp.setRoot("allCardsView");
     }
 }
