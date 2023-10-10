@@ -31,7 +31,7 @@ public class MainHomepageController {
 
     @FXML
     private void openFolderView() throws IOException {
-        MainApp.setRoot("secondary");
+        MainApp.setRoot("folderPage");
     }
 
     @FXML
