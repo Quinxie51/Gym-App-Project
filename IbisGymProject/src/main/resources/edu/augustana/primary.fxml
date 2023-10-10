@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.PrimaryController">
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="624.0" prefWidth="150.0" spacing="25.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <Button fx:id="newLessonButton" onAction="#openNewLessonPlan" style="-fx-background-color: pink;" text="+ New Lesson" />
+            <Button fx:id="folderButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Folder" />
+            <Button fx:id="deletedButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Deleted" />
+            <Button fx:id="favoritesButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Favorites" />
+            <Button fx:id="qaButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Q&amp;A" />
+            <Button fx:id="settingsButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Settings" />
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="57.0" prefWidth="737.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="83.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../logo.png" />
+                     </image>
+                  </ImageView>
+                  <ComboBox prefHeight="26.0" prefWidth="75.0" promptText="Level" style="-fx-background-color: transparent;" />
+                  <ComboBox prefHeight="26.0" prefWidth="89.0" promptText="Gender" style="-fx-background-color: transparent;" />
+                  <ComboBox prefHeight="26.0" prefWidth="80.0" promptText="Event" style="-fx-background-color: transparent;" />
+                  <ComboBox prefHeight="26.0" prefWidth="113.0" promptText="Equipment" style="-fx-background-color: transparent;" />
+                  <TextField text="Search" />
+               </children>
+            </HBox>
+         </children></HBox>
+   </top>
+   <right>
+      <AnchorPane prefHeight="624.0" prefWidth="674.0" style="-fx-background-color: #85B7CC;" BorderPane.alignment="CENTER">
+         <children>
+            <ListView layoutX="78.0" layoutY="112.0" orientation="HORIZONTAL" prefHeight="225.0" prefWidth="593.0" />
+            <Label layoutX="78.0" layoutY="51.0" text="Recent View">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
