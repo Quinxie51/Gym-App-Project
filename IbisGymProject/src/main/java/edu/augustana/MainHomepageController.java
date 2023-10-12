@@ -71,15 +71,30 @@ public class MainHomepageController {
         // Show the popup
         popup.show(stage);
 
+
+
+        Button okayButton = (Button) popupContent.lookup("#okayDoneWithNewLessonPlanButton");
+        okayButton.setOnAction(event -> {
+            setNewLessonButton();
+            popup.hide();
+
+            // Add any additional logic you want to execute when the popup is closed.
+        });
+
         // Close the popup when the "Done" button in the popup is clicked
-        Button doneButton = (Button) popupContent.lookup("#okayDoneButton");
+        Button doneButton = (Button) popupContent.lookup("#quitPopUpButton");
         doneButton.setOnAction(event -> {
             popup.hide();
+
             // Add any additional logic you want to execute when the popup is closed.
         });
     }
 
 
+    @FXML
+    private void setNewLessonButton() {
+        MainApp.switchToNewLessonCreationPage();
+    }
 
     @FXML
     private void openAllCardsView() throws IOException {

@@ -27,6 +27,25 @@ public class MainApp extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
+    private static void switchToView(String fxmlFileName) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName));
+            scene.setRoot(fxmlLoader.load());
+        } catch (IOException ex) {
+            System.err.println("Can't find FXML file " + fxmlFileName);
+            ex.printStackTrace();
+        }
+
+
+
+    }
+
+    public static void switchToNewLessonCreationPage() {
+        switchToView("newLessonCreationPage.fxml");
+    }
+
+
+
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
