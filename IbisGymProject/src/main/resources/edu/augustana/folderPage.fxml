@@ -24,6 +24,7 @@
          <children>
             <Button fx:id="newLessonButton" onAction="#handleCreateNewLesson" style="-fx-background-color: pink;" text="+ New Lesson" />
             <Button fx:id="folderButton" mnemonicParsing="false" onAction="#openFolderView" style="-fx-background-color: transparent;" text="Folder" />
+            <Button fx:id="allCardsButton" mnemonicParsing="false" onAction="#openAllCardsView" style="-fx-background-color: transparent;" text="All Cards" />
             <Button fx:id="deletedButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Deleted" />
             <Button fx:id="favoritesButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Favorites" />
             <Button fx:id="qaButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Q&amp;A" />
