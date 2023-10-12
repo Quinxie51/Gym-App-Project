@@ -27,6 +27,8 @@ public class MainApp extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
+
+
     private static void switchToView(String fxmlFileName) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName));

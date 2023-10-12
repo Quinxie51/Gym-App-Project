@@ -56,17 +56,17 @@ public class MainHomepageController {
             e.printStackTrace();
             return;
         }
-
+        // Get the stage from any node in your scene
+        Stage stage = (Stage) newLessonButton.getScene().getWindow();
         // Create a Popup instance and set its content
         Popup popup = new Popup();
         popup.getContent().add(popupContent);
 
         // Set the position of the popup relative to the stage
-        popup.setX(100); // Set your desired X position
-        popup.setY(100); // Set your desired Y position
+        popup.setX(stage.getX()+50); // Set your desired X position
+        popup.setY(stage.getY()+50); // Set your desired Y position
 
-        // Get the stage from any node in your scene
-        Stage stage = (Stage) newLessonButton.getScene().getWindow();
+
 
         // Show the popup
         popup.show(stage);
