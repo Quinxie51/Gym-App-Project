@@ -4,7 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -57,7 +57,29 @@
    <center>
       <AnchorPane prefHeight="624.0" prefWidth="674.0" style="-fx-background-color: #85B7CC;" BorderPane.alignment="CENTER">
          <children>
-            <ListView layoutX="78.0" layoutY="112.0" orientation="HORIZONTAL" prefHeight="225.0" prefWidth="593.0" />
+            <ScrollPane layoutY="111.0" prefHeight="244.0" prefWidth="673.0">
+               <content>
+                  <HBox alignment="CENTER" prefHeight="233.0" prefWidth="678.0" spacing="20.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@DEMO1Pack/2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@DEMO1Pack/3.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@DEMO1Pack/5.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </content>
+            </ScrollPane>
             <GridPane layoutX="140.0" layoutY="381.0" prefHeight="124.0" prefWidth="448.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.22592163085938" minWidth="10.0" prefWidth="37.420928955078125" />
@@ -120,7 +142,7 @@
             </GridPane>
             <Label layoutX="78.0" layoutY="51.0" text="Recent View">
                <font>
-                  <Font size="28.0" />
+                  <Font name="Open Sans Bold" size="28.0" />
                </font>
             </Label>
             <Line endX="255.97540283203125" layoutX="234.0" layoutY="505.0" startX="-94.0" strokeWidth="0.25" />
