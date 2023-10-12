@@ -114,7 +114,6 @@
                   </ImageView>
                </children>
             </GridPane>
-            <Line endX="255.97540283203125" layoutX="234.0" layoutY="505.0" startX="-94.0" strokeWidth="0.25" />
          </children>
       </AnchorPane>
    </center>
