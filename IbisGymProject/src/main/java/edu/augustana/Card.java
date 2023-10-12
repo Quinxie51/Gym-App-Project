@@ -3,7 +3,7 @@ package edu.augustana;
 import javafx.fxml.FXML;
 
 public class Card {
-    
+
     //data fields
     private String code;
     private String event;
