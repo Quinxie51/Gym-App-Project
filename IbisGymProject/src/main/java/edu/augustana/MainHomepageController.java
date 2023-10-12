@@ -29,6 +29,8 @@ public class MainHomepageController {
     @FXML private TextField folderText;
     @FXML private TextField newLessonText;
 
+    @FXML private newLessonPlanController newLessonPlanController;
+
     @FXML
     private void initialize() {
         //newLessonText.setOnKeyTyped(e -> handleQuestTextChange(e));
@@ -49,6 +51,7 @@ public class MainHomepageController {
 
         // Load the FXML content for the popup
         FXMLLoader loader = new FXMLLoader(getClass().getResource("newLessonPopup.fxml"));
+        loader.setController(newLessonPlanController);
         Parent popupContent;
         try {
             popupContent = loader.load();
@@ -77,6 +80,9 @@ public class MainHomepageController {
         okayButton.setOnAction(event -> {
             setNewLessonButton();
             popup.hide();
+            newLessonPlanController.setLessonPlanName("Hello");
+
+
 
             // Add any additional logic you want to execute when the popup is closed.
         });
