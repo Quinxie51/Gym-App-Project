@@ -29,7 +29,7 @@ public class MainHomepageController {
     @FXML private TextField folderText;
     @FXML private TextField newLessonText;
 
-    @FXML private newLessonPlanController newLessonPlanController;
+    @FXML private newLessonPlanController newLessonPlanController = new newLessonPlanController();
 
     @FXML
     private void initialize() {

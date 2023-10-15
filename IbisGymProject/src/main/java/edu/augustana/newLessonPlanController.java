@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 
 public class newLessonPlanController {
     //datafields
-     @FXML private Label lessonPlanName;
+     @FXML private Label lessonPlanName = new Label();
 
     @FXML
     private void switchToPrimary() throws IOException {
