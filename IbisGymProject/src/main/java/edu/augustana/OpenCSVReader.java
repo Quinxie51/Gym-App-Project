@@ -23,15 +23,13 @@ public class OpenCSVReader {
                 System.out.println("Event : " + nextCard[1]);
                 System.out.println("Category : " + nextCard[2]);
                 System.out.println("Title : " + nextCard[3]);
-                System.out.println("Pack : " + nextCard[4]);
-                System.out.println("Folder : " + nextCard[5]);
-                System.out.println("Image : " + nextCard[6]);
-                System.out.println("Gender : " + nextCard[7]);
-                System.out.println("Model : " + nextCard[8]);
-                System.out.println("Sex : " + nextCard[9]);
-                System.out.println("Level : " + nextCard[10]);
-                System.out.println("Equipment : " + nextCard[11]);
-                System.out.println("Keywords : " + nextCard[12]);
+                System.out.println("Pack Folder : " + nextCard[4]);
+                System.out.println("Image : " + nextCard[5]);
+                System.out.println("Gender : " + nextCard[6]);
+                System.out.println("Model Sex : " + nextCard[7]);
+                System.out.println("Level : " + nextCard[8]);
+                System.out.println("Equipment : " + nextCard[9]);
+                System.out.println("Keywords : " + nextCard[10]);
                 System.out.println("==========================");
             }
         }
