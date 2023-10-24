@@ -6,7 +6,7 @@ public class Card {
 
     //data fields
     private String code;
-    private String event;
+    private String events;
     private String title;
     private String packFolder;
     private String image;
@@ -14,14 +14,15 @@ public class Card {
     private String modelSex;
     private String level;
     private String equipment;
-    private String [] keywords;
+    private String[] keywords;
 
-    public Card(String selectedCode, String selectedEvent, String selectedTitle,String selectedPackFolder,
-                String selectedImage, String selectedGender,String selectedModelSex, String selectedLevel,
-                String selectedEquipment,String[] selectedKeyWords){
+
+    public Card(String selectedCode, String selectedEvent, String selectedTitle, String selectedPackFolder,
+                String selectedImage, String selectedGender, String selectedModelSex, String selectedLevel,
+                String selectedEquipment, String[] selectedKeyWords) {
 
         this.code = selectedCode;
-        this.event = selectedEvent;
+        this.events = selectedEvent;
         this.title = selectedTitle;
         this.packFolder = selectedPackFolder;
         this.image = selectedImage;
@@ -31,7 +32,61 @@ public class Card {
         this.equipment = selectedEquipment;
         this.keywords = selectedKeyWords;
 
-
     }
+
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getEvent() {
+        return events;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getPackFolder() {
+        return packFolder;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getModelSex() {
+        return modelSex;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public String getEquipment() {
+        return equipment;
+    }
+
+    public String[] getKeywords() {
+        return keywords;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
