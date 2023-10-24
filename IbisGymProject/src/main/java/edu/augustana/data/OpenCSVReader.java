@@ -25,8 +25,9 @@ public class OpenCSVReader {
             while ((nextCard = csvReader.readNext()) != null) {
 
                 Card currentCard = new Card(nextCard[0],nextCard[1],nextCard[2],nextCard[3],nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8],nextCard[9],nextCard[10]);
+                System.out.println(currentCard.toString());
                 cards.add(currentCard);
-                cards.toString();
+
             }
         }
     }

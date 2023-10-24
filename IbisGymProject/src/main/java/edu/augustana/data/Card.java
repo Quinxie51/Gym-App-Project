@@ -71,22 +71,24 @@ public class Card {
         return equipment;
     }
 
-    public String getKeywords() {
-        return keywords;
+    public String[] getKeywords() {
+        return keywords.split(" ");
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "Card{" +
+                "code='" + code + '\'' +
+                ", events='" + events + '\'' +
+                ", category='" + category + '\'' +
+                ", title='" + title + '\'' +
+                ", packFolder='" + packFolder + '\'' +
+                ", image='" + image + '\'' +
+                ", gender='" + gender + '\'' +
+                ", modelSex='" + modelSex + '\'' +
+                ", level='" + level + '\'' +
+                ", equipment='" + equipment + '\'' +
+                ", keywords='" + keywords + '\'' +
+                '}';
+    }
 }
