@@ -1,6 +1,4 @@
-package edu.augustana;
-
-import javafx.fxml.FXML;
+package edu.augustana.data;
 
 public class Card {
 
