@@ -1,4 +1,4 @@
-package edu.augustana;
+package edu.augustana.ui;
 
 import java.io.IOException;
 
@@ -29,7 +29,7 @@ public class MainHomepageController {
     @FXML private TextField folderText;
     @FXML private TextField newLessonText;
 
-    @FXML private newLessonPlanController newLessonPlanController = new newLessonPlanController();
+    @FXML private edu.augustana.ui.newLessonPlanController newLessonPlanController = new newLessonPlanController();
 
     @FXML
     private void initialize() {

@@ -1,4 +1,4 @@
-package edu.augustana;
+package edu.augustana.data;
 import com.opencsv.CSVReader;
 import java.io.IOException;
 import java.io.Reader;

@@ -1,10 +1,10 @@
-package edu.augustana;
+package edu.augustana.ui;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+
+import edu.augustana.ui.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
