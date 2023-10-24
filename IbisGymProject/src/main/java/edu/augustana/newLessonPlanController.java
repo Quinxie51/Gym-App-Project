@@ -6,8 +6,13 @@ import javafx.scene.control.Label;
 
 public class newLessonPlanController {
     //datafields
-     @FXML private Label lessonPlanName = new Label();
 
+
+     @FXML public Label lessonPlanName;
+
+    public newLessonPlanController(){
+
+    }
     @FXML
     private void switchToPrimary() throws IOException {
         MainApp.setRoot("mainHomepage");
