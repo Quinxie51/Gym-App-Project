@@ -4,11 +4,15 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
 
 public class OpenCSVReader {
     private static final String CSV_FILE_PATH = "src/main/resources/edu/augustana/DEMO1.csv";
+    private List<Card> cards = new List<>();
 
     public static void main(String[] args) throws IOException, CsvValidationException {
 
@@ -31,6 +35,7 @@ public class OpenCSVReader {
                 System.out.println("Equipment : " + nextCard[9]);
                 System.out.println("Keywords : " + nextCard[10]);
                 System.out.println("==========================");
+                new Card(nextCard[0],nextCard[1],nextCard[2],nextCard[3],nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8],nextCard[9],nextCard[10]);
             }
         }
     }

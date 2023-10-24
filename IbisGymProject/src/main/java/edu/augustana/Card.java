@@ -7,6 +7,7 @@ public class Card {
     //data fields
     private String code;
     private String events;
+    private String category;
     private String title;
     private String packFolder;
     private String image;
@@ -14,15 +15,16 @@ public class Card {
     private String modelSex;
     private String level;
     private String equipment;
-    private String[] keywords;
+    private String keywords;
 
 
-    public Card(String selectedCode, String selectedEvent, String selectedTitle, String selectedPackFolder,
+    public Card(String selectedCode, String selectedEvent,String selectedCategory, String selectedTitle, String selectedPackFolder,
                 String selectedImage, String selectedGender, String selectedModelSex, String selectedLevel,
-                String selectedEquipment, String[] selectedKeyWords) {
+                String selectedEquipment, String selectedKeyWords) {
 
         this.code = selectedCode;
         this.events = selectedEvent;
+        this.category = selectedCategory;
         this.title = selectedTitle;
         this.packFolder = selectedPackFolder;
         this.image = selectedImage;
@@ -71,7 +73,7 @@ public class Card {
         return equipment;
     }
 
-    public String[] getKeywords() {
+    public String getKeywords() {
         return keywords;
     }
 
