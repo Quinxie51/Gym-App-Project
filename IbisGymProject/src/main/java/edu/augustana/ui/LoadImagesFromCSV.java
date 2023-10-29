@@ -1,4 +1,4 @@
-package edu.augustana;
+package edu.augustana.ui;
 
 import javafx.concurrent.Task;
 import javafx.scene.Group;
