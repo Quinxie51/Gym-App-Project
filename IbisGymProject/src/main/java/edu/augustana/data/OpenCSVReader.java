@@ -1,5 +1,7 @@
 package edu.augustana.data;
 import com.opencsv.CSVReader;
+
+import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -15,7 +17,22 @@ public class OpenCSVReader {
     public static List<Card> cards = new ArrayList<>();
 
     public static void main(String[] args) throws IOException, CsvValidationException {
+        addCardsFromCSVFile(args);
 
+    }
+
+
+    public static List<Card> getFilteredCards(CardFilter filter){
+
+        return cards;
+    }
+
+
+// H10:W
+
+
+
+    public static void addCardsFromCSVFile(String[] args) throws IOException, CsvValidationException{
         try (
                 Reader reader = Files.newBufferedReader(Paths.get(CSV_FILE_PATH));
                 CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
@@ -30,5 +47,14 @@ public class OpenCSVReader {
 
             }
         }
+
     }
+
+
+
+
+
+
+
+
 }

@@ -1,8 +1,6 @@
 package edu.augustana.ui;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -10,10 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.VBox;
 
-
 public class newLessonPlanController {
-    //datafields
-
 
     @FXML public Label lessonPlanName;
     @FXML private ImageView imageView;
@@ -21,7 +16,6 @@ public class newLessonPlanController {
     @FXML private ImageView dragBoard;
     @FXML private ImageView source;
     @FXML private ImageView target;
-
 
 
     public newLessonPlanController(){
