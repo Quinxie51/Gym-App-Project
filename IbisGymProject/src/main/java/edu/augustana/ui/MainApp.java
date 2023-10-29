@@ -1,17 +1,16 @@
 package edu.augustana.ui;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+
+
 /**
  * JavaFX App
  */
 public class MainApp extends Application {
-
     private static Scene scene;
     //HELLO THUNDERDOMEApp
     @Override
@@ -26,8 +25,6 @@ public class MainApp extends Application {
         scene.setRoot(loadFXML(fxml));
     }
 
-
-
     private static void switchToView(String fxmlFileName) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName));
@@ -36,16 +33,15 @@ public class MainApp extends Application {
             System.err.println("Can't find FXML file " + fxmlFileName);
             ex.printStackTrace();
         }
-
-
-
     }
 
     public static void switchToNewLessonCreationPage() {
         switchToView("newLessonCreationPage.fxml");
     }
 
-
+    public static Scene getScene() {
+        return scene;
+    }
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxml + ".fxml"));
@@ -56,4 +52,4 @@ public class MainApp extends Application {
         launch();
     }
 
-}
+    }

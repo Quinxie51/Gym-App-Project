@@ -16,11 +16,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.MainHomepageController">
+<BorderPane prefHeight="724.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.MainHomepageController">
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="57.0" prefWidth="737.0" spacing="20.0">
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="83.0" prefWidth="784.0" spacing="20.0">
                <children>
                   <ImageView fitHeight="83.0" fitWidth="141.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -32,13 +32,14 @@
                   <Button fx:id="allCardsButton" mnemonicParsing="false" onAction="#openAllCardsView" style="-fx-background-color: transparent;" text="All Cards" />
                   <Button fx:id="favoritesButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Favorites" />
                   <Button fx:id="deletedButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Deleted" />
+                  <Button fx:id="printButton" mnemonicParsing="false" onAction="#printScene" style="-fx-background-color: transparent;" text="Print" />
                   <Button fx:id="settingsButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Settings" />
                </children>
             </HBox>
          </children></HBox>
    </top>
    <center>
-      <AnchorPane prefHeight="624.0" prefWidth="674.0" style="-fx-background-color: #85B7CC;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="624.0" prefWidth="935.0" style="-fx-background-color: #85B7CC;" BorderPane.alignment="CENTER">
          <children>
             <ScrollPane layoutY="111.0" prefHeight="244.0" prefWidth="673.0">
                <content>
