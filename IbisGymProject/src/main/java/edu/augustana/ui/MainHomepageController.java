@@ -36,11 +36,11 @@ public class MainHomepageController {
     @FXML private TextField folderText;
     @FXML private TextField newLessonText;
 
-    @FXML private edu.augustana.ui.newLessonPlanController newLessonPlanController = new newLessonPlanController();
+    @FXML private edu.augustana.ui.newLessonPlanController newLessonPlanController;
 
     @FXML
     private void initialize() {
-        //newLessonText.setOnKeyTyped(e -> handleQuestTextChange(e));
+
     }
 
     @FXML
@@ -55,7 +55,6 @@ public class MainHomepageController {
 
     @FXML
     private void handleCreateNewLesson() throws IOException {
-
         // Load the FXML content for the popup
         FXMLLoader loader = new FXMLLoader(getClass().getResource("newLessonPopup.fxml"));
         loader.setController(newLessonPlanController);
@@ -76,20 +75,14 @@ public class MainHomepageController {
         popup.setX(stage.getX()+50); // Set your desired X position
         popup.setY(stage.getY()+50); // Set your desired Y position
 
-
-
         // Show the popup
         popup.show(stage);
-
-
 
         Button okayButton = (Button) popupContent.lookup("#okayDoneWithNewLessonPlanButton");
         okayButton.setOnAction(event -> {
             setNewLessonButton();
             popup.hide();
             newLessonPlanController.setLessonPlanName(newLessonText.getText());
-
-
 
             // Add any additional logic you want to execute when the popup is closed.
         });
