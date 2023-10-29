@@ -1,12 +1,11 @@
-package edu.augustana;
-
-import javafx.fxml.FXML;
+package edu.augustana.data;
 
 public class Card {
 
     //data fields
     private String code;
     private String events;
+    private String category;
     private String title;
     private String packFolder;
     private String image;
@@ -14,15 +13,16 @@ public class Card {
     private String modelSex;
     private String level;
     private String equipment;
-    private String[] keywords;
+    private String keywords;
 
 
-    public Card(String selectedCode, String selectedEvent, String selectedTitle, String selectedPackFolder,
+    public Card(String selectedCode, String selectedEvent,String selectedCategory, String selectedTitle, String selectedPackFolder,
                 String selectedImage, String selectedGender, String selectedModelSex, String selectedLevel,
-                String selectedEquipment, String[] selectedKeyWords) {
+                String selectedEquipment, String selectedKeyWords) {
 
         this.code = selectedCode;
         this.events = selectedEvent;
+        this.category = selectedCategory;
         this.title = selectedTitle;
         this.packFolder = selectedPackFolder;
         this.image = selectedImage;
@@ -72,21 +72,23 @@ public class Card {
     }
 
     public String[] getKeywords() {
-        return keywords;
+        return keywords.split(" ");
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        return "Card{" +
+                "code='" + code + '\'' +
+                ", events='" + events + '\'' +
+                ", category='" + category + '\'' +
+                ", title='" + title + '\'' +
+                ", packFolder='" + packFolder + '\'' +
+                ", image='" + image + '\'' +
+                ", gender='" + gender + '\'' +
+                ", modelSex='" + modelSex + '\'' +
+                ", level='" + level + '\'' +
+                ", equipment='" + equipment + '\'' +
+                ", keywords='" + keywords + '\'' +
+                '}';
+    }
 }

@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="578.0" prefWidth="684.0" style="-fx-background-color: #85B7CC;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.newLessonPlanController">
+<AnchorPane prefHeight="578.0" prefWidth="684.0" style="-fx-background-color: #85B7CC;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
    <children>
       <HBox alignment="CENTER" layoutY="-1.0" maxHeight="-Infinity" prefHeight="26.0" prefWidth="728.0" spacing="20.0" style="-fx-background-color: #F5F5F5;">
          <children>
             <ImageView fitHeight="83.0" fitWidth="118.0" onMouseClicked="#switchToPrimary" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Image/logo.png" />
+                  <Image url="@../Image/logo.png" />
                </image>
                <HBox.margin>
                   <Insets right="20.0" />
