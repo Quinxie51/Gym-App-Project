@@ -87,7 +87,7 @@ public class MainHomepageController {
         okayButton.setOnAction(event -> {
             setNewLessonButton();
             popup.hide();
-            newLessonPlanController.setLessonPlanName("Hello");
+            newLessonPlanController.setLessonPlanName(newLessonText.getText());
 
 
 

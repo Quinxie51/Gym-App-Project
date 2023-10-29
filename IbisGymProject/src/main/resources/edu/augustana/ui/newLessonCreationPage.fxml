@@ -33,7 +33,7 @@
                   <Font size="22.0" />
                </font>
             </Label>
-            <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="162.0" onDragDropped="#handleDrop" onMouseDragOver="#handleDragOver" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" />
          </children></VBox>
       <ScrollPane layoutX="38.0" layoutY="99.0" prefHeight="443.0" prefWidth="253.0">
          <content>
