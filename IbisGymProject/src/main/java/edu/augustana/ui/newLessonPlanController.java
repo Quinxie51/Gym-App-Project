@@ -1,21 +1,14 @@
 package edu.augustana.ui;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import edu.augustana.ui.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.TransferMode;
-import javafx.scene.input.DataFormat;
-import javafx.collections.FXCollections;
-import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.scene.input.*;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
+import javafx.scene.layout.VBox;
 
 
 public class newLessonPlanController {
@@ -24,6 +17,12 @@ public class newLessonPlanController {
 
     @FXML public Label lessonPlanName;
     @FXML private ImageView imageView;
+    @FXML private VBox targetVBox;
+    @FXML private ImageView dragBoard;
+    @FXML private ImageView source;
+    @FXML private ImageView target;
+
+
 
     public newLessonPlanController(){
 
@@ -35,6 +34,27 @@ public class newLessonPlanController {
 
     public void setLessonPlanName(String text) {
         lessonPlanName.setText(text);
+    }
+
+    @FXML
+    void handleDragDetection(MouseEvent event) {
+        Dragboard db = source.startDragAndDrop(TransferMode.ANY);
+        ClipboardContent cb = new ClipboardContent();
+        cb.putImage(source.getImage());
+        db.setContent(cb);
+        event.consume();
+    }
+    @FXML
+    void handleImageDragOver(DragEvent event) {
+        if (event.getDragboard().hasImage()){
+            event.acceptTransferModes(TransferMode.ANY);
+        }
+    }
+    @FXML
+    void handleImageDropped(DragEvent event) {
+        Image image = event.getDragboard().getImage();
+        target.setImage(image);
+
     }
 
 }

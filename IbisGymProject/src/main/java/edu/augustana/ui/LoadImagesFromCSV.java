@@ -15,7 +15,7 @@ import java.util.List;
 
 public class LoadImagesFromCSV extends MainApp {
 
-    private static final String FILE_PATH = "src/main/resources/edu/augustana/DEMO1.csv";
+    private static final String FILE_PATH = "src/main/resources/edu/augustana/data/DEMO1.csv";
 
     @Override
     public void start(Stage primaryStage) {
