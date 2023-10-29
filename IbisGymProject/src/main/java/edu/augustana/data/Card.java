@@ -8,10 +8,13 @@ public class Card {
     private String category;
     private String title;
     private String packFolder;
+
+    //We could also use an Image object for this
     private String image;
     private String gender;
     private String modelSex;
     private String level;
+    //We possibly need a string[] or a list of strings for this
     private String equipment;
     private String keywords;
 
@@ -72,7 +75,7 @@ public class Card {
     }
 
     public String[] getKeywords() {
-        return keywords.split(" ");
+        return keywords.split(",");
     }
 
     @Override
