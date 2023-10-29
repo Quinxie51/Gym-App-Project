@@ -3,8 +3,8 @@ package edu.augustana.data;
 public interface CardFilter {
 
 
-    public static void matches(Card potentialMatchCard){
-
+    public static boolean matches(Card potentialMatchCard){
+        return true;
     }
 
 
