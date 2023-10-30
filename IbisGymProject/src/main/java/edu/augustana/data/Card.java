@@ -5,6 +5,7 @@ public class Card {
     //data fields
     private String code;
     private String events;
+
     private String category;
     private String title;
     private String packFolder;
@@ -45,6 +46,8 @@ public class Card {
     public String getEvent() {
         return events;
     }
+    
+    public String getCategory() {return category; }
 
     public String getTitle() {
         return title;
