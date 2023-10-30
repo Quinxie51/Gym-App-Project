@@ -82,7 +82,7 @@ public class MainHomepageController {
         okayButton.setOnAction(event -> {
             setNewLessonButton();
             popup.hide();
-            newLessonPlanController.setLessonPlanName(newLessonText.getText());
+            //newLessonPlanController.setLessonPlanName(newLessonText.getText());
 
             // Add any additional logic you want to execute when the popup is closed.
         });

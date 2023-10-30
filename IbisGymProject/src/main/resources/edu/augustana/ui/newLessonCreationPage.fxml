@@ -26,23 +26,49 @@
             <TextField fx:id="searchBar" promptText="Search" />
          </children>
       </HBox>
-      <VBox layoutX="311.0" layoutY="101.0" prefHeight="440.0" prefWidth="387.0" style="-fx-background-color: F5F5F5;">
+      <VBox layoutX="311.0" layoutY="101.0" prefHeight="440.0" prefWidth="387.0" spacing="20.0" style="-fx-background-color: F5F5F5;">
          <children>
             <Label fx:id="lessonPlanName" prefHeight="32.0" prefWidth="387.0" text="Enter lesson name">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true" />
-         </children></VBox>
+            <VBox fx:id="targetVBox" prefHeight="352.0" prefWidth="357.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <ImageView fx:id="target" fitHeight="80.0" fitWidth="113.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../DEMO1Pack/2.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+               </children></VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+         </padding></VBox>
       <ScrollPane layoutX="38.0" layoutY="99.0" prefHeight="443.0" prefWidth="253.0">
          <content>
             <VBox prefHeight="408.0" prefWidth="257.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="80.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="80.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="source" fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleDragDetection" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../DEMO1Pack/1.png" />
+                           </image></ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleDragDetection" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../DEMO1Pack/4.png" />
+                           </image></ImageView>
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -50,8 +76,14 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="80.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="80.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../DEMO1Pack/5.png" />
+                           </image></ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleDragDetection" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../DEMO1Pack/6.png" />
+                           </image></ImageView>
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -59,8 +91,14 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="80.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fitHeight="80.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleDragDetection" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../DEMO1Pack/8.png" />
+                           </image></ImageView>
+                        <ImageView fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleDragDetection" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../DEMO1Pack/14.png" />
+                           </image></ImageView>
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
