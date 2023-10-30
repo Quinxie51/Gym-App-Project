@@ -42,6 +42,7 @@ public class MainHomepageController {
     private void initialize() {
 
     }
+    
 
     @FXML
     private void openFolderView() throws IOException {
@@ -57,6 +58,7 @@ public class MainHomepageController {
     private void handleCreateNewLesson() throws IOException {
         // Load the FXML content for the popup
         FXMLLoader loader = new FXMLLoader(getClass().getResource("newLessonPopup.fxml"));
+        newLessonPlanController = new newLessonPlanController();
         loader.setController(newLessonPlanController);
         Parent popupContent;
         try {
@@ -78,13 +80,14 @@ public class MainHomepageController {
         // Show the popup
         popup.show(stage);
 
+
         Button okayButton = (Button) popupContent.lookup("#okayDoneWithNewLessonPlanButton");
         okayButton.setOnAction(event -> {
+          //  newLessonPlanController.setLessonPlanName(newLessonText.getText());
             setNewLessonButton();
             popup.hide();
-            //newLessonPlanController.setLessonPlanName(newLessonText.getText());
 
-            // Add any additional logic you want to execute when the popup is closed.
+
         });
 
         // Close the popup when the "Done" button in the popup is clicked
@@ -92,7 +95,7 @@ public class MainHomepageController {
         doneButton.setOnAction(event -> {
             popup.hide();
 
-            // Add any additional logic you want to execute when the popup is closed.
+
         });
     }
 
