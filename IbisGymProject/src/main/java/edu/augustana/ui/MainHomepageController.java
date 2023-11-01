@@ -16,6 +16,8 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.scene.control.TextInputDialog;
+import java.util.Optional;
 
 public class MainHomepageController {
 
@@ -55,46 +57,24 @@ public class MainHomepageController {
 
     @FXML
     private void handleCreateNewLesson() throws IOException {
-        // Load the FXML content for the popup
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("newLessonPopup.fxml"));
-        loader.setController(newLessonPlanController);
-        Parent popupContent;
-        try {
-            popupContent = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-        // Get the stage from any node in your scene
-        Stage stage = (Stage) newLessonButton.getScene().getWindow();
-        // Create a Popup instance and set its content
-        Popup popup = new Popup();
-        popup.getContent().add(popupContent);
+        TextInputDialog dialog = new TextInputDialog();  // create an instance
 
-        // Set the position of the popup relative to the stage
-        popup.setX(stage.getX()+50); // Set your desired X position
-        popup.setY(stage.getY()+50); // Set your desired Y position
+        dialog.setTitle("Title");
+// other formatting etc
 
-        // Show the popup
-        popup.show(stage);
+        Optional<String> result = dialog.showAndWait();
+// this shows the dialog, waits until it is closed, and stores the result
 
-        Button okayButton = (Button) popupContent.lookup("#okayDoneWithNewLessonPlanButton");
-        okayButton.setOnAction(event -> {
-            setNewLessonButton();
-            popup.hide();
-            //newLessonPlanController.setLessonPlanName(newLessonText.getText());
 
-            // Add any additional logic you want to execute when the popup is closed.
+// if the result is present (i.e. if a string was entered) call doSomething() on it
+        result.ifPresent(string -> {
+        newLessonPlanController.setLessonPlanName("moose");
         });
 
-        // Close the popup when the "Done" button in the popup is clicked
-        Button doneButton = (Button) popupContent.lookup("#quitPopUpButton");
-        doneButton.setOnAction(event -> {
-            popup.hide();
 
-            // Add any additional logic you want to execute when the popup is closed.
-        });
+
     }
+
 
 
     @FXML
