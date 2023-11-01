@@ -37,11 +37,12 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
-                        <ImageView fx:id="target" fitHeight="80.0" fitWidth="113.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="104.0" fitWidth="112.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../DEMO1Pack/2.png" />
+                              <Image url="@../Image/Drag%20card%20here.png" />
                            </image>
                         </ImageView>
+                        <ImageView fx:id="target" fitHeight="81.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
