@@ -5,8 +5,8 @@ import java.security.cert.PolicyNode;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,17 +15,22 @@ import javafx.scene.layout.VBox;
 
 public class newLessonPlanController {
 
-    @FXML public Label lessonPlanName;
-    @FXML private ImageView imageView;
-    @FXML private ImageView source;
-    @FXML private ImageView target;
-    @FXML public VBox targetVBox;
+    @FXML
+    public Label lessonPlanName;
+    @FXML
+    private ImageView imageView;
+    @FXML
+    private ImageView source;
+    @FXML
+    private ImageView target;
+    @FXML
+    public VBox targetVBox;
 
 
-
-    public newLessonPlanController(){
+    public newLessonPlanController() {
 
     }
+
     @FXML
     private void switchToPrimary() throws IOException {
         MainApp.setRoot("mainHomepage");
@@ -37,18 +42,22 @@ public class newLessonPlanController {
 
     @FXML
     void handleDragDetection(MouseEvent event) {
+        sourceDetect();
         Dragboard db = source.startDragAndDrop(TransferMode.ANY);
         ClipboardContent cb = new ClipboardContent();
         cb.putImage(source.getImage());
         db.setContent(cb);
         event.consume();
     }
+
     @FXML
     void handleImageDragOver(DragEvent event) {
-        if (event.getDragboard().hasImage()){
+        if (event.getDragboard().hasImage()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
+
+
     @FXML
     void handleImageDropped(DragEvent event) {
         Image newImage = event.getDragboard().getImage();
@@ -68,6 +77,17 @@ public class newLessonPlanController {
             // Assuming target is the ImageView that you want to set the image to
             target.setImage(newImage);
         }
+    }
+
+    @FXML
+    void sourceDetect() {
+        source.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                source = (ImageView) event.getSource();
+            }
+        });
+
     }
 }
 
