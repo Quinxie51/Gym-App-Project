@@ -1,5 +1,7 @@
 package edu.augustana.data;
 
+import javafx.scene.image.Image;
+
 public class Card {
 
     //data fields
@@ -11,7 +13,7 @@ public class Card {
     private String packFolder;
 
     //We could also use an Image object for this
-    private String image;
+    private Image image;
     private String gender;
     private String modelSex;
     private String level;
@@ -29,7 +31,7 @@ public class Card {
         this.category = selectedCategory;
         this.title = selectedTitle;
         this.packFolder = selectedPackFolder;
-        this.image = selectedImage;
+        this.image = new Image(selectedImage) ;
         this.gender = selectedGender;
         this.modelSex = selectedModelSex;
         this.level = selectedLevel;
