@@ -3,6 +3,8 @@ package edu.augustana.ui;
 import java.io.IOException;
 import java.security.cert.PolicyNode;
 
+import edu.augustana.data.Course;
+import edu.augustana.data.LessonPlan;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -31,14 +33,25 @@ public class newLessonPlanController {
 
     }
 
+
+    @FXML private Label lessonPlanName = new Label();
+
+
+    @FXML private ImageView imageView;
+    @FXML private ImageView source;
+    @FXML private ImageView target;
+    @FXML public VBox targetVBox;
+
+    @FXML
+    private void initialize(){
+        this.lessonPlanName.setText(Course.currentLessonPlan.getLessonTitle());
+    }
+
     @FXML
     private void switchToPrimary() throws IOException {
         MainApp.setRoot("mainHomepage");
     }
 
-    public void setLessonPlanName(String text) {
-        lessonPlanName.setText(text);
-    }
 
     @FXML
     void handleDragDetection(MouseEvent event) {

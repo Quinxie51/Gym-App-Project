@@ -14,17 +14,18 @@ import com.opencsv.exceptions.CsvValidationException;
 
 public class OpenCSVReader {
     private static final String CSV_FILE_PATH = "src/main/resources/edu/augustana/DEMO1.csv";
-    public static List<Card> cards = new ArrayList<>();
+    public static List<Card> allCards = new ArrayList<>();
 
     public static void main(String[] args) throws IOException, CsvValidationException {
         addCardsFromCSVFile(args);
+
 
     }
 
 
     public static List<Card> getFilteredCards(CardFilter filter){
 
-        return cards;
+        return allCards;
     }
 
 
@@ -43,7 +44,7 @@ public class OpenCSVReader {
 
                 Card currentCard = new Card(nextCard[0],nextCard[1],nextCard[2],nextCard[3],nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8],nextCard[9],nextCard[10]);
                 System.out.println(currentCard.toString());
-                cards.add(currentCard);
+                allCards.add(currentCard);
 
             }
         }
