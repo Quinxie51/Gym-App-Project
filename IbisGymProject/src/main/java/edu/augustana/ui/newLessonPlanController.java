@@ -33,15 +33,6 @@ public class newLessonPlanController {
 
     }
 
-
-    @FXML private Label lessonPlanName = new Label();
-
-
-    @FXML private ImageView imageView;
-    @FXML private ImageView source;
-    @FXML private ImageView target;
-    @FXML public VBox targetVBox;
-
     @FXML
     private void initialize(){
         this.lessonPlanName.setText(Course.currentLessonPlan.getLessonTitle());
