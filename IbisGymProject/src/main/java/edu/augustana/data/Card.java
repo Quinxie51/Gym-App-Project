@@ -59,7 +59,7 @@ public class Card {
         return packFolder;
     }
 
-    public String getImage() {
+    public Image getImage() {
         return image;
     }
 
