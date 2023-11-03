@@ -1,7 +1,6 @@
 package edu.augustana.data;
 import com.opencsv.CSVReader;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -12,7 +11,7 @@ import java.util.List;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
 
-public class OpenCSVReader {
+public class CardDatabase {
     private static final String CSV_FILE_PATH = "src/main/resources/edu/augustana/DEMO1.csv";
     public static List<Card> allCards = new ArrayList<>();
 

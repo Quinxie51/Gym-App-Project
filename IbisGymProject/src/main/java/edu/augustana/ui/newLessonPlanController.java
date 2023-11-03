@@ -36,6 +36,7 @@ public class newLessonPlanController {
     @FXML
     private void initialize(){
         this.lessonPlanName.setText(Course.currentLessonPlan.getLessonTitle());
+
     }
 
     @FXML
