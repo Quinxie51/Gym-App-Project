@@ -5,6 +5,8 @@ import javafx.scene.image.Image;
 public class Card {
 
     //data fields
+
+    private String uniqueID;
     private String code;
     private String events;
 
@@ -13,7 +15,7 @@ public class Card {
     private String packFolder;
 
     //We could also use an Image object for this
-    private Image image;
+    private String image;
     private String gender;
     private String modelSex;
     private String level;
@@ -22,16 +24,18 @@ public class Card {
     private String keywords;
 
 
-    public Card(String selectedCode, String selectedEvent,String selectedCategory, String selectedTitle, String selectedPackFolder,
+
+    public Card(String selectedUniqueID, String selectedCode, String selectedEvent, String selectedCategory, String selectedTitle, String selectedPackFolder,
                 String selectedImage, String selectedGender, String selectedModelSex, String selectedLevel,
                 String selectedEquipment, String selectedKeyWords) {
 
+        this.uniqueID = selectedUniqueID;
         this.code = selectedCode;
         this.events = selectedEvent;
         this.category = selectedCategory;
         this.title = selectedTitle;
         this.packFolder = selectedPackFolder;
-        this.image = new Image(selectedImage) ;
+        this.image = selectedImage ;
         this.gender = selectedGender;
         this.modelSex = selectedModelSex;
         this.level = selectedLevel;
@@ -40,11 +44,10 @@ public class Card {
 
     }
 
-
+    public String getUniqueID() {return uniqueID;}
     public String getCode() {
         return code;
     }
-
     public String getEvent() {
         return events;
     }
@@ -59,7 +62,7 @@ public class Card {
         return packFolder;
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 
@@ -86,7 +89,8 @@ public class Card {
     @Override
     public String toString() {
         return "Card{" +
-                "code='" + code + '\'' +
+                "uniqueID='" + uniqueID + '\'' +
+                ", code='" + code + '\'' +
                 ", events='" + events + '\'' +
                 ", category='" + category + '\'' +
                 ", title='" + title + '\'' +
