@@ -72,31 +72,32 @@ public class newLessonPlanController {
         Image image = new Image("file:Image/" + source.getImage());
         ImageView imageView = new ImageView(image);
 
-            Dragboard db = event.getDragboard();
-            boolean success = false;
-            if (db.hasImage()) {
-                int numRows = gridPane.getRowCount();
-                int numCols = gridPane.getColumnCount();
-                boolean emptyCellFound = false;
+        Dragboard db = event.getDragboard();
+        boolean success = false;
+        if (db.hasImage()) {
+            int numRows = gridPane.getRowCount();
+            int numCols = gridPane.getColumnCount();
+            boolean emptyCellFound = false;
 
-                for (int row = 0; row < numRows; row++) {
-                    for (int col = 0; col < numCols; col++) {
-                        if (gridPane.getChildren().stream().noneMatch(node -> GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == col)) {
-                            ImageView newImageView = new ImageView(db.getImage());
-                            gridPane.add(newImageView, col, row);
-                            emptyCellFound = true;
-                            break;
-                        }
-                    }
-                    if (emptyCellFound) {
+            for (int row = 0; row < numRows; row++) {
+                for (int col = 0; col < numCols; col++) {
+                    int finalRow = row;
+                    int finalCol = col;
+                    if (gridPane.getChildren().stream().noneMatch(node -> GridPane.getRowIndex(node) == finalRow && GridPane.getColumnIndex(node) == finalCol)) {
+                        ImageView newImageView = new ImageView(db.getImage());
+                        gridPane.add(newImageView, col, row);
+                        emptyCellFound = true;
                         break;
                     }
                 }
-                success = true;
+                if (emptyCellFound) {
+                    break;
+                }
             }
-            event.setDropCompleted(success);
-            event.consume();
-        });
+            success = true;
+        }
+        event.setDropCompleted(success);
+        event.consume();
 
     }
 
