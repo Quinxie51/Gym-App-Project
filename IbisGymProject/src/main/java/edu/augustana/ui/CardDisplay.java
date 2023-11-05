@@ -8,12 +8,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.util.List;
 import edu.augustana.data.Card;
-import edu.augustana.data.OpenCSVReader;
+import edu.augustana.data.CardDatabase;
 
 
 public class CardDisplay {
 
-    private final OpenCSVReader csvReader = new OpenCSVReader();
+    private final CardDatabase csvReader = new CardDatabase();
 
 
     public void display(Stage primaryStage) {
@@ -53,7 +53,7 @@ public class CardDisplay {
         table.getColumns().addAll(codeColumn, eventsColumn, categoryColumn, titleColumn, packFolderColumn, genderColumn, modelSexColumn, levelColumn, equipmentColumn, keywordsColumn);
 
         // Add data to the table
-        List<Card> allCards = OpenCSVReader.allCards;
+        List<Card> allCards = CardDatabase.allCards;
         table.getItems().addAll(allCards);
 
         VBox vbox = new VBox(table);

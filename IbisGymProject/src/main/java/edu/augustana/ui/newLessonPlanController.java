@@ -8,8 +8,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.print.*;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
@@ -22,6 +27,8 @@ public class newLessonPlanController {
 
     @FXML
     private ListView<Card> cardListView;
+    @FXML
+    private MenuItem printMenuItem;
     @FXML
     public Label lessonPlanName;
     @FXML
@@ -106,6 +113,40 @@ public class newLessonPlanController {
 
     }
 
+    @FXML
+    private void menuActionPrint() {
+        try {
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("newLessonCreationPage.fxml"));
+            Node fxmlContent = loader.load();
+
+            // Create a printing job
+            PrinterJob printerJob = PrinterJob.createPrinterJob();
+            if (printerJob != null) {
+                // Set the printer and page layout
+                Printer printer = Printer.getDefaultPrinter();
+                PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
+                printerJob.getJobSettings().setPageLayout(pageLayout);
+
+                // Fit the content to the page size
+                Scene scene = MainApp.getScene();
+                scene.getRoot().resize(pageLayout.getPrintableWidth(), pageLayout.getPrintableHeight());
+                scene.getWindow().setWidth(pageLayout.getPrintableWidth());
+                scene.getWindow().setHeight(pageLayout.getPrintableHeight());
+
+                boolean printed = printerJob.printPage(fxmlContent);
+                if (printed) {
+                    printerJob.endJob();
+                }
+
+                scene.getRoot().resize(scene.getWidth(), scene.getHeight());
+                scene.getWindow().setWidth(scene.getWidth());
+                scene.getWindow().setHeight(scene.getHeight());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
 
