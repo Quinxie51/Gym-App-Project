@@ -2,6 +2,7 @@ package edu.augustana.data;
 import com.opencsv.CSVReader;
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -9,28 +10,32 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.opencsv.CSVReaderBuilder;
+import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.exceptions.CsvValidationException;
 
 public class CardDatabase {
     private static final String CSV_FILE_PATH = "src/main/resources/edu/augustana/DEMO1.csv";
     public static List<Card> allCards = new ArrayList<>();
+    private static List<Card> presentableList = new ArrayList<>();
+    //private static Map<String,Card> allCardMap;
 
     private static List<String> uniqueIDList = new ArrayList<>();
     public static HashMap<String, Card> uniqueIdMap = new HashMap<>();
 
     public static void main(String args) throws IOException, CsvValidationException {
 
-        addCardsFromCSVFile(args);
+        CardDatabase.addCardsFromCSVFile("DEMO1.csv");
+        System.out.println(CardDatabase.getAllCards());
+        //addCardsFromCSVFile(args);
 
         // Create filter instances based on your criteria
         List<CardFilter> filters = new ArrayList<>();
 
         // Filter by gender
         String targetCat = "Shapes";
-
-
 
         CardFilter cards = new CategoryFilter(targetCat);
 
@@ -41,11 +46,6 @@ public class CardDatabase {
         for (Card card : filteredCards) {
           //  System.out.println(card);
         }
-
-
-        CardDatabase.addCardsFromCSVFile("DEMO1.csv");
-
-
     }
 
     public static List<Card> getAllCards() {
@@ -62,15 +62,7 @@ public class CardDatabase {
         return filteredCardList;
     }
 
-
-
-// H10:W
-
-
-
-
-
-    public static void addCardsFromCSVFile(String filename) throws FileNotFoundException, IOException, CsvValidationException{
+    public static void addCardsFromCSVFile(String filename) throws IOException{
 
         try (
                 Reader reader = Files.newBufferedReader(Paths.get(CSV_FILE_PATH));
@@ -83,20 +75,26 @@ public class CardDatabase {
                 String uniqueID = nextCard[5]+"/" +nextCard[4];
                 uniqueIDList.add(uniqueID);
 
-
-
                 Card currentCard = new Card(uniqueID,nextCard[0],nextCard[1],nextCard[2],nextCard[3],
                         nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8], nextCard[9].split(","), nextCard[10].split(","));
                 System.out.println(currentCard.getEquipment());
                 allCards.add(currentCard);
 
                 uniqueIdMap.put(uniqueID,currentCard);
-
-
             }
             System.out.println();
             System.out.println(allCards);
+        } catch (CsvValidationException e) {
+            throw new RuntimeException(e);
         }
+/**
+        allCards = new CsvToBeanBuilder<Card>(new FileReader(filename)).withType(Card.class).build().parse();
+        allCardMap = new HashMap<>();
+        for (Card card : allCards) {
+            allCardMap.put(card.getUniqueID(), card);
+        }
+        System.out.println(allCardMap);
+**/
     }
 
 
