@@ -37,7 +37,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="104.0" fitWidth="112.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="target" fitHeight="104.0" fitWidth="112.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../Image/Drag%20card%20here.png" />
                            </image>
@@ -58,7 +58,7 @@
          </padding></VBox>
       <ScrollPane layoutX="38.0" layoutY="99.0" prefHeight="443.0" prefWidth="253.0">
          <content>
-            <VBox prefHeight="408.0" prefWidth="257.0">
+            <VBox fx:id="searchResultsVBox" prefHeight="408.0" prefWidth="257.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
@@ -66,7 +66,7 @@
                            <image>
                               <Image url="@../DEMO1Pack/1.png" />
                            </image></ImageView>
-                        <ImageView fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleDragDetection" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleDragDetection" onMouseClicked="#sourceDetect" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../DEMO1Pack/4.png" />
                            </image></ImageView>
@@ -77,7 +77,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
-                        <ImageView fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleImageDragOver" onMouseClicked="#sourceDetect" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../DEMO1Pack/5.png" />
                            </image></ImageView>

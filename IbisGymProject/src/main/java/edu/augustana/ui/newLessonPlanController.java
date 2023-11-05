@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 public class newLessonPlanController {
@@ -27,7 +28,8 @@ public class newLessonPlanController {
     private ImageView target;
     @FXML
     public VBox targetVBox;
-
+    @FXML
+    public GridPane gridPane = new GridPane();
 
     public newLessonPlanController() {
 
@@ -36,6 +38,7 @@ public class newLessonPlanController {
     @FXML
     private void initialize(){
         this.lessonPlanName.setText(Course.currentLessonPlan.getLessonTitle());
+
 
     }
 
@@ -47,7 +50,6 @@ public class newLessonPlanController {
 
     @FXML
     void handleDragDetection(MouseEvent event) {
-        sourceDetect();
         Dragboard db = source.startDragAndDrop(TransferMode.ANY);
         ClipboardContent cb = new ClipboardContent();
         cb.putImage(source.getImage());
@@ -67,34 +69,45 @@ public class newLessonPlanController {
     void handleImageDropped(DragEvent event) {
         Image newImage = event.getDragboard().getImage();
 
-        ObservableList<ImageView> imageViewList = FXCollections.observableArrayList();
-        if (imageViewList.size() > 0) {
-            Image lastImage = imageViewList.get(imageViewList.size() - 1).getImage();
-            for (int i = imageViewList.size() - 1; i > 0; i--) {
-                ImageView currentImageView = imageViewList.get(i - 1);
-                ImageView nextImageView = imageViewList.get(i);
-                currentImageView.setImage(nextImageView.getImage());
-            }
-            ImageView newImageView = new ImageView(lastImage);
-            imageViewList.get(0).setImage(newImage);
-            imageViewList.add(0, newImageView);
-        } else {
-            // Assuming target is the ImageView that you want to set the image to
-            target.setImage(newImage);
-        }
-    }
+        Image image = new Image("file:Image/" + source.getImage());
+        ImageView imageView = new ImageView(image);
 
-    @FXML
-    void sourceDetect() {
-        source.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                source = (ImageView) event.getSource();
+            Dragboard db = event.getDragboard();
+            boolean success = false;
+            if (db.hasImage()) {
+                int numRows = gridPane.getRowCount();
+                int numCols = gridPane.getColumnCount();
+                boolean emptyCellFound = false;
+
+                for (int row = 0; row < numRows; row++) {
+                    for (int col = 0; col < numCols; col++) {
+                        if (gridPane.getChildren().stream().noneMatch(node -> GridPane.getRowIndex(node) == row && GridPane.getColumnIndex(node) == col)) {
+                            ImageView newImageView = new ImageView(db.getImage());
+                            gridPane.add(newImageView, col, row);
+                            emptyCellFound = true;
+                            break;
+                        }
+                    }
+                    if (emptyCellFound) {
+                        break;
+                    }
+                }
+                success = true;
             }
+            event.setDropCompleted(success);
+            event.consume();
         });
 
     }
+
+
 }
+
+
+
+
+
+
 
 
 
