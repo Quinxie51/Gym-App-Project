@@ -2,6 +2,9 @@ package edu.augustana.data;
 
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Card {
 
     //data fields
@@ -20,14 +23,14 @@ public class Card {
     private String modelSex;
     private String level;
     //We possibly need a string[] or a list of strings for this
-    private String equipment;
-    private String keywords;
+    private String [] equipment;
+    private String[] keywords;
 
 
 
     public Card(String selectedUniqueID, String selectedCode, String selectedEvent, String selectedCategory, String selectedTitle, String selectedPackFolder,
                 String selectedImage, String selectedGender, String selectedModelSex, String selectedLevel,
-                String selectedEquipment, String selectedKeyWords) {
+                String [] selectedEquipment, String [] selectedKeyWords) {
 
         this.uniqueID = selectedUniqueID;
         this.code = selectedCode;
@@ -78,12 +81,24 @@ public class Card {
         return level;
     }
 
-    public String getEquipment() {
-        return equipment;
+    public List<String> getEquipment() {
+        List<String> equipmentList = new ArrayList<>();
+        for(String word: equipment){
+            equipmentList.add(word);
+
+        }
+        return equipmentList;
     }
 
-    public String[] getKeywords() {
-        return keywords.split(",");
+    public List<String> getKeywords() {
+        List<String> keywordList = new ArrayList<>();
+        for(String word: keywords){
+            keywordList.add(word);
+
+        }
+        return keywordList;
+
+
     }
 
     @Override
