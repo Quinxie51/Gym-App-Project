@@ -1,6 +1,7 @@
 package edu.augustana.data;
 import com.opencsv.CSVReader;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -19,7 +20,8 @@ public class CardDatabase {
     private static List<String> uniqueIDList = new ArrayList<>();
     public static HashMap<String, Card> uniqueIdMap = new HashMap<>();
 
-    public static void main(String[] args) throws IOException, CsvValidationException {
+    public static void main(String args) throws IOException, CsvValidationException {
+
         addCardsFromCSVFile(args);
 
         // Create filter instances based on your criteria
@@ -41,8 +43,14 @@ public class CardDatabase {
         }
 
 
+        CardDatabase.addCardsFromCSVFile("DEMO1.csv");
+
+
     }
 
+    public static List<Card> getAllCards() {
+        return allCards;
+    }
 
     public static List<Card> getFilteredCards(CardFilter filter){
         List<Card> filteredCardList = new ArrayList<>();
@@ -55,12 +63,15 @@ public class CardDatabase {
     }
 
 
+
 // H10:W
 
 
 
 
-    public static void addCardsFromCSVFile(String[] args) throws IOException, CsvValidationException{
+
+    public static void addCardsFromCSVFile(String filename) throws FileNotFoundException, IOException, CsvValidationException{
+
         try (
                 Reader reader = Files.newBufferedReader(Paths.get(CSV_FILE_PATH));
                 CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
@@ -78,20 +89,18 @@ public class CardDatabase {
                         nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8], nextCard[9].split(","), nextCard[10].split(","));
                 System.out.println(currentCard.getEquipment());
                 allCards.add(currentCard);
+
                 uniqueIdMap.put(uniqueID,currentCard);
 
+
             }
-
+            System.out.println();
+            System.out.println(allCards);
         }
-
     }
 
 
 
 
-
-
-
-
-
+    
 }
