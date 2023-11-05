@@ -1,8 +1,7 @@
 package edu.augustana.ui;
-
 import java.io.IOException;
 import java.security.cert.PolicyNode;
-
+import edu.augustana.data.Card;
 import edu.augustana.data.Course;
 import edu.augustana.data.LessonPlan;
 import javafx.collections.FXCollections;
@@ -10,14 +9,19 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import static edu.augustana.data.CardDatabase.allCards;
+import static edu.augustana.data.CardDatabase.getAllCards;
 
 public class newLessonPlanController {
 
+    @FXML
+    private ListView<Card> cardListView;
     @FXML
     public Label lessonPlanName;
     @FXML
@@ -38,8 +42,10 @@ public class newLessonPlanController {
     @FXML
     private void initialize(){
         this.lessonPlanName.setText(Course.currentLessonPlan.getLessonTitle());
-
-
+        // Code: title [gender]
+        // getReadableList ^^^
+        cardListView.getItems().addAll(getAllCards());
+        System.out.println(getAllCards());
     }
 
     @FXML
@@ -71,7 +77,6 @@ public class newLessonPlanController {
 
         Image image = new Image("file:Image/" + source.getImage());
         ImageView imageView = new ImageView(image);
-
         Dragboard db = event.getDragboard();
         boolean success = false;
         if (db.hasImage()) {

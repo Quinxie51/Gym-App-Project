@@ -2,39 +2,28 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="578.0" prefWidth="684.0" style="-fx-background-color: #85B7CC;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
-   <children>
-      <HBox alignment="CENTER" layoutY="-1.0" maxHeight="-Infinity" prefHeight="26.0" prefWidth="728.0" spacing="20.0" style="-fx-background-color: #F5F5F5;">
+<BorderPane prefHeight="619.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
+   <top>
+      <VBox BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="83.0" fitWidth="118.0" onMouseClicked="#switchToPrimary" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/logo.png" />
-               </image>
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </ImageView>
-            <TextField fx:id="searchBar" promptText="Search" />
-         </children>
-      </HBox>
-      <VBox layoutX="311.0" layoutY="101.0" prefHeight="440.0" prefWidth="387.0" spacing="20.0" style="-fx-background-color: F5F5F5;">
-         <children>
-            <Label fx:id="lessonPlanName" prefHeight="32.0" prefWidth="387.0" text="Enter lesson name">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <VBox fx:id="targetVBox" prefHeight="352.0" prefWidth="357.0">
+            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="26.0" prefWidth="728.0" spacing="20.0" style="-fx-background-color: #F5F5F5;">
                <children>
+<<<<<<< HEAD
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
                         <ImageView fx:id="target" fitHeight="104.0" fitWidth="112.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
@@ -59,9 +48,61 @@
       <ScrollPane layoutX="38.0" layoutY="99.0" prefHeight="443.0" prefWidth="253.0">
          <content>
             <VBox fx:id="searchResultsVBox" prefHeight="408.0" prefWidth="257.0">
+=======
+                  <ImageView fitHeight="83.0" fitWidth="118.0" onMouseClicked="#switchToPrimary" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Image/logo.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <TextField fx:id="searchBar" promptText="Search" />
+                  <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="File">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Open" />
+                      <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As" />
+                    </items>
+                  </MenuButton>
+               </children>
+            </HBox>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <Pane prefHeight="539.0" prefWidth="922.0" style="-fx-background-color: #85b7cc;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="537.0" prefWidth="905.0">
+>>>>>>> b51da3356fe77d63e6bc74ae0c57778b77b3d441
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                  <ScrollPane maxHeight="1.7976931348623157E308" prefHeight="538.0" prefWidth="341.0" style="-fx-background-color: transparent;">
+                     <content>
+                        <ListView fx:id="cardListView" prefHeight="668.0" prefWidth="326.0" />
+                     </content>
+                  </ScrollPane>
+                  <VBox prefHeight="440.0" prefWidth="387.0" spacing="20.0" style="-fx-background-color: F5F5F5;">
                      <children>
+<<<<<<< HEAD
                         <ImageView fx:id="source" fitHeight="80.0" fitWidth="113.0" onDragDetected="#handleDragDetection" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../DEMO1Pack/1.png" />
@@ -70,10 +111,38 @@
                            <image>
                               <Image url="@../DEMO1Pack/4.png" />
                            </image></ImageView>
+=======
+                        <Label fx:id="lessonPlanName" prefHeight="32.0" prefWidth="387.0" text="Enter lesson name">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <VBox fx:id="targetVBox" prefHeight="352.0" prefWidth="357.0" style="-fx-background-color: transparent;">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                                 <children>
+                                    <ImageView fitHeight="104.0" fitWidth="112.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Image/Drag%20card%20here.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="target" fitHeight="81.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+>>>>>>> b51da3356fe77d63e6bc74ae0c57778b77b3d441
                      </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                      <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
                      </padding>
+<<<<<<< HEAD
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                      <children>
@@ -114,9 +183,12 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </HBox>
+=======
+                  </VBox>
+>>>>>>> b51da3356fe77d63e6bc74ae0c57778b77b3d441
                </children>
-            </VBox>
-         </content>
-      </ScrollPane>
-   </children>
-</AnchorPane>
+            </HBox>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
