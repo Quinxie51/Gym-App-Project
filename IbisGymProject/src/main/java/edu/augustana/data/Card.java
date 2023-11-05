@@ -44,7 +44,10 @@ public class Card {
 
     }
 
-    public String getUniqueID() {return uniqueID;}
+    public String getUniqueID() {
+        return image+"/"+packFolder;
+    }
+
     public String getCode() {
         return code;
     }
@@ -88,6 +91,7 @@ public class Card {
 
     @Override
     public String toString() {
+        /**
         return "Card{" +
                 "uniqueID='" + uniqueID + '\'' +
                 ", code='" + code + '\'' +
@@ -102,5 +106,8 @@ public class Card {
                 ", equipment='" + equipment + '\'' +
                 ", keywords='" + keywords + '\'' +
                 '}';
+         **/
+        // Code: title [gender]
+        return code+": " + title + " [" + gender + "]";
     }
 }

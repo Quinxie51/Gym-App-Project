@@ -2,23 +2,29 @@ package edu.augustana.data;
 import com.opencsv.CSVReader;
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.opencsv.CSVReaderBuilder;
+import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.exceptions.CsvValidationException;
 
 public class CardDatabase {
     private static final String CSV_FILE_PATH = "src/main/resources/edu/augustana/DEMO1.csv";
     public static List<Card> allCards = new ArrayList<>();
+    private static List<Card> presentableList = new ArrayList<>();
+    //private static Map<String,Card> allCardMap;
 
     public static void main(String[] args) throws IOException, CsvValidationException {
         CardDatabase.addCardsFromCSVFile("DEMO1.csv");
-
+        System.out.println(CardDatabase.getAllCards());
     }
 
     public static List<Card> getAllCards() {
@@ -26,12 +32,12 @@ public class CardDatabase {
     }
 
     public static List<Card> getFilteredCards(CardFilter filter){
-
         return allCards;
     }
 
 
-    public static void addCardsFromCSVFile(String filename) throws FileNotFoundException, IOException, CsvValidationException{
+    public static void addCardsFromCSVFile(String filename) throws IOException{
+
         try (
                 Reader reader = Files.newBufferedReader(Paths.get(CSV_FILE_PATH));
                 CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
@@ -49,6 +55,16 @@ public class CardDatabase {
             }
             System.out.println();
             System.out.println(allCards);
+        } catch (CsvValidationException e) {
+            throw new RuntimeException(e);
         }
+/**
+        allCards = new CsvToBeanBuilder<Card>(new FileReader(filename)).withType(Card.class).build().parse();
+        allCardMap = new HashMap<>();
+        for (Card card : allCards) {
+            allCardMap.put(card.getUniqueID(), card);
+        }
+        System.out.println(allCardMap);
+**/
     }
 }
