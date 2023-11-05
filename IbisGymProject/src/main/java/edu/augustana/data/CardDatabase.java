@@ -1,6 +1,7 @@
 package edu.augustana.data;
 import com.opencsv.CSVReader;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -16,11 +17,13 @@ public class CardDatabase {
     public static List<Card> allCards = new ArrayList<>();
 
     public static void main(String[] args) throws IOException, CsvValidationException {
-        addCardsFromCSVFile(args);
-
+        CardDatabase.addCardsFromCSVFile("DEMO1.csv");
 
     }
 
+    public static List<Card> getAllCards() {
+        return allCards;
+    }
 
     public static List<Card> getFilteredCards(CardFilter filter){
 
@@ -28,11 +31,7 @@ public class CardDatabase {
     }
 
 
-// H10:W
-
-
-
-    public static void addCardsFromCSVFile(String[] args) throws IOException, CsvValidationException{
+    public static void addCardsFromCSVFile(String filename) throws FileNotFoundException, IOException, CsvValidationException{
         try (
                 Reader reader = Files.newBufferedReader(Paths.get(CSV_FILE_PATH));
                 CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
@@ -47,18 +46,9 @@ public class CardDatabase {
                         nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8], nextCard[9], nextCard[10]);
                 System.out.println(currentCard.toString());
                 allCards.add(currentCard);
-
             }
-
+            System.out.println();
+            System.out.println(allCards);
         }
-
     }
-
-
-
-
-
-
-
-
 }

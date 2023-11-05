@@ -1,4 +1,6 @@
 package edu.augustana.ui;
+import com.opencsv.exceptions.CsvValidationException;
+import edu.augustana.data.CardDatabase;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +15,9 @@ public class MainApp extends Application {
     private static Scene scene;
     //HELLO THUNDERDOMEApp
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, CsvValidationException {
+        CardDatabase.addCardsFromCSVFile("DEMO1.csv");
+
         scene = new Scene(loadFXML("mainHomepage"), 640, 480);
         stage.setScene(scene);
         stage.show();
