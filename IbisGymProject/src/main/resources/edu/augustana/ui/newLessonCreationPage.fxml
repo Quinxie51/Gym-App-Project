@@ -6,8 +6,6 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
@@ -26,85 +24,6 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="774.0" prefWidth="1517.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
-   <top>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="26.0" prefWidth="728.0" spacing="20.0" style="-fx-background-color: #F5F5F5;">
-               <children>
-                  <ImageView fitHeight="83.0" fitWidth="118.0" onMouseClicked="#switchToPrimary" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Image/logo.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <TextField fx:id="searchBar" promptText="Search" />
-                  <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="File">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Open" />
-                      <MenuItem mnemonicParsing="false" text="Save" />
-                        <MenuItem mnemonicParsing="false" text="Save As" />
-                        <MenuItem fx:id="printMenuItem" mnemonicParsing="false" onAction="#menuActionPrint" text="Print" />
-                    </items>
-                  </MenuButton>
-               </children>
-            </HBox>
-            <MenuBar>
-              <menus>
-                <Menu mnemonicParsing="false" text="Gender">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Male" />
-                        <MenuItem mnemonicParsing="false" text="Female" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Event">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Floor" />
-                        <MenuItem mnemonicParsing="false" text="Uneven Bars" />
-                        <MenuItem mnemonicParsing="false" text="Beam" />
-                        <MenuItem mnemonicParsing="false" text="Vault" />
-                        <MenuItem mnemonicParsing="false" text="Tramp" />
-                        <MenuItem mnemonicParsing="false" text="Strength" />
-                  </items>
-                </Menu>
-                  <Menu mnemonicParsing="false" text="Category">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Shapes" />
-                        <MenuItem mnemonicParsing="false" text="Handstand" />
-                        <MenuItem mnemonicParsing="false" text="Backward Salto" />
-                        <MenuItem mnemonicParsing="false" text="Walkovers" />
-                        <MenuItem mnemonicParsing="false" text="Handsprings" />
-                        <MenuItem mnemonicParsing="false" text="Cartwheel Progressions" />
-                        <MenuItem mnemonicParsing="false" text="Round Off Progression" />
-                        <MenuItem mnemonicParsing="false" text="Forward Salto Progression" />
-                        <MenuItem mnemonicParsing="false" text="Bars" />
-                        <MenuItem mnemonicParsing="false" text="Block Drills On Beam" />
-                        <MenuItem mnemonicParsing="false" text="Beam" />
-                        <MenuItem mnemonicParsing="false" text="Vault" />
-                        <MenuItem mnemonicParsing="false" text="Tramp" />
-                     </items>
-                  </Menu>
-                <Menu mnemonicParsing="false" text="Level">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="things..." />
-                  </items>
-                </Menu>
-                  <Menu mnemonicParsing="false" text="Equipment">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="things..." />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Filter Options">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Reset" />
-                    </items>
-                  </Menu>
-              </menus>
-            </MenuBar>
-         </children>
-      </VBox>
-   </top>
    <center>
       <Pane prefHeight="645.0" prefWidth="1443.0" style="-fx-background-color: #85b7cc;" BorderPane.alignment="CENTER">
          <children>
@@ -139,7 +58,7 @@
                                        <children>
                                           <CheckBox mnemonicParsing="false" text="Floor" />
                                           <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="107.0" text="Uneven Bars" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="108.0" text="Beam" />
+                                          <CheckBox fx:id="beamEventCheck" mnemonicParsing="false" onAction="#handleEventFilter" prefHeight="19.0" prefWidth="108.0" text="Beam" />
                                           <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="114.0" text="Vault" />
                                           <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="118.0" text="Tramp" />
                                           <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="118.0" text="Strength" />
@@ -251,7 +170,7 @@
                            </children>
                         </HBox>
                         </VBox>
-                        <GridPane prefHeight="634.0" prefWidth="1099.0" style="-fx-background-color: #85b7cc;">
+                        <GridPane alignment="TOP_CENTER" prefHeight="846.0" prefWidth="1047.0" style="-fx-background-color: #85b7cc;">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -282,4 +201,27 @@
          </children>
       </Pane>
    </center>
+   <top>
+      <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="26.0" prefWidth="728.0" spacing="20.0" style="-fx-background-color: #F5F5F5;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="83.0" fitWidth="118.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Image/logo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </ImageView>
+            <TextField fx:id="searchBar" promptText="Search" />
+            <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="File">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Open" />
+                <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As" />
+                  <MenuItem fx:id="printMenuItem" mnemonicParsing="false" onAction="#menuActionPrint" text="Print" />
+              </items>
+            </MenuButton>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>
