@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -25,26 +22,42 @@ public class CardDatabase {
     private static List<String> uniqueIDList = new ArrayList<>();
     public static HashMap<String, Card> uniqueIdMap = new HashMap<>();
 
-    public static void main(String args) throws IOException, CsvValidationException {
+    private static HashSet<String> eventSet = new HashSet<>();
+
+    private static HashSet<String> categorySet = new HashSet<>();
+
+    private static HashSet<String> genderSet = new HashSet<>();
+
+    private static HashSet<String> modelSexSet = new HashSet<>();
+
+    private static HashSet<String> levelSet = new HashSet<>();
+
+    private static HashSet<String> equipmentSet = new HashSet<>();
+
+
+
+    public static void main(String[] args) throws IOException, CsvValidationException {
 
         CardDatabase.addCardsFromCSVFile("DEMO1.csv");
-        System.out.println(CardDatabase.getAllCards());
+
         //addCardsFromCSVFile(args);
 
-        // Create filter instances based on your criteria
         List<CardFilter> filters = new ArrayList<>();
 
-        // Filter by gender
+
         String targetCat = "Shapes";
 
         CardFilter cards = new CategoryFilter(targetCat);
 
-        // Get filtered cards using multiple filters
         List<Card> filteredCards = getFilteredCards(cards);
-
-        // Use the filtered cards as needed
+        System.out.println(eventSet);
+        System.out.println(categorySet);
+        System.out.println(genderSet);
+        System.out.println(modelSexSet);
+        System.out.println(levelSet);
+        System.out.println(equipmentSet);
         for (Card card : filteredCards) {
-          //  System.out.println(card);
+
         }
     }
 
@@ -62,6 +75,7 @@ public class CardDatabase {
         return filteredCardList;
     }
 
+
     public static void addCardsFromCSVFile(String filename) throws IOException{
 
         try (
@@ -77,16 +91,30 @@ public class CardDatabase {
 
                 Card currentCard = new Card(uniqueID,nextCard[0],nextCard[1],nextCard[2],nextCard[3],
                         nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8], nextCard[9].split(","), nextCard[10].split(","));
-                System.out.println(currentCard.getEquipment());
+
                 allCards.add(currentCard);
 
                 uniqueIdMap.put(uniqueID,currentCard);
+
+
+                eventSet.add(nextCard[1].toLowerCase(Locale.ROOT));
+                categorySet.add(nextCard[2].toLowerCase(Locale.ROOT));
+                genderSet.add(nextCard[6].toLowerCase(Locale.ROOT));
+                modelSexSet.add(nextCard[7].toLowerCase(Locale.ROOT));
+                levelSet.add(nextCard[8].toLowerCase(Locale.ROOT));
+
+                for (String equipment : currentCard.getEquipment()){
+                    equipmentSet.add(equipment.toLowerCase(Locale.ROOT));
+                }
+
+
             }
-            System.out.println();
-            System.out.println(allCards);
         } catch (CsvValidationException e) {
             throw new RuntimeException(e);
         }
+
+
+
 /**
         allCards = new CsvToBeanBuilder<Card>(new FileReader(filename)).withType(Card.class).build().parse();
         allCardMap = new HashMap<>();
@@ -97,7 +125,29 @@ public class CardDatabase {
 **/
     }
 
+    public static HashSet<String> getEventSet() {
+        return eventSet;
+    }
 
+    public static HashSet<String> getCategorySet() {
+        return categorySet;
+    }
+
+    public static HashSet<String> getGenderSet() {
+        return genderSet;
+    }
+
+    public static HashSet<String> getModelSexSet() {
+        return modelSexSet;
+    }
+
+    public static HashSet<String> getLevelSet() {
+        return levelSet;
+    }
+
+    public static HashSet<String> getEquipmentSet() {
+        return equipmentSet;
+    }
 
 
 
