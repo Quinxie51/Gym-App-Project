@@ -1,13 +1,8 @@
 package edu.augustana.ui;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import edu.augustana.data.Card;
-import edu.augustana.data.CardFilter;
-import edu.augustana.data.Course;
-import edu.augustana.data.EventFilter;
+import java.util.*;
+
+import edu.augustana.data.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.*;
@@ -29,20 +24,12 @@ public class newLessonPlanController {
 
     @FXML
     private ListView<Card> cardListView;
+
     @FXML
-    private HashMap<CheckBox, String> eventMap;
+    private VBox eventFilterOptionsVBox;
     @FXML
-    private HashMap<CheckBox, String> categoryMap;
-    @FXML
-    private HashMap<CheckBox, String> levelMap;
-    @FXML
-    private HashMap<CheckBox, String> genderMap;
-    @FXML
-    private HashMap<CheckBox, String> equipmentMap;
-    @FXML
-    private HashMap<CheckBox, String> modelSexMap;
-    @FXML
-    private CheckBox beamEventCheck;
+    private VBox genderFilterOptionsVBox;
+
     @FXML
     private MenuItem printMenuItem;
     @FXML
@@ -66,8 +53,37 @@ public class newLessonPlanController {
         // Code: title [gender]
         // getReadableList ^^^
         cardListView.getItems().addAll(getAllCards());
+
+        for (String eventOption : CardDatabase.getEventSet()) {
+            CheckBox cBox = new CheckBox(eventOption);
+            cBox.setOnAction(e -> updateFilterResults());
+            eventFilterOptionsVBox.getChildren().add(cBox);
+        }
         System.out.println(getAllCards());
         GridPane gridPane = new GridPane();
+    }
+
+    private void updateFilterResults() {
+        List<CardFilter> allFilters= new ArrayList<>();
+
+        for (Node node:  genderFilterOptionsVBox.getChildren()) {
+            CheckBox cBox = (CheckBox) node;
+            if (cBox.isSelected()) {
+                allFilters.add(new GenderFilter(cBox.getText()));
+            }
+        }
+
+        List<String> selectedEvents = new ArrayList<>();
+        for (Node node: eventFilterOptionsVBox.getChildren()) {
+            CheckBox cBox = (CheckBox) node;
+            if (cBox.isSelected()) {
+                selectedEvents.add(cBox.getText());
+            }
+        }
+        allFilters.add(new EventFilter(selectedEvents));
+
+        // make a new CombinedAndFilter, and apply it to all your cards to get the filtered set
+        // update the UI to display only those cards that were filtered
     }
 
     @FXML
