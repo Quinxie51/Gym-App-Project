@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import edu.augustana.data.Card;
 import edu.augustana.data.CardFilter;
 import edu.augustana.data.Course;
@@ -23,7 +22,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-
 import static edu.augustana.data.CardDatabase.getAllCards;
 
 public class newLessonPlanController {
@@ -58,13 +56,10 @@ public class newLessonPlanController {
     @FXML
     private ImageView imageView;
     @FXML
-    private ImageView source;
+    public GridPane gridPane;
+
     @FXML
     private ImageView target;
-    @FXML
-    public VBox targetVBox;
-    @FXML
-    public GridPane gridPane = new GridPane();
 
 
     public newLessonPlanController() {
@@ -72,12 +67,13 @@ public class newLessonPlanController {
     }
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         this.lessonPlanName.setText(Course.currentLessonPlan.getLessonTitle());
         // Code: title [gender]
         // getReadableList ^^^
         cardListView.getItems().addAll(getAllCards());
         System.out.println(getAllCards());
+        GridPane gridPane = new GridPane();
     }
 
     @FXML
@@ -100,55 +96,77 @@ public class newLessonPlanController {
 
     @FXML
     void handleDragDetection(MouseEvent event) {
-        Dragboard db = source.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent cb = new ClipboardContent();
-        cb.putImage(source.getImage());
-        db.setContent(cb);
-        event.consume();
+        Card selectedCard = cardListView.getSelectionModel().getSelectedItem();
+        if (selectedCard != null) {
+            Dragboard db = cardListView.startDragAndDrop(TransferMode.ANY);
+            ClipboardContent cb = new ClipboardContent();
+            cb.putString(selectedCard.getImagePath());
+            db.setContent(cb);
+            event.consume();
+        }
     }
+
 
     @FXML
     void handleImageDragOver(DragEvent event) {
-        if (event.getDragboard().hasImage()) {
+        if (event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
-
-
     @FXML
     void handleImageDropped(DragEvent event) {
-        Image newImage = event.getDragboard().getImage();
+        String imagePath = event.getDragboard().getString();
+        Image image = new Image("file:CardPack/DEMO1Pack/" + imagePath);
+        imageView.setImage(image);
+    }
 
-        Image image = new Image("file:Image/" + source.getImage());
-        ImageView imageView = new ImageView(image);
-        Dragboard db = event.getDragboard();
-        boolean success = false;
-        if (db.hasImage()) {
-            int numRows = gridPane.getRowCount();
-            int numCols = gridPane.getColumnCount();
-            boolean emptyCellFound = false;
-
-            for (int row = 0; row < numRows; row++) {
-                for (int col = 0; col < numCols; col++) {
-                    int finalRow = row;
-                    int finalCol = col;
-                    if (gridPane.getChildren().stream().noneMatch(node -> GridPane.getRowIndex(node) == finalRow && GridPane.getColumnIndex(node) == finalCol)) {
-                        ImageView newImageView = new ImageView(db.getImage());
-                        gridPane.add(newImageView, col, row);
-                        emptyCellFound = true;
-                        break;
-                    }
-                }
-                if (emptyCellFound) {
+/*
+    @FXML
+    void handleImageDropped(DragEvent event) {
+        boolean emptyCellFound = false;
+        for (int row = 0; row < gridPane.getRowCount(); row++) {
+            for (int col = 0; col < 3; col++) {
+                int finalCol = col;
+                int finalRow = row;
+                if (gridPane.getChildren().stream().noneMatch(node -> GridPane.getRowIndex(node) == finalRow && GridPane.getColumnIndex(node) == finalCol)) {
+                    emptyCellFound = true;
+                    String imagePath = event.getDragboard().getString();
+                    Image image = new Image("file:CardPack/DEMO1Pack/" + imagePath);
+                    ImageView imageView = new ImageView();
+                    imageView.setImage(image);
+                    gridPane.add(imageView, finalCol, finalRow);
                     break;
                 }
             }
-            success = true;
         }
-        event.setDropCompleted(success);
-        event.consume();
-
     }
+}
+*/
+
+   /*         if (emptyCellFound) {
+                break;
+            }
+        }
+    }
+
+<<<<<<< HEAD
+            // If no empty cell was found, create a new row
+            if (!emptyCellFound) {
+                int newRow = gridPane.getRowCount();
+                GridPane.setColumnIndex(imageView, 0);
+                GridPane.setRowIndex(imageView, newRow);
+            }
+
+            // Add the new ImageView to the GridPane
+            gridPane.getChildren().add(imageView);
+
+            event.setDropCompleted(true);
+            event.consume();
+        }
+    }
+*/
+
+
 
     @FXML
     private void menuActionPrint() {

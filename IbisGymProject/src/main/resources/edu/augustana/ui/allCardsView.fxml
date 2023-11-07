@@ -36,7 +36,7 @@
                     <children>
                         <ImageView fitHeight="83.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../Image/logo.png" />
+                                <Image url="@Image/logo.png" />
                             </image>
                         </ImageView>
                         <ComboBox prefHeight="26.0" prefWidth="75.0" promptText="Level" style="-fx-background-color: transparent;" />
@@ -59,7 +59,7 @@
                            <children>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/1.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/1.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets left="20.0" />
@@ -67,17 +67,17 @@
                               </ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/2.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/2.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/3.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/3.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/4.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/4.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -89,7 +89,7 @@
                            <children>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/5.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/5.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets left="20.0" />
@@ -97,17 +97,17 @@
                               </ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/6.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/6.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/7.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/7.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/8.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/8.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -116,7 +116,7 @@
                            <children>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/9.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/9.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets left="20.0" />
@@ -124,38 +124,15 @@
                               </ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/10.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/10.png" />
                                  </image></ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/11.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/11.png" />
                                  </image></ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/12.png" />
-                                 </image></ImageView>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="25.0">
-                           <children>
-                              <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../DEMO1Pack/13.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin></ImageView>
-                              <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../DEMO1Pack/14.png" />
-                                 </image></ImageView>
-                              <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../DEMO1Pack/15.png" />
-                                 </image></ImageView>
-                              <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../DEMO1Pack/16.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/12.png" />
                                  </image></ImageView>
                            </children>
                         </HBox>
@@ -163,22 +140,22 @@
                            <children>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/17.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/13.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin></ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/18.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/14.png" />
                                  </image></ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/19.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/15.png" />
                                  </image></ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/20.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/16.png" />
                                  </image></ImageView>
                            </children>
                         </HBox>
@@ -186,14 +163,37 @@
                            <children>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/21.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/17.png" />
                                  </image>
                                  <HBox.margin>
                                     <Insets left="20.0" />
                                  </HBox.margin></ImageView>
                               <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/22.png" />
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/18.png" />
+                                 </image></ImageView>
+                              <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/19.png" />
+                                 </image></ImageView>
+                              <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/20.png" />
+                                 </image></ImageView>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="25.0">
+                           <children>
+                              <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/21.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin></ImageView>
+                              <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../../../CardPack/DEMO1Pack/22.png" />
                                  </image></ImageView>
                            </children>
                         </HBox>
