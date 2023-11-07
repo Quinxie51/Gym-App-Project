@@ -23,158 +23,76 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="774.0" prefWidth="1517.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
-   <center>
-      <Pane prefHeight="645.0" prefWidth="1443.0" style="-fx-background-color: #85b7cc;" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="650.0" prefWidth="1517.0">
-                  <Accordion prefHeight="650.0" prefWidth="274.0">
-                    <panes>
-                      <TitledPane animated="false" text="Gender">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" text="Male" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Female" />
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </TitledPane>
-                      <TitledPane animated="false" text="Event">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="522.0" prefWidth="176.0">
-                                 <children>
-                                    <VBox prefHeight="522.0" prefWidth="187.0" spacing="5.0">
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" text="Floor" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="107.0" text="Uneven Bars" />
-                                          <CheckBox fx:id="beamEventCheck" mnemonicParsing="false" onAction="#handleEventFilter" prefHeight="19.0" prefWidth="108.0" text="Beam" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="114.0" text="Vault" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="118.0" text="Tramp" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="118.0" text="Strength" />
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </TitledPane>
-                      <TitledPane animated="false" text="Category">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox prefHeight="320.0" prefWidth="186.0" spacing="5.0">
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" text="Shapes" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="120.0" text="Handstand" />
-                                          <CheckBox mnemonicParsing="false" text="Backward Salto" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="106.0" text="Walkovers" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="102.0" text="Handsprings" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="158.0" text="Cartwheel Progressions" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="158.0" text="Round Off Progression" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="181.0" text="Forward Salto Progression" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Bars" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" text="Block Drills On Beam" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Beam" />
-                                          <CheckBox mnemonicParsing="false" text="Vault" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Tramp" />
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </TitledPane>
-                        <TitledPane animated="false" text="Level">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" text="I" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="B" />
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </TitledPane>
-                        <TitledPane animated="false" text="Equipment">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" text="Mailbox" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Board" />
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </TitledPane>
-                    </panes>
-                  </Accordion>
-                  <ScrollPane maxHeight="1.7976931348623157E308" prefHeight="538.0" prefWidth="341.0" style="-fx-background-color: transparent;">
-                     <content>
-                        <ListView fx:id="cardListView" prefHeight="668.0" prefWidth="326.0" />
-                     </content>
-                  </ScrollPane>
-                  <VBox prefHeight="694.0" prefWidth="1165.0" spacing="20.0" style="-fx-background-color: F5F5F5;">
-                     <children>
-                        <VBox fx:id="targetVBox" prefHeight="352.0" prefWidth="357.0" style="-fx-background-color: transparent;">
-                        <HBox alignment="CENTER_LEFT" spacing="250.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="116.0" style="-fx-background-color: #85b7cc;" text="Add To Plan">
-                                 <font>
-                                    <Font name="System Bold Italic" size="16.0" />
-                                 </font>
-                              </Button>
-                              <Label fx:id="lessonPlanName" prefHeight="32.0" prefWidth="387.0" text="Enter lesson name">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        </VBox>
-                        <GridPane alignment="TOP_CENTER" prefHeight="846.0" prefWidth="1047.0" style="-fx-background-color: #85b7cc;">
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<BorderPane prefHeight="619.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
+    <top>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="26.0" prefWidth="728.0" spacing="20.0" style="-fx-background-color: #F5F5F5;">
+                    <children>
+                        <ImageView fitHeight="83.0" fitWidth="118.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Image/logo.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <TextField fx:id="searchBar" promptText="Search" />
+                        <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Open" />
+                                <MenuItem mnemonicParsing="false" text="Save" />
+                                <MenuItem mnemonicParsing="false" text="Save As" />
+                            </items>
+                        </MenuButton>
+                    </children>
+                </HBox>
+                <MenuBar>
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <Pane prefHeight="539.0" prefWidth="922.0" style="-fx-background-color: #85b7cc;" BorderPane.alignment="CENTER">
+            <children>
+                <HBox prefHeight="537.0" prefWidth="905.0">
+                    <children>
+                        <ScrollPane maxHeight="1.7976931348623157E308" prefHeight="538.0" prefWidth="341.0" style="-fx-background-color: transparent;">
+                            <content>
+                                <ListView fx:id="cardListView" onDragDetected="#handleDragDetection" prefHeight="668.0" prefWidth="326.0" />
+                            </content>
+                        </ScrollPane>
+                        <VBox prefHeight="440.0" prefWidth="387.0" spacing="20.0" style="-fx-background-color: F5F5F5;">
+                            <children>
+                                <Label fx:id="lessonPlanName" prefHeight="32.0" prefWidth="387.0" text="Enter lesson name">
+                                    <font>
+                                        <Font size="22.0" />
+                                    </font>
+                                </Label>
+                        <GridPane onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" prefHeight="237.0" prefWidth="357.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -182,46 +100,24 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ImageView fitHeight="170.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                              <ImageView fx:id="imageView" fitHeight="73.0" fitWidth="116.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../DEMO1Pack/1.png" />
+                                    <Image url="@Image/Drag card here.png" />
                                  </image>
                               </ImageView>
                            </children>
                         </GridPane>
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  </HBox>
-         </children>
-      </Pane>
-   </center>
-   <top>
-      <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="26.0" prefWidth="728.0" spacing="20.0" style="-fx-background-color: #F5F5F5;" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="83.0" fitWidth="118.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Image/logo.png" />
-               </image>
-               <HBox.margin>
-                  <Insets right="20.0" />
-               </HBox.margin>
-            </ImageView>
-            <TextField fx:id="searchBar" promptText="Search" />
-            <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="File">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Open" />
-                <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Save As" />
-                  <MenuItem fx:id="printMenuItem" mnemonicParsing="false" onAction="#menuActionPrint" text="Print" />
-              </items>
-            </MenuButton>
-         </children>
-      </HBox>
-   </top>
+                            </children>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </Pane>
+    </center>
 </BorderPane>

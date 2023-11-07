@@ -39,7 +39,7 @@
                <children>
                   <ImageView fitHeight="83.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Image/logo.png" />
+                        <Image url="@Image/logo.png" />
                      </image>
                   </ImageView>
                   <ComboBox prefHeight="26.0" prefWidth="75.0" promptText="Level" style="-fx-background-color: transparent;" />
@@ -74,7 +74,7 @@
                   <ComboBox prefHeight="26.0" prefWidth="80.0" promptText="Level" style="-fx-background-color: transparent;" GridPane.columnIndex="1" />
                   <ImageView fitHeight="22.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                      <image>
-                        <Image url="@../Image/document.png" />
+                        <Image url="@Image/document.png" />
                      </image>
                   </ImageView>
                   <TextField style="-fx-background-color: transparent;" text="File 3" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -86,17 +86,17 @@
                   <TextField prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: transparent;" text="10/10/2023" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <image>
-                        <Image url="@../Image/more-3.png" />
+                        <Image url="@Image/more-3.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
                      <image>
-                        <Image url="@../Image/more-3.png" />
+                        <Image url="@Image/more-3.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6">
                      <image>
-                        <Image url="@../Image/more-3.png" />
+                        <Image url="@Image/more-3.png" />
                      </image>
                   </ImageView>
                   <Line endX="249.65367126464844" endY="0.015178561210632324" startX="-100.0" startY="0.08575594425201416" strokeWidth="0.25" GridPane.rowIndex="3" />
@@ -104,12 +104,12 @@
                   <Line endX="249.65367126464844" endY="0.015178561210632324" startX="-100.0" startY="0.015591323375701904" strokeWidth="0.25" GridPane.rowIndex="1" />
                   <ImageView fitHeight="22.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
                      <image>
-                        <Image url="@../Image/document.png" />
+                        <Image url="@Image/document.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="22.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
                      <image>
-                        <Image url="@../Image/document.png" />
+                        <Image url="@Image/document.png" />
                      </image>
                   </ImageView>
                </children>
