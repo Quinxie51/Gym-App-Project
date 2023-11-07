@@ -118,8 +118,10 @@ public class newLessonPlanController {
         Image image = new Image("file:CardPack/DEMO1Pack/" + imagePath);
         ImageView imageView = new ImageView();
         imageView.setImage(image);
-        imageView.setFitWidth(100);
-        imageView.setFitHeight(80);
+        imageView.setFitWidth(180);
+        imageView.setFitHeight(120);
+        lessonFlowPane.setHgap(10);
+        lessonFlowPane.setVgap(10);
         lessonFlowPane.getChildren().add(imageView);
 
     }
