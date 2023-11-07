@@ -42,8 +42,15 @@ public class newLessonPlanController {
     private HashMap<CheckBox,String> equipmentMap;
     @FXML
     private HashMap<CheckBox,String> modelSexMap;
-    @FXML
-    private CheckBox beam;
+
+
+    //Events
+    @FXML private CheckBox floor;
+    @FXML private  CheckBox unevenBars;
+    @FXML private CheckBox beam;
+
+
+
     @FXML
     private MenuItem printMenuItem;
     @FXML
@@ -78,10 +85,12 @@ public class newLessonPlanController {
         MainApp.setRoot("mainHomepage");
     }
 
-    @FXML
-    private void handleEventFilter() {
 
+
+    @FXML
+    private void handleEventFilter(CheckBox beam) {
         CardFilter event = new EventFilter("hi");
+
     }
 
     public static void createMaps() {
