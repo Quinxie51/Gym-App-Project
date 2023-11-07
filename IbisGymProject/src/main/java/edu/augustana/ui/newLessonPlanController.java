@@ -1,16 +1,22 @@
 package edu.augustana.ui;
 import java.io.IOException;
-import java.security.cert.PolicyNode;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import edu.augustana.data.Card;
+import edu.augustana.data.CardFilter;
 import edu.augustana.data.Course;
-import edu.augustana.data.LessonPlan;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
+import edu.augustana.data.EventFilter;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.print.*;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
@@ -22,6 +28,22 @@ public class newLessonPlanController {
 
     @FXML
     private ListView<Card> cardListView;
+    @FXML
+    private HashMap<CheckBox,String> eventMap;
+    @FXML
+    private HashMap<CheckBox,String> categoryMap;
+    @FXML
+    private HashMap<CheckBox,String> levelMap;
+    @FXML
+    private HashMap<CheckBox,String> genderMap;
+    @FXML
+    private HashMap<CheckBox,String> equipmentMap;
+    @FXML
+    private HashMap<CheckBox,String> modelSexMap;
+    @FXML
+    private CheckBox beamEventCheck;
+    @FXML
+    private MenuItem printMenuItem;
     @FXML
     public Label lessonPlanName;
     @FXML
@@ -47,10 +69,25 @@ public class newLessonPlanController {
     }
 
     @FXML
-    private void switchToPrimary() throws IOException {
+    private void switchToHomepage() throws IOException {
         MainApp.setRoot("mainHomepage");
     }
 
+    @FXML
+    private void handleEventFilter() {
+
+        CardFilter event = new EventFilter("hi");
+    }
+
+    public static void createMaps() {
+        Set<String> cardSet = new HashSet<>();
+        for (Card card: getAllCards()){
+            cardSet.add(card.getEvent());
+        }
+        for (String card: cardSet) {
+            
+        }
+    }
 
     @FXML
     void handleDragDetection(MouseEvent event) {
@@ -77,7 +114,6 @@ public class newLessonPlanController {
         Image image = new Image("file:CardPack/DEMO1Pack/" + imagePath);
         imageView.setImage(image);
     }
-}
 
 /*
     @FXML
@@ -108,6 +144,7 @@ public class newLessonPlanController {
         }
     }
 
+<<<<<<< HEAD
             // If no empty cell was found, create a new row
             if (!emptyCellFound) {
                 int newRow = gridPane.getRowCount();
@@ -126,18 +163,40 @@ public class newLessonPlanController {
 
 
 
+    @FXML
+    private void menuActionPrint() {
+        try {
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("newLessonCreationPage.fxml"));
+            Node fxmlContent = loader.load();
 
+            // Create a printing job
+            PrinterJob printerJob = PrinterJob.createPrinterJob();
+            if (printerJob != null) {
+                // Set the printer and page layout
+                Printer printer = Printer.getDefaultPrinter();
+                PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
+                printerJob.getJobSettings().setPageLayout(pageLayout);
 
+                // Fit the content to the page size
+                Scene scene = MainApp.getScene();
+                scene.getRoot().resize(pageLayout.getPrintableWidth(), pageLayout.getPrintableHeight());
+                scene.getWindow().setWidth(pageLayout.getPrintableWidth());
+                scene.getWindow().setHeight(pageLayout.getPrintableHeight());
 
+                boolean printed = printerJob.printPage(fxmlContent);
+                if (printed) {
+                    printerJob.endJob();
+                }
 
+                scene.getRoot().resize(scene.getWidth(), scene.getHeight());
+                scene.getWindow().setWidth(scene.getWidth());
+                scene.getWindow().setHeight(scene.getHeight());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-
-
-
-
-
-
-
-
-
+}
 

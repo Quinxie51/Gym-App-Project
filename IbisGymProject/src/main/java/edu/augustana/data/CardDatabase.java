@@ -2,23 +2,63 @@ package edu.augustana.data;
 import com.opencsv.CSVReader;
 
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import com.opencsv.CSVReaderBuilder;
+import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.exceptions.CsvValidationException;
 
 public class CardDatabase {
     private static final String CSV_FILE_PATH = "src/main/resources/edu/augustana/DEMO1.csv";
     public static List<Card> allCards = new ArrayList<>();
+    private static List<Card> presentableList = new ArrayList<>();
+    //private static Map<String,Card> allCardMap;
+
+    private static List<String> uniqueIDList = new ArrayList<>();
+    public static HashMap<String, Card> uniqueIdMap = new HashMap<>();
+
+    private static HashSet<String> eventSet = new HashSet<>();
+
+    private static HashSet<String> categorySet = new HashSet<>();
+
+    private static HashSet<String> genderSet = new HashSet<>();
+
+    private static HashSet<String> modelSexSet = new HashSet<>();
+
+    private static HashSet<String> levelSet = new HashSet<>();
+
+    private static HashSet<String> equipmentSet = new HashSet<>();
+
+
 
     public static void main(String[] args) throws IOException, CsvValidationException {
+
         CardDatabase.addCardsFromCSVFile("DEMO1.csv");
 
+        //addCardsFromCSVFile(args);
+
+        List<CardFilter> filters = new ArrayList<>();
+
+
+        String targetCat = "Shapes";
+
+        CardFilter cards = new CategoryFilter(targetCat);
+
+        List<Card> filteredCards = getFilteredCards(cards);
+        System.out.println(eventSet);
+        System.out.println(categorySet);
+        System.out.println(genderSet);
+        System.out.println(modelSexSet);
+        System.out.println(levelSet);
+        System.out.println(equipmentSet);
+        for (Card card : filteredCards) {
+
+        }
     }
 
     public static List<Card> getAllCards() {
@@ -26,12 +66,18 @@ public class CardDatabase {
     }
 
     public static List<Card> getFilteredCards(CardFilter filter){
+        List<Card> filteredCardList = new ArrayList<>();
+        for (Card card : allCards)
+            if (filter.matches(card)){
+                filteredCardList.add(card);
 
-        return allCards;
+            }
+        return filteredCardList;
     }
 
+    
+    public static void addCardsFromCSVFile(String filename) throws IOException{
 
-    public static void addCardsFromCSVFile(String filename) throws FileNotFoundException, IOException, CsvValidationException{
         try (
                 Reader reader = Files.newBufferedReader(Paths.get(CSV_FILE_PATH));
                 CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
@@ -41,14 +87,68 @@ public class CardDatabase {
             while ((nextCard = csvReader.readNext()) != null) {
 
                 String uniqueID = nextCard[5]+"/" +nextCard[4];
+                uniqueIDList.add(uniqueID);
 
                 Card currentCard = new Card(uniqueID,nextCard[0],nextCard[1],nextCard[2],nextCard[3],
-                        nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8], nextCard[9], nextCard[10]);
-                System.out.println(currentCard.toString());
+                        nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8], nextCard[9].split(","), nextCard[10].split(","));
+
                 allCards.add(currentCard);
+
+                uniqueIdMap.put(uniqueID,currentCard);
+
+
+                eventSet.add(nextCard[1].toLowerCase(Locale.ROOT));
+                categorySet.add(nextCard[2].toLowerCase(Locale.ROOT));
+                genderSet.add(nextCard[6].toLowerCase(Locale.ROOT));
+                modelSexSet.add(nextCard[7].toLowerCase(Locale.ROOT));
+                levelSet.add(nextCard[8].toLowerCase(Locale.ROOT));
+
+                for (String equipment : currentCard.getEquipment()){
+                    equipmentSet.add(equipment.toLowerCase(Locale.ROOT));
+                }
+
+
             }
-            System.out.println();
-            System.out.println(allCards);
+        } catch (CsvValidationException e) {
+            throw new RuntimeException(e);
         }
+
+
+
+/**
+        allCards = new CsvToBeanBuilder<Card>(new FileReader(filename)).withType(Card.class).build().parse();
+        allCardMap = new HashMap<>();
+        for (Card card : allCards) {
+            allCardMap.put(card.getUniqueID(), card);
+        }
+        System.out.println(allCardMap);
+**/
     }
+
+    public static HashSet<String> getEventSet() {
+        return eventSet;
+    }
+
+    public static HashSet<String> getCategorySet() {
+        return categorySet;
+    }
+
+    public static HashSet<String> getGenderSet() {
+        return genderSet;
+    }
+
+    public static HashSet<String> getModelSexSet() {
+        return modelSexSet;
+    }
+
+    public static HashSet<String> getLevelSet() {
+        return levelSet;
+    }
+
+    public static HashSet<String> getEquipmentSet() {
+        return equipmentSet;
+    }
+
+
+
 }

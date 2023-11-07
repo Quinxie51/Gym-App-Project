@@ -1,5 +1,6 @@
 package edu.augustana.data;
 
+import java.util.List;
 import java.util.Objects;
 
 public class GenderFilter implements CardFilter{
@@ -9,6 +10,9 @@ public class GenderFilter implements CardFilter{
     public GenderFilter(String selectedOption) {
         this.selectedGender = selectedOption;
     }
+
+
+    @Override
     public boolean matches (Card potentialMatchCard) {
         return Objects.equals(potentialMatchCard.getGender(), selectedGender);
     }

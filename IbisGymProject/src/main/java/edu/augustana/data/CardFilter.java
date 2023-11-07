@@ -1,10 +1,10 @@
 package edu.augustana.data;
 
+import java.util.List;
+
 public interface CardFilter {
-    
-    public static boolean matches(Card potentialMatchCard){
-        return true;
-    }
+
+    public boolean matches(Card potentialMatchCard);
 
 
 }
