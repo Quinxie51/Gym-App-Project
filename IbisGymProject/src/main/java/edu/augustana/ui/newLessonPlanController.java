@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -27,32 +28,42 @@ public class newLessonPlanController {
     @FXML
     private ListView<Card> cardListView;
     @FXML
-    private HashMap<CheckBox,String> eventMap;
+    private HashMap<CheckBox, String> eventMap;
     @FXML
-    private HashMap<CheckBox,String> categoryMap;
+    private HashMap<CheckBox, String> categoryMap;
     @FXML
-    private HashMap<CheckBox,String> levelMap;
+    private HashMap<CheckBox, String> levelMap;
     @FXML
-    private HashMap<CheckBox,String> genderMap;
+    private HashMap<CheckBox, String> genderMap;
     @FXML
-    private HashMap<CheckBox,String> equipmentMap;
+    private HashMap<CheckBox, String> equipmentMap;
     @FXML
     private HashMap<CheckBox,String> modelSexMap;
+
+
+    //Events
+    @FXML private CheckBox floor;
+    @FXML private  CheckBox unevenBars;
+    @FXML private CheckBox beam;
+
+    
     @FXML
     private CheckBox beamEventCheck;
-    @FXML
+
     private MenuItem printMenuItem;
     @FXML
     public Label lessonPlanName;
     @FXML
-    private ImageView imageView;
+    private ImageView targetImageView;
+
     @FXML
-    public GridPane gridPane;
+    private FlowPane lessonFlowPane;
 
     @FXML
     private ImageView target;
     @FXML
     private TextField searchBar;
+
 
     public newLessonPlanController() {
 
@@ -73,21 +84,25 @@ public class newLessonPlanController {
         MainApp.setRoot("mainHomepage");
     }
 
-    @FXML
-    private void handleEventFilter() {
 
+
+    @FXML
+    private void handleEventFilter(CheckBox beam) {
         CardFilter event = new EventFilter("hi");
+
     }
 
     public static void createMaps() {
         Set<String> cardSet = new HashSet<>();
-        for (Card card: getAllCards()){
+        for (Card card : getAllCards()) {
             cardSet.add(card.getEvent());
         }
-        for (String card: cardSet) {
-            
+        for (String card : cardSet) {
+
         }
+
     }
+
 
     @FXML
     private void handleSearch() {
@@ -126,35 +141,21 @@ public class newLessonPlanController {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
+
+
     @FXML
     void handleImageDropped(DragEvent event) {
         String imagePath = event.getDragboard().getString();
         Image image = new Image("file:CardPack/DEMO1Pack/" + imagePath);
+        ImageView imageView = new ImageView();
         imageView.setImage(image);
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(80);
+        lessonFlowPane.getChildren().add(imageView);
+
     }
 
-/*
-    @FXML
-    void handleImageDropped(DragEvent event) {
-        boolean emptyCellFound = false;
-        for (int row = 0; row < gridPane.getRowCount(); row++) {
-            for (int col = 0; col < 3; col++) {
-                int finalCol = col;
-                int finalRow = row;
-                if (gridPane.getChildren().stream().noneMatch(node -> GridPane.getRowIndex(node) == finalRow && GridPane.getColumnIndex(node) == finalCol)) {
-                    emptyCellFound = true;
-                    String imagePath = event.getDragboard().getString();
-                    Image image = new Image("file:CardPack/DEMO1Pack/" + imagePath);
-                    ImageView imageView = new ImageView();
-                    imageView.setImage(image);
-                    gridPane.add(imageView, finalCol, finalRow);
-                    break;
-                }
-            }
-        }
-    }
-}
-*/
+
 
    /*         if (emptyCellFound) {
                 break;
@@ -178,7 +179,6 @@ public class newLessonPlanController {
         }
     }
 */
-
 
 
     @FXML
@@ -215,6 +215,6 @@ public class newLessonPlanController {
             e.printStackTrace();
         }
     }
-
 }
+
 
