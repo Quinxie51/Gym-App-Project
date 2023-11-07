@@ -1,27 +1,25 @@
 package edu.augustana.ui;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 import edu.augustana.data.Card;
 import edu.augustana.data.CardFilter;
 import edu.augustana.data.Course;
 import edu.augustana.data.EventFilter;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+
+import static edu.augustana.data.CardDatabase.allCards;
 import static edu.augustana.data.CardDatabase.getAllCards;
 
 public class newLessonPlanController {
@@ -53,6 +51,8 @@ public class newLessonPlanController {
 
     @FXML
     private ImageView target;
+    @FXML
+    private TextField searchBar;
 
     public newLessonPlanController() {
 
@@ -87,6 +87,24 @@ public class newLessonPlanController {
         for (String card: cardSet) {
             
         }
+    }
+
+    @FXML
+    private void handleSearch() {
+        String searchText = searchBar.getText().toLowerCase(); // Get the text from the search bar
+            // Search and display matching cards
+            List<Card> matchingCards = new ArrayList<>();
+        for (Card card : allCards) {
+            // Split the card title into words and check for an exact match
+            String[] words = card.getTitle().toLowerCase().split("\\s+"); // Split title into words
+            for (String word : words) {
+                if (word.equals(searchText)) { // Check if any word matches the search text
+                    matchingCards.add(card);
+                    break; // Add the card and move to the next card
+                }
+            }
+        }
+        cardListView.setItems(FXCollections.observableArrayList(matchingCards));
     }
 
     @FXML
