@@ -7,6 +7,7 @@ import edu.augustana.data.CardFilter;
 import edu.augustana.data.Course;
 import edu.augustana.data.EventFilter;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.*;
@@ -27,6 +28,8 @@ public class newLessonPlanController {
 
     @FXML
     private ListView<Card> cardListView;
+    @FXML
+    private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
     @FXML
     private HashMap<CheckBox, String> eventMap;
     @FXML
@@ -106,20 +109,26 @@ public class newLessonPlanController {
 
     @FXML
     private void handleSearch() {
-        String searchText = searchBar.getText().toLowerCase(); // Get the text from the search bar
-            // Search and display matching cards
+        String searchText = searchBar.getText().toLowerCase().trim(); // Get the text from the search bar
+
+        if (searchText.isEmpty()) {
+            // If the search bar is empty, display all cards
+            cardListView.setItems((observableCards));
+        } else {
+            // Search and display matching cards for entire word
             List<Card> matchingCards = new ArrayList<>();
-        for (Card card : allCards) {
-            // Split the card title into words and check for an exact match
-            String[] words = card.getTitle().toLowerCase().split("\\s+"); // Split title into words
-            for (String word : words) {
-                if (word.equals(searchText)) { // Check if any word matches the search text
-                    matchingCards.add(card);
-                    break; // Add the card and move to the next card
+            for (Card card : allCards) {
+                // Split the card title into words and check for an exact match
+                String[] words = card.getTitle().toLowerCase().split("\\s+"); // Split title into words
+                for (String word : words) {
+                    if (word.equals(searchText)) { // Check if any word matches the search text
+                        matchingCards.add(card);
+                        break; // Add the card and move to the next card
+                    }
                 }
             }
+            cardListView.setItems(FXCollections.observableArrayList(matchingCards));
         }
-        cardListView.setItems(FXCollections.observableArrayList(matchingCards));
     }
 
     @FXML
