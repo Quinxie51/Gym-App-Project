@@ -27,7 +27,6 @@
                         <Image url="@Image/logo.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="searchBar" promptText="Search" />
                   <Button fx:id="newLessonButton" onAction="#handleCreateNewLesson" style="-fx-background-color: pink;" text="+ New Lesson" />
                   <Button fx:id="allCardsButton" mnemonicParsing="false" onAction="#openAllCardsView" style="-fx-background-color: transparent;" text="All Cards" />
                   <Button fx:id="favoritesButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Favorites" />

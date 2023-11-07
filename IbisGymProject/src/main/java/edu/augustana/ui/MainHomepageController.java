@@ -42,8 +42,7 @@ public class MainHomepageController {
     private Button printButton;
     @FXML
     private Button settingsButton;
-    @FXML
-    private TextField searchBar;
+
     @FXML
     Label newLessonPlanName = new Label();
 
