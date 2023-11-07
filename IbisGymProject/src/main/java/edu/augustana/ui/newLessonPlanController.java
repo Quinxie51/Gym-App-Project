@@ -48,7 +48,7 @@ public class newLessonPlanController {
     @FXML private  CheckBox unevenBars;
     @FXML private CheckBox beam;
 
-    
+
     @FXML
     private CheckBox beamEventCheck;
 
