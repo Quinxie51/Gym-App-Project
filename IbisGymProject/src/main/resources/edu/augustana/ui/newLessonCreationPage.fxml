@@ -21,8 +21,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 <BorderPane prefHeight="846.0" prefWidth="1386.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
+
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
 
     <top>
         <VBox BorderPane.alignment="CENTER">
@@ -43,6 +45,7 @@
                                 <MenuItem mnemonicParsing="false" text="Open" />
                                 <MenuItem mnemonicParsing="false" text="Save" />
                                 <MenuItem mnemonicParsing="false" text="Save As" />
+                        <MenuItem mnemonicParsing="false" onAction="#menuActionPrint" text="Print" />
                             </items>
                         </MenuButton>
                     </children>
@@ -77,41 +80,33 @@
                   <Accordion prefHeight="739.0" prefWidth="198.0">
                     <panes>
                       <TitledPane animated="false" text="Gender">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <content>
+                              <VBox fx:id="genderFilterOptionsVBox" prefHeight="305.0" prefWidth="196.0" spacing="5.0">
+                                 <padding>
+                                    <Insets left="10.0" top="10.0" />
+                                 </padding>
                                  <children>
-                                    <VBox prefHeight="305.0" prefWidth="196.0" spacing="5.0">
-                                       <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                       </padding>
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" text="Male" />
-                                          <CheckBox mnemonicParsing="false" text="Female" />
-                                       </children>
-                                    </VBox>
+                                    <CheckBox mnemonicParsing="false" text="Male" />
+                                    <CheckBox mnemonicParsing="false" text="Female" />
                                  </children>
-                              </AnchorPane>
-                        </content>
+                              </VBox>
+                           </content>
                       </TitledPane>
                       <TitledPane animated="false" text="Event">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <VBox fx:id="eventFilterOptionsVBox" prefHeight="305.0" prefWidth="196.0" spacing="5.0">
+                                 <padding>
+                                    <Insets left="10.0" top="10.0" />
+                                 </padding>
                                  <children>
-                                    <VBox prefHeight="305.0" prefWidth="196.0" spacing="5.0">
-                                       <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                       </padding>
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" text="Floor" />
-                                          <CheckBox mnemonicParsing="false" text="Uneven Bars" />
-                                          <CheckBox mnemonicParsing="false" text="Beam" />
-                                          <CheckBox mnemonicParsing="false" text="Vault" />
-                                          <CheckBox mnemonicParsing="false" text="Tramp" />
-                                          <CheckBox mnemonicParsing="false" text="Strength" />
-                                       </children>
-                                    </VBox>
+                                    <CheckBox mnemonicParsing="false" text="Floor" />
+                                    <CheckBox mnemonicParsing="false" text="Uneven Bars" />
+                                    <CheckBox mnemonicParsing="false" text="Beam" />
+                                    <CheckBox mnemonicParsing="false" text="Vault" />
+                                    <CheckBox mnemonicParsing="false" text="Tramp" />
+                                    <CheckBox mnemonicParsing="false" text="Strength" />
                                  </children>
-                              </AnchorPane>
+                              </VBox>
                         </content>
                       </TitledPane>
                         <TitledPane animated="false" text="Category">

@@ -22,9 +22,9 @@ public class CardDatabase {
     private static List<String> uniqueIDList = new ArrayList<>();
     public static HashMap<String, Card> uniqueIdMap = new HashMap<>();
 
-    private static HashSet<String> eventSet = new HashSet<>();
+    private static Set<String> eventSet = new TreeSet<>();
 
-    private static HashSet<String> categorySet = new HashSet<>();
+    private static Set<String> categorySet = new TreeSet<>();
 
     private static HashSet<String> genderSet = new HashSet<>();
 
@@ -96,9 +96,8 @@ public class CardDatabase {
 
                 uniqueIdMap.put(uniqueID,currentCard);
 
-
-                eventSet.add(nextCard[1].toLowerCase(Locale.ROOT));
-                categorySet.add(nextCard[2].toLowerCase(Locale.ROOT));
+                eventSet.add(currentCard.getEvent().toUpperCase());
+                categorySet.add(currentCard.getCategory().toUpperCase());
                 genderSet.add(nextCard[6].toLowerCase(Locale.ROOT));
                 modelSexSet.add(nextCard[7].toLowerCase(Locale.ROOT));
                 levelSet.add(nextCard[8].toLowerCase(Locale.ROOT));
@@ -125,11 +124,11 @@ public class CardDatabase {
 **/
     }
 
-    public static HashSet<String> getEventSet() {
+    public static Set<String> getEventSet() {
         return eventSet;
     }
 
-    public static HashSet<String> getCategorySet() {
+    public static Set<String> getCategorySet() {
         return categorySet;
     }
 
