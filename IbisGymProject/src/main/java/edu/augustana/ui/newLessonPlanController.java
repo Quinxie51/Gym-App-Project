@@ -43,7 +43,7 @@ public class newLessonPlanController {
     @FXML
     private HashMap<CheckBox,String> modelSexMap;
     @FXML
-    private CheckBox beamEventCheck;
+    private CheckBox beam;
     @FXML
     private MenuItem printMenuItem;
     @FXML
@@ -58,6 +58,7 @@ public class newLessonPlanController {
     public VBox targetVBox;
     @FXML
     public GridPane gridPane = new GridPane();
+
 
     public newLessonPlanController() {
 
@@ -84,14 +85,9 @@ public class newLessonPlanController {
     }
 
     public static void createMaps() {
-        Set<String> cardSet = new HashSet<>();
-        for (Card card: getAllCards()){
-            cardSet.add(card.getEvent());
-        }
-        for (String card: cardSet) {
-            
-        }
+
     }
+
 
     @FXML
     void handleDragDetection(MouseEvent event) {
