@@ -113,47 +113,78 @@
                               </AnchorPane>
                         </content>
                       </TitledPane>
-                      <TitledPane animated="false" text="Category">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox prefHeight="305.0" prefWidth="196.0" spacing="5.0">
-                                       <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                       </padding>
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" text="CheckBox" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </TitledPane>
+                        <TitledPane animated="false" text="Category">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <VBox prefHeight="320.0" prefWidth="186.0" spacing="5.0">
+                                            <children>
+                                                <CheckBox mnemonicParsing="false" text="Shapes" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="120.0" text="Handstand" />
+                                                <CheckBox mnemonicParsing="false" text="Backward Salto" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="106.0" text="Walkovers" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="102.0" text="Handsprings" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="158.0" text="Cartwheel Progressions" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="158.0" text="Round Off Progression" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="181.0" text="Forward Salto Progression" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Bars" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" text="Block Drills On Beam" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Beam" />
+                                                <CheckBox mnemonicParsing="false" text="Vault" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Tramp" />
+                                            </children>
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                            </padding>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
                         <TitledPane animated="false" text="Level">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox prefHeight="305.0" prefWidth="196.0" spacing="5.0">
-                                       <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                           </content>
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                            <children>
+                                                <CheckBox mnemonicParsing="false" text="I" />
+                                                <CheckBox mnemonicParsing="false" text="AB" />
+                                                <CheckBox mnemonicParsing="false" text="A" />
+                                                <CheckBox mnemonicParsing="false" text="B" />
+                                            </children>
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                            </padding>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
                         </TitledPane>
                         <TitledPane animated="false" text="Equipment">
-                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox prefHeight="305.0" prefWidth="196.0" spacing="5.0">
-                                       <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </children>
-                              </AnchorPane>
-                           </content>
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <children>
+                                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                            <children>
+                                                <CheckBox mnemonicParsing="false" text="Mailbox" />
+                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Board" />
+                                            </children>
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                            </padding>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
                         </TitledPane>
                     </panes>
                   </Accordion>
