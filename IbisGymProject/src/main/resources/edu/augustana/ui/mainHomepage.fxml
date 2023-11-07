@@ -24,7 +24,7 @@
                <children>
                   <ImageView fitHeight="83.0" fitWidth="141.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Image/logo.png" />
+                        <Image url="@Image/logo.png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="searchBar" promptText="Search" />
@@ -47,17 +47,17 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../DEMO1Pack/2.png" />
+                              <Image url="@../../../../../../CardPack/DEMO1Pack/2.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../DEMO1Pack/3.png" />
+                              <Image url="@../../../../../../CardPack/DEMO1Pack/3.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../DEMO1Pack/5.png" />
+                              <Image url="@../../../../../../CardPack/DEMO1Pack/5.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -83,18 +83,18 @@
                <children>
                   <ImageView fitHeight="22.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
                      <image>
-                        <Image url="@../Image/folder-2.png" />
+                        <Image url="@Image/folder-2.png" />
                      </image>
                   </ImageView>
                   <ComboBox prefHeight="26.0" prefWidth="80.0" promptText="Level" style="-fx-background-color: transparent;" GridPane.columnIndex="1" />
                   <ImageView fitHeight="22.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
                      <image>
-                        <Image url="@../Image/folder-2.png" />
+                        <Image url="@Image/folder-2.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="22.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                      <image>
-                        <Image url="@../Image/folder-2.png" />
+                        <Image url="@Image/folder-2.png" />
                      </image>
                   </ImageView>
                   <TextField style="-fx-background-color: transparent;" text="Folder 1" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -106,17 +106,17 @@
                   <TextField prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: transparent;" text="10/10/2023" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <image>
-                        <Image url="@../Image/more-3.png" />
+                        <Image url="@Image/more-3.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
                      <image>
-                        <Image url="@../Image/more-3.png" />
+                        <Image url="@Image/more-3.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6">
                      <image>
-                        <Image url="@../Image/more-3.png" />
+                        <Image url="@Image/more-3.png" />
                      </image>
                   </ImageView>
                   <Line endX="249.65367126464844" endY="0.015178561210632324" startX="-100.0" startY="0.08575594425201416" strokeWidth="0.25" GridPane.rowIndex="3" />

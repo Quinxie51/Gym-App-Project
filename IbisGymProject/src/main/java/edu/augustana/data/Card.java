@@ -4,18 +4,19 @@ import javafx.scene.image.Image;
 
 public class Card {
 
+
     //data fields
 
     private String uniqueID;
     private String code;
     private String events;
-
+    private String imagePath;
     private String category;
     private String title;
     private String packFolder;
 
     //We could also use an Image object for this
-    private String image;
+    private Image image;
     private String gender;
     private String modelSex;
     private String level;
@@ -26,7 +27,7 @@ public class Card {
 
 
     public Card(String selectedUniqueID, String selectedCode, String selectedEvent, String selectedCategory, String selectedTitle, String selectedPackFolder,
-                String selectedImage, String selectedGender, String selectedModelSex, String selectedLevel,
+                String selectedImagePath, String selectedGender, String selectedModelSex, String selectedLevel,
                 String selectedEquipment, String selectedKeyWords) {
 
         this.uniqueID = selectedUniqueID;
@@ -35,7 +36,8 @@ public class Card {
         this.category = selectedCategory;
         this.title = selectedTitle;
         this.packFolder = selectedPackFolder;
-        this.image = selectedImage ;
+        this.imagePath = selectedImagePath;
+        this.image = new Image("file:CardPack/DEMO1Pack/" + selectedImagePath);
         this.gender = selectedGender;
         this.modelSex = selectedModelSex;
         this.level = selectedLevel;
@@ -62,13 +64,11 @@ public class Card {
         return packFolder;
     }
 
-    public String getImage() {
-        return image;
-    }
+    public Image getImage() {return image;}
 
-    public String getGender() {
-        return gender;
-    }
+    public String getImagePath() {return imagePath;}
+
+    public String getGender() {return gender;}
 
     public String getModelSex() {
         return modelSex;
