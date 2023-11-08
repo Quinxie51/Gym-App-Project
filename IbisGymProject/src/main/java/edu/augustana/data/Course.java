@@ -8,8 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
+
+    public static Course currentCourse = new Course();
+
     //TODO: eventually make a list of lesson plans
-    public static LessonPlan currentLessonPlan = new LessonPlan("Untitled");
+    private LessonPlan oneLessonPlan = new LessonPlan("Untitled");
+
+    public LessonPlan getOneLessonPlan() {
+        return oneLessonPlan;
+    }
 
     public static Course loadFromFile(File logFile) throws IOException {
         FileReader reader = new FileReader(logFile);
@@ -19,9 +26,9 @@ public class Course {
 
     public void saveToFile(File logFile) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String serializedMovieLogText = gson.toJson(this);
+        String serializedCourseText = gson.toJson(this);
         PrintWriter writer = new PrintWriter(new FileWriter(logFile));
-        writer.println(serializedMovieLogText);
+        writer.println(serializedCourseText);
         writer.close();
     }
 
