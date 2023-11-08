@@ -21,12 +21,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<<<<<<< HEAD
-
-=======
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
->>>>>>> 541b9e35db182ae166cc23f6527b9e1757b611d4
 <BorderPane prefHeight="619.0" prefWidth="905.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
     <top>
         <VBox BorderPane.alignment="CENTER">
