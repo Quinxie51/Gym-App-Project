@@ -31,7 +31,7 @@
     <top>
         <VBox BorderPane.alignment="CENTER">
             <children>
-                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="26.0" prefWidth="728.0" spacing="20.0" style="-fx-background-color: #F5F5F5;">
+                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="26.0" prefWidth="728.0" spacing="20.0" style="-fx-background-color: #85B7CC;">
                     <children>
                         <ImageView fitHeight="83.0" fitWidth="118.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -50,7 +50,11 @@
                         <MenuItem mnemonicParsing="false" onAction="#menuActionPrint" text="Print" />
                             </items>
                         </MenuButton>
-                  <Button mnemonicParsing="false" text="Button" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: pink;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font name="Open Sans Bold" size="13.0" />
+                     </font>
+                  </Button>
                     </children>
                 </HBox>
                 <MenuBar>
