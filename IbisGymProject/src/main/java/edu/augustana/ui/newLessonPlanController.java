@@ -44,6 +44,11 @@ public class newLessonPlanController {
     @FXML private  CheckBox unevenBars;
     @FXML private CheckBox beam;
 
+
+
+    @FXML
+    private CheckBox beamEventCheck;
+
     private MenuItem printMenuItem;
     @FXML
     public Label lessonPlanName;
@@ -65,10 +70,11 @@ public class newLessonPlanController {
 
     @FXML
     private void initialize() {
-        this.lessonPlanName.setText(Course.currentLessonPlan.getLessonTitle());
+        this.lessonPlanName.setText(Course.currentCourse.getOneLessonPlan().getLessonTitle());
         // Code: title [gender]
         // getReadableList ^^^
         cardListView.getItems().addAll(getAllCards());
+        cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         for (String eventOption : CardDatabase.getEventSet()) {
             CheckBox cBox = new CheckBox(eventOption);
@@ -76,7 +82,6 @@ public class newLessonPlanController {
             eventFilterOptionsVBox.getChildren().add(cBox);
         }
         System.out.println(getAllCards());
-        GridPane gridPane = new GridPane();
     }
 
     private void updateFilterResults() {
@@ -133,16 +138,17 @@ public class newLessonPlanController {
 
     @FXML
     void handleDragDetection(MouseEvent event) {
-        Card selectedCard = cardListView.getSelectionModel().getSelectedItem();
-        if (selectedCard != null) {
-            Dragboard db = cardListView.startDragAndDrop(TransferMode.ANY);
-            ClipboardContent cb = new ClipboardContent();
-            cb.putString(selectedCard.getImagePath());
-            db.setContent(cb);
-            event.consume();
+        List<Card> selectedCards = cardListView.getSelectionModel().getSelectedItems();
+        List<String> allIDs = new ArrayList<>();
+        for (Card card : selectedCards) {
+            allIDs.add(card.getUniqueID());
         }
+        Dragboard db = cardListView.startDragAndDrop(TransferMode.ANY);
+        ClipboardContent cb = new ClipboardContent();
+        cb.putString(String.join("*", allIDs));
+        db.setContent(cb);
+        event.consume();
     }
-
 
     @FXML
     void handleImageDragOver(DragEvent event) {
@@ -151,43 +157,26 @@ public class newLessonPlanController {
         }
     }
 
-
     @FXML
     void handleImageDropped(DragEvent event) {
-        String imagePath = event.getDragboard().getString();
-        Image image = new Image("file:CardPack/DEMO1Pack/" + imagePath);
-        ImageView imageView = new ImageView();
-        imageView.setImage(image);
-        imageView.setFitWidth(100);
-        imageView.setFitHeight(80);
-        lessonFlowPane.getChildren().add(imageView);
-
-    }
-
-
-
-   /*         if (emptyCellFound) {
-                break;
+            String[] uniqueIDs = event.getDragboard().getString().split("\\*");
+            for (String uniqueID : uniqueIDs) {
+                Card card = CardDatabase.getCardFromUniqueID(uniqueID);
+                Course.currentCourse.getOneLessonPlan().addCard(card);
+                // instead of adding each view at a time, we could
+                // after the loop, clear everything from the lesson plan view
+                // and recreate it in the right order, grouped by the event
+                // of each card
+                Image image = card.getImage();
+                ImageView imageView = new ImageView();
+                imageView.setImage(image);
+                imageView.setFitWidth(180);
+                imageView.setFitHeight(120);
+                lessonFlowPane.setHgap(10);
+                lessonFlowPane.setVgap(10);
+                lessonFlowPane.getChildren().add(imageView);
             }
         }
-    }
-
-<<<<<<< HEAD
-            // If no empty cell was found, create a new row
-            if (!emptyCellFound) {
-                int newRow = gridPane.getRowCount();
-                GridPane.setColumnIndex(imageView, 0);
-                GridPane.setRowIndex(imageView, newRow);
-            }
-
-            // Add the new ImageView to the GridPane
-            gridPane.getChildren().add(imageView);
-
-            event.setDropCompleted(true);
-            event.consume();
-        }
-    }
-*/
 
 
     @FXML

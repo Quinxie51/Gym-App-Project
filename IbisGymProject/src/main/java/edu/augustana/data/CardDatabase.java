@@ -20,7 +20,7 @@ public class CardDatabase {
     //private static Map<String,Card> allCardMap;
 
     private static List<String> uniqueIDList = new ArrayList<>();
-    public static HashMap<String, Card> uniqueIdMap = new HashMap<>();
+    private static HashMap<String, Card> uniqueIdMap = new HashMap<>();
 
     private static Set<String> eventSet = new TreeSet<>();
 
@@ -122,6 +122,10 @@ public class CardDatabase {
         }
         System.out.println(allCardMap);
 **/
+    }
+
+    public static Card getCardFromUniqueID(String id) {
+        return uniqueIdMap.get(id);
     }
 
     public static Set<String> getEventSet() {
