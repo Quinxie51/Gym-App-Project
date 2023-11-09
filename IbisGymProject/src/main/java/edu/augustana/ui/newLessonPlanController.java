@@ -68,7 +68,7 @@ public class newLessonPlanController {
     @FXML
     private void initialize() {
         this.lessonPlanName.setText(Course.currentCourse.getOneLessonPlan().getLessonTitle());
-        lessonPlan.setLessonTitle(Course.currentCourse.getOneLessonPlan().getLessonTitle());
+        //lessonPlan.setLessonTitle(Course.currentCourse.getOneLessonPlan().getLessonTitle());
         // Code: title [gender]
         // getReadableList ^^^
         cardListView.getItems().addAll(getAllCards());
