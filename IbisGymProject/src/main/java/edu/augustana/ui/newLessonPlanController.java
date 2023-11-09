@@ -33,7 +33,11 @@ public class newLessonPlanController {
 
     @FXML
     private ListView<Card> cardListView;
+    @FXML private Button deleteCard;
 
+    @FXML
+    private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
+    private LessonPlan lessonPlan;
     @FXML private VBox eventFilterOptionsVBox;
     @FXML private VBox genderFilterOptionsVBox;
     @FXML private VBox categoryFilterOptionsVBox;
@@ -41,10 +45,6 @@ public class newLessonPlanController {
     @FXML private VBox equipmentFilterOptionsVBox;
     @FXML private VBox modelSexFilterOptionsVBox;
 
-
-
-    @FXML
-    private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
 
 
     @FXML
@@ -74,6 +74,7 @@ public class newLessonPlanController {
     @FXML
     private void initialize() {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
+        //lessonPlan.setLessonTitle(Course.currentCourse.getOneLessonPlan().getLessonTitle());
         // Code: title [gender]
         // getReadableList ^^^
         cardListView.getItems().addAll(getAllCards());
@@ -310,6 +311,17 @@ public class newLessonPlanController {
 
         }
     }
+
+/*    @FXML
+ *//*   private void actionDeleteCard() {
+        LessonPlan cardToDelete = lessonFlowPane.getSelectionModel().getSelectedItem();
+        if (cardToDelete!= null) {
+            LessonPlan.getCurrentMovieLog().removeMovieWatchRecord(movieWatchToDelete);
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Select a movie to delete first!").show();
+        }
+    }
+*/
 
     @FXML
     private void menuActionPrint() {

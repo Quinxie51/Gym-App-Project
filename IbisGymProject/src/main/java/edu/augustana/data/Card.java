@@ -13,7 +13,6 @@ public class Card {
     private String uniqueID;
     private String code;
     private String events;
-    private String imagePath;
     private String category;
     private String title;
     private String packFolder;
@@ -21,6 +20,7 @@ public class Card {
     //We could also use an Image object for this
     private Image image;
     private String gender;
+    private String imagePath;
     private String modelSex;
     private String level;
     //We possibly need a string[] or a list of strings for this
@@ -73,8 +73,6 @@ public class Card {
 
     public Image getImage() {return image;}
 
-    public String getImagePath() {return imagePath;}
-
     public String getGender() {return gender;}
 
     public String getModelSex() {
@@ -125,5 +123,9 @@ public class Card {
          **/
         // Code: title [gender]
         return code+": " + title + " [" + gender + "]";
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 }

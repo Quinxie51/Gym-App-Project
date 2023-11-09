@@ -16,6 +16,7 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.stage.Popup;
@@ -42,6 +43,9 @@ public class MainHomepageController {
     private Button printButton;
     @FXML
     private Button settingsButton;
+
+    @FXML
+    private HBox recentViewBox;
 
     @FXML
     Label newLessonPlanName = new Label();
@@ -77,7 +81,6 @@ public class MainHomepageController {
 
     @FXML
     private void handleCreateNewLesson() throws IOException {
-
         //Stack overflow code
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Create New Lesson");
