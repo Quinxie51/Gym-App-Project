@@ -36,21 +36,17 @@ public class newLessonPlanController {
     @FXML
     private ListView<Card> cardListView;
 
-    @FXML
-    private VBox eventFilterOptionsVBox;
-    @FXML
-    private VBox genderFilterOptionsVBox;
+    @FXML private VBox eventFilterOptionsVBox;
+    @FXML private VBox genderFilterOptionsVBox;
+    @FXML private VBox categoryFilterOptionsVBox;
+    @FXML private VBox levelFilterOptionsVBox;
+    @FXML private VBox equipmentFilterOptionsVBox;
+    @FXML private VBox modelSexFilterOptionsVBox;
+
+
 
     @FXML
     private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
-
-    //Events
-    @FXML
-    private CheckBox floor;
-    @FXML
-    private CheckBox unevenBars;
-    @FXML
-    private CheckBox beam;
 
 
     @FXML
@@ -85,12 +81,47 @@ public class newLessonPlanController {
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+        for (String genderOption : CardDatabase.getGenderSet()) {
+            CheckBox cBox = new CheckBox(genderOption);
+            cBox.setOnAction(e -> updateFilterResults());
+            genderFilterOptionsVBox.getChildren().add(cBox);
+        }
+
 
         for (String eventOption : CardDatabase.getEventSet()) {
             CheckBox cBox = new CheckBox(eventOption);
             cBox.setOnAction(e -> updateFilterResults());
             eventFilterOptionsVBox.getChildren().add(cBox);
         }
+
+
+        for (String categoryOption : CardDatabase.getCategorySet()) {
+            CheckBox cBox = new CheckBox(categoryOption);
+            cBox.setOnAction(e -> updateFilterResults());
+            categoryFilterOptionsVBox.getChildren().add(cBox);
+        }
+
+        for (String levelOption : CardDatabase.getLevelSet()) {
+            CheckBox cBox = new CheckBox(levelOption);
+            cBox.setOnAction(e -> updateFilterResults());
+            levelFilterOptionsVBox.getChildren().add(cBox);
+        }
+
+
+        for (String equipmentOption : CardDatabase.getEquipmentSet()) {
+            CheckBox cBox = new CheckBox(equipmentOption);
+            cBox.setOnAction(e -> updateFilterResults());
+            equipmentFilterOptionsVBox.getChildren().add(cBox);
+        }
+
+
+
+        for (String modelSexOption : CardDatabase.getModelSexSet()) {
+            CheckBox cBox = new CheckBox(modelSexOption);
+            cBox.setOnAction(e -> updateFilterResults());
+            modelSexFilterOptionsVBox.getChildren().add(cBox);
+        }
+
         System.out.println(getAllCards());
     }
 
@@ -99,16 +130,21 @@ public class newLessonPlanController {
         List<CardFilter> allFilters = new ArrayList<>();
 
 
+        //Gender start
+        List<String> selectedGenders = new ArrayList<>();
         for (Node node : genderFilterOptionsVBox.getChildren()) {
             CheckBox cBox = (CheckBox) node;
-
-
             if (cBox.isSelected()) {
-                allFilters.add(new GenderFilter(cBox.getText()));
-
-
+                selectedGenders.add(cBox.getText());
             }
         }
+        if (!selectedGenders.isEmpty()) {
+            allFilters.add(new GenderFilter(selectedGenders));
+        }
+        //Gender end
+
+
+
 
         //Events start
         List<String> selectedEvents = new ArrayList<>();
@@ -124,6 +160,63 @@ public class newLessonPlanController {
         //Events end
 
 
+
+        //Category start
+        List<String> selectedCategory = new ArrayList<>();
+        for (Node node : categoryFilterOptionsVBox.getChildren()) {
+            CheckBox cBox = (CheckBox) node;
+            if (cBox.isSelected()) {
+                selectedCategory.add(cBox.getText());
+            }
+        }
+        if (!selectedCategory.isEmpty()) {
+            allFilters.add(new CategoryFilter(selectedCategory));
+        }
+        //Category end
+
+        //Level start
+        List<String> selectedLevel = new ArrayList<>();
+        for (Node node : levelFilterOptionsVBox.getChildren()) {
+            CheckBox cBox = (CheckBox) node;
+            if (cBox.isSelected()) {
+                selectedLevel.add(cBox.getText());
+            }
+        }
+        if (!selectedLevel.isEmpty()) {
+            allFilters.add(new LevelFilter(selectedLevel));
+        }
+        //Level end
+
+
+
+        //Equipment start
+        List<String> selectedEquipments = new ArrayList<>();
+        for (Node node : equipmentFilterOptionsVBox.getChildren()) {
+            CheckBox cBox = (CheckBox) node;
+            if (cBox.isSelected()) {
+                selectedEquipments.add(cBox.getText());
+            }
+        }
+        if (!selectedEquipments.isEmpty()) {
+            allFilters.add(new EquipmentFilter(selectedEquipments));
+        }
+        //Equipment end
+
+
+        //ModelSex start
+        List<String> selectedModelSexes = new ArrayList<>();
+        for (Node node : modelSexFilterOptionsVBox.getChildren()) {
+            CheckBox cBox = (CheckBox) node;
+            if (cBox.isSelected()) {
+                selectedModelSexes.add(cBox.getText());
+            }
+        }
+        if (!selectedModelSexes.isEmpty()) {
+            allFilters.add(new ModelSexFilter(selectedModelSexes));
+        }
+        //ModelSex end
+
+
         List<Card> filteredCards = CardDatabase.getAllCards();
 
 
@@ -136,18 +229,6 @@ public class newLessonPlanController {
         // update the UI to display only those cards that were filtered
     }
 
-
-    private void populateFilterList(){
-
-        List<String> selectedEvents = new ArrayList<>();
-        for (Node node : eventFilterOptionsVBox.getChildren()) {
-            CheckBox cBox = (CheckBox) node;
-            if (cBox.isSelected()) {
-                selectedEvents.add(cBox.getText());
-            }
-        }
-
-    }
 
     @FXML
     private void switchToHomepage() throws IOException {

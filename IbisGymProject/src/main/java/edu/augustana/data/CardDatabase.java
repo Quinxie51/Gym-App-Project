@@ -47,18 +47,16 @@ public class CardDatabase {
 
         String targetCat = "Shapes";
 
-        CardFilter cards = new CategoryFilter(targetCat);
 
-        List<Card> filteredCards = getFilteredCards(cards);
+
+
         System.out.println(eventSet);
         System.out.println(categorySet);
         System.out.println(genderSet);
         System.out.println(modelSexSet);
         System.out.println(levelSet);
         System.out.println(equipmentSet);
-        for (Card card : filteredCards) {
 
-        }
     }
 
     public static List<Card> getAllCards() {

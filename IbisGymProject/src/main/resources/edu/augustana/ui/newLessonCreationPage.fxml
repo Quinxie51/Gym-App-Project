@@ -15,16 +15,12 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.AnchorPane?>
-
 
 <BorderPane prefHeight="846.0" prefWidth="1386.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
     <top>
@@ -91,10 +87,6 @@
                                  <padding>
                                     <Insets left="10.0" top="10.0" />
                                  </padding>
-                                 <children>
-                                    <CheckBox mnemonicParsing="false" text="Male" />
-                                    <CheckBox mnemonicParsing="false" text="Female" />
-                                 </children>
                               </VBox>
                            </content>
                       </TitledPane>
@@ -109,76 +101,55 @@
                       </TitledPane>
                         <TitledPane animated="false" text="Category">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <VBox prefHeight="320.0" prefWidth="186.0" spacing="5.0">
-                                            <children>
-                                                <CheckBox mnemonicParsing="false" text="Shapes" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="120.0" text="Handstand" />
-                                                <CheckBox mnemonicParsing="false" text="Backward Salto" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="106.0" text="Walkovers" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="102.0" text="Handsprings" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="158.0" text="Cartwheel Progressions" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="158.0" text="Round Off Progression" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="181.0" text="Forward Salto Progression" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Bars" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="154.0" text="Block Drills On Beam" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Beam" />
-                                                <CheckBox mnemonicParsing="false" text="Vault" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Tramp" />
-                                            </children>
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                            <padding>
-                                                <Insets left="10.0" top="10.0" />
-                                            </padding>
-                                        </VBox>
-                                    </children>
-                                </AnchorPane>
+                                  <VBox fx:id="categoryFilterOptionsVBox" prefHeight="320.0" prefWidth="186.0" spacing="5.0">
+                                      <opaqueInsets>
+                                          <Insets />
+                                      </opaqueInsets>
+                                      <padding>
+                                          <Insets left="10.0" top="10.0" />
+                                      </padding>
+                                  </VBox>
                             </content>
                         </TitledPane>
                         <TitledPane animated="false" prefHeight="635.0" prefWidth="243.0" text="Level">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                            <children>
-                                                <CheckBox mnemonicParsing="false" text="I" />
-                                                <CheckBox mnemonicParsing="false" text="AB" />
-                                                <CheckBox mnemonicParsing="false" text="A" />
-                                                <CheckBox mnemonicParsing="false" text="B" />
-                                            </children>
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                            <padding>
-                                                <Insets left="10.0" top="10.0" />
-                                            </padding>
-                                        </VBox>
-                                    </children>
-                                </AnchorPane>
+                                  <VBox fx:id="levelFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                      <opaqueInsets>
+                                          <Insets />
+                                      </opaqueInsets>
+                                      <padding>
+                                          <Insets left="10.0" top="10.0" />
+                                      </padding>
+                                  </VBox>
                             </content>
                         </TitledPane>
                         <TitledPane animated="false" text="Equipment">
                             <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                            <children>
-                                                <CheckBox mnemonicParsing="false" text="Mailbox" />
-                                                <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Board" />
-                                            </children>
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                            <padding>
-                                                <Insets left="10.0" top="10.0" />
-                                            </padding>
-                                        </VBox>
-                                    </children>
-                                </AnchorPane>
+                                  <VBox fx:id="equipmentFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                      <children>
+                                          <CheckBox mnemonicParsing="false" text="Mailbox" />
+                                          <CheckBox mnemonicParsing="false" prefHeight="19.0" prefWidth="65.0" text="Board" />
+                                      </children>
+                                      <opaqueInsets>
+                                          <Insets />
+                                      </opaqueInsets>
+                                      <padding>
+                                          <Insets left="10.0" top="10.0" />
+                                      </padding>
+                                  </VBox>
                             </content>
+                        </TitledPane>
+                        <TitledPane animated="false" layoutX="10.0" layoutY="111.0" text="Model Sex">
+                           <content>
+                              <VBox fx:id="modelSexFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="10.0" top="10.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
                         </TitledPane>
                     </panes>
                   </Accordion>

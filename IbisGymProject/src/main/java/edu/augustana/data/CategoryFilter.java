@@ -8,17 +8,26 @@ import java.util.HashMap;
 public class CategoryFilter implements CardFilter {
 
 
-    private final String selectedCategory;
+    private final List<String> selectedCategorys;
 
-    public CategoryFilter(String selectedOption) {
+    public CategoryFilter(List<String> selectedOption) {
 
-        this.selectedCategory = selectedOption;
+        this.selectedCategorys = selectedOption;
     }
 
 
     @Override
     public boolean matches(Card potentialMatchCard) {
-        return Objects.equals(potentialMatchCard.getCategory(), selectedCategory);
+        if (selectedCategorys.isEmpty()) {
+            return true;  // if user selected NOTHING, then we assume they aren't filtering by event, so they want EVERYTHING.
+        }
+        for (String selectedCategory : selectedCategorys) {
+            if (selectedCategory.equalsIgnoreCase(potentialMatchCard.getCategory())) {
+                return true;
+            }
+        }
+        return false;
+
     }
 
 
