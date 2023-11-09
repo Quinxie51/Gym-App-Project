@@ -391,7 +391,11 @@ public class newLessonPlanController {
 
     @FXML
     private void menuActionSave(ActionEvent event) {
-
+        if (MainApp.getCurrentCourse() == null) {
+            menuActionSaveAs(event);
+        } else {
+            saveCurrentCourseToFile(MainApp.getCurrentCourseFile());
+        }
     }
     @FXML
     private void menuActionSaveAs(ActionEvent event) {

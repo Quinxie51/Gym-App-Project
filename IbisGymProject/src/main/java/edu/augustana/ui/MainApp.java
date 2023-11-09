@@ -67,9 +67,13 @@ public class MainApp extends Application {
         currentCourse.saveToFile(chosenFile);
         currentCourseFile = chosenFile;
     }
-    
+
     public static Course getCurrentCourse() {
         return currentCourse;
+    }
+
+    public static File getCurrentCourseFile() {
+        return currentCourseFile;
     }
 
     public static void main(String[] args) {

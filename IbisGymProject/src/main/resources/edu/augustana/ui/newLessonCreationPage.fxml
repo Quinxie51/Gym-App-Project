@@ -39,7 +39,7 @@
                         <MenuButton mnemonicParsing="false" style="-fx-background-color: transparent;" text="File">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#menuActionOpen" text="Open" />
-                                <MenuItem mnemonicParsing="false" text="Save" />
+                                <MenuItem mnemonicParsing="false" onAction="#menuActionSave" text="Save" />
                                 <MenuItem mnemonicParsing="false" onAction="#menuActionSaveAs" text="Save As" />
                         <MenuItem mnemonicParsing="false" onAction="#menuActionPrint" text="Print" />
                             </items>
