@@ -13,7 +13,6 @@ public class Card {
     private String uniqueID;
     private String code;
     private String events;
-    private String imagePath;
     private String category;
     private String title;
     private String packFolder;
@@ -40,7 +39,6 @@ public class Card {
         this.category = selectedCategory;
         this.title = selectedTitle;
         this.packFolder = selectedPackFolder;
-        this.imagePath = selectedImagePath;
         this.image = new Image("file:CardPack/DEMO1Pack/" + selectedImagePath);
         this.gender = selectedGender;
         this.modelSex = selectedModelSex;
@@ -72,8 +70,6 @@ public class Card {
     }
 
     public Image getImage() {return image;}
-
-    public String getImagePath() {return imagePath;}
 
     public String getGender() {return gender;}
 

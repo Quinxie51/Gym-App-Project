@@ -159,10 +159,11 @@ public class newLessonPlanController {
 
     @FXML
     void handleImageDropped(DragEvent event) {
+        try {
             String[] uniqueIDs = event.getDragboard().getString().split("\\*");
             for (String uniqueID : uniqueIDs) {
                 Card card = CardDatabase.getCardFromUniqueID(uniqueID);
-                Course.currentCourse.getOneLessonPlan().addCard(card);
+                //Course.currentCourse.getOneLessonPlan().addCard(card);
                 // instead of adding each view at a time, we could
                 // after the loop, clear everything from the lesson plan view
                 // and recreate it in the right order, grouped by the event
@@ -170,13 +171,18 @@ public class newLessonPlanController {
                 Image image = card.getImage();
                 ImageView imageView = new ImageView();
                 imageView.setImage(image);
+
                 imageView.setFitWidth(180);
                 imageView.setFitHeight(120);
                 lessonFlowPane.setHgap(10);
                 lessonFlowPane.setVgap(10);
                 lessonFlowPane.getChildren().add(imageView);
             }
+        } catch (Exception e) {
+            System.out.print("Error");
+            e.printStackTrace();
         }
+    }
 
 
     @FXML
