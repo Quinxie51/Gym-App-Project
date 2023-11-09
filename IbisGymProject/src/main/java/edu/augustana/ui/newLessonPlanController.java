@@ -374,7 +374,7 @@ public class newLessonPlanController {
     }
 
     @FXML
-    private void menuActionOpen(ActionEvent event) {
+    private void menuActionOpen(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Course File");
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
@@ -382,12 +382,9 @@ public class newLessonPlanController {
         Window mainWindow = lessonFlowPane.getScene().getWindow();
         File chosenFile = fileChooser.showOpenDialog(mainWindow);
         if (chosenFile != null) {
-            try {
-                MainApp.openCurrentCourseFromFile(chosenFile);
-                refreshLessonView();
-            } catch (IOException e) {
-                //TODO: show error alert to user for failing to load file
-            }
+            MainApp.openCurrentCourseFromFile(chosenFile);
+            refreshLessonView();
+
         }
     }
 

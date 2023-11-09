@@ -8,8 +8,8 @@ public class LessonPlan {
 
     private String lessonTitle;
 
-    private static List<String> cardIdList = new ArrayList<>();
-    private static List<Card> cardList = new ArrayList<>();
+    private List<String> cardIdList = new ArrayList<>();
+    //private static List<Card> cardList = new ArrayList<>();
 
     public LessonPlan(String lessonTitle) {
         this.lessonTitle = lessonTitle;
@@ -26,12 +26,12 @@ public class LessonPlan {
 
     public void removeCard(Card card) {
         cardIdList.add(card.getUniqueID());
-        cardList.remove(card);
+        //cardList.remove(card);
     }
 
-    public static void addCard(Card card) {
+    public void addCard(Card card) {
         cardIdList.add(card.getUniqueID());
-        cardList.add(card);
+        //cardList.add(card);
 
     }
 

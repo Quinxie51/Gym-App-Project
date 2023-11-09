@@ -67,9 +67,7 @@ public class MainApp extends Application {
         currentCourse.saveToFile(chosenFile);
         currentCourseFile = chosenFile;
     }
-
-
-
+    
     public static Course getCurrentCourse() {
         return currentCourse;
     }
