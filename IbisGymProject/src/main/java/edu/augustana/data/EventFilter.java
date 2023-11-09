@@ -18,7 +18,7 @@ public class EventFilter implements CardFilter{
             return true;  // if user selected NOTHING, then we assume they aren't filtering by event, so they want EVERYTHING.
         }
         for (String selectedEvent : selectedEvents) {
-            if (selectedEvent.equals(potentialMatchCard.getEvent())) {
+            if (selectedEvent.equalsIgnoreCase(potentialMatchCard.getEvent())) {
                 return true;
             }
         }

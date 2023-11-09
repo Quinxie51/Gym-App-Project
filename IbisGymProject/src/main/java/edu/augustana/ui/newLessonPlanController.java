@@ -1,6 +1,7 @@
 package edu.augustana.ui;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 import edu.augustana.data.*;
@@ -24,6 +25,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.input.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import static edu.augustana.data.CardDatabase.allCards;
@@ -65,6 +67,8 @@ public class newLessonPlanController {
     private ImageView target;
     @FXML
     private TextField searchBar;
+    @FXML
+    private VBox printedVbox;
 
 
     public newLessonPlanController() {
@@ -79,6 +83,7 @@ public class newLessonPlanController {
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+
         for (String eventOption : CardDatabase.getEventSet()) {
             CheckBox cBox = new CheckBox(eventOption);
             cBox.setOnAction(e -> updateFilterResults());
@@ -87,15 +92,20 @@ public class newLessonPlanController {
         System.out.println(getAllCards());
     }
 
+
     private void updateFilterResults() {
         List<CardFilter> allFilters= new ArrayList<>();
+
 
         for (Node node:  genderFilterOptionsVBox.getChildren()) {
             CheckBox cBox = (CheckBox) node;
             if (cBox.isSelected()) {
                 allFilters.add(new GenderFilter(cBox.getText()));
+
+
             }
         }
+
 
         List<String> selectedEvents = new ArrayList<>();
         for (Node node: eventFilterOptionsVBox.getChildren()) {
@@ -104,11 +114,22 @@ public class newLessonPlanController {
                 selectedEvents.add(cBox.getText());
             }
         }
-        allFilters.add(new EventFilter(selectedEvents));
+        if(!selectedEvents.isEmpty()){
+            allFilters.add(new EventFilter(selectedEvents));
+        }
+
+        List<Card> filteredCards = CardDatabase.getAllCards();
+
+
+        for (CardFilter filter: allFilters){
+            filteredCards = filteredCards.stream().filter(filter::matches).collect(Collectors.toList());
+        }
+        cardListView.setItems(FXCollections.observableArrayList(filteredCards));
 
         // make a new CombinedAndFilter, and apply it to all your cards to get the filtered set
         // update the UI to display only those cards that were filtered
     }
+
 
     @FXML
     private void switchToHomepage() throws IOException {
@@ -141,17 +162,18 @@ public class newLessonPlanController {
 
     @FXML
     void handleDragDetection(MouseEvent event) {
-        List<Card> selectedCards = cardListView.getSelectionModel().getSelectedItems();
-        List<String> allIDs = new ArrayList<>();
-        for (Card card : selectedCards) {
-            allIDs.add(card.getUniqueID());
+        Card selectedCard = cardListView.getSelectionModel().getSelectedItem();
+        if (selectedCard != null) {
+            Dragboard db = cardListView.startDragAndDrop(TransferMode.ANY);
+            ClipboardContent cb = new ClipboardContent();
+            cb.putString(selectedCard.getImagePath());
+            db.setContent(cb);
+            event.consume();
         }
-        Dragboard db = cardListView.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent cb = new ClipboardContent();
-        cb.putString(String.join("*", allIDs));
-        db.setContent(cb);
-        event.consume();
     }
+
+
+
 
     @FXML
     void handleImageDragOver(DragEvent event) {
@@ -160,26 +182,25 @@ public class newLessonPlanController {
         }
     }
 
+
+
+
     @FXML
     void handleImageDropped(DragEvent event) {
-            String[] uniqueIDs = event.getDragboard().getString().split("\\*");
-            for (String uniqueID : uniqueIDs) {
-                Card card = CardDatabase.getCardFromUniqueID(uniqueID);
-                Course.currentCourse.getOneLessonPlan().addCard(card);
-                // instead of adding each view at a time, we could
-                // after the loop, clear everything from the lesson plan view
-                // and recreate it in the right order, grouped by the event
-                // of each card
-                Image image = card.getImage();
-                ImageView imageView = new ImageView();
-                imageView.setImage(image);
-                imageView.setFitWidth(180);
-                imageView.setFitHeight(120);
-                lessonFlowPane.setHgap(10);
-                lessonFlowPane.setVgap(10);
-                lessonFlowPane.getChildren().add(imageView);
-            }
-        }
+        String imagePath = event.getDragboard().getString();
+        Image image = new Image("file:CardPack/DEMO1Pack/" + imagePath);
+        ImageView imageView = new ImageView();
+        imageView.setImage(image);
+        imageView.setFitWidth(180);
+        imageView.setFitHeight(120);
+        lessonFlowPane.setHgap(10);
+        lessonFlowPane.setVgap(10);
+        lessonFlowPane.getChildren().add(imageView);
+
+
+    }
+
+
 
 
     @FXML
@@ -203,22 +224,22 @@ public class newLessonPlanController {
                 //scene.getWindow().setWidth(pageLayout.getPrintableWidth());
                 //scene.getWindow().setHeight(pageLayout.getPrintableHeight());
 
+                // Create a separate container for the content to print
+                Pane printContainer = new Pane();
+                printContainer.getChildren().add(fxmlContent);
+
                 double x = 500; // X coordinate of the top-left corner of the area to print
-                double y = 750; // Y coordinate of the top-left corner of the area to print
+                double y = -100; // Y coordinate of the top-left corner of the area to print
                 double width = 900; // Width of the area to print
                 double height = 750; // Height of the area to print
 
-                // Set the viewport for the snapshot
-                SnapshotParameters snapshotParams = new SnapshotParameters();
-                snapshotParams.setViewport(new Rectangle2D(x, y, width, height));
+                // Adjust the layout of the printContainer
+                printContainer.setLayoutX(-x);
+                printContainer.setLayoutY(-y);
+                printContainer.setPrefWidth(width);
+                printContainer.setPrefHeight(height);
 
-                // Capture a snapshot of the specific area you want to print
-                WritableImage snapshot = fxmlContent.snapshot(snapshotParams, null);
-
-                // Create an ImageView to display the snapshot
-                ImageView snapshotView = new ImageView(snapshot);
-
-                boolean printed = printerJob.printPage(snapshotView);
+                boolean printed = printerJob.printPage(printContainer);
                 if (printed) {
                     printerJob.endJob();
                 }
