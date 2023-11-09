@@ -20,6 +20,7 @@ public class Card {
     //We could also use an Image object for this
     private Image image;
     private String gender;
+    private String imagePath;
     private String modelSex;
     private String level;
     //We possibly need a string[] or a list of strings for this
@@ -39,6 +40,7 @@ public class Card {
         this.category = selectedCategory;
         this.title = selectedTitle;
         this.packFolder = selectedPackFolder;
+        this.imagePath = selectedImagePath;
         this.image = new Image("file:CardPack/DEMO1Pack/" + selectedImagePath);
         this.gender = selectedGender;
         this.modelSex = selectedModelSex;
@@ -49,7 +51,7 @@ public class Card {
     }
 
     public String getUniqueID() {
-        return image+"/"+packFolder;
+        return uniqueID;
     }
 
     public String getCode() {
@@ -121,5 +123,9 @@ public class Card {
          **/
         // Code: title [gender]
         return code+": " + title + " [" + gender + "]";
+    }
+
+    public String getImagePath() {
+        return imagePath;
     }
 }

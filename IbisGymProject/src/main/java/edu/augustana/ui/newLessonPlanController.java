@@ -1,6 +1,7 @@
 package edu.augustana.ui;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 import edu.augustana.data.*;
@@ -23,8 +24,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-import static edu.augustana.data.CardDatabase.allCards;
-import static edu.augustana.data.CardDatabase.getAllCards;
+import static edu.augustana.data.CardDatabase.*;
 
 public class newLessonPlanController {
 
@@ -38,6 +38,7 @@ public class newLessonPlanController {
 
     @FXML
     private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
+    private LessonPlan lessonPlan;
 
     //Events
     @FXML private CheckBox floor;
@@ -52,14 +53,10 @@ public class newLessonPlanController {
     private MenuItem printMenuItem;
     @FXML
     public Label lessonPlanName;
-    @FXML
-    private ImageView targetImageView;
 
     @FXML
     private FlowPane lessonFlowPane;
 
-    @FXML
-    private ImageView target;
     @FXML
     private TextField searchBar;
 
@@ -71,10 +68,12 @@ public class newLessonPlanController {
     @FXML
     private void initialize() {
         this.lessonPlanName.setText(Course.currentCourse.getOneLessonPlan().getLessonTitle());
+        lessonPlan.setLessonTitle(Course.currentCourse.getOneLessonPlan().getLessonTitle());
         // Code: title [gender]
         // getReadableList ^^^
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
 
         for (String eventOption : CardDatabase.getEventSet()) {
             CheckBox cBox = new CheckBox(eventOption);
@@ -84,15 +83,20 @@ public class newLessonPlanController {
         System.out.println(getAllCards());
     }
 
+
     private void updateFilterResults() {
         List<CardFilter> allFilters= new ArrayList<>();
+
 
         for (Node node:  genderFilterOptionsVBox.getChildren()) {
             CheckBox cBox = (CheckBox) node;
             if (cBox.isSelected()) {
                 allFilters.add(new GenderFilter(cBox.getText()));
+
+
             }
         }
+
 
         List<String> selectedEvents = new ArrayList<>();
         for (Node node: eventFilterOptionsVBox.getChildren()) {
@@ -101,11 +105,22 @@ public class newLessonPlanController {
                 selectedEvents.add(cBox.getText());
             }
         }
-        allFilters.add(new EventFilter(selectedEvents));
+        if(!selectedEvents.isEmpty()){
+            allFilters.add(new EventFilter(selectedEvents));
+        }
+
+        List<Card> filteredCards = CardDatabase.getAllCards();
+
+
+        for (CardFilter filter: allFilters){
+            filteredCards = filteredCards.stream().filter(filter::matches).collect(Collectors.toList());
+        }
+        cardListView.setItems(FXCollections.observableArrayList(filteredCards));
 
         // make a new CombinedAndFilter, and apply it to all your cards to get the filtered set
         // update the UI to display only those cards that were filtered
     }
+
 
     @FXML
     private void switchToHomepage() throws IOException {
@@ -135,7 +150,6 @@ public class newLessonPlanController {
             cardListView.setItems(FXCollections.observableArrayList(matchingCards));
         }
     }
-
     @FXML
     void handleDragDetection(MouseEvent event) {
         List<Card> selectedCards = cardListView.getSelectionModel().getSelectedItems();
@@ -150,6 +164,7 @@ public class newLessonPlanController {
         event.consume();
     }
 
+
     @FXML
     void handleImageDragOver(DragEvent event) {
         if (event.getDragboard().hasString()) {
@@ -157,30 +172,29 @@ public class newLessonPlanController {
         }
     }
 
+
     @FXML
     void handleImageDropped(DragEvent event) {
-        try {
-            String[] uniqueIDs = event.getDragboard().getString().split("\\*");
-            for (String uniqueID : uniqueIDs) {
-                Card card = CardDatabase.getCardFromUniqueID(uniqueID);
-                //Course.currentCourse.getOneLessonPlan().addCard(card);
-                // instead of adding each view at a time, we could
-                // after the loop, clear everything from the lesson plan view
-                // and recreate it in the right order, grouped by the event
-                // of each card
-                Image image = card.getImage();
-                ImageView imageView = new ImageView();
-                imageView.setImage(image);
-                imageView.setFitWidth(180);
-                imageView.setFitHeight(120);
-                lessonFlowPane.setHgap(10);
-                lessonFlowPane.setVgap(10);
-                lessonFlowPane.getChildren().add(imageView);
-            }
-        } catch (Exception e) {
-            System.out.print("Error");
-            e.printStackTrace();
+        String[] uniqueIDs = event.getDragboard().getString().split("\\*");
+        for (String uniqueID : uniqueIDs) {
+            Card card = CardDatabase.getCardFromUniqueID(uniqueID);
+            //Course.currentCourse.getOneLessonPlan().addCard(card);
+            // instead of adding each view at a time, we could
+            // after the loop, clear everything from the lesson plan view
+            // and recreate it in the right order, grouped by the event
+            // of each card
+            Image image = card.getImage();
+            ImageView imageView = new ImageView();
+            imageView.setImage(image);
+            imageView.setFitWidth(180);
+            imageView.setFitHeight(120);
+            lessonFlowPane.setHgap(10);
+            lessonFlowPane.setVgap(10);
+            lessonFlowPane.getChildren().add(imageView);
+            lessonPlan.addCard(card);
         }
+
+
     }
 
 

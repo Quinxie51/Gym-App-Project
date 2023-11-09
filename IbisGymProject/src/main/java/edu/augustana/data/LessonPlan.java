@@ -6,11 +6,14 @@ import java.util.List;
 public class LessonPlan {
     //Add a list of cards
     private String lessonTitle;
-    private List<String> cardIdList = new ArrayList<>();
+
+    private static List<String> cardIdList = new ArrayList<>();
+    private static List<Card> cardList = new ArrayList<>();
 
     public LessonPlan(String lessonTitle) {
         this.lessonTitle = lessonTitle;
     }
+
 
     public String getLessonTitle() {
         return lessonTitle;
@@ -21,8 +24,9 @@ public class LessonPlan {
     }
 
 
-    public void addCard(Card card) {
+    public static void addCard(Card card) {
         cardIdList.add(card.getUniqueID());
+        cardList.add(card);
 
     }
 

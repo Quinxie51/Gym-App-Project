@@ -22,12 +22,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-
 <BorderPane prefHeight="846.0" prefWidth="1386.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
+
+
+
 
 
 
@@ -108,14 +111,6 @@
                                  <padding>
                                     <Insets left="10.0" top="10.0" />
                                  </padding>
-                                 <children>
-                                    <CheckBox mnemonicParsing="false" text="Floor" />
-                                    <CheckBox mnemonicParsing="false" text="Uneven Bars" />
-                                    <CheckBox mnemonicParsing="false" text="Beam" />
-                                    <CheckBox mnemonicParsing="false" text="Vault" />
-                                    <CheckBox mnemonicParsing="false" text="Tramp" />
-                                    <CheckBox mnemonicParsing="false" text="Strength" />
-                                 </children>
                               </VBox>
                         </content>
                       </TitledPane>
