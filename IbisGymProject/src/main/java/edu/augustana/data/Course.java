@@ -31,6 +31,4 @@ public class Course {
         writer.println(serializedCourseText);
         writer.close();
     }
-
-
 }

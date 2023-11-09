@@ -11,6 +11,7 @@ import edu.augustana.data.Course;
 import edu.augustana.data.EventFilter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.*;
@@ -35,6 +36,8 @@ public class newLessonPlanController {
     private VBox eventFilterOptionsVBox;
     @FXML
     private VBox genderFilterOptionsVBox;
+    @FXML
+    private Button deleteCard;
 
     @FXML
     private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
@@ -193,10 +196,17 @@ public class newLessonPlanController {
             lessonFlowPane.getChildren().add(imageView);
             lessonPlan.addCard(card);
         }
-
-
     }
-
+/*    @FXML
+ *//*   private void actionDeleteCard() {
+        LessonPlan cardToDelete = lessonFlowPane.getSelectionModel().getSelectedItem();
+        if (cardToDelete!= null) {
+            LessonPlan.getCurrentMovieLog().removeMovieWatchRecord(movieWatchToDelete);
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Select a movie to delete first!").show();
+        }
+    }
+*/
 
     @FXML
     private void menuActionPrint() {

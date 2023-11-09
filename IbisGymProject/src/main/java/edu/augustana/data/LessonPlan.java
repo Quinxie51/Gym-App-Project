@@ -23,6 +23,10 @@ public class LessonPlan {
         this.lessonTitle = lessonTitle;
     }
 
+    public void removeCard(Card card) {
+        cardIdList.add(card.getUniqueID());
+        cardList.remove(card);
+    }
 
     public static void addCard(Card card) {
         cardIdList.add(card.getUniqueID());
