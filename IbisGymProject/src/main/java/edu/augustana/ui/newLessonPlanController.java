@@ -1,4 +1,5 @@
 package edu.augustana.ui;
+
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -24,8 +25,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-import static edu.augustana.data.CardDatabase.allCards;
-import static edu.augustana.data.CardDatabase.getAllCards;
+import static edu.augustana.data.CardDatabase.*;
 
 public class newLessonPlanController {
 
@@ -41,10 +41,12 @@ public class newLessonPlanController {
     private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
 
     //Events
-    @FXML private CheckBox floor;
-    @FXML private  CheckBox unevenBars;
-    @FXML private CheckBox beam;
-
+    @FXML
+    private CheckBox floor;
+    @FXML
+    private CheckBox unevenBars;
+    @FXML
+    private CheckBox beam;
 
 
     @FXML
@@ -88,11 +90,13 @@ public class newLessonPlanController {
 
 
     private void updateFilterResults() {
-        List<CardFilter> allFilters= new ArrayList<>();
+        List<CardFilter> allFilters = new ArrayList<>();
 
 
-        for (Node node:  genderFilterOptionsVBox.getChildren()) {
+        for (Node node : genderFilterOptionsVBox.getChildren()) {
             CheckBox cBox = (CheckBox) node;
+
+
             if (cBox.isSelected()) {
                 allFilters.add(new GenderFilter(cBox.getText()));
 
@@ -100,22 +104,24 @@ public class newLessonPlanController {
             }
         }
 
-
+        //Events start
         List<String> selectedEvents = new ArrayList<>();
-        for (Node node: eventFilterOptionsVBox.getChildren()) {
+        for (Node node : eventFilterOptionsVBox.getChildren()) {
             CheckBox cBox = (CheckBox) node;
             if (cBox.isSelected()) {
                 selectedEvents.add(cBox.getText());
             }
         }
-        if(!selectedEvents.isEmpty()){
+        if (!selectedEvents.isEmpty()) {
             allFilters.add(new EventFilter(selectedEvents));
         }
+        //Events end
+
 
         List<Card> filteredCards = CardDatabase.getAllCards();
 
 
-        for (CardFilter filter: allFilters){
+        for (CardFilter filter : allFilters) {
             filteredCards = filteredCards.stream().filter(filter::matches).collect(Collectors.toList());
         }
         cardListView.setItems(FXCollections.observableArrayList(filteredCards));
@@ -124,6 +130,18 @@ public class newLessonPlanController {
         // update the UI to display only those cards that were filtered
     }
 
+
+    private void populateFilterList(){
+
+        List<String> selectedEvents = new ArrayList<>();
+        for (Node node : eventFilterOptionsVBox.getChildren()) {
+            CheckBox cBox = (CheckBox) node;
+            if (cBox.isSelected()) {
+                selectedEvents.add(cBox.getText());
+            }
+        }
+
+    }
 
     @FXML
     private void switchToHomepage() throws IOException {
@@ -167,16 +185,12 @@ public class newLessonPlanController {
     }
 
 
-
-
     @FXML
     void handleImageDragOver(DragEvent event) {
         if (event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
-
-
 
 
     @FXML
@@ -193,8 +207,6 @@ public class newLessonPlanController {
 
 
     }
-
-
 
 
     @FXML
