@@ -73,7 +73,7 @@ public class newLessonPlanController {
 
     @FXML
     private void initialize() {
-        this.lessonPlanName.setText(Course.currentCourse.getOneLessonPlan().getLessonTitle());
+        this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
         // Code: title [gender]
         // getReadableList ^^^
         cardListView.getItems().addAll(getAllCards());
@@ -259,14 +259,16 @@ public class newLessonPlanController {
 
     @FXML
     void handleDragDetection(MouseEvent event) {
-        Card selectedCard = cardListView.getSelectionModel().getSelectedItem();
-        if (selectedCard != null) {
-            Dragboard db = cardListView.startDragAndDrop(TransferMode.ANY);
-            ClipboardContent cb = new ClipboardContent();
-            cb.putString(selectedCard.getImagePath());
-            db.setContent(cb);
-            event.consume();
+        List<Card> selectedCards = cardListView.getSelectionModel().getSelectedItems();
+        List<String> allIDs = new ArrayList<>();
+        for (Card card : selectedCards) {
+            allIDs.add(card.getUniqueID());
         }
+        Dragboard db = cardListView.startDragAndDrop(TransferMode.ANY);
+        ClipboardContent cb = new ClipboardContent();
+        cb.putString(String.join("*", allIDs));
+        db.setContent(cb);
+        event.consume();
     }
 
 
@@ -280,19 +282,34 @@ public class newLessonPlanController {
 
     @FXML
     void handleImageDropped(DragEvent event) {
-        String imagePath = event.getDragboard().getString();
-        Image image = new Image("file:CardPack/DEMO1Pack/" + imagePath);
-        ImageView imageView = new ImageView();
-        imageView.setImage(image);
-        imageView.setFitWidth(180);
-        imageView.setFitHeight(120);
-        lessonFlowPane.setHgap(10);
-        lessonFlowPane.setVgap(10);
-        lessonFlowPane.getChildren().add(imageView);
-
-
+        String[] uniqueIDs = event.getDragboard().getString().split("\\*");
+        for (String uniqueID : uniqueIDs) {
+            Card card = CardDatabase.getCardFromUniqueID(uniqueID);
+            MainApp.getCurrentCourse().getOneLessonPlan().addCard(card);
+            // instead of adding each view at a time, we could
+            // after the loop, clear everything from the lesson plan view
+            // and recreate it in the right order, grouped by the event
+            // of each card
+        }
+        refreshLessonView();
     }
 
+    private void refreshLessonView() {
+        Node firstThing = lessonFlowPane.getChildren().get(0);
+        lessonFlowPane.getChildren().clear();
+        lessonFlowPane.getChildren().add(firstThing);
+        for (Card card : MainApp.getCurrentCourse().getOneLessonPlan().getCards()) {
+            Image image = card.getImage();
+            ImageView imageView = new ImageView();
+            imageView.setImage(image);
+            imageView.setFitWidth(180);
+            imageView.setFitHeight(120);
+            lessonFlowPane.setHgap(10); // should be set in scenebuilder
+            lessonFlowPane.setVgap(10);
+            lessonFlowPane.getChildren().add(imageView);
+
+        }
+    }
 
     @FXML
     private void menuActionPrint() {
@@ -345,12 +362,35 @@ public class newLessonPlanController {
     }
 
     @FXML
+    private void menuActionOpen(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Course File");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
+        fileChooser.getExtensionFilters().add(filter);
+        Window mainWindow = lessonFlowPane.getScene().getWindow();
+        File chosenFile = fileChooser.showOpenDialog(mainWindow);
+        if (chosenFile != null) {
+            try {
+                MainApp.openCurrentCourseFromFile(chosenFile);
+                refreshLessonView();
+            } catch (IOException e) {
+                //TODO: show error alert to user for failing to load file
+            }
+        }
+    }
+
+
+    @FXML
+    private void menuActionSave(ActionEvent event) {
+
+    }
+    @FXML
     private void menuActionSaveAs(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Lesson Plan File");
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Lesson Plan (*.glp)", "*.glp");
+        fileChooser.setTitle("Save Course File");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
         fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = cardListView.getScene().getWindow();
+        Window mainWindow = lessonFlowPane.getScene().getWindow();
         File chosenFile = fileChooser.showSaveDialog(mainWindow);
         saveCurrentCourseToFile(chosenFile);
     }

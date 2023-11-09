@@ -19,7 +19,6 @@ public class CardDatabase {
     private static List<Card> presentableList = new ArrayList<>();
     //private static Map<String,Card> allCardMap;
 
-    private static List<String> uniqueIDList = new ArrayList<>();
     private static HashMap<String, Card> uniqueIdMap = new HashMap<>();
 
     private static Set<String> eventSet = new TreeSet<>();
@@ -84,9 +83,7 @@ public class CardDatabase {
             String[] nextCard;
             while ((nextCard = csvReader.readNext()) != null) {
 
-                String uniqueID = nextCard[5]+"/" +nextCard[4];
-                uniqueIDList.add(uniqueID);
-
+                String uniqueID = nextCard[4]+"/" +nextCard[5];
                 Card currentCard = new Card(uniqueID,nextCard[0],nextCard[1],nextCard[2],nextCard[3],
                         nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8], nextCard[9].split(","), nextCard[10].split(","));
 

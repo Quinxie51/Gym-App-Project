@@ -6,7 +6,6 @@ import java.util.List;
 public class LessonPlan {
     //Add a list of cards
 
-    private List<Card> lessonPlanCards = new ArrayList<>();
     private String lessonTitle;
     private List<String> cardIdList = new ArrayList<>();
 
@@ -26,6 +25,14 @@ public class LessonPlan {
     public void addCard(Card card) {
         cardIdList.add(card.getUniqueID());
 
+    }
+
+    public List<Card> getCards() {
+        ArrayList<Card> cards = new ArrayList<>();
+        for (String id : cardIdList) {
+            cards.add(CardDatabase.getCardFromUniqueID(id));
+        }
+        return cards;
     }
 
     //public Map<String,List<Card>> getCardListsByEvent(){

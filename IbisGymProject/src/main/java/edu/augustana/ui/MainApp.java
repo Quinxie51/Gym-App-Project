@@ -58,9 +58,20 @@ public class MainApp extends Application {
         return fxmlLoader.load();
     }
 
+    public static void openCurrentCourseFromFile(File chosenFile) throws IOException {
+        currentCourseFile = chosenFile;
+        currentCourse = Course.loadFromFile(chosenFile);
+    }
+
     public static void saveCurrentCourseToFile(File chosenFile) throws IOException {
         currentCourse.saveToFile(chosenFile);
         currentCourseFile = chosenFile;
+    }
+
+
+
+    public static Course getCurrentCourse() {
+        return currentCourse;
     }
 
     public static void main(String[] args) {

@@ -51,7 +51,7 @@ public class Card {
     }
 
     public String getUniqueID() {
-        return image+"/"+packFolder;
+        return uniqueID;
     }
 
     public String getCode() {

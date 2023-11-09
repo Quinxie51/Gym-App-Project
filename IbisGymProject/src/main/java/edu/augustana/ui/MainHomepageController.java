@@ -86,7 +86,7 @@ public class MainHomepageController {
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             String lessonTitle = result.get();
-            Course.currentCourse.getOneLessonPlan().setLessonTitle(lessonTitle);
+            MainApp.getCurrentCourse().getOneLessonPlan().setLessonTitle(lessonTitle);
             MainApp.switchToNewLessonCreationPage();
         }
     }
