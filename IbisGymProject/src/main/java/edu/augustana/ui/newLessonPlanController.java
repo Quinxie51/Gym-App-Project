@@ -1,6 +1,7 @@
 package edu.augustana.ui;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 import edu.augustana.data.*;
@@ -76,6 +77,7 @@ public class newLessonPlanController {
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+
         for (String eventOption : CardDatabase.getEventSet()) {
             CheckBox cBox = new CheckBox(eventOption);
             cBox.setOnAction(e -> updateFilterResults());
@@ -84,15 +86,20 @@ public class newLessonPlanController {
         System.out.println(getAllCards());
     }
 
+
     private void updateFilterResults() {
         List<CardFilter> allFilters= new ArrayList<>();
+
 
         for (Node node:  genderFilterOptionsVBox.getChildren()) {
             CheckBox cBox = (CheckBox) node;
             if (cBox.isSelected()) {
                 allFilters.add(new GenderFilter(cBox.getText()));
+
+
             }
         }
+
 
         List<String> selectedEvents = new ArrayList<>();
         for (Node node: eventFilterOptionsVBox.getChildren()) {
@@ -101,11 +108,22 @@ public class newLessonPlanController {
                 selectedEvents.add(cBox.getText());
             }
         }
-        allFilters.add(new EventFilter(selectedEvents));
+        if(!selectedEvents.isEmpty()){
+            allFilters.add(new EventFilter(selectedEvents));
+        }
+
+        List<Card> filteredCards = CardDatabase.getAllCards();
+
+
+        for (CardFilter filter: allFilters){
+            filteredCards = filteredCards.stream().filter(filter::matches).collect(Collectors.toList());
+        }
+        cardListView.setItems(FXCollections.observableArrayList(filteredCards));
 
         // make a new CombinedAndFilter, and apply it to all your cards to get the filtered set
         // update the UI to display only those cards that were filtered
     }
+
 
     @FXML
     private void switchToHomepage() throws IOException {
@@ -138,17 +156,18 @@ public class newLessonPlanController {
 
     @FXML
     void handleDragDetection(MouseEvent event) {
-        List<Card> selectedCards = cardListView.getSelectionModel().getSelectedItems();
-        List<String> allIDs = new ArrayList<>();
-        for (Card card : selectedCards) {
-            allIDs.add(card.getUniqueID());
+        Card selectedCard = cardListView.getSelectionModel().getSelectedItem();
+        if (selectedCard != null) {
+            Dragboard db = cardListView.startDragAndDrop(TransferMode.ANY);
+            ClipboardContent cb = new ClipboardContent();
+            cb.putString(selectedCard.getImagePath());
+            db.setContent(cb);
+            event.consume();
         }
-        Dragboard db = cardListView.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent cb = new ClipboardContent();
-        cb.putString(String.join("*", allIDs));
-        db.setContent(cb);
-        event.consume();
     }
+
+
+
 
     @FXML
     void handleImageDragOver(DragEvent event) {
@@ -157,26 +176,25 @@ public class newLessonPlanController {
         }
     }
 
+
+
+
     @FXML
     void handleImageDropped(DragEvent event) {
-            String[] uniqueIDs = event.getDragboard().getString().split("\\*");
-            for (String uniqueID : uniqueIDs) {
-                Card card = CardDatabase.getCardFromUniqueID(uniqueID);
-                Course.currentCourse.getOneLessonPlan().addCard(card);
-                // instead of adding each view at a time, we could
-                // after the loop, clear everything from the lesson plan view
-                // and recreate it in the right order, grouped by the event
-                // of each card
-                Image image = card.getImage();
-                ImageView imageView = new ImageView();
-                imageView.setImage(image);
-                imageView.setFitWidth(180);
-                imageView.setFitHeight(120);
-                lessonFlowPane.setHgap(10);
-                lessonFlowPane.setVgap(10);
-                lessonFlowPane.getChildren().add(imageView);
-            }
-        }
+        String imagePath = event.getDragboard().getString();
+        Image image = new Image("file:CardPack/DEMO1Pack/" + imagePath);
+        ImageView imageView = new ImageView();
+        imageView.setImage(image);
+        imageView.setFitWidth(180);
+        imageView.setFitHeight(120);
+        lessonFlowPane.setHgap(10);
+        lessonFlowPane.setVgap(10);
+        lessonFlowPane.getChildren().add(imageView);
+
+
+    }
+
+
 
 
     @FXML
