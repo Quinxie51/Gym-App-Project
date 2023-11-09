@@ -12,12 +12,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -196,11 +199,26 @@ public class newLessonPlanController {
 
                 // Fit the content to the page size
                 Scene scene = MainApp.getScene();
-                scene.getRoot().resize(pageLayout.getPrintableWidth(), pageLayout.getPrintableHeight());
-                scene.getWindow().setWidth(pageLayout.getPrintableWidth());
-                scene.getWindow().setHeight(pageLayout.getPrintableHeight());
+                //scene.getRoot().resize(pageLayout.getPrintableWidth(), pageLayout.getPrintableHeight());
+                //scene.getWindow().setWidth(pageLayout.getPrintableWidth());
+                //scene.getWindow().setHeight(pageLayout.getPrintableHeight());
 
-                boolean printed = printerJob.printPage(fxmlContent);
+                double x = 500; // X coordinate of the top-left corner of the area to print
+                double y = 750; // Y coordinate of the top-left corner of the area to print
+                double width = 900; // Width of the area to print
+                double height = 750; // Height of the area to print
+
+                // Set the viewport for the snapshot
+                SnapshotParameters snapshotParams = new SnapshotParameters();
+                snapshotParams.setViewport(new Rectangle2D(x, y, width, height));
+
+                // Capture a snapshot of the specific area you want to print
+                WritableImage snapshot = fxmlContent.snapshot(snapshotParams, null);
+
+                // Create an ImageView to display the snapshot
+                ImageView snapshotView = new ImageView(snapshot);
+
+                boolean printed = printerJob.printPage(snapshotView);
                 if (printed) {
                     printerJob.endJob();
                 }
