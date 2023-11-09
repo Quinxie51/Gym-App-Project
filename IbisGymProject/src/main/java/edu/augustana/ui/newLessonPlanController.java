@@ -171,7 +171,6 @@ public class newLessonPlanController {
                 Image image = card.getImage();
                 ImageView imageView = new ImageView();
                 imageView.setImage(image);
-
                 imageView.setFitWidth(180);
                 imageView.setFitHeight(120);
                 lessonFlowPane.setHgap(10);
