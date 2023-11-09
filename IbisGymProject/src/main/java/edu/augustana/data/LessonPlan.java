@@ -5,6 +5,8 @@ import java.util.List;
 
 public class LessonPlan {
     //Add a list of cards
+
+    private List<Card> lessonPlanCards = new ArrayList<>();
     private String lessonTitle;
 
     private static List<String> cardIdList = new ArrayList<>();
