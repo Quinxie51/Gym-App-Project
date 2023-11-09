@@ -14,15 +14,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.*;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import static edu.augustana.data.CardDatabase.*;
@@ -65,6 +69,8 @@ public class newLessonPlanController {
     private ImageView target;
     @FXML
     private TextField searchBar;
+    @FXML
+    private VBox printedVbox;
 
 
     public newLessonPlanController() {
@@ -226,11 +232,26 @@ public class newLessonPlanController {
 
                 // Fit the content to the page size
                 Scene scene = MainApp.getScene();
-                scene.getRoot().resize(pageLayout.getPrintableWidth(), pageLayout.getPrintableHeight());
-                scene.getWindow().setWidth(pageLayout.getPrintableWidth());
-                scene.getWindow().setHeight(pageLayout.getPrintableHeight());
+                //scene.getRoot().resize(pageLayout.getPrintableWidth(), pageLayout.getPrintableHeight());
+                //scene.getWindow().setWidth(pageLayout.getPrintableWidth());
+                //scene.getWindow().setHeight(pageLayout.getPrintableHeight());
 
-                boolean printed = printerJob.printPage(fxmlContent);
+                // Create a separate container for the content to print
+                Pane printContainer = new Pane();
+                printContainer.getChildren().add(fxmlContent);
+
+                double x = 500; // X coordinate of the top-left corner of the area to print
+                double y = -100; // Y coordinate of the top-left corner of the area to print
+                double width = 900; // Width of the area to print
+                double height = 750; // Height of the area to print
+
+                // Adjust the layout of the printContainer
+                printContainer.setLayoutX(-x);
+                printContainer.setLayoutY(-y);
+                printContainer.setPrefWidth(width);
+                printContainer.setPrefHeight(height);
+
+                boolean printed = printerJob.printPage(printContainer);
                 if (printed) {
                     printerJob.endJob();
                 }
