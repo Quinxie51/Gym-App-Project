@@ -89,8 +89,6 @@ public class MainHomepageController {
             Course.currentCourse.getOneLessonPlan().setLessonTitle(lessonTitle);
             MainApp.switchToNewLessonCreationPage();
         }
-
-
     }
 
 

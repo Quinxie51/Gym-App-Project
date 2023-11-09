@@ -22,9 +22,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.AnchorPane?>
-
 
 <BorderPane prefHeight="846.0" prefWidth="1386.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.newLessonPlanController">
     <top>
@@ -45,7 +42,7 @@
                             <items>
                                 <MenuItem mnemonicParsing="false" text="Open" />
                                 <MenuItem mnemonicParsing="false" text="Save" />
-                                <MenuItem mnemonicParsing="false" text="Save As" />
+                                <MenuItem mnemonicParsing="false" onAction="#menuActionSaveAs" text="Save As" />
                         <MenuItem mnemonicParsing="false" onAction="#menuActionPrint" text="Print" />
                             </items>
                         </MenuButton>
@@ -104,6 +101,14 @@
                                  <padding>
                                     <Insets left="10.0" top="10.0" />
                                  </padding>
+                                 <children>
+                                    <CheckBox mnemonicParsing="false" text="Floor" />
+                                    <CheckBox mnemonicParsing="false" text="Uneven Bars" />
+                                    <CheckBox mnemonicParsing="false" text="Beam" />
+                                    <CheckBox mnemonicParsing="false" text="Vault" />
+                                    <CheckBox mnemonicParsing="false" text="Tramp" />
+                                    <CheckBox mnemonicParsing="false" text="Strength" />
+                                 </children>
                               </VBox>
                         </content>
                       </TitledPane>
@@ -187,7 +192,7 @@
                                 <ListView fx:id="cardListView" onDragDetected="#handleDragDetection" prefHeight="741.0" prefWidth="298.0" />
                             </content>
                         </ScrollPane>
-                        <VBox prefHeight="739.0" prefWidth="876.0" spacing="20.0" style="-fx-background-color: F5F5F5;">
+                        <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="876.0" spacing="20.0" style="-fx-background-color: F5F5F5;">
                             <children>
                                 <Label fx:id="lessonPlanName" alignment="TOP_CENTER" prefHeight="40.0" prefWidth="846.0" style="-fx-background-color: pink;" text="Enter lesson name" textAlignment="CENTER">
                                     <font>
@@ -200,7 +205,7 @@
                               <Insets top="5.0" />
                            </padding>
                                 </Label>
-                        <FlowPane fx:id="lessonFlowPane" prefHeight="116.0" prefWidth="756.0">
+                        <FlowPane fx:id="lessonFlowPane" prefHeight="116.0" prefWidth="852.0">
                            <children>
                               <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="180.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
                                  <image>

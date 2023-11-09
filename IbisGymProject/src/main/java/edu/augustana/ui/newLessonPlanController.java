@@ -1,4 +1,5 @@
 package edu.augustana.ui;
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -11,6 +12,7 @@ import edu.augustana.data.Course;
 import edu.augustana.data.EventFilter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -27,6 +29,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 import static edu.augustana.data.CardDatabase.allCards;
 import static edu.augustana.data.CardDatabase.getAllCards;
@@ -252,6 +256,27 @@ public class newLessonPlanController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void menuActionSaveAs(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Lesson Plan File");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Lesson Plan (*.glp)", "*.glp");
+        fileChooser.getExtensionFilters().add(filter);
+        Window mainWindow = cardListView.getScene().getWindow();
+        File chosenFile = fileChooser.showSaveDialog(mainWindow);
+        saveCurrentCourseToFile(chosenFile);
+    }
+    private void saveCurrentCourseToFile(File chosenFile) {
+        if (chosenFile != null) {
+            try {
+                MainApp.saveCurrentCourseToFile(chosenFile);
+            } catch (IOException e) {
+                new Alert(Alert.AlertType.ERROR, "Error saving movie log file: " + chosenFile).show();
+            }
+        }
+    }
+
 }
 
 
