@@ -98,12 +98,12 @@ public class CardDatabase {
 
                 eventSet.add(currentCard.getEvent().toUpperCase());
                 categorySet.add(currentCard.getCategory().toUpperCase());
-                genderSet.add(nextCard[6].toLowerCase(Locale.ROOT));
-                modelSexSet.add(nextCard[7].toLowerCase(Locale.ROOT));
-                levelSet.add(nextCard[8].toLowerCase(Locale.ROOT));
+                genderSet.add(currentCard.getGender().toUpperCase());
+                modelSexSet.add(currentCard.getModelSex().toUpperCase());
+                levelSet.add(currentCard.getLevel().toUpperCase());
 
                 for (String equipment : currentCard.getEquipment()){
-                    equipmentSet.add(equipment.toLowerCase(Locale.ROOT));
+                    equipmentSet.add(equipment.toUpperCase());
                 }
 
 
@@ -149,5 +149,7 @@ public class CardDatabase {
     }
 
 
-
+    public static Card getCardFromUniqueID(String id) {
+        return uniqueIdMap.get(id);
+    }
 }

@@ -1,6 +1,7 @@
 package edu.augustana.ui;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 import edu.augustana.data.*;
@@ -70,6 +71,7 @@ public class newLessonPlanController {
         // getReadableList ^^^
         cardListView.getItems().addAll(getAllCards());
 
+
         for (String eventOption : CardDatabase.getEventSet()) {
             CheckBox cBox = new CheckBox(eventOption);
             cBox.setOnAction(e -> updateFilterResults());
@@ -79,15 +81,20 @@ public class newLessonPlanController {
         GridPane gridPane = new GridPane();
     }
 
+
     private void updateFilterResults() {
         List<CardFilter> allFilters= new ArrayList<>();
+
 
         for (Node node:  genderFilterOptionsVBox.getChildren()) {
             CheckBox cBox = (CheckBox) node;
             if (cBox.isSelected()) {
                 allFilters.add(new GenderFilter(cBox.getText()));
+
+
             }
         }
+
 
         List<String> selectedEvents = new ArrayList<>();
         for (Node node: eventFilterOptionsVBox.getChildren()) {
@@ -96,11 +103,22 @@ public class newLessonPlanController {
                 selectedEvents.add(cBox.getText());
             }
         }
-        allFilters.add(new EventFilter(selectedEvents));
+        if(!selectedEvents.isEmpty()){
+            allFilters.add(new EventFilter(selectedEvents));
+        }
+
+        List<Card> filteredCards = CardDatabase.getAllCards();
+
+
+        for (CardFilter filter: allFilters){
+            filteredCards = filteredCards.stream().filter(filter::matches).collect(Collectors.toList());
+        }
+        cardListView.setItems(FXCollections.observableArrayList(filteredCards));
 
         // make a new CombinedAndFilter, and apply it to all your cards to get the filtered set
         // update the UI to display only those cards that were filtered
     }
+
 
     @FXML
     private void switchToHomepage() throws IOException {
