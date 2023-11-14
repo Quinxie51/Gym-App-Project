@@ -236,21 +236,29 @@ public class newLessonPlanController {
 
     @FXML
     private void handleSearch() {
-        String searchText = searchBar.getText().toLowerCase().trim(); // Get the text from the search bar
+        String searchText = searchBar.getText().toLowerCase().trim();
 
         if (searchText.isEmpty()) {
             // If the search bar is empty, display all cards
             cardListView.setItems((observableCards));
         } else {
-            // Search and display matching cards for entire word
             List<Card> matchingCards = new ArrayList<>();
+
             for (Card card : allCards) {
-                // Split the card title into words and check for an exact match
-                String[] words = card.getTitle().toLowerCase().split("\\s+"); // Split title into words
-                for (String word : words) {
-                    if (word.equals(searchText)) { // Check if any word matches the search text
-                        matchingCards.add(card);
-                        break; // Add the card and move to the next card
+                String titleLowerCase = card.getTitle().toLowerCase();
+                int searchTextIndex = 0;
+
+                // Iterate through each character in the card title
+                for (int i = 0; i < titleLowerCase.length(); i++) {
+                    if (titleLowerCase.charAt(i) == searchText.charAt(searchTextIndex)) {
+                        searchTextIndex++;
+                        if (searchTextIndex == searchText.length()) {
+                            matchingCards.add(card);
+                            break;
+                        }
+                    } else {
+                        // Reset the search index if characters do not match
+                        searchTextIndex = 0;
                     }
                 }
             }
