@@ -382,7 +382,7 @@ public class newLessonPlanController {
         Window mainWindow = lessonFlowPane.getScene().getWindow();
         File chosenFile = fileChooser.showOpenDialog(mainWindow);
         if (chosenFile != null) {
-            MainApp.openCurrentCourseFromFile(chosenFile);
+            MainApp.openCurrentCourseFromFile(chosenFile); //make a try catch
             refreshLessonView();
 
         }
