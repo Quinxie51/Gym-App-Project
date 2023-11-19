@@ -313,6 +313,12 @@ public class newLessonPlanController {
             imageView.setImage(image);
             imageView.setFitWidth(180);
             imageView.setFitHeight(120);
+            imageView.setOnMouseClicked(event -> {
+                toggleSelection(imageView);
+                event.consume();
+            });
+            // Set the Card as user data for later retrieval
+            imageView.setUserData(card);
             lessonFlowPane.setHgap(10); // should be set in scenebuilder
             lessonFlowPane.setVgap(10);
             lessonFlowPane.getChildren().add(imageView);
@@ -320,16 +326,47 @@ public class newLessonPlanController {
         }
     }
 
-/*    @FXML
- *//*   private void actionDeleteCard() {
-        LessonPlan cardToDelete = lessonFlowPane.getSelectionModel().getSelectedItem();
-        if (cardToDelete!= null) {
-            LessonPlan.getCurrentMovieLog().removeMovieWatchRecord(movieWatchToDelete);
+    private List<ImageView> selectedNodes = new ArrayList<>();
+
+// ...
+
+    @FXML
+    private void actionDeleteCard() {
+        // Create a copy of the selectedNodes list
+        List<ImageView> nodesToDelete = new ArrayList<>(selectedNodes);
+
+        if (!nodesToDelete.isEmpty()) {
+            for (ImageView selectedNode : nodesToDelete) {
+                String uniqueID = ((Card) selectedNode.getUserData()).getUniqueID();
+                Card cardToDelete = CardDatabase.getCardFromUniqueID(uniqueID);
+
+                // Remove the node from the FlowPane
+                lessonFlowPane.getChildren().remove(selectedNode);
+
+                // Remove the card from the lesson plan or any other data structure
+                this.lessonPlan.removeCard(cardToDelete);
+
+                // Remove the node from the selectedNodes list
+                selectedNodes.remove(selectedNode);
+            }
         } else {
-            new Alert(Alert.AlertType.WARNING, "Select a movie to delete first!").show();
+            new Alert(Alert.AlertType.WARNING, "Select a card to delete").show();
         }
     }
-*/
+
+    @FXML
+    private void toggleSelection(ImageView node) {
+        if (selectedNodes.contains(node)) {
+            node.getStyleClass().remove("selected");
+            selectedNodes.remove(node);
+        } else {
+            node.getStyleClass().add("selected");
+            selectedNodes.add(node);
+        }
+    }
+
+
+
 
     @FXML
     private void menuActionPrint() {
