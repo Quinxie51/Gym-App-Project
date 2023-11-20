@@ -246,19 +246,23 @@ public class newLessonPlanController {
 
             for (Card card : allCards) {
                 String titleLowerCase = card.getTitle().toLowerCase();
-                int searchTextIndex = 0;
 
-                // Iterate through each character in the card title
-                for (int i = 0; i < titleLowerCase.length(); i++) {
-                    if (titleLowerCase.charAt(i) == searchText.charAt(searchTextIndex)) {
-                        searchTextIndex++;
-                        if (searchTextIndex == searchText.length()) {
-                            matchingCards.add(card);
+                // Check if the title contains the search text
+                if (titleLowerCase.contains(searchText)) {
+                    matchingCards.add(card);
+                } else {
+                    // Check if any keyword contains the search text
+                    boolean keywordMatch = false;
+                    for (String keyword : card.getKeywords()) {
+                        if (keyword.toLowerCase().contains(searchText)) {
+                            keywordMatch = true;
                             break;
                         }
-                    } else {
-                        // Reset the search index if characters do not match
-                        searchTextIndex = 0;
+                    }
+
+                    // Add the card to the matching list if either title or keyword matches
+                    if (keywordMatch) {
+                        matchingCards.add(card);
                     }
                 }
             }
