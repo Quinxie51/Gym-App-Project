@@ -23,7 +23,7 @@ public class MainApp extends Application {
     //HELLO THUNDERDOMEApp
     @Override
     public void start(Stage stage) throws IOException, CsvValidationException {
-        CardDatabase.addCardsFromCSVFile("DEMO1.csv");
+        CardDatabase.addCardsFromCSVFile();
 
         scene = new Scene(loadFXML("mainHomepage"), 640, 480);
         stage.setScene(scene);

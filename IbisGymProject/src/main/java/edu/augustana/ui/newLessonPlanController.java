@@ -85,43 +85,34 @@ public class newLessonPlanController {
             cBox.setOnAction(e -> updateFilterResults());
             genderFilterOptionsVBox.getChildren().add(cBox);
         }
-
-
         for (String eventOption : CardDatabase.getEventSet()) {
             CheckBox cBox = new CheckBox(eventOption);
             cBox.setOnAction(e -> updateFilterResults());
             eventFilterOptionsVBox.getChildren().add(cBox);
         }
-
-
         for (String categoryOption : CardDatabase.getCategorySet()) {
             CheckBox cBox = new CheckBox(categoryOption);
             cBox.setOnAction(e -> updateFilterResults());
             categoryFilterOptionsVBox.getChildren().add(cBox);
         }
-
         for (String levelOption : CardDatabase.getLevelSet()) {
             CheckBox cBox = new CheckBox(levelOption);
             cBox.setOnAction(e -> updateFilterResults());
             levelFilterOptionsVBox.getChildren().add(cBox);
         }
-
-
         for (String equipmentOption : CardDatabase.getEquipmentSet()) {
             CheckBox cBox = new CheckBox(equipmentOption);
             cBox.setOnAction(e -> updateFilterResults());
             equipmentFilterOptionsVBox.getChildren().add(cBox);
         }
-
-
-
         for (String modelSexOption : CardDatabase.getModelSexSet()) {
             CheckBox cBox = new CheckBox(modelSexOption);
             cBox.setOnAction(e -> updateFilterResults());
             modelSexFilterOptionsVBox.getChildren().add(cBox);
         }
-
         System.out.println(getAllCards());
+        System.out.println(getAllCards().size());
+        System.out.println(uniqueIdMap.keySet().size());
     }
 
 
@@ -280,14 +271,12 @@ public class newLessonPlanController {
         event.consume();
     }
 
-
     @FXML
     void handleImageDragOver(DragEvent event) {
         if (event.getDragboard().hasString()) {
             event.acceptTransferModes(TransferMode.ANY);
         }
     }
-
 
     @FXML
     void handleImageDropped(DragEvent event) {
@@ -316,7 +305,6 @@ public class newLessonPlanController {
             lessonFlowPane.setHgap(10); // should be set in scenebuilder
             lessonFlowPane.setVgap(10);
             lessonFlowPane.getChildren().add(imageView);
-
         }
     }
 
@@ -395,7 +383,6 @@ public class newLessonPlanController {
 
         }
     }
-
 
     @FXML
     private void menuActionSave(ActionEvent event) {
