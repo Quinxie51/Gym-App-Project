@@ -1,11 +1,13 @@
-package edu.augustana.data;
+package edu.augustana.data.filters;
 
-import java.util.List;
+import edu.augustana.data.Card;
+import edu.augustana.data.filters.CardFilter;
+
 import java.util.Objects;
 
 //This needs work
 
-public class KeywordsFilter implements CardFilter{
+public class KeywordsFilter implements CardFilter {
     private final String[] selectedKeywords;
 
 

@@ -1,10 +1,12 @@
-package edu.augustana.data;
+package edu.augustana.data.filters;
+
+import edu.augustana.data.Card;
+import edu.augustana.data.filters.CardFilter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class EquipmentFilter implements CardFilter{
+public class EquipmentFilter implements CardFilter {
     List<String> selectedEquipments = new ArrayList<>();
 
     public EquipmentFilter(List<String> selectedOptions) {

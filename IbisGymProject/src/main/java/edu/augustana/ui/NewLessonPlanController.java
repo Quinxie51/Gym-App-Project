@@ -6,9 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import edu.augustana.data.*;
 import edu.augustana.data.Card;
-import edu.augustana.data.CardFilter;
-import edu.augustana.data.Course;
-import edu.augustana.data.EventFilter;
+import edu.augustana.data.filters.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,7 +27,7 @@ import javafx.stage.Window;
 
 import static edu.augustana.data.CardDatabase.*;
 
-public class newLessonPlanController {
+public class NewLessonPlanController {
 
     @FXML
     private ListView<Card> cardListView;
@@ -67,7 +65,7 @@ public class newLessonPlanController {
     private VBox printedVbox;
 
 
-    public newLessonPlanController() {
+    public NewLessonPlanController() {
 
     }
 
