@@ -1,8 +1,9 @@
-package csc305.testing;
+package edu.augustana.data;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import edu.augustana.data.CardDatabase;
+import javafx.application.Platform;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.io.IOException;
 public class CardDatabaseTest {
     @Test
     public void testGetCardFromUniqueID() throws IOException {
+        Platform.startup(()->{});
         CardDatabase.addCardsFromCSVFile();
 
         // Pick a unique ID from the loaded cards

@@ -11,11 +11,8 @@ import com.opencsv.exceptions.CsvValidationException;
 import edu.augustana.data.filters.CardFilter;
 
 public class CardDatabase {
-    private static final String CSV_FILE_PATH = "src/main/resources/edu/augustana/DEMO1.csv";
     private static final String CSV_MAIN_PATH = "CardPack";
 
-    private static final String CSV_FILE_PATH1 = "CardPack/DEMO1Pack/DEMO1.csv";
-    private static final String CSV_FILE_PATH2 = "CardPack/DEMO2Pack/DEMO2.csv";
     public static List<Card> allCards = new ArrayList<>();
 
     public static HashMap<String, Card> uniqueIdMap = new HashMap<>();
