@@ -68,17 +68,17 @@
                      <children>
                         <ImageView fitHeight="170.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../CardPack/DEMO1Pack/2.png" />
+                              <Image url="@../../../../../../CardPack/Demo1Pack/2.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="170.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../CardPack/DEMO1Pack/3.png" />
+                              <Image url="@../../../../../../CardPack/Demo1Pack/3.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="170.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../CardPack/DEMO1Pack/7.png" />
+                              <Image url="@../../../../../../CardPack/Demo1Pack/7.png" />
                            </image>
                         </ImageView>
                      </children>
