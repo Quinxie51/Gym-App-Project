@@ -118,57 +118,6 @@ public class CardDatabase {
         }
     }
 
-        /**
-        String path;
-        if (Objects.equals(filePath, "DEMO1.csv")){
-            path = CSV_FILE_PATH1;
-        } else {
-            path = CSV_FILE_PATH2;
-        }
-        try (
-                Reader reader = Files.newBufferedReader(Paths.get(path));
-                CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
-        ) {
-            // Reading Cards One by One in a String array
-            String[] nextCard;
-            while ((nextCard = csvReader.readNext()) != null) {
-
-                String uniqueID = nextCard[4]+"/" +nextCard[5];
-                Card currentCard = new Card(uniqueID,nextCard[0],nextCard[1],nextCard[2],nextCard[3],
-                        nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8], nextCard[9].split(","), nextCard[10].split(","));
-
-                allCards.add(currentCard);
-
-                uniqueIdMap.put(uniqueID,currentCard);
-
-                eventSet.add(currentCard.getEvent().toUpperCase());
-                categorySet.add(currentCard.getCategory().toUpperCase());
-                genderSet.add(currentCard.getGender().toUpperCase());
-                modelSexSet.add(currentCard.getModelSex().toUpperCase());
-                levelSet.add(currentCard.getLevel().toUpperCase());
-
-                for (String equipment : currentCard.getEquipment()){
-                    equipmentSet.add(equipment.toUpperCase());
-                }
-
-
-            }
-        } catch (CsvValidationException e) {
-            throw new RuntimeException(e);
-        }
-         **/
-
-
-
-/**
-        allCards = new CsvToBeanBuilder<Card>(new FileReader(filename)).withType(Card.class).build().parse();
-        allCardMap = new HashMap<>();
-        for (Card card : allCards) {
-            allCardMap.put(card.getUniqueID(), card);
-        }
-        System.out.println(allCardMap);
-**/
-
 
     public static Card getCardFromUniqueID(String id) {
         return uniqueIdMap.get(id);

@@ -15,7 +15,7 @@ import static edu.augustana.data.CardDatabase.*;
 public class CardDatabaseTest {
     @Test
     public void testGetCardFromUniqueID() throws IOException {
-        CardDatabase.addCardsFromCSVFile("DEMO1.csv");
+        CardDatabase.addCardsFromCSVFile();
 
         // Pick a unique ID from the loaded cards
         String uniqueID = CardDatabase.getAllCards().get(0).getUniqueID();

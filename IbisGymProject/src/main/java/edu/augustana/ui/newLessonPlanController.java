@@ -357,9 +357,6 @@ public class newLessonPlanController {
         }
     }
 
-
-
-
     @FXML
     private void menuActionPrint() {
         try {
