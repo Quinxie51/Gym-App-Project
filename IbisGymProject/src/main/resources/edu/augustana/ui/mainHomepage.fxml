@@ -42,7 +42,7 @@
                   </LinearGradient>
                </fill>
             </Rectangle>
-            <ImageView fitHeight="602.0" fitWidth="597.0" layoutX="684.0" layoutY="52.0" opacity="0.92" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="602.0" fitWidth="597.0" layoutX="665.0" layoutY="12.0" opacity="0.92" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Image/heroImage.png" />
                </image>
@@ -52,17 +52,17 @@
                   <Image url="@Image/logo.png" />
                </image>
             </ImageView>
-            <Text layoutX="327.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transform Your Moves, Ignite Your Passion" wrappingWidth="487.7716522216797">
+            <Text layoutX="328.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transform Your Moves, Ignite Your Passion" wrappingWidth="487.7716522216797">
                <font>
                   <Font name="Noto Sans Myanmar Black" size="23.0" />
                </font>
             </Text>
-            <Text layoutX="329.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elevate Fitness with " wrappingWidth="491.1098327636719">
+            <Text layoutX="330.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elevate Fitness with " wrappingWidth="491.1098327636719">
                <font>
                   <Font name="Noto Sans JP Bold" size="42.0" />
                </font>
             </Text>
-            <Button fx:id="newLessonButton" layoutX="331.0" layoutY="576.0" mnemonicParsing="false" onAction="#handleCreateNewLesson" prefHeight="60.0" prefWidth="148.0" style="-fx-background-color: #196C8F;" text="New Lesson Plan" textFill="WHITE">
+            <Button fx:id="newLessonButton" layoutX="332.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleCreateNewLesson" prefHeight="60.0" prefWidth="148.0" style="-fx-background-color: #196C8F;" text="New Lesson Plan" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -70,7 +70,7 @@
                   <Font name="Noto Sans JP Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="506.0" layoutY="577.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="175.0" style="-fx-background-color: #333333;" text="Upload New Lesson" textFill="WHITE">
+            <Button layoutX="507.0" layoutY="537.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="175.0" style="-fx-background-color: #333333;" text="Upload New Lesson" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -78,7 +78,7 @@
                   <Font name="Noto Sans JP Bold" size="14.0" />
                </font>
             </Button>
-            <Text fill="#196c8f" layoutX="330.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GymPro" wrappingWidth="491.1098327636719">
+            <Text fill="#196c8f" layoutX="331.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GymPro" wrappingWidth="491.1098327636719">
                <font>
                   <Font name="Noto Sans JP Bold" size="42.0" />
                </font>
