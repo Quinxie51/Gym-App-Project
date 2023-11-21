@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.transform.Scale;
 
 public class Printing {
 
@@ -31,7 +32,7 @@ public class Printing {
             PrinterJob printerJob = PrinterJob.createPrinterJob();
             if (printerJob != null && printerJob.showPrintDialog(printedVbox.getScene().getWindow())) {
                 Printer printer = Printer.getDefaultPrinter();
-                PageLayout pageLayout = printer.createPageLayout(Paper.A4,PageOrientation.PORTRAIT,Printer.MarginType.HARDWARE_MINIMUM);
+                PageLayout pageLayout = printer.createPageLayout(Paper.A4,PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
                 printerJob.getJobSettings().setPageLayout(pageLayout);
 
 
@@ -42,8 +43,13 @@ public class Printing {
 //                double scale = Math.min(x,y);
 
                 // printerJob.printPage(snapshot.getPixelReader(),pageLayout,0,0,snapshot.getWidth()*scale,snapshot.getHeight()*scale);
+                double scaleX = pageLayout.getPrintableWidth() / printedVbox.getBoundsInParent().getWidth();
+                double scaleY = pageLayout.getPrintableHeight() / printedVbox.getBoundsInParent().getHeight();
+
+                printedVbox.getTransforms().add(new Scale(scaleX, scaleY));
                 if(printerJob.printPage(printedVbox)){
                     printerJob.endJob();
+                    printedVbox.getTransforms().clear();
                 }
             }
         } catch (Exception e) {
