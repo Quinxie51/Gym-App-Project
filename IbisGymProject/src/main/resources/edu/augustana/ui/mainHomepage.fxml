@@ -2,156 +2,88 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane prefHeight="724.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.MainHomepageController">
    <top>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="727.0" prefWidth="960.0" style="-fx-background-color: #85B7CC;" BorderPane.alignment="CENTER">
+
+
          <children>
-            <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="83.0" prefWidth="784.0" spacing="20.0">
-               <children>
-                  <ImageView fitHeight="83.0" fitWidth="141.0" onMouseClicked="#backToHome" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/logo.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="newLessonButton" onAction="#handleCreateNewLesson" style="-fx-background-color: pink;" text="+ New Lesson" textFill="#ffffffd6">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <font>
-                        <Font name="Open Sans Bold" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="allCardsButton" mnemonicParsing="false" onAction="#openAllCardsView" style="-fx-background-color: transparent;" text="All Cards">
-                     <font>
-                        <Font name="Lato Regular" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="favoritesButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Favorites">
-                     <font>
-                        <Font name="Lato Regular" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="deletedButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Deleted">
-                     <font>
-                        <Font name="Lato Regular" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="printButton" mnemonicParsing="false" onAction="#printScene" style="-fx-background-color: transparent;" text="Print">
-                     <font>
-                        <Font name="Lato Regular" size="13.0" />
-                     </font></Button>
-                  <Button fx:id="settingsButton" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Settings">
-                     <font>
-                        <Font name="Lato Regular" size="13.0" />
-                     </font></Button>
-               </children>
-            </HBox>
-         </children></HBox>
-   </top>
-   <center>
-      <AnchorPane prefHeight="624.0" prefWidth="935.0" style="-fx-background-color: #85B7CC;" BorderPane.alignment="CENTER">
-         <children>
-            <ScrollPane layoutY="111.0" prefHeight="244.0" prefWidth="963.0">
-               <content>
-                  <HBox fx:id="recentViewBox" alignment="CENTER" prefHeight="233.0" prefWidth="955.0" spacing="20.0">
-                     <children>
-                        <ImageView fitHeight="170.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../CardPack/Demo1Pack/2.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="170.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../CardPack/Demo1Pack/3.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="170.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../../../CardPack/Demo1Pack/7.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-               </content>
-            </ScrollPane>
-            <GridPane layoutX="140.0" layoutY="381.0" prefHeight="124.0" prefWidth="448.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.22592163085938" minWidth="10.0" prefWidth="37.420928955078125" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.07907104492188" minWidth="10.0" prefWidth="195.07907104492188" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.49993896484375" minWidth="10.0" prefWidth="94.58270263671875" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.91729736328125" minWidth="10.0" prefWidth="119.91729736328125" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="28.69781494140625" minHeight="10.0" prefHeight="28.69781494140625" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="17.920867919921875" minHeight="10.0" prefHeight="13.30218505859375" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="15.582275390625" minHeight="5.6497802734375" prefHeight="5.6497802734375" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="20.38397216796875" minHeight="0.49591064453125" prefHeight="6.823974609375" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="47.50408935546875" minHeight="10.0" prefHeight="41.176025390625" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <ImageView fitHeight="22.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
-                     <image>
-                        <Image url="@Image/folder-2.png" />
-                     </image>
-                  </ImageView>
-                  <ComboBox prefHeight="26.0" prefWidth="80.0" promptText="Level" style="-fx-background-color: transparent;" GridPane.columnIndex="1" />
-                  <ImageView fitHeight="22.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
-                     <image>
-                        <Image url="@Image/folder-2.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
-                     <image>
-                        <Image url="@Image/folder-2.png" />
-                     </image>
-                  </ImageView>
-                  <TextField style="-fx-background-color: transparent;" text="Folder 1" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <TextField style="-fx-background-color: transparent;" text="Folder 1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField prefHeight="26.0" prefWidth="190.0" style="-fx-background-color: transparent;" text="Folder 1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ComboBox prefHeight="26.0" prefWidth="72.0" promptText="Date" style="-fx-background-color: transparent;" GridPane.columnIndex="2" />
-                  <TextField prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: transparent;" text="10/10/2023" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <TextField prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: transparent;" text="10/10/2023" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                  <TextField prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: transparent;" text="10/10/2023" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                     <image>
-                        <Image url="@Image/more-3.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
-                     <image>
-                        <Image url="@Image/more-3.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="6">
-                     <image>
-                        <Image url="@Image/more-3.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="249.65367126464844" endY="0.015178561210632324" startX="-100.0" startY="0.08575594425201416" strokeWidth="0.25" GridPane.rowIndex="3" />
-                  <Line endX="249.65367126464844" endY="0.015178561210632324" startX="-100.0" startY="0.08575594425201416" strokeWidth="0.25" GridPane.rowIndex="5" />
-                  <Line endX="249.65367126464844" endY="0.015178561210632324" startX="-100.0" startY="0.015591323375701904" strokeWidth="0.25" GridPane.rowIndex="1" />
-               </children>
-            </GridPane>
-            <Label layoutX="78.0" layoutY="51.0" text="Recent View">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="982.0" layoutX="-60.0" layoutY="-4.0" stroke="#ffffff00" strokeType="INSIDE" width="1591.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.7529691211401425" startX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.24313725531101227" green="0.615686297416687" blue="0.772549033164978" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                           <color>
+                              <Color red="0.24313725531101227" green="0.615686297416687" blue="0.772549033164978" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.9398148059844971" green="0.9829475283622742" blue="1.0" opacity="0.49000000953674316" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <ImageView fitHeight="602.0" fitWidth="597.0" layoutX="684.0" layoutY="52.0" opacity="0.92" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Image/heroImage.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="243.0" fitWidth="256.0" layoutX="282.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Image/logo.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="327.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transform Your Moves, Ignite Your Passion" wrappingWidth="487.7716522216797">
                <font>
-                  <Font name="Open Sans Bold" size="28.0" />
+                  <Font name="Noto Sans Myanmar Black" size="23.0" />
                </font>
-            </Label>
-            <Line endX="255.97540283203125" layoutX="234.0" layoutY="505.0" startX="-94.0" strokeWidth="0.25" />
+            </Text>
+            <Text layoutX="329.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elevate Fitness with " wrappingWidth="491.1098327636719">
+               <font>
+                  <Font name="Noto Sans JP Bold" size="42.0" />
+               </font>
+            </Text>
+            <Button fx:id="newLessonButton" layoutX="331.0" layoutY="576.0" mnemonicParsing="false" onAction="#handleCreateNewLesson" prefHeight="60.0" prefWidth="148.0" style="-fx-background-color: #196C8F;" text="New Lesson Plan" textFill="WHITE">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Noto Sans JP Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="506.0" layoutY="577.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="175.0" style="-fx-background-color: #333333;" text="Upload New Lesson" textFill="WHITE">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Noto Sans JP Bold" size="14.0" />
+               </font>
+            </Button>
+            <Text fill="#196c8f" layoutX="330.0" layoutY="509.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GymPro" wrappingWidth="491.1098327636719">
+               <font>
+                  <Font name="Noto Sans JP Bold" size="42.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
-   </center>
+   </top>
 </BorderPane>
