@@ -1,56 +1,50 @@
 package edu.augustana.data;
 
 import edu.augustana.ui.MainApp;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class Printing {
-    private void Print() {
-        try {
-            // Load the FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("newLessonCreationPage.fxml"));
-            Node fxmlContent = loader.load();
 
+    @FXML
+    private VBox printedVbox;
+
+
+    public Printing(VBox page){
+        this.printedVbox = page;
+    }
+
+    public void setPrintedVbox(VBox printedVbox) {
+        this.printedVbox = printedVbox;
+    }
+
+
+    public void printPage() {
+        try {
             // Create a printing job
             PrinterJob printerJob = PrinterJob.createPrinterJob();
-            if (printerJob != null) {
-                // Set the printer and page layout
+            if (printerJob != null && printerJob.showPrintDialog(printedVbox.getScene().getWindow())) {
                 Printer printer = Printer.getDefaultPrinter();
-                PageLayout pageLayout = printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
+                PageLayout pageLayout = printer.createPageLayout(Paper.A4,PageOrientation.PORTRAIT,Printer.MarginType.HARDWARE_MINIMUM);
                 printerJob.getJobSettings().setPageLayout(pageLayout);
 
-                // Fit the content to the page size
-                Scene scene = MainApp.getScene();
-                //scene.getRoot().resize(pageLayout.getPrintableWidth(), pageLayout.getPrintableHeight());
-                //scene.getWindow().setWidth(pageLayout.getPrintableWidth());
-                //scene.getWindow().setHeight(pageLayout.getPrintableHeight());
 
-                // Create a separate container for the content to print
-                Pane printContainer = new Pane();
-                printContainer.getChildren().add(fxmlContent);
+                //                printerJob.getJobSettings().setPageLayout(pageLayout);
+//                WritableImage snapshot = printedVbox.snapshot(new SnapshotParameters(),null);
+//                double x = pageLayout.getPrintableWidth()/ snapshot.getWidth();
+//                double y =pageLayout.getPrintableHeight()/snapshot.getHeight();
+//                double scale = Math.min(x,y);
 
-                double x = 500; // X coordinate of the top-left corner of the area to print
-                double y = -100; // Y coordinate of the top-left corner of the area to print
-                double width = 900; // Width of the area to print
-                double height = 750; // Height of the area to print
-
-                // Adjust the layout of the printContainer
-                printContainer.setLayoutX(-x);
-                printContainer.setLayoutY(-y);
-                printContainer.setPrefWidth(width);
-                printContainer.setPrefHeight(height);
-
-                boolean printed = printerJob.printPage(printContainer);
-                if (printed) {
+                // printerJob.printPage(snapshot.getPixelReader(),pageLayout,0,0,snapshot.getWidth()*scale,snapshot.getHeight()*scale);
+                if(printerJob.printPage(printedVbox)){
                     printerJob.endJob();
                 }
-
-                scene.getRoot().resize(scene.getWidth(), scene.getHeight());
-                scene.getWindow().setWidth(scene.getWidth());
-                scene.getWindow().setHeight(scene.getHeight());
             }
         } catch (Exception e) {
             e.printStackTrace();
