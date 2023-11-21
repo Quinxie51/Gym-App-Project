@@ -1,7 +1,9 @@
-package edu.augustana.data;
+package edu.augustana.data.filters;
+
+import edu.augustana.data.Card;
+import edu.augustana.data.filters.CardFilter;
 
 import java.util.List;
-import java.util.Objects;
 
 public class GenderFilter implements CardFilter {
 

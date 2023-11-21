@@ -4,13 +4,11 @@ import com.opencsv.CSVReader;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.*;
 
 import com.opencsv.CSVReaderBuilder;
-import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.exceptions.CsvValidationException;
+import edu.augustana.data.filters.CardFilter;
 
 public class CardDatabase {
     private static final String CSV_FILE_PATH = "src/main/resources/edu/augustana/DEMO1.csv";

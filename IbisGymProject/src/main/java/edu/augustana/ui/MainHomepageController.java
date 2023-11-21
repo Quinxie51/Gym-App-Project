@@ -2,25 +2,13 @@ package edu.augustana.ui;
 
 import java.io.IOException;
 
-import edu.augustana.data.Course;
-import edu.augustana.data.LessonPlan;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.*;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.control.*;
-import javafx.scene.image.WritableImage;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
-import javafx.scene.paint.Color;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
 
 import java.util.Optional;
 
@@ -61,7 +49,7 @@ public class MainHomepageController {
     private TextField newLessonText;
 
     @FXML
-    private edu.augustana.ui.newLessonPlanController newLessonPlanController = new newLessonPlanController();
+    private NewLessonPlanController newLessonPlanController = new NewLessonPlanController();
 
     @FXML
     private void initialize() {
