@@ -73,10 +73,7 @@ public class NewLessonPlanController {
     private void initialize() {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
         this.vboxPage = new Printing(printedVbox);
-
-        //lessonPlan.setLessonTitle(Course.currentCourse.getOneLessonPlan().getLessonTitle());
-        // Code: title [gender]
-        // getReadableList ^^^
+        
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
