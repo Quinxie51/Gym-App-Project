@@ -123,6 +123,7 @@ public class NewLessonPlanController {
             CheckBox cBox = (CheckBox) node;
             if (cBox.isSelected()) {
                 selectedGenders.add(cBox.getText());
+
             }
         }
         if (!selectedGenders.isEmpty()) {
