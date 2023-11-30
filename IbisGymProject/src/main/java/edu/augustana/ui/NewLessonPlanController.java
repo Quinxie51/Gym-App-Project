@@ -234,9 +234,16 @@ public class NewLessonPlanController {
 
             for (Card card : allCards) {
                 String titleLowerCase = card.getTitle().toLowerCase();
+                String shortCodeLowerCase = card.getCode().toLowerCase();
+                String eventLowerCase = card.getEvent().toLowerCase();
+                String categoryLowerCase = card.getCategory().toLowerCase();
 
-                // Check if the title contains the search text
-                if (titleLowerCase.contains(searchText)) {
+                // Check if the title, short code, event, category, or any equipment contains the search text
+                if (titleLowerCase.contains(searchText) ||
+                        shortCodeLowerCase.contains(searchText) ||
+                        eventLowerCase.contains(searchText) ||
+                        categoryLowerCase.contains(searchText) ||
+                        equipmentContainsSearchText(card.getEquipment(), searchText)) {
                     matchingCards.add(card);
                 } else {
                     // Check if any keyword contains the search text
@@ -248,7 +255,7 @@ public class NewLessonPlanController {
                         }
                     }
 
-                    // Add the card to the matching list if either title or keyword matches
+                    // Add the card to the matching list if either title, short code, event, category, any equipment, or keyword matches
                     if (keywordMatch) {
                         matchingCards.add(card);
                     }
@@ -257,6 +264,18 @@ public class NewLessonPlanController {
             cardListView.setItems(FXCollections.observableArrayList(matchingCards));
         }
     }
+
+    // Helper method to check if any equipment contains the search text
+    private boolean equipmentContainsSearchText(List<String> equipment, String searchText) {
+        for (String item : equipment) {
+            if (item.toLowerCase().contains(searchText)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
     @FXML
     void handleDragDetection(MouseEvent event) {
