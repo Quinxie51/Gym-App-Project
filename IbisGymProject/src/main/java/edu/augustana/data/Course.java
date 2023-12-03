@@ -33,7 +33,5 @@ public class Course {
         writer.println(serializedCourseText);
         writer.close();
     }
-
-    public void setOneLessonPlan(LessonPlan lessonPlan) {
-    }
 }
+
