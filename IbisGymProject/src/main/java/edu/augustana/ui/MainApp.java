@@ -20,6 +20,8 @@ public class MainApp extends Application {
     private static Course currentCourse = new Course();
     private static File currentCourseFile = null;
 
+    private static LessonPlanMemento currentLessonPlanMemento;
+
     //HELLO THUNDERDOMEApp
     @Override
     public void start(Stage stage) throws IOException, CsvValidationException {
