@@ -34,6 +34,4 @@ public class Course {
         writer.close();
     }
 
-    public void setOneLessonPlan(LessonPlan lessonPlan) {
-    }
 }
