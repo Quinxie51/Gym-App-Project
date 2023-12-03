@@ -6,6 +6,10 @@ import java.util.List;
 public class LessonPlan {
     //Add a list of cards
 
+
+
+
+    private LessonPlan currentLessonPlan = this;
     private String lessonTitle;
 
     private List<String> cardIdList = new ArrayList<>();
@@ -21,6 +25,9 @@ public class LessonPlan {
         this.cardIdList = new ArrayList<>(otherLessonPlan.cardIdList);
     }
 
+    public LessonPlan getCurrentLessonPlan() {
+        return currentLessonPlan;
+    }
 
     public String getLessonTitle() {
         return lessonTitle;

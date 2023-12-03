@@ -251,10 +251,6 @@ public class NewLessonPlanController {
     }
 
 
-    void saveForPreview() throws IOException {
-
-    }
-
     @FXML
     private void handleSearch() {
         String searchText = searchBar.getText().toLowerCase().trim();
