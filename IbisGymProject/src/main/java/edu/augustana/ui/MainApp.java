@@ -2,6 +2,7 @@ package edu.augustana.ui;
 import com.opencsv.exceptions.CsvValidationException;
 import edu.augustana.data.CardDatabase;
 import edu.augustana.data.Course;
+import edu.augustana.data.LessonPlan;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +22,7 @@ public class MainApp extends Application {
     private static File currentCourseFile = null;
 
     private static LessonPlanMemento currentLessonPlanMemento;
+    private static LessonPlan currentLessonPlan;
 
     //HELLO THUNDERDOMEApp
     @Override
@@ -80,6 +82,14 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static LessonPlanMemento getCurrentLessonPlanMemento() {
+        return new LessonPlanMemento(currentLessonPlan);
+    }
+
+    public static void setCurrentLessonPlanMemento(LessonPlanMemento memento) {
+        currentLessonPlanMemento = memento;
     }
 
     }
