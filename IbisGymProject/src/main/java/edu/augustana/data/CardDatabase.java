@@ -89,9 +89,7 @@ public class CardDatabase {
                                                 nextCard[4], nextCard[5],nextCard[6],nextCard[7],nextCard[8], nextCard[9].split(","), nextCard[10].split(","));
 
                                         allCards.add(currentCard);
-
                                         uniqueIdMap.put(uniqueID,currentCard);
-
                                         eventSet.add(currentCard.getEvent().toUpperCase());
                                         categorySet.add(currentCard.getCategory().toUpperCase());
                                         genderSet.add(currentCard.getGender().toUpperCase());

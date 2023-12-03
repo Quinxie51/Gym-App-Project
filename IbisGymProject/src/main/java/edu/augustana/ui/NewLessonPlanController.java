@@ -32,12 +32,18 @@ public class NewLessonPlanController {
     @FXML
     private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
     private LessonPlan lessonPlan;
-    @FXML private VBox eventFilterOptionsVBox;
-    @FXML private VBox genderFilterOptionsVBox;
-    @FXML private VBox categoryFilterOptionsVBox;
-    @FXML private VBox levelFilterOptionsVBox;
-    @FXML private VBox equipmentFilterOptionsVBox;
-    @FXML private VBox modelSexFilterOptionsVBox;
+    @FXML
+    private VBox eventFilterOptionsVBox;
+    @FXML
+    private VBox genderFilterOptionsVBox;
+    @FXML
+    private VBox categoryFilterOptionsVBox;
+    @FXML
+    private VBox levelFilterOptionsVBox;
+    @FXML
+    private VBox equipmentFilterOptionsVBox;
+    @FXML
+    private VBox modelSexFilterOptionsVBox;
 
     @FXML
     private Button undoButton;
@@ -69,8 +75,12 @@ public class NewLessonPlanController {
     private Printing vboxPage;
     @FXML
     private ListView<Card> cardListView;
-    @FXML private Button deleteCard;
-    @FXML private Button addEvent;
+    @FXML
+    private Button deleteCard;
+    @FXML
+    private Button addEvent;
+    @FXML
+    private Event eventSection;
 
 
     public NewLessonPlanController() {
@@ -155,8 +165,6 @@ public class NewLessonPlanController {
         //Gender end
 
 
-
-
         //Events start
         List<String> selectedEvents = new ArrayList<>();
         for (Node node : eventFilterOptionsVBox.getChildren()) {
@@ -169,7 +177,6 @@ public class NewLessonPlanController {
             allFilters.add(new EventFilter(selectedEvents));
         }
         //Events end
-
 
 
         //Category start
@@ -197,7 +204,6 @@ public class NewLessonPlanController {
             allFilters.add(new LevelFilter(selectedLevel));
         }
         //Level end
-
 
 
         //Equipment start
@@ -251,6 +257,7 @@ public class NewLessonPlanController {
         MainApp.setRoot("previewPage");
     }
 
+
     @FXML
     private void handleSearch() {
         String searchText = searchBar.getText().toLowerCase().trim();
@@ -303,7 +310,6 @@ public class NewLessonPlanController {
         }
         return false;
     }
-
 
 
     @FXML
@@ -367,6 +373,21 @@ public class NewLessonPlanController {
     private List<CardImageView> selectedNodes = new ArrayList<>();
 
     @FXML
+    private void handleAddEvent(ActionEvent event) {
+        // You can prompt the user to enter the event name using a dialog or text input field
+        TextInputDialog dialog = new TextInputDialog("Event Name");
+        dialog.setTitle("New Event");
+        dialog.setHeaderText("Enter the name for the new event:");
+
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(eventName -> {
+            Event newEvent = new Event(eventName);
+            MainApp.getCurrentCourse().getOneLessonPlan().addEvent(newEvent);
+            refreshLessonView();  // Refresh the UI to display the new event
+        });
+    }
+
+    @FXML
     private void actionDeleteCard() {
         // Create a copy of the selectedNodes list
         List<CardImageView> nodesToDelete = new ArrayList<>(selectedNodes);
@@ -405,12 +426,6 @@ public class NewLessonPlanController {
         }
     }
 
-    @FXML
-    private void btnActionPrint() {
-        vboxPage.printPage();
-    }
-
-
 
     @FXML
     private void menuActionOpen(ActionEvent event) throws IOException {
@@ -423,7 +438,6 @@ public class NewLessonPlanController {
         if (chosenFile != null) {
             MainApp.openCurrentCourseFromFile(chosenFile); //make a try catch
             refreshLessonView();
-
         }
     }
 
@@ -435,6 +449,7 @@ public class NewLessonPlanController {
             saveCurrentCourseToFile(MainApp.getCurrentCourseFile());
         }
     }
+
     @FXML
     private void menuActionSaveAs(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -445,6 +460,7 @@ public class NewLessonPlanController {
         File chosenFile = fileChooser.showSaveDialog(mainWindow);
         saveCurrentCourseToFile(chosenFile);
     }
+
     private void saveCurrentCourseToFile(File chosenFile) {
         if (chosenFile != null) {
             try {
@@ -454,6 +470,7 @@ public class NewLessonPlanController {
             }
         }
     }
+
     @FXML
     private void undo() {
         if (!undoStack.isEmpty()) {
@@ -491,11 +508,7 @@ public class NewLessonPlanController {
         for (int i = 0; i < Math.min(currentCards.size(), cardStates.size()); i++) {
             currentCards.get(i).restoreFromMemento(cardStates.get(i));
         }
-
-        refreshLessonView(); // Update the UI after restoring
     }
-
-
 }
 
 
