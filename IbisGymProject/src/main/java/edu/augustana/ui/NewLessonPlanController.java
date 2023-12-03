@@ -39,7 +39,14 @@ public class NewLessonPlanController {
     @FXML private VBox equipmentFilterOptionsVBox;
     @FXML private VBox modelSexFilterOptionsVBox;
 
+    @FXML
+    private Button undoButton;
 
+    @FXML
+    private Button redoButton;
+
+    private Stack<LessonPlanMemento> undoStack = new Stack<>();
+    private Stack<LessonPlanMemento> redoStack = new Stack<>();
 
     @FXML
     private CheckBox beamEventCheck;
@@ -120,6 +127,8 @@ public class NewLessonPlanController {
         System.out.println(getAllCards());
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
+
+        updateUndoRedoButtons();
     }
 
 
@@ -432,6 +441,39 @@ public class NewLessonPlanController {
                 new Alert(Alert.AlertType.ERROR, "Error saving movie log file: " + chosenFile).show();
             }
         }
+    }
+
+    @FXML
+    private void undo() {
+        if (!undoStack.isEmpty()) {
+            LessonPlanMemento memento = undoStack.pop();
+            redoStack.push(createMemento()); // Save current state for redo
+            restoreFromMemento(memento);
+            updateUndoRedoButtons();
+        }
+    }
+
+    @FXML
+    private void redo() {
+        if (!redoStack.isEmpty()) {
+            LessonPlanMemento memento = redoStack.pop();
+            undoStack.push(createMemento()); // Save current state for undo
+            restoreFromMemento(memento);
+            updateUndoRedoButtons();
+        }
+    }
+
+    private LessonPlanMemento createMemento() {
+        return new LessonPlanMemento(MainApp.getCurrentCourse().getOneLessonPlan());
+    }
+
+    private void restoreFromMemento(LessonPlanMemento memento) {
+        MainApp.getCurrentCourse().setOneLessonPlan(new LessonPlan(memento.getLessonPlan()));
+    }
+
+    private void updateUndoRedoButtons() {
+        undoButton.setDisable(undoStack.isEmpty());
+        redoButton.setDisable(redoStack.isEmpty());
     }
 
 }
