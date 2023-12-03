@@ -45,8 +45,8 @@ public class NewLessonPlanController {
     @FXML
     private Button redoButton;
 
-    private Stack<LessonPlanMemento> undoStack = new Stack<>();
-    private Stack<LessonPlanMemento> redoStack = new Stack<>();
+    private Stack<CardMemento> undoStack = new Stack<>();
+    private Stack<CardMemento> redoStack = new Stack<>();
 
     @FXML
     private CheckBox beamEventCheck;
@@ -129,9 +129,10 @@ public class NewLessonPlanController {
         System.out.println(getAllCards());
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
-        
-        updateUndoRedoButtons();
+
         this.lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
+
+        undoStack.push(createMemento());
     }
 
 
@@ -453,42 +454,47 @@ public class NewLessonPlanController {
             }
         }
     }
-
     @FXML
     private void undo() {
         if (!undoStack.isEmpty()) {
-            LessonPlanMemento memento = undoStack.pop();
+            CardMemento memento = undoStack.pop();
             redoStack.push(createMemento()); // Save current state for redo
             restoreFromMemento(memento);
-            updateUndoRedoButtons();
         }
     }
 
     @FXML
     private void redo() {
         if (!redoStack.isEmpty()) {
-            LessonPlanMemento memento = redoStack.pop();
+            CardMemento memento = redoStack.pop();
             undoStack.push(createMemento()); // Save current state for undo
             restoreFromMemento(memento);
-            updateUndoRedoButtons();
         }
     }
 
-    private LessonPlanMemento createMemento() {
-        return new LessonPlanMemento(MainApp.getCurrentCourse().getOneLessonPlan());
+    // Add these methods to your NewLessonPlanController
+    private CardMemento createMemento() {
+        List<CardMemento.CardState> cardStates = new ArrayList<>();
+
+        // Ensure that card states are included in the memento
+        for (Card card : MainApp.getCurrentCourse().getOneLessonPlan().getCards()) {
+            cardStates.add(new CardMemento.CardState(card));
+        }
+
+        return new CardMemento(cardStates);
     }
 
+    private void restoreFromMemento(CardMemento memento) {
+        List<Card> currentCards = MainApp.getCurrentCourse().getOneLessonPlan().getCards();
+        List<CardMemento.CardState> cardStates = memento.getCardStates();
 
-   private void restoreFromMemento(LessonPlanMemento memento) {
-        MainApp.getCurrentCourse().setOneLessonPlan(new LessonPlan(memento.getLessonPlan()));
+        for (int i = 0; i < Math.min(currentCards.size(), cardStates.size()); i++) {
+            currentCards.get(i).restoreFromMemento(cardStates.get(i));
+        }
+
         refreshLessonView(); // Update the UI after restoring
-
     }
 
-    private void updateUndoRedoButtons() {
-        undoButton.setDisable(undoStack.isEmpty());
-        redoButton.setDisable(redoStack.isEmpty());
-    }
 
 }
 

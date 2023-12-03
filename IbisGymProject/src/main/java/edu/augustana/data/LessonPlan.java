@@ -7,18 +7,12 @@ public class LessonPlan {
     //Add a list of cards
 
     private String lessonTitle;
+    private List<Card> cardList = new ArrayList<>();
 
     private List<String> cardIdList = new ArrayList<>();
-    private static List<Card> cardList = new ArrayList<>();
 
     public LessonPlan(String lessonTitle) {
         this.lessonTitle = lessonTitle;
-    }
-
-    public LessonPlan(LessonPlan otherLessonPlan) {
-        // Copy the values from the otherLessonPlan to initialize the new LessonPlan object
-        this.lessonTitle = otherLessonPlan.lessonTitle;
-        this.cardIdList = new ArrayList<>(otherLessonPlan.cardIdList);
     }
 
 
@@ -48,7 +42,6 @@ public class LessonPlan {
         }
         return cards;
     }
-
     //public Map<String,List<Card>> getCardListsByEvent(){
         // would return a map like:
         //  { "floor" : [ FloorCard1, FloorCard2 ],

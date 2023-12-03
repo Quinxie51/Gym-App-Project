@@ -1,8 +1,10 @@
 package edu.augustana.data;
 
+import edu.augustana.ui.CardMemento;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Card {
@@ -24,14 +26,13 @@ public class Card {
     private String modelSex;
     private String level;
     //We possibly need a string[] or a list of strings for this
-    private String [] equipment;
+    private String[] equipment;
     private String[] keywords;
-
 
 
     public Card(String selectedUniqueID, String selectedCode, String selectedEvent, String selectedCategory, String selectedTitle, String selectedPackFolder,
                 String selectedImagePath, String selectedGender, String selectedModelSex, String selectedLevel,
-                String [] selectedEquipment, String [] selectedKeyWords) {
+                String[] selectedEquipment, String[] selectedKeyWords) {
 
 
         this.uniqueID = selectedUniqueID;
@@ -51,6 +52,22 @@ public class Card {
 
     }
 
+    public Card(Card other) {
+        this.uniqueID = other.uniqueID;
+        this.code = other.code;
+        this.events = other.events;
+        this.category = other.category;
+        this.title = other.title;
+        this.packFolder = other.packFolder;
+        this.imagePath = other.imagePath;
+        this.image = new Image("file:CardPack/" + other.packFolder + "/" + other.imagePath);
+        this.gender = other.gender;
+        this.modelSex = other.modelSex;
+        this.level = other.level;
+        this.equipment = Arrays.copyOf(other.equipment, other.equipment.length);
+        this.keywords = Arrays.copyOf(other.keywords, other.keywords.length);
+    }
+
     public String getUniqueID() {
         return uniqueID;
     }
@@ -58,11 +75,14 @@ public class Card {
     public String getCode() {
         return code;
     }
+
     public String getEvent() {
         return events;
     }
-    
-    public String getCategory() {return category; }
+
+    public String getCategory() {
+        return category;
+    }
 
     public String getTitle() {
         return title;
@@ -72,9 +92,13 @@ public class Card {
         return packFolder;
     }
 
-    public Image getImage() {return image;}
+    public Image getImage() {
+        return image;
+    }
 
-    public String getGender() {return gender;}
+    public String getGender() {
+        return gender;
+    }
 
     public String getModelSex() {
         return modelSex;
@@ -86,7 +110,7 @@ public class Card {
 
     public List<String> getEquipment() {
         List<String> equipmentList = new ArrayList<>();
-        for(String word: equipment){
+        for (String word : equipment) {
             equipmentList.add(word);
 
         }
@@ -95,7 +119,7 @@ public class Card {
 
     public List<String> getKeywords() {
         List<String> keywordList = new ArrayList<>();
-        for(String word: keywords){
+        for (String word : keywords) {
             keywordList.add(word);
 
         }
@@ -104,29 +128,85 @@ public class Card {
 
     }
 
+
     @Override
     public String toString() {
         /**
-        return "Card{" +
-                "uniqueID='" + uniqueID + '\'' +
-                ", code='" + code + '\'' +
-                ", events='" + events + '\'' +
-                ", category='" + category + '\'' +
-                ", title='" + title + '\'' +
-                ", packFolder='" + packFolder + '\'' +
-                ", image='" + image + '\'' +
-                ", gender='" + gender + '\'' +
-                ", modelSex='" + modelSex + '\'' +
-                ", level='" + level + '\'' +
-                ", equipment='" + equipment + '\'' +
-                ", keywords='" + keywords + '\'' +
-                '}';
+         return "Card{" +
+         "uniqueID='" + uniqueID + '\'' +
+         ", code='" + code + '\'' +
+         ", events='" + events + '\'' +
+         ", category='" + category + '\'' +
+         ", title='" + title + '\'' +
+         ", packFolder='" + packFolder + '\'' +
+         ", image='" + image + '\'' +
+         ", gender='" + gender + '\'' +
+         ", modelSex='" + modelSex + '\'' +
+         ", level='" + level + '\'' +
+         ", equipment='" + equipment + '\'' +
+         ", keywords='" + keywords + '\'' +
+         '}';
          **/
         // Code: title [gender]
-        return code+": " + title + " [" + gender + "]";
+        return code + ": " + title + " [" + gender + "]";
     }
 
     public String getImagePath() {
         return imagePath;
+    }
+
+    private CardMemento.CardState createMemento() {
+        return new CardMemento.CardState(this);
+    }
+
+    public void restoreFromMemento(CardMemento.CardState cardState) {
+        cardState.restoreState(this);
+    }
+    public void setUniqueID(String uniqueID) {
+        this.uniqueID = uniqueID;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setEvent(String events) {
+        this.events = events;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPackFolder(String packFolder) {
+        this.packFolder = packFolder;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setModelSex(String modelSex) {
+        this.modelSex = modelSex;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public void setEquipment(String[] equipment) {
+        this.equipment = Arrays.copyOf(equipment, equipment.length);
+    }
+
+    public void setKeywords(String[] keywords) {
+        this.keywords = Arrays.copyOf(keywords, keywords.length);
     }
 }
