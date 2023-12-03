@@ -479,7 +479,7 @@ public class NewLessonPlanController {
 
 
    private void restoreFromMemento(LessonPlanMemento memento) {
-     //   MainApp.getCurrentCourse().setOneLessonPlan(new LessonPlan(memento.getLessonPlan()));
+        MainApp.getCurrentCourse().setOneLessonPlan(new LessonPlan(memento.getLessonPlan()));
         refreshLessonView(); // Update the UI after restoring
 
     }
