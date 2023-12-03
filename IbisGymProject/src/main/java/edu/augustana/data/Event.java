@@ -3,30 +3,31 @@ package edu.augustana.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LessonPlan {
+public class Event {
     //Add a list of cards
 
-    private String lessonTitle;
+    private String eventTitle;
 
     private List<String> cardIdList = new ArrayList<>();
     private static List<Card> cardList = new ArrayList<>();
 
-    public LessonPlan(String lessonTitle) {
-        this.lessonTitle = lessonTitle;
+    public Event(String eventTitle) {
+        this.eventTitle = eventTitle;
     }
 
 
-    public String getLessonTitle() {
-        return lessonTitle;
+    public String getEventTitle() {
+        return eventTitle;
     }
 
-    public void setLessonTitle(String lessonTitle) {
-        this.lessonTitle = lessonTitle;
+    public void setEventTitle(String eventTitle) {
+        this.eventTitle = eventTitle;
     }
 
     public void removeCard(Card card) {
         cardIdList.remove(card.getUniqueID());
         cardList.remove(card);
+
     }
 
     public void addCard(Card card) {
@@ -44,9 +45,9 @@ public class LessonPlan {
     }
 
     //public Map<String,List<Card>> getCardListsByEvent(){
-        // would return a map like:
-        //  { "floor" : [ FloorCard1, FloorCard2 ],
-        //   "vault" : [ VaultCards... ],
-        //
+    // would return a map like:
+    //  { "floor" : [ FloorCard1, FloorCard2 ],
+    //   "vault" : [ VaultCards... ],
+    //
     //}
 }
