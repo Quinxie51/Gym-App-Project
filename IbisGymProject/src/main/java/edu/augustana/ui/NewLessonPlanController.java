@@ -80,7 +80,9 @@ public class NewLessonPlanController {
     @FXML
     private void initialize() {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
-        this.vboxPage = new Printing(printedVbox);
+
+        this.vboxPage = new Printing(lessonFlowPane);
+
 
         final Tooltip tooltipAddEvent = new Tooltip();
         tooltipAddEvent.setText("Create a new even in your lesson plan");
@@ -90,7 +92,6 @@ public class NewLessonPlanController {
         tooltipDeleteCard.setText("Delete card in event");
         deleteCard.setTooltip(tooltipAddEvent);
 
-        
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -142,10 +143,11 @@ public class NewLessonPlanController {
             CheckBox cBox = (CheckBox) node;
             if (cBox.isSelected()) {
                 selectedGenders.add(cBox.getText());
+
             }
         }
         if (!selectedGenders.isEmpty()) {
-            allFilters.add(new GenderFilter(selectedGenders));
+            allFilters.add(new CombineAndFilters(new GenderFilter(selectedGenders)));
         }
         //Gender end
 
