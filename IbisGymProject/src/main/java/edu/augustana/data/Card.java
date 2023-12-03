@@ -41,7 +41,8 @@ public class Card {
         this.title = selectedTitle;
         this.packFolder = selectedPackFolder;
         this.imagePath = selectedImagePath;
-        this.image = new Image("file:CardPack/" + selectedPackFolder + "Pack/" + selectedImagePath);
+        // load in all thumbnails and use method to get full image size
+        this.image = new Image("file:CardPack/" + selectedPackFolder + "/" + selectedImagePath);
         this.gender = selectedGender;
         this.modelSex = selectedModelSex;
         this.level = selectedLevel;

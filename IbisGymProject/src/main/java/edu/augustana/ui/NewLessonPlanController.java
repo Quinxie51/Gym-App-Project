@@ -317,7 +317,6 @@ public class NewLessonPlanController {
 
     private List<ImageView> selectedNodes = new ArrayList<>();
 
-// ...
 
     @FXML
     private void actionDeleteCard() {
