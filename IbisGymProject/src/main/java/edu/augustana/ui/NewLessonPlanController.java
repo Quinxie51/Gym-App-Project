@@ -129,8 +129,9 @@ public class NewLessonPlanController {
         System.out.println(getAllCards());
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
-
-        //updateUndoRedoButtons();
+        
+        updateUndoRedoButtons();
+        this.lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
     }
 
 
