@@ -21,7 +21,6 @@ public class MainApp extends Application {
     private static Course currentCourse = new Course();
     private static File currentCourseFile = null;
 
-    private static LessonPlanMemento currentLessonPlanMemento;
     private static LessonPlan currentLessonPlan;
 
     //HELLO THUNDERDOMEApp
@@ -82,14 +81,6 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch();
-    }
-
-    public static LessonPlanMemento getCurrentLessonPlanMemento() {
-        return new LessonPlanMemento(currentLessonPlan);
-    }
-
-    public static void setCurrentLessonPlanMemento(LessonPlanMemento memento) {
-        currentLessonPlanMemento = memento;
     }
 
     }

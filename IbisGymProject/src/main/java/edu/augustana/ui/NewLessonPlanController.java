@@ -32,12 +32,18 @@ public class NewLessonPlanController {
     @FXML
     private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
     private LessonPlan lessonPlan;
-    @FXML private VBox eventFilterOptionsVBox;
-    @FXML private VBox genderFilterOptionsVBox;
-    @FXML private VBox categoryFilterOptionsVBox;
-    @FXML private VBox levelFilterOptionsVBox;
-    @FXML private VBox equipmentFilterOptionsVBox;
-    @FXML private VBox modelSexFilterOptionsVBox;
+    @FXML
+    private VBox eventFilterOptionsVBox;
+    @FXML
+    private VBox genderFilterOptionsVBox;
+    @FXML
+    private VBox categoryFilterOptionsVBox;
+    @FXML
+    private VBox levelFilterOptionsVBox;
+    @FXML
+    private VBox equipmentFilterOptionsVBox;
+    @FXML
+    private VBox modelSexFilterOptionsVBox;
 
     @FXML
     private Button undoButton;
@@ -45,8 +51,8 @@ public class NewLessonPlanController {
     @FXML
     private Button redoButton;
 
-    private Stack<LessonPlanMemento> undoStack = new Stack<>();
-    private Stack<LessonPlanMemento> redoStack = new Stack<>();
+    private Stack<CardMemento> undoStack = new Stack<>();
+    private Stack<CardMemento> redoStack = new Stack<>();
 
     @FXML
     private CheckBox beamEventCheck;
@@ -69,9 +75,12 @@ public class NewLessonPlanController {
     private Printing vboxPage;
     @FXML
     private ListView<Card> cardListView;
-    @FXML private Button deleteCard;
-    @FXML private Button addEvent;
-    @FXML private Event eventSection;
+    @FXML
+    private Button deleteCard;
+    @FXML
+    private Button addEvent;
+    @FXML
+    private Event eventSection;
 
 
     public NewLessonPlanController() {
@@ -130,9 +139,10 @@ public class NewLessonPlanController {
         System.out.println(getAllCards());
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
-        
-        updateUndoRedoButtons();
+
         this.lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
+
+        undoStack.push(createMemento());
     }
 
 
@@ -155,8 +165,6 @@ public class NewLessonPlanController {
         //Gender end
 
 
-
-
         //Events start
         List<String> selectedEvents = new ArrayList<>();
         for (Node node : eventFilterOptionsVBox.getChildren()) {
@@ -169,7 +177,6 @@ public class NewLessonPlanController {
             allFilters.add(new EventFilter(selectedEvents));
         }
         //Events end
-
 
 
         //Category start
@@ -197,7 +204,6 @@ public class NewLessonPlanController {
             allFilters.add(new LevelFilter(selectedLevel));
         }
         //Level end
-
 
 
         //Equipment start
@@ -251,6 +257,7 @@ public class NewLessonPlanController {
         MainApp.setRoot("previewPage");
     }
 
+
     @FXML
     private void handleSearch() {
         String searchText = searchBar.getText().toLowerCase().trim();
@@ -303,7 +310,6 @@ public class NewLessonPlanController {
         }
         return false;
     }
-
 
 
     @FXML
@@ -365,6 +371,7 @@ public class NewLessonPlanController {
     }
 
     private List<CardImageView> selectedNodes = new ArrayList<>();
+
     @FXML
     private void handleAddEvent(ActionEvent event) {
         // You can prompt the user to enter the event name using a dialog or text input field
@@ -379,6 +386,7 @@ public class NewLessonPlanController {
             refreshLessonView();  // Refresh the UI to display the new event
         });
     }
+
     @FXML
     private void actionDeleteCard() {
         // Create a copy of the selectedNodes list
@@ -418,12 +426,6 @@ public class NewLessonPlanController {
         }
     }
 
-    @FXML
-    private void btnActionPrint() {
-        vboxPage.printPage();
-    }
-
-
 
     @FXML
     private void menuActionOpen(ActionEvent event) throws IOException {
@@ -447,6 +449,7 @@ public class NewLessonPlanController {
             saveCurrentCourseToFile(MainApp.getCurrentCourseFile());
         }
     }
+
     @FXML
     private void menuActionSaveAs(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -457,6 +460,7 @@ public class NewLessonPlanController {
         File chosenFile = fileChooser.showSaveDialog(mainWindow);
         saveCurrentCourseToFile(chosenFile);
     }
+
     private void saveCurrentCourseToFile(File chosenFile) {
         if (chosenFile != null) {
             try {
@@ -470,39 +474,41 @@ public class NewLessonPlanController {
     @FXML
     private void undo() {
         if (!undoStack.isEmpty()) {
-            LessonPlanMemento memento = undoStack.pop();
+            CardMemento memento = undoStack.pop();
             redoStack.push(createMemento()); // Save current state for redo
-       //     restoreFromMemento(memento);
-            updateUndoRedoButtons();
+            restoreFromMemento(memento);
         }
     }
 
     @FXML
     private void redo() {
         if (!redoStack.isEmpty()) {
-            LessonPlanMemento memento = redoStack.pop();
+            CardMemento memento = redoStack.pop();
             undoStack.push(createMemento()); // Save current state for undo
-          //  restoreFromMemento(memento);
-            updateUndoRedoButtons();
+            restoreFromMemento(memento);
         }
     }
 
-    private LessonPlanMemento createMemento() {
-        return new LessonPlanMemento(MainApp.getCurrentCourse().getOneLessonPlan());
+    // Add these methods to your NewLessonPlanController
+    private CardMemento createMemento() {
+        List<CardMemento.CardState> cardStates = new ArrayList<>();
+
+        // Ensure that card states are included in the memento
+        for (Card card : MainApp.getCurrentCourse().getOneLessonPlan().getCards()) {
+            cardStates.add(new CardMemento.CardState(card));
+        }
+
+        return new CardMemento(cardStates);
     }
 
+    private void restoreFromMemento(CardMemento memento) {
+        List<Card> currentCards = MainApp.getCurrentCourse().getOneLessonPlan().getCards();
+        List<CardMemento.CardState> cardStates = memento.getCardStates();
 
-   private void restoreFromMemento(LessonPlanMemento memento) {
-        //MainApp.getCurrentCourse().setOneLessonPlan(new LessonPlan(memento.getLessonPlan()));
-        refreshLessonView(); // Update the UI after restoring
-
+        for (int i = 0; i < Math.min(currentCards.size(), cardStates.size()); i++) {
+            currentCards.get(i).restoreFromMemento(cardStates.get(i));
+        }
     }
-
-    private void updateUndoRedoButtons() {
-        undoButton.setDisable(undoStack.isEmpty());
-        redoButton.setDisable(redoStack.isEmpty());
-    }
-
 }
 
 
