@@ -1,6 +1,7 @@
 package edu.augustana.data;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class LessonPlan {
@@ -11,6 +12,7 @@ public class LessonPlan {
 
     private LessonPlan currentLessonPlan = this;
     private String lessonTitle;
+    private Event newEvent;
 
     private List<String> cardIdList = new ArrayList<>();
     private static List<Card> cardList = new ArrayList<>();
@@ -55,6 +57,12 @@ public class LessonPlan {
         }
         return cards;
     }
+
+    public void addEvent(Event newEvent) {
+        cardList.remove(newEvent);
+
+    }
+}
 
     //public Map<String,List<Card>> getCardListsByEvent(){
         // would return a map like:
