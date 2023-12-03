@@ -14,6 +14,8 @@ public class GenderFilter implements CardFilter {
     }
 
 
+
+
     @Override
     public boolean matches(Card potentialMatchCard) {
         if (selectedGenders.isEmpty()) {

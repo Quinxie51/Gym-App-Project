@@ -72,7 +72,7 @@ public class NewLessonPlanController {
     @FXML
     private void initialize() {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
-        this.vboxPage = new Printing(printedVbox);
+        this.vboxPage = new Printing(lessonFlowPane);
         
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -127,7 +127,7 @@ public class NewLessonPlanController {
             }
         }
         if (!selectedGenders.isEmpty()) {
-            allFilters.add(new GenderFilter(selectedGenders));
+            allFilters.add(new CombineAndFilters(new GenderFilter(selectedGenders)));
         }
         //Gender end
 
