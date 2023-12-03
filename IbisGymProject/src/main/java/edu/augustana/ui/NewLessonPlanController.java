@@ -11,11 +11,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.print.*;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -72,7 +69,7 @@ public class NewLessonPlanController {
     private TextField searchBar;
     @FXML
     private VBox printedVbox;
-    private Printing vboxPage;
+    private PrintManager vboxPage;
     @FXML
     private ListView<Card> cardListView;
     @FXML
@@ -93,7 +90,7 @@ public class NewLessonPlanController {
         BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
         Background background = new Background(backgroundFill);
         lessonFlowPane.setBackground(background);
-        this.vboxPage = new Printing(lessonFlowPane);
+        this.vboxPage = new PrintManager(lessonFlowPane);
 
 
         final Tooltip tooltipAddEvent = new Tooltip();

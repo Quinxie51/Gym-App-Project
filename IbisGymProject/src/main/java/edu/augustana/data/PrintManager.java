@@ -6,13 +6,13 @@ import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Scale;
 //EVent name to flowpane
-public class Printing {
+public class PrintManager {
 
     @FXML
     private Node printedNode;
 
 
-    public Printing(Node page){
+    public PrintManager(Node page){
         this.printedNode = page;
     }
 
