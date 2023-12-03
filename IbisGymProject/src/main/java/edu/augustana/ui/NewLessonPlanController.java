@@ -245,6 +245,11 @@ public class NewLessonPlanController {
     }
 
     @FXML
+    private void switchToPrintPreview() throws IOException {
+        MainApp.setRoot("previewPage");
+    }
+
+    @FXML
     private void handleSearch() {
         String searchText = searchBar.getText().toLowerCase().trim();
 
@@ -399,9 +404,11 @@ public class NewLessonPlanController {
     }
 
     @FXML
-    private void menuActionPrint() {
+    private void btnActionPrint() {
         vboxPage.printPage();
     }
+
+
 
     @FXML
     private void menuActionOpen(ActionEvent event) throws IOException {
@@ -469,9 +476,11 @@ public class NewLessonPlanController {
         return new LessonPlanMemento(MainApp.getCurrentCourse().getOneLessonPlan());
     }
 
+
    private void restoreFromMemento(LessonPlanMemento memento) {
         //MainApp.getCurrentCourse().setOneLessonPlan(new LessonPlan(memento.getLessonPlan()));
         refreshLessonView(); // Update the UI after restoring
+
     }
 
     private void updateUndoRedoButtons() {
