@@ -15,6 +15,12 @@ public class LessonPlan {
         this.lessonTitle = lessonTitle;
     }
 
+    public LessonPlan(LessonPlan otherLessonPlan) {
+        // Copy the values from the otherLessonPlan to initialize the new LessonPlan object
+        this.lessonTitle = otherLessonPlan.lessonTitle;
+        this.cardIdList = new ArrayList<>(otherLessonPlan.cardIdList);
+    }
+
 
     public String getLessonTitle() {
         return lessonTitle;

@@ -16,6 +16,10 @@ public class Course {
         return oneLessonPlan;
     }
 
+    public void setOneLessonPlan(LessonPlan lessonPlan) {
+        this.oneLessonPlan = lessonPlan;
+    }
+
     public static Course loadFromFile(File courseFile) throws IOException {
         FileReader reader = new FileReader(courseFile);
         Gson gson = new Gson();
