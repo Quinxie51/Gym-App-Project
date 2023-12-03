@@ -83,6 +83,21 @@
                   <Font name="Noto Sans JP Bold" size="42.0" />
                </font>
             </Text>
+            <Text fill="#196c8f" layoutX="349.0" layoutY="861.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About us">
+               <font>
+                  <Font name="Noto Sans Kannada Black" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#196c8f" layoutX="507.0" layoutY="861.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q&amp;A">
+               <font>
+                  <Font name="Noto Sans Kannada Black" size="17.0" />
+               </font>
+            </Text>
+            <Text fill="#196c8f" layoutX="665.0" layoutY="859.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terms and Privacy Policy">
+               <font>
+                  <Font name="Noto Sans Kannada Black" size="17.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </top>
