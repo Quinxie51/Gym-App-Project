@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.print.*;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -19,9 +20,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
@@ -80,7 +80,9 @@ public class NewLessonPlanController {
     @FXML
     private void initialize() {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
-
+        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
+        Background background = new Background(backgroundFill);
+        lessonFlowPane.setBackground(background);
         this.vboxPage = new Printing(lessonFlowPane);
 
 
@@ -91,7 +93,6 @@ public class NewLessonPlanController {
         final Tooltip tooltipDeleteCard = new Tooltip();
         tooltipDeleteCard.setText("Delete card in event");
         deleteCard.setTooltip(tooltipAddEvent);
-
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -128,7 +129,7 @@ public class NewLessonPlanController {
         System.out.println(getAllCards());
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
-
+        
         updateUndoRedoButtons();
         this.lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
     }
@@ -245,6 +246,11 @@ public class NewLessonPlanController {
     }
 
     @FXML
+    private void switchToPrintPreview() throws IOException {
+        MainApp.setRoot("previewPage");
+    }
+
+    @FXML
     private void handleSearch() {
         String searchText = searchBar.getText().toLowerCase().trim();
 
@@ -338,38 +344,38 @@ public class NewLessonPlanController {
         Node firstThing = lessonFlowPane.getChildren().get(0);
         lessonFlowPane.getChildren().clear();
         lessonFlowPane.getChildren().add(firstThing);
+
         for (Card card : MainApp.getCurrentCourse().getOneLessonPlan().getCards()) {
             Image image = card.getImage();
-            ImageView imageView = new ImageView();
-            imageView.setImage(image);
-            imageView.setFitWidth(180);
-            imageView.setFitHeight(120);
-            imageView.setOnMouseClicked(event -> {
-                toggleSelection(imageView);
+            CardImageView cardImageView = new CardImageView(image, card);
+            cardImageView.setImage(image);
+            cardImageView.setFitWidth(180);
+            cardImageView.setFitHeight(120);
+            cardImageView.setOnMouseClicked(event -> {
+                toggleSelection(cardImageView);
                 event.consume();
             });
             // Set the Card as user data for later retrieval
-            imageView.setUserData(card);
+            cardImageView.setUserData(card);
             lessonFlowPane.setHgap(10); // should be set in scenebuilder
             lessonFlowPane.setVgap(10);
-            lessonFlowPane.getChildren().add(imageView);
+            lessonFlowPane.getChildren().add(cardImageView);
         }
     }
 
-    private List<ImageView> selectedNodes = new ArrayList<>();
-
+    private List<CardImageView> selectedNodes = new ArrayList<>();
 
     @FXML
     private void actionDeleteCard() {
         // Create a copy of the selectedNodes list
-        List<ImageView> nodesToDelete = new ArrayList<>(selectedNodes);
+        List<CardImageView> nodesToDelete = new ArrayList<>(selectedNodes);
 
         if (!nodesToDelete.isEmpty()) {
-            Iterator<ImageView> iterator = selectedNodes.iterator();
+            Iterator<CardImageView> iterator = selectedNodes.iterator();
 
             while (iterator.hasNext()) {
-                ImageView selectedNode = iterator.next();
-                String uniqueID = ((Card) selectedNode.getUserData()).getUniqueID();
+                CardImageView selectedNode = iterator.next();
+                String uniqueID = selectedNode.getMyCard().getUniqueID();
                 Card cardToDelete = CardDatabase.getCardFromUniqueID(uniqueID);
 
                 // Remove the node from the FlowPane
@@ -394,14 +400,16 @@ public class NewLessonPlanController {
             selectedNodes.remove(node);
         } else {
             node.getStyleClass().add("selected");
-            selectedNodes.add(node);
+            selectedNodes.add((CardImageView) node);
         }
     }
 
     @FXML
-    private void menuActionPrint() {
+    private void btnActionPrint() {
         vboxPage.printPage();
     }
+
+
 
     @FXML
     private void menuActionOpen(ActionEvent event) throws IOException {
@@ -470,9 +478,11 @@ public class NewLessonPlanController {
         return new LessonPlanMemento(MainApp.getCurrentCourse().getOneLessonPlan());
     }
 
-    private void restoreFromMemento(LessonPlanMemento memento) {
+
+   private void restoreFromMemento(LessonPlanMemento memento) {
         MainApp.getCurrentCourse().setOneLessonPlan(new LessonPlan(memento.getLessonPlan()));
         refreshLessonView(); // Update the UI after restoring
+
     }
 
     private void updateUndoRedoButtons() {
