@@ -30,10 +30,6 @@ import static edu.augustana.data.CardDatabase.*;
 public class NewLessonPlanController {
 
     @FXML
-    private ListView<Card> cardListView;
-    @FXML private Button deleteCard;
-
-    @FXML
     private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
     private LessonPlan lessonPlan;
     @FXML private VBox eventFilterOptionsVBox;
@@ -64,6 +60,11 @@ public class NewLessonPlanController {
     @FXML
     private VBox printedVbox;
     private Printing vboxPage;
+    @FXML
+    private ListView<Card> cardListView;
+    @FXML private Button deleteCard;
+    @FXML private Button addEvent;
+
 
     public NewLessonPlanController() {
 
@@ -73,6 +74,15 @@ public class NewLessonPlanController {
     private void initialize() {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
         this.vboxPage = new Printing(printedVbox);
+
+        final Tooltip tooltipAddEvent = new Tooltip();
+        tooltipAddEvent.setText("Create a new even in your lesson plan");
+        addEvent.setTooltip(tooltipAddEvent);
+
+        final Tooltip tooltipDeleteCard = new Tooltip();
+        tooltipDeleteCard.setText("Delete card in event");
+        deleteCard.setTooltip(tooltipAddEvent);
+
         
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -234,9 +244,16 @@ public class NewLessonPlanController {
 
             for (Card card : allCards) {
                 String titleLowerCase = card.getTitle().toLowerCase();
+                String shortCodeLowerCase = card.getCode().toLowerCase();
+                String eventLowerCase = card.getEvent().toLowerCase();
+                String categoryLowerCase = card.getCategory().toLowerCase();
 
-                // Check if the title contains the search text
-                if (titleLowerCase.contains(searchText)) {
+                // Check if the title, short code, event, category, or any equipment contains the search text
+                if (titleLowerCase.contains(searchText) ||
+                        shortCodeLowerCase.contains(searchText) ||
+                        eventLowerCase.contains(searchText) ||
+                        categoryLowerCase.contains(searchText) ||
+                        equipmentContainsSearchText(card.getEquipment(), searchText)) {
                     matchingCards.add(card);
                 } else {
                     // Check if any keyword contains the search text
@@ -248,7 +265,7 @@ public class NewLessonPlanController {
                         }
                     }
 
-                    // Add the card to the matching list if either title or keyword matches
+                    // Add the card to the matching list if either title, short code, event, category, any equipment, or keyword matches
                     if (keywordMatch) {
                         matchingCards.add(card);
                     }
@@ -257,6 +274,18 @@ public class NewLessonPlanController {
             cardListView.setItems(FXCollections.observableArrayList(matchingCards));
         }
     }
+
+    // Helper method to check if any equipment contains the search text
+    private boolean equipmentContainsSearchText(List<String> equipment, String searchText) {
+        for (String item : equipment) {
+            if (item.toLowerCase().contains(searchText)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
     @FXML
     void handleDragDetection(MouseEvent event) {
@@ -324,7 +353,10 @@ public class NewLessonPlanController {
         List<ImageView> nodesToDelete = new ArrayList<>(selectedNodes);
 
         if (!nodesToDelete.isEmpty()) {
-            for (ImageView selectedNode : nodesToDelete) {
+            Iterator<ImageView> iterator = selectedNodes.iterator();
+
+            while (iterator.hasNext()) {
+                ImageView selectedNode = iterator.next();
                 String uniqueID = ((Card) selectedNode.getUserData()).getUniqueID();
                 Card cardToDelete = CardDatabase.getCardFromUniqueID(uniqueID);
 
@@ -334,13 +366,14 @@ public class NewLessonPlanController {
                 // Remove the card from the lesson plan or any other data structure
                 this.lessonPlan.removeCard(cardToDelete);
 
-                // Remove the node from the selectedNodes list
-                selectedNodes.remove(selectedNode);
+                // Remove the node from the selectedNodes list using the iterator
+                iterator.remove();
             }
         } else {
             new Alert(Alert.AlertType.WARNING, "Select a card to delete").show();
         }
     }
+
 
     @FXML
     private void toggleSelection(ImageView node) {
