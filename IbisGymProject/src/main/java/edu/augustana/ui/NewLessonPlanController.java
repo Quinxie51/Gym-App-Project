@@ -130,6 +130,7 @@ public class NewLessonPlanController {
         System.out.println(uniqueIdMap.keySet().size());
 
         updateUndoRedoButtons();
+        this.lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
     }
 
 
