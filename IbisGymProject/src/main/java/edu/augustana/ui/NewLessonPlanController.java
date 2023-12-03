@@ -129,7 +129,7 @@ public class NewLessonPlanController {
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
 
-        updateUndoRedoButtons();
+        //updateUndoRedoButtons();
     }
 
 
@@ -241,6 +241,11 @@ public class NewLessonPlanController {
     @FXML
     private void switchToHomepage() throws IOException {
         MainApp.setRoot("mainHomepage");
+    }
+
+    @FXML
+    private void switchToPrintPreview() throws IOException {
+        MainApp.setRoot("previewPage");
     }
 
     @FXML
@@ -398,9 +403,11 @@ public class NewLessonPlanController {
     }
 
     @FXML
-    private void menuActionPrint() {
+    private void btnActionPrint() {
         vboxPage.printPage();
     }
+
+
 
     @FXML
     private void menuActionOpen(ActionEvent event) throws IOException {
@@ -470,7 +477,7 @@ public class NewLessonPlanController {
     }
 
     private void restoreFromMemento(LessonPlanMemento memento) {
-        MainApp.getCurrentCourse().setOneLessonPlan(new LessonPlan(memento.getLessonPlan()));
+     //   MainApp.getCurrentCourse().setOneLessonPlan(new LessonPlan(memento.getLessonPlan()));
     }
 
     private void updateUndoRedoButtons() {
