@@ -71,6 +71,7 @@ public class NewLessonPlanController {
     private ListView<Card> cardListView;
     @FXML private Button deleteCard;
     @FXML private Button addEvent;
+    @FXML private Event eventSection;
 
 
     public NewLessonPlanController() {
@@ -364,7 +365,20 @@ public class NewLessonPlanController {
     }
 
     private List<CardImageView> selectedNodes = new ArrayList<>();
+    @FXML
+    private void handleAddEvent(ActionEvent event) {
+        // You can prompt the user to enter the event name using a dialog or text input field
+        TextInputDialog dialog = new TextInputDialog("Event Name");
+        dialog.setTitle("New Event");
+        dialog.setHeaderText("Enter the name for the new event:");
 
+        Optional<String> result = dialog.showAndWait();
+        result.ifPresent(eventName -> {
+            Event newEvent = new Event(eventName);
+            MainApp.getCurrentCourse().getOneLessonPlan().addEvent(newEvent);
+            refreshLessonView();  // Refresh the UI to display the new event
+        });
+    }
     @FXML
     private void actionDeleteCard() {
         // Create a copy of the selectedNodes list
@@ -458,7 +472,7 @@ public class NewLessonPlanController {
         if (!undoStack.isEmpty()) {
             LessonPlanMemento memento = undoStack.pop();
             redoStack.push(createMemento()); // Save current state for redo
-            restoreFromMemento(memento);
+       //     restoreFromMemento(memento);
             updateUndoRedoButtons();
         }
     }
@@ -468,7 +482,7 @@ public class NewLessonPlanController {
         if (!redoStack.isEmpty()) {
             LessonPlanMemento memento = redoStack.pop();
             undoStack.push(createMemento()); // Save current state for undo
-            restoreFromMemento(memento);
+          //  restoreFromMemento(memento);
             updateUndoRedoButtons();
         }
     }

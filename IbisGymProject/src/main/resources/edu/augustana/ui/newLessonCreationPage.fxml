@@ -37,7 +37,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="555.0" spacing="15.0">
                      <children>
-                        <Button fx:id="addEvent" mnemonicParsing="false" onAction="#actionDeleteCard" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #196C8F;" text="Add event" textFill="WHITE">
+                        <Button fx:id="addEvent" mnemonicParsing="false" onAction="#handleAddEvent" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #196C8F;" text="Add event" textFill="WHITE">
                            <font>
                               <Font name="Open Sans Bold" size="13.0" />
                            </font>
@@ -185,7 +185,7 @@
                                     <MenuItem mnemonicParsing="false" text="Wheel" />
                                  </items>
                               </MenuButton>
-                              <FlowPane fx:id="lessonFlowPane" prefHeight="160.0" prefWidth="829.0">
+                              <FlowPane fx:id="lessonFlowPane" prefHeight="160.0" prefWidth="243.0">
                                  <children>
                                     <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="180.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
                                        <image>
