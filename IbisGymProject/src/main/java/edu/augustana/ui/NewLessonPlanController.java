@@ -402,7 +402,6 @@ public class NewLessonPlanController {
         if (chosenFile != null) {
             MainApp.openCurrentCourseFromFile(chosenFile); //make a try catch
             refreshLessonView();
-
         }
     }
 

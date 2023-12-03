@@ -7,7 +7,6 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
@@ -19,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="846.0" prefWidth="1386.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.NewLessonPlanController">
+<BorderPane prefHeight="846.0" prefWidth="1540.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.NewLessonPlanController">
     <top>
         <VBox prefWidth="1386.0" BorderPane.alignment="CENTER">
             <children>
@@ -83,7 +82,7 @@
     <center>
         <Pane prefHeight="539.0" prefWidth="922.0" style="-fx-background-color: #85b7cc;" BorderPane.alignment="CENTER">
             <children>
-                <HBox prefHeight="739.0" prefWidth="1387.0">
+                <HBox prefHeight="739.0" prefWidth="1540.0">
                     <children>
                   <Accordion prefHeight="739.0" prefWidth="198.0">
                     <panes>
@@ -155,14 +154,10 @@
                         </TitledPane>
                     </panes>
                   </Accordion>
-                        <ScrollPane maxHeight="1.7976931348623157E308" prefHeight="739.0" prefWidth="312.0" style="-fx-background-color: transparent;">
-                            <content>
-                                <ListView fx:id="cardListView" onDragDetected="#handleDragDetection" prefHeight="741.0" prefWidth="298.0" />
-                            </content>
-                        </ScrollPane>
-                        <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="876.0" spacing="20.0" style="-fx-background-color: F9F9F9;">
+                          <ListView fx:id="cardListView" onDragDetected="#handleDragDetection" prefHeight="741.0" prefWidth="298.0" />
+                        <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="1041.0" spacing="20.0" style="-fx-background-color: F9F9F9;">
                             <children>
-                                <Label fx:id="lessonPlanName" alignment="TOP_CENTER" prefHeight="40.0" prefWidth="846.0" style="-fx-background-color: #C6E3EF;" text="Enter lesson name" textAlignment="CENTER">
+                                <Label fx:id="lessonPlanName" alignment="TOP_CENTER" prefHeight="40.0" prefWidth="1005.0" style="-fx-background-color: #C6E3EF;" text="Enter lesson name" textAlignment="CENTER">
                                     <font>
                                         <Font name="Arial Bold" size="22.0" />
                                     </font>
