@@ -249,6 +249,11 @@ public class NewLessonPlanController {
         MainApp.setRoot("previewPage");
     }
 
+
+    void saveForPreview() throws IOException {
+
+    }
+
     @FXML
     private void handleSearch() {
         String searchText = searchBar.getText().toLowerCase().trim();
@@ -403,10 +408,6 @@ public class NewLessonPlanController {
         }
     }
 
-    @FXML
-    private void btnActionPrint() {
-        vboxPage.printPage();
-    }
 
 
 
