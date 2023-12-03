@@ -129,7 +129,7 @@ public class NewLessonPlanController {
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
 
-        updateUndoRedoButtons();
+        //updateUndoRedoButtons();
     }
 
 
