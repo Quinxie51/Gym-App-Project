@@ -6,12 +6,15 @@ import edu.augustana.data.Card;
 import edu.augustana.data.LessonPlan;
 import edu.augustana.data.PrintManager;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 public class PrintPreviewController {
 
 
+    @FXML
+    private Button btnBack;
 
     @FXML
     private HBox hboxEventLayout;
@@ -37,4 +40,11 @@ public class PrintPreviewController {
     private void btnActionPrint() {
         printedHBox.printPage();
     }
+
+
+    @FXML
+    private void switchToNewLessonCreationPage(){
+        MainApp.switchToNewLessonCreationPage();
+    };
+
 }
