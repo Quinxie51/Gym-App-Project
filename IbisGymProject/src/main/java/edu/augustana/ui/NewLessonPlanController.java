@@ -61,7 +61,7 @@ public class NewLessonPlanController {
     private ImageView targetImageView;
 
     @FXML
-    private FlowPane lessonFlowPane;
+    private FlowPane lessonFlowPane = new LimitedFlowPane(8);
 
     @FXML
     private ImageView target;
