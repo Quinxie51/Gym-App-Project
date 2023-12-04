@@ -52,10 +52,3 @@ public class LessonPlan {
 
     }
 }
-    //public Map<String,List<Card>> getCardListsByEvent(){
-        // would return a map like:
-        //  { "floor" : [ FloorCard1, FloorCard2 ],
-        //   "vault" : [ VaultCards... ],
-        //
-    //}
-

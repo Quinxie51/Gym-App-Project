@@ -4,6 +4,7 @@ package edu.augustana.ui;
 import edu.augustana.data.Card;
 
 import edu.augustana.data.LessonPlan;
+import edu.augustana.data.PrintManager;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -14,18 +15,14 @@ public class PrintPreviewController {
 
     @FXML
     private HBox hboxEventLayout;
-;
+    private PrintManager printedHBox;
 
 
-
-    @FXML
-    private void btnActionPrint() {
-        //  vboxPage.printPage();
-    }
     private LessonPlan currentLessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
 
     @FXML
     private void initialize() {
+        this.printedHBox = new PrintManager(hboxEventLayout);
         for (Card card: currentLessonPlan.getCards()) {
 
             ImageView cardImage = new ImageView(card.getImage());
@@ -33,12 +30,11 @@ public class PrintPreviewController {
             cardImage.setFitWidth(100);
             hboxEventLayout.getChildren().add(cardImage);
 
-
-            //thingholding .add(card)
         }
+    }
 
-
-
-
+    @FXML
+    private void btnActionPrint() {
+        printedHBox.printPage();
     }
 }
