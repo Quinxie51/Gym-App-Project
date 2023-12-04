@@ -56,8 +56,8 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#undo" text="Undo" />
-                        <Button fx:id="redoButton" mnemonicParsing="false" onAction="#redo" text="Redo" />
+                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#handleUndoButton" text="Undo" />
+                        <Button fx:id="redoButton" mnemonicParsing="false" onAction="#handleRedoButton" text="Redo" />
                      </children>
                   </HBox>
                   <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: transparent;" text="File" textAlignment="CENTER">
