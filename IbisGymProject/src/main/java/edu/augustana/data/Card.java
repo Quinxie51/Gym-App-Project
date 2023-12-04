@@ -1,13 +1,12 @@
 package edu.augustana.data;
 
-import edu.augustana.ui.CardMemento;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Card {
+public class Card implements Cloneable{
 
 
     //data fields
@@ -50,22 +49,6 @@ public class Card {
         this.equipment = selectedEquipment;
         this.keywords = selectedKeyWords;
 
-    }
-
-    public Card(Card other) {
-        this.uniqueID = other.uniqueID;
-        this.code = other.code;
-        this.events = other.events;
-        this.category = other.category;
-        this.title = other.title;
-        this.packFolder = other.packFolder;
-        this.imagePath = other.imagePath;
-        this.image = new Image("file:CardPack/" + other.packFolder + "/" + other.imagePath);
-        this.gender = other.gender;
-        this.modelSex = other.modelSex;
-        this.level = other.level;
-        this.equipment = Arrays.copyOf(other.equipment, other.equipment.length);
-        this.keywords = Arrays.copyOf(other.keywords, other.keywords.length);
     }
 
     public String getUniqueID() {
@@ -155,58 +138,46 @@ public class Card {
         return imagePath;
     }
 
-    private CardMemento.CardState createMemento() {
-        return new CardMemento.CardState(this);
+    public Card(Card other) {
+        this.uniqueID = other.uniqueID;
+        this.code = other.code;
+        this.events = other.events;
+        this.category = other.category;
+        this.title = other.title;
+        this.packFolder = other.packFolder;
+        this.imagePath = other.imagePath;
+        this.image = new Image("file:CardPack/" + other.packFolder + "/" + other.imagePath);
+        this.gender = other.gender;
+        this.modelSex = other.modelSex;
+        this.level = other.level;
+        this.equipment = Arrays.copyOf(other.equipment, other.equipment.length);
+        this.keywords = Arrays.copyOf(other.keywords, other.keywords.length);
     }
 
-    public void restoreFromMemento(CardMemento.CardState cardState) {
-        cardState.restoreState(this);
-    }
-    public void setUniqueID(String uniqueID) {
-        this.uniqueID = uniqueID;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public void setEvent(String events) {
-        this.events = events;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public void restoreState(Card savedState) {
+        this.uniqueID = savedState.uniqueID;
+        this.code = savedState.code;
+        this.events = savedState.events;
+        this.category = savedState.category;
+        this.title = savedState.title;
+        this.packFolder = savedState.packFolder;
+        this.imagePath = savedState.imagePath;
+        this.image = new Image("file:CardPack/" + savedState.packFolder + "/" + savedState.imagePath);
+        this.gender = savedState.gender;
+        this.modelSex = savedState.modelSex;
+        this.level = savedState.level;
+        this.equipment = Arrays.copyOf(savedState.equipment, savedState.equipment.length);
+        this.keywords = Arrays.copyOf(savedState.keywords, savedState.keywords.length);
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
-    public void setPackFolder(String packFolder) {
-        this.packFolder = packFolder;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setModelSex(String modelSex) {
-        this.modelSex = modelSex;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public void setEquipment(String[] equipment) {
-        this.equipment = Arrays.copyOf(equipment, equipment.length);
-    }
-
-    public void setKeywords(String[] keywords) {
-        this.keywords = Arrays.copyOf(keywords, keywords.length);
+    @Override
+    public Card clone() {
+        try {
+            Card clone = (Card) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
