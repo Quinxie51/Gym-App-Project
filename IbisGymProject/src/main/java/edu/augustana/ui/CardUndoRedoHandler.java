@@ -21,7 +21,7 @@ public class CardUndoRedoHandler {
     }
 
     public void undo(Card card) {
-        if (undoStack.size() > 1) {
+        if (!undoStack.isEmpty()) {
             Card previousState = undoStack.pop();
             redoStack.push(new Card(card));
             card.restoreState(previousState);
