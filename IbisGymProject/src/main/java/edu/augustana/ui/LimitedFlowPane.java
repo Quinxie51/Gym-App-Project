@@ -11,7 +11,7 @@ public class LimitedFlowPane extends FlowPane {
         this.maxNodes = maxNodes;
     }
 
-    public void add(Node... children) {
+    public void addWithinMax(Node... children) {
         if (getChildren().size() + children.length <= maxNodes) {
             super.getChildren().addAll(children);
         } else {
