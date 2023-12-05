@@ -66,6 +66,7 @@
                         <MenuItem mnemonicParsing="false" onAction="#menuActionSave" text="Save" />
                         <MenuItem mnemonicParsing="false" onAction="#menuActionSaveAs" text="Save As" />
                         <MenuItem mnemonicParsing="false" onAction="#switchToPrintPreview" text="Print" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchToPrintToTextPreview" text="Print as Text" />
                      </items>
                      <font>
                         <Font name="Arial" size="16.0" />

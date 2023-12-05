@@ -58,7 +58,7 @@ public class NewLessonPlanController {
     private ImageView targetImageView;
 
     @FXML
-    private FlowPane lessonFlowPane = new LimitedFlowPane(8);
+    private FlowPane lessonFlowPane;
 
     @FXML
     private ImageView target;
@@ -88,6 +88,7 @@ public class NewLessonPlanController {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
         BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
         Background background = new Background(backgroundFill);
+        lessonFlowPane = new LimitedFlowPane(8);
         lessonFlowPane.setBackground(background);
         this.vboxPage = new PrintManager(lessonFlowPane);
 
@@ -254,6 +255,10 @@ public class NewLessonPlanController {
         MainApp.setRoot("previewPage");
     }
 
+    @FXML
+    private void switchToPrintToTextPreview() throws IOException {
+        MainApp.setRoot("PrintText");
+    }
 
     @FXML
     private void handleSearch() {
