@@ -88,7 +88,7 @@ public class NewLessonPlanController {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
         BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
         Background background = new Background(backgroundFill);
-        lessonFlowPane = new LimitedFlowPane(8);
+        //lessonFlowPane = new LimitedFlowPane(8);
         lessonFlowPane.setBackground(background);
         this.vboxPage = new PrintManager(lessonFlowPane);
 
