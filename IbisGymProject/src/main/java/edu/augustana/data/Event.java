@@ -21,28 +21,29 @@ public class Event {
     @FXML
     private FlowPane eventFlowPane;
     @FXML
-    private String eventTitle;
+    private String eventName;
 
     private List<String> cardIdList = new ArrayList<>();
     private static List<Card> cardList = new ArrayList<>();
-    @FXML
-    private void initialize() {
+
+
+    public Event(String eventName) {
+        this.eventName = eventName;
+        initializeFlowPane();
+    }
+    private void initializeFlowPane() {
         BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
         Background background = new Background(backgroundFill);
         eventFlowPane.setBackground(background);
+        eventFlowPane = new FlowPane();
     }
-
-    public Event(String eventTitle) {
-        this.eventTitle = eventTitle;
-    }
-
 
     public String getEventTitle() {
-        return eventTitle;
+        return eventName;
     }
 
     public void setEventTitle(String eventTitle) {
-        this.eventTitle = eventTitle;
+        this.eventName = eventTitle;
     }
 
     public void removeCard(Card card) {
@@ -64,6 +65,8 @@ public class Event {
         }
         return cards;
     }
+
+
 
     //public Map<String,List<Card>> getCardListsByEvent(){
     // would return a map like:

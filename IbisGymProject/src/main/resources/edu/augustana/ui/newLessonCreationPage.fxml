@@ -176,21 +176,21 @@
                               <Insets top="5.0" />
                            </padding>
                                 </Label>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                        <VBox fx:id="eventSection" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Event name" wrappingWidth="122.9958724975586">
+                              <Text fx:id="eventName" strokeType="OUTSIDE" strokeWidth="0.0" text="Event name" wrappingWidth="122.9958724975586">
                                  <font>
                                     <Font name="Noto Sans JP Bold" size="16.0" />
                                  </font>
                               </Text>
-                              <MenuButton mnemonicParsing="false" text="Event type">
+                              <MenuButton fx:id="evenType" mnemonicParsing="false" text="Event type">
                                  <items>
                                     <MenuItem mnemonicParsing="false" text="Floor" />
                                     <MenuItem mnemonicParsing="false" text="Stand" />
                                     <MenuItem mnemonicParsing="false" text="Wheel" />
                                  </items>
                               </MenuButton>
-                              <FlowPane fx:id="lessonFlowPane" prefHeight="160.0" prefWidth="243.0">
+                              <FlowPane fx:id="eventFlowPane" prefHeight="160.0" prefWidth="243.0">
                                  <children>
                                     <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="180.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
                                        <image>
