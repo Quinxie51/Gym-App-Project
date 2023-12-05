@@ -10,16 +10,13 @@ import java.util.List;
 public class LessonPlan {
     //Add a list of cards
 
-    private LessonPlan currentLessonPlan = this;
     private String lessonTitle;
     private List<Card> cardList = new ArrayList<>();
     private Event newEvent;
     private List<String> cardIdList = new ArrayList<>();
-    private CardUndoRedoHandler undoRedoHandler;
 
     public LessonPlan(String lessonTitle) {
         this.lessonTitle = lessonTitle;
-        this.undoRedoHandler = new CardUndoRedoHandler();
     }
 
     public String getLessonTitle() {
@@ -71,5 +68,13 @@ public class LessonPlan {
                 cardList.add(card);
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "LessonPlan{" +
+                "lessonTitle='" + lessonTitle + '\'' +
+                ", cardIdList=" + cardIdList +
+                '}';
     }
 }

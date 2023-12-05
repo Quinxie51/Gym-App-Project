@@ -17,5 +17,17 @@ public class LessonPlanState {
     public List<Card> getCards() {
         return cards;
     }
+
+    @Override
+    public String toString() {
+        List<String> cardCodes = new ArrayList<>();
+        for (Card c : cards) {
+            cardCodes.add(c.getCode());
+        }
+
+        return "LessonPlanState{" +
+                "cards=" + cardCodes +
+                '}';
+    }
 }
 
