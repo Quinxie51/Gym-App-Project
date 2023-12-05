@@ -76,7 +76,7 @@ public class NewLessonPlanController {
     @FXML
     private Event eventSection;
 
-    private CardUndoRedoHandler undoRedoHandler;
+    private edu.augustana.ui.CardUndoRedoHandler undoRedoHandler;
 
 
     public NewLessonPlanController() {
@@ -136,9 +136,8 @@ public class NewLessonPlanController {
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
 
+        this.undoRedoHandler = new CardUndoRedoHandler();
         this.lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
-
-        undoRedoHandler = new CardUndoRedoHandler();
     }
 
 
@@ -320,9 +319,6 @@ public class NewLessonPlanController {
         ClipboardContent cb = new ClipboardContent();
         cb.putString(String.join("*", allIDs));
         db.setContent(cb);
-        for (CardImageView selectedNode : selectedNodes) {
-            undoRedoHandler.saveState(selectedNode.getMyCard());
-        }
         event.consume();
     }
 
@@ -470,40 +466,18 @@ public class NewLessonPlanController {
             }
         }
     }
-
     @FXML
-    private void handleUndoButton() {
-        System.out.println("Undo button clicked");
-        Card lastAddedCard = getLastAddedCard();
-
-        if (lastAddedCard != null) {
-            undoRedoHandler.undo(lastAddedCard);
-            refreshLessonView();
-        } else {
-            new Alert(Alert.AlertType.WARNING, "No card to undo").show();
-        }
+    private void handleUndoButton(ActionEvent event) {
+        undoRedoHandler.undo(lessonPlan);
+        undoRedoHandler.saveState(lessonPlan);
+        refreshLessonView();
     }
 
     @FXML
-    private void handleRedoButton() {
-        System.out.println("Redo button clicked");
-        Card lastAddedCard = getLastAddedCard();
-
-        if (lastAddedCard != null) {
-            undoRedoHandler.redo(lastAddedCard);
-            refreshLessonView();
-        } else {
-            new Alert(Alert.AlertType.WARNING, "No card to redo").show();
-        }
-    }
-    private Card getLastAddedCard() {
-        List<Card> lessonPlanCards = MainApp.getCurrentCourse().getOneLessonPlan().getCards();
-
-        if (!lessonPlanCards.isEmpty()) {
-            return lessonPlanCards.get(lessonPlanCards.size() - 1);
-        }
-
-        return null;
+    private void handleRedoButton(ActionEvent event) {
+        undoRedoHandler.redo(lessonPlan);
+        undoRedoHandler.saveState(lessonPlan);
+        refreshLessonView();
     }
 }
 

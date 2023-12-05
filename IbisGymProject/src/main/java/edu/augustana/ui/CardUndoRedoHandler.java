@@ -1,43 +1,41 @@
 package edu.augustana.ui;
 
-import edu.augustana.data.Card;
+import edu.augustana.data.LessonPlan;
 import javafx.scene.control.Alert;
 
 import java.util.Stack;
 
 public class CardUndoRedoHandler {
 
-    private final Stack<Card> undoStack;
-    private final Stack<Card> redoStack;
+    private final Stack<LessonPlanState> undoStack;
+    private final Stack<LessonPlanState> redoStack;
 
     public CardUndoRedoHandler() {
         undoStack = new Stack<>();
         redoStack = new Stack<>();
     }
 
-    public void saveState(Card card) {
-        undoStack.push(new Card(card));
+    public void saveState(LessonPlan lessonPlan) {
+        undoStack.push(new LessonPlanState(lessonPlan));
         redoStack.clear();
     }
 
-    public void undo(Card card) {
+    public void undo(LessonPlan lessonPlan) {
         if (!undoStack.isEmpty()) {
-            Card previousState = undoStack.pop();
-            redoStack.push(new Card(card));
-            card.restoreState(previousState);
+            LessonPlanState previousState = undoStack.pop();
+            redoStack.push(new LessonPlanState(lessonPlan));
+            lessonPlan.restoreState(previousState);
         } else {
-            // Alert the user that there is no previous state to undo
             showAlert("Cannot Undo", "No previous state to undo.");
         }
     }
 
-    public void redo(Card card) {
+    public void redo(LessonPlan lessonPlan) {
         if (!redoStack.isEmpty()) {
-            Card redoState = redoStack.pop();
-            undoStack.push(new Card(card));
-            card.restoreState(redoState);
+            LessonPlanState redoState = redoStack.pop();
+            undoStack.push(new LessonPlanState(lessonPlan));
+            lessonPlan.restoreState(redoState);
         } else {
-            // Alert the user that there is no redo state available
             showAlert("Cannot Redo", "No redo state available.");
         }
     }
