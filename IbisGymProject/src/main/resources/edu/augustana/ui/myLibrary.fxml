@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="846.0" prefWidth="1386.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.NewLessonPlanController">
+<BorderPane prefHeight="846.0" prefWidth="1386.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.MyCourseController">
     <top>
         <VBox prefWidth="1386.0" BorderPane.alignment="CENTER">
             <children>

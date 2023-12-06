@@ -21,7 +21,6 @@ public class MainApp extends Application {
     private static Course currentCourse = new Course();
     private static File currentCourseFile = null;
 
-    private static LessonPlanMemento currentLessonPlanMemento;
     private static LessonPlan currentLessonPlan;
 
     //HELLO THUNDERDOMEApp
@@ -31,6 +30,7 @@ public class MainApp extends Application {
 
         scene = new Scene(loadFXML("mainHomepage"), 640, 480);
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
 
     }
@@ -49,9 +49,15 @@ public class MainApp extends Application {
         }
     }
 
+    public static void switchToLibrary() {
+        switchToView("myLibrary.fxml");
+    }
+
+
     public static void switchToNewLessonCreationPage() {
         switchToView("newLessonCreationPage.fxml");
     }
+
 
     public static Scene getScene() {
         return scene;
@@ -84,12 +90,4 @@ public class MainApp extends Application {
         launch();
     }
 
-    public static LessonPlanMemento getCurrentLessonPlanMemento() {
-        return new LessonPlanMemento(currentLessonPlan);
-    }
-
-    public static void setCurrentLessonPlanMemento(LessonPlanMemento memento) {
-        currentLessonPlanMemento = memento;
-    }
-
-    }
+}

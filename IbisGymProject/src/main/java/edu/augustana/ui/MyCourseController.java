@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.util.Optional;
 
-public class MyLibraryController {
+public class MyCourseController {
 
     @FXML
     private ListView<?> cardListView;
@@ -34,7 +34,7 @@ public class MyLibraryController {
         if (result.isPresent()) {
             String lessonTitle = result.get();
             MainApp.getCurrentCourse().getOneLessonPlan().setLessonTitle(lessonTitle);
-            MainApp.switchToNewLessonCreationPage();
+           // MainApp.switchToNewLessonCreationPage();
         }
     }
 

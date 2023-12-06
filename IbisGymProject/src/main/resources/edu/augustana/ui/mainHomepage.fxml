@@ -62,7 +62,7 @@
                   <Font name="Noto Sans JP Bold" size="42.0" />
                </font>
             </Text>
-            <Button layoutX="330.0" layoutY="554.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="175.0" style="-fx-background-color: #333333;" text="My library" textFill="WHITE">
+            <Button layoutX="338.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleLibrary" prefHeight="61.0" prefWidth="175.0" style="-fx-background-color: #333333;" text="My library" textFill="WHITE">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -75,17 +75,17 @@
                   <Font name="Noto Sans JP Bold" size="42.0" />
                </font>
             </Text>
-            <Text fill="#196c8f" layoutX="348.0" layoutY="812.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About us">
+            <Text fill="#196c8f" layoutX="349.0" layoutY="861.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About us">
                <font>
                   <Font name="Noto Sans Kannada Black" size="17.0" />
                </font>
             </Text>
-            <Text fill="#196c8f" layoutX="506.0" layoutY="812.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q&amp;A">
+            <Text fill="#196c8f" layoutX="507.0" layoutY="861.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q&amp;A">
                <font>
                   <Font name="Noto Sans Kannada Black" size="17.0" />
                </font>
             </Text>
-            <Text fill="#196c8f" layoutX="664.0" layoutY="810.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terms and Privacy Policy">
+            <Text fill="#196c8f" layoutX="665.0" layoutY="859.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terms and Privacy Policy">
                <font>
                   <Font name="Noto Sans Kannada Black" size="17.0" />
                </font>

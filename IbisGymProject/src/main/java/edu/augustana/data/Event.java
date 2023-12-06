@@ -15,28 +15,14 @@ import java.util.List;
 
 public class Event {
     //Add a list of cards
-
-    @FXML
-    private MenuBar eventype;
-    @FXML
-    private FlowPane eventFlowPane;
-    @FXML
     private String eventName;
 
     private List<String> cardIdList = new ArrayList<>();
-    private static List<Card> cardList = new ArrayList<>();
-
 
     public Event(String eventName) {
         this.eventName = eventName;
-        initializeFlowPane();
     }
-    private void initializeFlowPane() {
-        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
-        Background background = new Background(backgroundFill);
-        eventFlowPane.setBackground(background);
-        eventFlowPane = new FlowPane();
-    }
+
 
     public String getEventTitle() {
         return eventName;
@@ -48,14 +34,10 @@ public class Event {
 
     public void removeCard(Card card) {
         cardIdList.remove(card.getUniqueID());
-        cardList.remove(card);
-
     }
 
     public void addCard(Card card) {
         cardIdList.add(card.getUniqueID());
-        cardList.add(card);
-
     }
 
     public List<Card> getCards() {
