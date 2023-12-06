@@ -137,8 +137,8 @@ public class NewLessonPlanController {
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
 
-        this.undoRedoHandler = new CardUndoRedoHandler();
         this.lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
+        this.undoRedoHandler = new CardUndoRedoHandler(lessonPlan);
     }
 
 
@@ -339,12 +339,14 @@ public class NewLessonPlanController {
         String[] uniqueIDs = event.getDragboard().getString().split("\\*");
         for (String uniqueID : uniqueIDs) {
             Card card = CardDatabase.getCardFromUniqueID(uniqueID);
-            MainApp.getCurrentCourse().getOneLessonPlan().addCard(card);
+            lessonPlan.addCard(card);
             // instead of adding each view at a time, we could
             // after the loop, clear everything from the lesson plan view
             // and recreate it in the right order, grouped by the event
             // of each card
         }
+        undoRedoHandler.saveState(lessonPlan);
+
         refreshLessonView();
     }
 
@@ -383,7 +385,8 @@ public class NewLessonPlanController {
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(eventName -> {
             Event newEvent = new Event(eventName);
-            MainApp.getCurrentCourse().getOneLessonPlan().addEvent(newEvent);
+            lessonPlan.addEvent(newEvent);
+            undoRedoHandler.saveState(lessonPlan);
             refreshLessonView();  // Refresh the UI to display the new event
         });
     }
