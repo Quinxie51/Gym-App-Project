@@ -73,6 +73,7 @@ public class MainHomepageController {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Create New Lesson");
         dialog.setHeaderText("New lesson name:");
+
         // Handle the result
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {

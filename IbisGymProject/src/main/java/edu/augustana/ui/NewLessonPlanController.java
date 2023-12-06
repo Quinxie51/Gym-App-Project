@@ -224,7 +224,7 @@ public class NewLessonPlanController {
             if (cBox.isSelected()) {
                 selectedModelSexes.add(cBox.getText());
             }
-        }
+    }
         if (!selectedModelSexes.isEmpty()) {
             allFilters.add(new ModelSexFilter(selectedModelSexes));
         }
