@@ -1,22 +1,22 @@
 package edu.augustana.data;
 
-import edu.augustana.ui.CardUndoRedoHandler;
-
 import edu.augustana.ui.LessonPlanState;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LessonPlan {
-    //Add a list of cards
-
+public class LessonPlan implements Cloneable{
     private String lessonTitle;
-    private List<Card> cardList = new ArrayList<>();
-    private Event newEvent;
-    private List<String> cardIdList = new ArrayList<>();
+    private List<Event> eventList = new ArrayList<Event>();
+
+    public Event getOneEvent() {
+        return eventList.get(0);
+    }
+
 
     public LessonPlan(String lessonTitle) {
         this.lessonTitle = lessonTitle;
+        this.eventList.add(new Event("Untitled"));
     }
 
     public String getLessonTitle() {
@@ -27,54 +27,72 @@ public class LessonPlan {
         this.lessonTitle = lessonTitle;
     }
 
-    public void removeCard(Card card) {
-        cardIdList.remove(card.getUniqueID());
-        cardList.remove(card);
+
+    public void addEvent(Event event) {
+        eventList.add(event);
     }
 
-    public void addCard(Card card) {
-        cardIdList.add(card.getUniqueID());
-        cardList.add(card);
-
-    }
-
-    public List<Card> getCards() {
-        ArrayList<Card> cards = new ArrayList<>();
-        for (String id : cardIdList) {
-            cards.add(CardDatabase.getCardFromUniqueID(id));
-        }
-        return cards;
-    }
-
-    public void addEvent(Event newEvent) {
-        cardList.remove(newEvent);
-
+    public void removeEvent(Event event) {
+        eventList.remove(event);
     }
 
     public void restoreState(LessonPlanState state) {
         // Clear existing cards and add cards from the state
         clearCards();
-        addCards(state.getCards());
+        for (Event evt : state.getPastLessonPlan().getCopyOfEvents()) {
+            addCards(evt.getCards(), evt.getEventTitle()); // TODO: add them to the correct event inside this clas
+        }
     }
     public void clearCards() {
-        cardList.clear();
-        cardIdList.clear();
+        getOneEvent().clearCards();
     }
 
-    public void addCards(List<Card> cards) {
+    public void addCards(List<Card> cards, String eventTitle) {
+        List<Card> allCards = getAllCards();
         for (Card card : cards) {
-            if (!cardIdList.contains(card.getUniqueID())) {
-                cardIdList.add(card.getUniqueID());
-                cardList.add(card);
+
+            if (!allCards.contains(card)) {
+                getOneEvent().addCard(card);
             }
         }
+    }
+
+    public List<Card> getAllCards() {
+        List<Card> allCardsInLesson = new ArrayList<>();
+        for (Event event : eventList) {
+            allCardsInLesson.addAll(event.getCards());
+        }
+        return allCardsInLesson;
     }
 
     @Override
     public String toString() {
         return "LessonPlan{" +
                 "lessonTitle='" + lessonTitle + '\'' +
-                ", cardIdList=" + cardIdList +
+                ", events=" + eventList +
                 '}';
+    }
+
+    public List<Event> getCopyOfEvents() {
+        List<Event> copyOfEvents = new ArrayList<>();
+
+        copyOfEvents.add(clone().getOneEvent());
+
+        return copyOfEvents;
+    }
+
+    @Override
+    public LessonPlan clone() {
+        try {
+            LessonPlan clone = (LessonPlan) super.clone();
+            clone.eventList = new ArrayList<>();
+            for (Event event: this.eventList) {
+                clone.eventList.add(event.clone());
+            }
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

@@ -13,48 +13,31 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Event {
+public class Event implements Cloneable {
     //Add a list of cards
-
-    @FXML
-    private MenuBar eventype;
-    @FXML
-    private FlowPane eventFlowPane;
-    @FXML
-    private String eventTitle;
+    private String eventName;
 
     private List<String> cardIdList = new ArrayList<>();
-    private static List<Card> cardList = new ArrayList<>();
-    @FXML
-    private void initialize() {
-        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
-        Background background = new Background(backgroundFill);
-        eventFlowPane.setBackground(background);
-    }
 
-    public Event(String eventTitle) {
-        this.eventTitle = eventTitle;
+    public Event(String eventName) {
+        this.eventName = eventName;
     }
 
 
     public String getEventTitle() {
-        return eventTitle;
+        return eventName;
     }
 
     public void setEventTitle(String eventTitle) {
-        this.eventTitle = eventTitle;
+        this.eventName = eventTitle;
     }
 
     public void removeCard(Card card) {
         cardIdList.remove(card.getUniqueID());
-        cardList.remove(card);
-
     }
 
     public void addCard(Card card) {
         cardIdList.add(card.getUniqueID());
-        cardList.add(card);
-
     }
 
     public List<Card> getCards() {
@@ -65,10 +48,18 @@ public class Event {
         return cards;
     }
 
-    //public Map<String,List<Card>> getCardListsByEvent(){
-    // would return a map like:
-    //  { "floor" : [ FloorCard1, FloorCard2 ],
-    //   "vault" : [ VaultCards... ],
-    //
-    //}
+    public void clearCards() {
+        cardIdList.clear();
+    }
+
+    @Override
+    public Event clone() {
+        try {
+            Event clone = (Event) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
 }

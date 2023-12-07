@@ -1,6 +1,7 @@
 package edu.augustana.ui;
 
 import edu.augustana.data.Card;
+import edu.augustana.data.Event;
 import edu.augustana.data.LessonPlan;
 
 import java.util.ArrayList;
@@ -8,25 +9,20 @@ import java.util.List;
 
 public class LessonPlanState {
 
-    private final List<Card> cards;
+    private final LessonPlan pastLessonPlan;
 
     public LessonPlanState(LessonPlan lessonPlan) {
-        this.cards = new ArrayList<>(lessonPlan.getCards());
+        this.pastLessonPlan = lessonPlan.clone();
     }
 
-    public List<Card> getCards() {
-        return cards;
+    public LessonPlan getPastLessonPlan() {
+        return pastLessonPlan;
     }
 
     @Override
     public String toString() {
-        List<String> cardCodes = new ArrayList<>();
-        for (Card c : cards) {
-            cardCodes.add(c.getCode());
-        }
-
         return "LessonPlanState{" +
-                "cards=" + cardCodes +
+                "pastLessonPlan=" + pastLessonPlan +
                 '}';
     }
 }

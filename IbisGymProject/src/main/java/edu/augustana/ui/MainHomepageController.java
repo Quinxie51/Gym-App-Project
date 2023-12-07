@@ -67,21 +67,15 @@ public class MainHomepageController {
         MainApp.setRoot("mainHomepage");
     }
 
-    @FXML
-    private void handleCreateNewLesson() throws IOException {
-        //Stack overflow code
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Create New Lesson");
-        dialog.setHeaderText("New lesson name:");
 
-        // Handle the result
-        Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()) {
-            String lessonTitle = result.get();
-            MainApp.getCurrentCourse().getOneLessonPlan().setLessonTitle(lessonTitle);
-            MainApp.switchToNewLessonCreationPage();
-        }
+    @FXML
+
+    private void handleLibrary() throws IOException {
+            MainApp.switchToLibrary();
+
     }
+
+
 
     @FXML
     private void openAllCardsView() throws IOException {

@@ -30,7 +30,7 @@ public class PrintPreviewController {
     @FXML
     private void initialize() {
         this.printedVBox = new PrintManager(vboxPrintLayout);
-        for (Card card: currentLessonPlan.getCards()) {
+        for (Card card: currentLessonPlan.getOneEvent().getCards()) {
 
             ImageView cardImage = new ImageView(card.getImage());
             cardImage.setFitHeight(120);

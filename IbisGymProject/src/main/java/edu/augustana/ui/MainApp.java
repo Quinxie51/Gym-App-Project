@@ -49,9 +49,15 @@ public class MainApp extends Application {
         }
     }
 
+    public static void switchToLibrary() {
+        switchToView("myLibrary.fxml");
+    }
+
+
     public static void switchToNewLessonCreationPage() {
         switchToView("newLessonCreationPage.fxml");
     }
+
 
     public static Scene getScene() {
         return scene;
@@ -84,4 +90,4 @@ public class MainApp extends Application {
         launch();
     }
 
-    }
+}

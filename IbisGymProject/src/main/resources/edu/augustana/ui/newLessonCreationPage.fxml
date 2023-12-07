@@ -73,12 +73,12 @@
                      </font>
                   </MenuButton>
                     </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="30.0" right="50.0" />
-               </padding>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="30.0" right="50.0" />
+                    </padding>
                 </HBox>
             </children>
         </VBox>
@@ -165,47 +165,47 @@
                                     <font>
                                         <Font name="Arial Bold" size="22.0" />
                                     </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets top="5.0" />
-                           </padding>
+                                    <VBox.margin>
+                                        <Insets top="5.0" />
+                                    </VBox.margin>
+                                    <padding>
+                                        <Insets top="5.0" />
+                                    </padding>
                                 </Label>
-                        <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Event name" wrappingWidth="122.9958724975586">
-                                 <font>
-                                    <Font name="Noto Sans JP Bold" size="16.0" />
-                                 </font>
-                              </Text>
-                              <MenuButton mnemonicParsing="false" text="Event type">
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" text="Floor" />
-                                    <MenuItem mnemonicParsing="false" text="Stand" />
-                                    <MenuItem mnemonicParsing="false" text="Wheel" />
-                                 </items>
-                              </MenuButton>
-                              <FlowPane fx:id="lessonFlowPane" prefHeight="160.0" prefWidth="243.0">
-                                 <children>
-                                    <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="180.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@Image/Drag card here.png" />
-                                       </image>
-                                       <FlowPane.margin>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </FlowPane.margin>
-                                    </ImageView>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </FlowPane>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
+                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Event name" wrappingWidth="122.9958724975586">
+                                            <font>
+                                                <Font name="Noto Sans JP Bold" size="16.0" />
+                                            </font>
+                                        </Text>
+                                        <MenuButton mnemonicParsing="false" text="Event type">
+                                            <items>
+                                                <MenuItem mnemonicParsing="false" text="Floor" />
+                                                <MenuItem mnemonicParsing="false" text="Stand" />
+                                                <MenuItem mnemonicParsing="false" text="Wheel" />
+                                            </items>
+                                        </MenuButton>
+                                        <FlowPane fx:id="lessonFlowPane" prefHeight="160.0" prefWidth="243.0">
+                                            <children>
+                                                <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="180.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
+                                                    <image>
+                                                        <Image url="@Image/Drag card here.png" />
+                                                    </image>
+                                                    <FlowPane.margin>
+                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                    </FlowPane.margin>
+                                                </ImageView>
+                                            </children>
+                                            <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </padding>
+                                        </FlowPane>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                                    </padding>
+                                </VBox>
                             </children>
                             <opaqueInsets>
                                 <Insets />

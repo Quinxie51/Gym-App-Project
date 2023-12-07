@@ -58,15 +58,12 @@ public class NewLessonPlanController {
     private ImageView targetImageView;
 
     @FXML
-    private FlowPane lessonFlowPane;
+    private FlowPane eventFlowPane;
 
     @FXML
     private ImageView target;
     @FXML
     private TextField searchBar;
-    @FXML
-    private VBox printedVbox;
-    private PrintManager vboxPage;
     @FXML
     private ListView<Card> cardListView;
     @FXML
@@ -88,10 +85,7 @@ public class NewLessonPlanController {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
         BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
         Background background = new Background(backgroundFill);
-        //lessonFlowPane = new LimitedFlowPane(8);
-        lessonFlowPane.setBackground(background);
-        this.vboxPage = new PrintManager(lessonFlowPane);
-
+        eventFlowPane.setBackground(background);
 
         final Tooltip tooltipAddEvent = new Tooltip();
         tooltipAddEvent.setText("Create a new even in your lesson plan");
@@ -339,7 +333,7 @@ public class NewLessonPlanController {
         String[] uniqueIDs = event.getDragboard().getString().split("\\*");
         for (String uniqueID : uniqueIDs) {
             Card card = CardDatabase.getCardFromUniqueID(uniqueID);
-            lessonPlan.addCard(card);
+            lessonPlan.getOneEvent().addCard(card);
             // instead of adding each view at a time, we could
             // after the loop, clear everything from the lesson plan view
             // and recreate it in the right order, grouped by the event
@@ -351,11 +345,11 @@ public class NewLessonPlanController {
     }
 
     private void refreshLessonView() {
-        Node firstThing = lessonFlowPane.getChildren().get(0);
-        lessonFlowPane.getChildren().clear();
-        lessonFlowPane.getChildren().add(firstThing);
+        Node firstThing = eventFlowPane.getChildren().get(0);
+        eventFlowPane.getChildren().clear();
+        eventFlowPane.getChildren().add(firstThing);
 
-        for (Card card : MainApp.getCurrentCourse().getOneLessonPlan().getCards()) {
+        for (Card card : MainApp.getCurrentCourse().getOneLessonPlan().getOneEvent().getCards()){
             Image image = card.getImage();
             CardImageView cardImageView = new CardImageView(image, card);
             cardImageView.setImage(image);
@@ -367,9 +361,9 @@ public class NewLessonPlanController {
             });
             // Set the Card as user data for later retrieval
             cardImageView.setUserData(card);
-            lessonFlowPane.setHgap(10); // should be set in scenebuilder
-            lessonFlowPane.setVgap(10);
-            lessonFlowPane.getChildren().add(cardImageView);
+            eventFlowPane.setHgap(10); // should be set in scenebuilder
+            eventFlowPane.setVgap(10);
+            eventFlowPane.getChildren().add(cardImageView);
         }
     }
 
@@ -405,10 +399,10 @@ public class NewLessonPlanController {
                 Card cardToDelete = CardDatabase.getCardFromUniqueID(uniqueID);
 
                 // Remove the node from the FlowPane
-                lessonFlowPane.getChildren().remove(selectedNode);
+                eventFlowPane.getChildren().remove(selectedNode);
 
                 // Remove the card from the lesson plan or any other data structure
-                this.lessonPlan.removeCard(cardToDelete);
+                this.eventSection.removeCard(cardToDelete);
 
                 // Remove the node from the selectedNodes list using the iterator
                 iterator.remove();
@@ -437,7 +431,7 @@ public class NewLessonPlanController {
         fileChooser.setTitle("Open Course File");
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
         fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = lessonFlowPane.getScene().getWindow();
+        Window mainWindow = eventFlowPane.getScene().getWindow();
         File chosenFile = fileChooser.showOpenDialog(mainWindow);
         if (chosenFile != null) {
             MainApp.openCurrentCourseFromFile(chosenFile); //make a try catch
@@ -460,7 +454,7 @@ public class NewLessonPlanController {
         fileChooser.setTitle("Save Course File");
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
         fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = lessonFlowPane.getScene().getWindow();
+        Window mainWindow = eventFlowPane.getScene().getWindow();
         File chosenFile = fileChooser.showSaveDialog(mainWindow);
         saveCurrentCourseToFile(chosenFile);
     }
