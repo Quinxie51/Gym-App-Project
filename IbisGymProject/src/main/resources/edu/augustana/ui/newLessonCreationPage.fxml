@@ -172,7 +172,7 @@
                                         <Insets top="5.0" />
                                     </padding>
                                 </Label>
-                                <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                <VBox fx:id="lessonVbox" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                                     <children>
                                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Event name" wrappingWidth="122.9958724975586">
                                             <font>
