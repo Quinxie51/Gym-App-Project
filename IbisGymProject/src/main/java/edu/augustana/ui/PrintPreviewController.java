@@ -6,6 +6,7 @@ import edu.augustana.data.Card;
 import edu.augustana.data.LessonPlan;
 import edu.augustana.data.PrintManager;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -17,7 +18,8 @@ public class PrintPreviewController {
 
     @FXML
     private Button btnBack;
-
+    @FXML
+    private Group printGroup;
     @FXML
     private FlowPane fpEventLayout;
     @FXML
@@ -33,8 +35,8 @@ public class PrintPreviewController {
         for (Card card: currentLessonPlan.getOneEvent().getCards()) {
 
             ImageView cardImage = new ImageView(card.getImage());
-            cardImage.setFitHeight(120);
-            cardImage.setFitWidth(180);
+            cardImage.setFitHeight(280);
+            cardImage.setFitWidth(340);
             fpEventLayout.getChildren().add(cardImage);
 
         }
