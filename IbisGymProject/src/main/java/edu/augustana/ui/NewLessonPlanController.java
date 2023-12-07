@@ -58,7 +58,7 @@ public class NewLessonPlanController {
     private ImageView targetImageView;
 
     @FXML
-    private FlowPane eventFlowPane;
+    private FlowPane lessonFlowPane;
 
     @FXML
     private ImageView target;
@@ -85,7 +85,7 @@ public class NewLessonPlanController {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
         BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
         Background background = new Background(backgroundFill);
-        eventFlowPane.setBackground(background);
+        lessonFlowPane.setBackground(background);
 
         final Tooltip tooltipAddEvent = new Tooltip();
         tooltipAddEvent.setText("Create a new even in your lesson plan");
@@ -345,9 +345,9 @@ public class NewLessonPlanController {
     }
 
     private void refreshLessonView() {
-        Node firstThing = eventFlowPane.getChildren().get(0);
-        eventFlowPane.getChildren().clear();
-        eventFlowPane.getChildren().add(firstThing);
+        Node firstThing = lessonFlowPane.getChildren().get(0);
+        lessonFlowPane.getChildren().clear();
+        lessonFlowPane.getChildren().add(firstThing);
 
         for (Card card : MainApp.getCurrentCourse().getOneLessonPlan().getOneEvent().getCards()){
             Image image = card.getImage();
@@ -361,9 +361,9 @@ public class NewLessonPlanController {
             });
             // Set the Card as user data for later retrieval
             cardImageView.setUserData(card);
-            eventFlowPane.setHgap(10); // should be set in scenebuilder
-            eventFlowPane.setVgap(10);
-            eventFlowPane.getChildren().add(cardImageView);
+            lessonFlowPane.setHgap(10); // should be set in scenebuilder
+            lessonFlowPane.setVgap(10);
+            lessonFlowPane.getChildren().add(cardImageView);
         }
     }
 
@@ -399,7 +399,7 @@ public class NewLessonPlanController {
                 Card cardToDelete = CardDatabase.getCardFromUniqueID(uniqueID);
 
                 // Remove the node from the FlowPane
-                eventFlowPane.getChildren().remove(selectedNode);
+                lessonFlowPane.getChildren().remove(selectedNode);
 
                 // Remove the card from the lesson plan or any other data structure
                 this.eventSection.removeCard(cardToDelete);
@@ -431,7 +431,7 @@ public class NewLessonPlanController {
         fileChooser.setTitle("Open Course File");
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
         fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = eventFlowPane.getScene().getWindow();
+        Window mainWindow = lessonFlowPane.getScene().getWindow();
         File chosenFile = fileChooser.showOpenDialog(mainWindow);
         if (chosenFile != null) {
             MainApp.openCurrentCourseFromFile(chosenFile); //make a try catch
@@ -454,7 +454,7 @@ public class NewLessonPlanController {
         fileChooser.setTitle("Save Course File");
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
         fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = eventFlowPane.getScene().getWindow();
+        Window mainWindow = lessonFlowPane.getScene().getWindow();
         File chosenFile = fileChooser.showSaveDialog(mainWindow);
         saveCurrentCourseToFile(chosenFile);
     }
