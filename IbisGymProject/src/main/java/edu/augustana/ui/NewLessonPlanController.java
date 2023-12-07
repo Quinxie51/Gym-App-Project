@@ -47,6 +47,8 @@ public class NewLessonPlanController {
 
     @FXML
     private Button redoButton;
+    @FXML
+    private VBox lessonVbox;
 
     @FXML
     private CheckBox beamEventCheck;
@@ -379,7 +381,9 @@ public class NewLessonPlanController {
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(eventName -> {
             Event newEvent = new Event(eventName);
+            EventBox newEventBox = new EventBox(newEvent);
             lessonPlan.addEvent(newEvent);
+            lessonVbox.getChildren().add(newEventBox);
             undoRedoHandler.saveState(lessonPlan);
             refreshLessonView();  // Refresh the UI to display the new event
         });

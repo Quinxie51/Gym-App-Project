@@ -16,14 +16,6 @@ public class CardImageView extends ImageView {
         setOnMouseClicked(event -> {
             if (event.getClickCount() == 1) {
                 handleCardActivation();
-            } else if (event.getClickCount() == 2) {
-                handleCardZoom();
-            }
-        });
-
-        setOnMouseEntered(event -> {
-            if (event.getClickCount() == 2) {
-                handleCardZoom();
             }
         });
     }
@@ -48,23 +40,7 @@ public class CardImageView extends ImageView {
     }
 
     // Method to handle card zoom in and out
-    private void handleCardZoom() {
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), this);
 
-        if (getStyle() == null) {
-            // If the card is not zoomed in, zoom in
-            setActiveMode();
-            scaleTransition.setToX(1.2);
-            scaleTransition.setToY(1.2);
-        } else {
-            // If the card is already zoomed in, zoom out
-            resetStyles();
-            scaleTransition.setToX(1.0);
-            scaleTransition.setToY(1.0);
-        }
-
-        scaleTransition.play();
-    }
 
     public Card getMyCard() {
         return myCard;
