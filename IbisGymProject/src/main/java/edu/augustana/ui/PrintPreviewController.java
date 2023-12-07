@@ -35,6 +35,13 @@ public class PrintPreviewController {
         for (Card card: currentLessonPlan.getOneEvent().getCards()) {
 
             ImageView cardImage = new ImageView(card.getImage());
+            Screen primaryScreen = Screen.getPrimary();
+
+            // Get the bounds of the primary screen
+            Rectangle2D bounds = primaryScreen.getBounds();
+
+            double screenWidth = bounds.getWidth();
+            double screenHeight = bounds.getHeight();
             cardImage.setFitHeight(280);
             cardImage.setFitWidth(340);
             fpEventLayout.getChildren().add(cardImage);
