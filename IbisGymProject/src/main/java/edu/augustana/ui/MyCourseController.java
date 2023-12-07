@@ -29,12 +29,12 @@ public class MyCourseController {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Create New Lesson");
         dialog.setHeaderText("New lesson name:");
-        // Handle the result
+
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             String lessonTitle = result.get();
             MainApp.getCurrentCourse().getOneLessonPlan().setLessonTitle(lessonTitle);
-           // MainApp.switchToNewLessonCreationPage();
+            MainApp.switchToNewLessonCreationPage();
         }
     }
 

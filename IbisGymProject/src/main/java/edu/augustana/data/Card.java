@@ -3,9 +3,10 @@ package edu.augustana.data;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Card {
+public class Card implements Cloneable{
 
 
     //data fields
@@ -24,14 +25,13 @@ public class Card {
     private String modelSex;
     private String level;
     //We possibly need a string[] or a list of strings for this
-    private String [] equipment;
+    private String[] equipment;
     private String[] keywords;
-
 
 
     public Card(String selectedUniqueID, String selectedCode, String selectedEvent, String selectedCategory, String selectedTitle, String selectedPackFolder,
                 String selectedImagePath, String selectedGender, String selectedModelSex, String selectedLevel,
-                String [] selectedEquipment, String [] selectedKeyWords) {
+                String[] selectedEquipment, String[] selectedKeyWords) {
 
 
         this.uniqueID = selectedUniqueID;
@@ -58,11 +58,14 @@ public class Card {
     public String getCode() {
         return code;
     }
+
     public String getEvent() {
         return events;
     }
-    
-    public String getCategory() {return category; }
+
+    public String getCategory() {
+        return category;
+    }
 
     public String getTitle() {
         return title;
@@ -72,9 +75,13 @@ public class Card {
         return packFolder;
     }
 
-    public Image getImage() {return image;}
+    public Image getImage() {
+        return image;
+    }
 
-    public String getGender() {return gender;}
+    public String getGender() {
+        return gender;
+    }
 
     public String getModelSex() {
         return modelSex;
@@ -86,7 +93,7 @@ public class Card {
 
     public List<String> getEquipment() {
         List<String> equipmentList = new ArrayList<>();
-        for(String word: equipment){
+        for (String word : equipment) {
             equipmentList.add(word);
 
         }
@@ -95,7 +102,7 @@ public class Card {
 
     public List<String> getKeywords() {
         List<String> keywordList = new ArrayList<>();
-        for(String word: keywords){
+        for (String word : keywords) {
             keywordList.add(word);
 
         }
@@ -104,29 +111,73 @@ public class Card {
 
     }
 
+
     @Override
     public String toString() {
         /**
-        return "Card{" +
-                "uniqueID='" + uniqueID + '\'' +
-                ", code='" + code + '\'' +
-                ", events='" + events + '\'' +
-                ", category='" + category + '\'' +
-                ", title='" + title + '\'' +
-                ", packFolder='" + packFolder + '\'' +
-                ", image='" + image + '\'' +
-                ", gender='" + gender + '\'' +
-                ", modelSex='" + modelSex + '\'' +
-                ", level='" + level + '\'' +
-                ", equipment='" + equipment + '\'' +
-                ", keywords='" + keywords + '\'' +
-                '}';
+         return "Card{" +
+         "uniqueID='" + uniqueID + '\'' +
+         ", code='" + code + '\'' +
+         ", events='" + events + '\'' +
+         ", category='" + category + '\'' +
+         ", title='" + title + '\'' +
+         ", packFolder='" + packFolder + '\'' +
+         ", image='" + image + '\'' +
+         ", gender='" + gender + '\'' +
+         ", modelSex='" + modelSex + '\'' +
+         ", level='" + level + '\'' +
+         ", equipment='" + equipment + '\'' +
+         ", keywords='" + keywords + '\'' +
+         '}';
          **/
         // Code: title [gender]
-        return code+": " + title + " [" + gender + "]";
+        return code + ": " + title + " [" + gender + "]";
     }
 
     public String getImagePath() {
         return imagePath;
+    }
+
+    public Card(Card other) {
+        this.uniqueID = other.uniqueID;
+        this.code = other.code;
+        this.events = other.events;
+        this.category = other.category;
+        this.title = other.title;
+        this.packFolder = other.packFolder;
+        this.imagePath = other.imagePath;
+        this.image = new Image("file:CardPack/" + other.packFolder + "/" + other.imagePath);
+        this.gender = other.gender;
+        this.modelSex = other.modelSex;
+        this.level = other.level;
+        this.equipment = Arrays.copyOf(other.equipment, other.equipment.length);
+        this.keywords = Arrays.copyOf(other.keywords, other.keywords.length);
+    }
+
+    public void restoreState(Card savedState) {
+        this.uniqueID = savedState.uniqueID;
+        this.code = savedState.code;
+        this.events = savedState.events;
+        this.category = savedState.category;
+        this.title = savedState.title;
+        this.packFolder = savedState.packFolder;
+        this.imagePath = savedState.imagePath;
+        this.image = new Image("file:CardPack/" + savedState.packFolder + "/" + savedState.imagePath);
+        this.gender = savedState.gender;
+        this.modelSex = savedState.modelSex;
+        this.level = savedState.level;
+        this.equipment = Arrays.copyOf(savedState.equipment, savedState.equipment.length);
+        this.keywords = Arrays.copyOf(savedState.keywords, savedState.keywords.length);
+    }
+
+
+    @Override
+    public Card clone() {
+        try {
+            Card clone = (Card) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Event {
+public class Event implements Cloneable {
     //Add a list of cards
     private String eventName;
 
@@ -48,12 +48,18 @@ public class Event {
         return cards;
     }
 
+    public void clearCards() {
+        cardIdList.clear();
+    }
 
+    @Override
+    public Event clone() {
+        try {
+            Event clone = (Event) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 
-    //public Map<String,List<Card>> getCardListsByEvent(){
-    // would return a map like:
-    //  { "floor" : [ FloorCard1, FloorCard2 ],
-    //   "vault" : [ VaultCards... ],
-    //
-    //}
 }
