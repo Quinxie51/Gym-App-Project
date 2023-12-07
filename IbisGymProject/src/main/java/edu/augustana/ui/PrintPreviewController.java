@@ -6,12 +6,14 @@ import edu.augustana.data.Card;
 import edu.augustana.data.LessonPlan;
 import edu.augustana.data.PrintManager;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 
 public class PrintPreviewController {
 
@@ -42,8 +44,8 @@ public class PrintPreviewController {
 
             double screenWidth = bounds.getWidth();
             double screenHeight = bounds.getHeight();
-            cardImage.setFitHeight(280);
-            cardImage.setFitWidth(340);
+            cardImage.setFitHeight(screenHeight/5.5);
+            cardImage.setFitWidth(screenWidth/5.5);
             fpEventLayout.getChildren().add(cardImage);
 
         }
