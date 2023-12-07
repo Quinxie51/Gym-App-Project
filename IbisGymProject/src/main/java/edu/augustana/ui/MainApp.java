@@ -55,6 +55,7 @@ public class MainApp extends Application {
 
 
     public static void switchToNewLessonCreationPage() {
+        System.out.println("switchToNewLessonCreationPage");
         switchToView("newLessonCreationPage.fxml");
     }
 
@@ -87,6 +88,8 @@ public class MainApp extends Application {
     }
 
     public static void main(String[] args) {
+
+        System.out.println("Main is running!");
         launch();
     }
 

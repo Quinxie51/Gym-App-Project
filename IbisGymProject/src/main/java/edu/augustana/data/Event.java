@@ -56,10 +56,17 @@ public class Event implements Cloneable {
     public Event clone() {
         try {
             Event clone = (Event) super.clone();
+            clone.cardIdList = new ArrayList<>(this.cardIdList);
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
     }
 
+    @Override
+    public String toString() {
+        return "{[}" + eventName + ": " +
+                 cardIdList +
+                '}';
+    }
 }
