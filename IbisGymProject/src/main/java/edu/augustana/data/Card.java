@@ -29,6 +29,20 @@ public class Card implements Cloneable{
     private String[] keywords;
 
 
+    /**
+     * @param selectedUniqueID
+     * @param selectedCode
+     * @param selectedEvent
+     * @param selectedCategory
+     * @param selectedTitle
+     * @param selectedPackFolder
+     * @param selectedImagePath
+     * @param selectedGender
+     * @param selectedModelSex
+     * @param selectedLevel
+     * @param selectedEquipment
+     * @param selectedKeyWords
+     */
     public Card(String selectedUniqueID, String selectedCode, String selectedEvent, String selectedCategory, String selectedTitle, String selectedPackFolder,
                 String selectedImagePath, String selectedGender, String selectedModelSex, String selectedLevel,
                 String[] selectedEquipment, String[] selectedKeyWords) {

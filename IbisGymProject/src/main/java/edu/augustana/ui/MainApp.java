@@ -23,6 +23,8 @@ public class MainApp extends Application {
 
     private static LessonPlan currentLessonPlan;
 
+  //  private static Stage userScreen;
+
     //HELLO THUNDERDOMEApp
     @Override
     public void start(Stage stage) throws IOException, CsvValidationException {
@@ -32,6 +34,7 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
+
 
     }
 
