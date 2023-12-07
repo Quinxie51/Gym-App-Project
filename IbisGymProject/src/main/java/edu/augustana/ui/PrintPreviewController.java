@@ -37,7 +37,6 @@ public class PrintPreviewController {
             ImageView cardImage = new ImageView(card.getImage());
             cardImage.setFitHeight(280);
             cardImage.setFitWidth(340);
-            fpEventLayout.
             fpEventLayout.getChildren().add(cardImage);
 
         }

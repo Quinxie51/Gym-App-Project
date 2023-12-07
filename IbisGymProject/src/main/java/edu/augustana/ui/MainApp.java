@@ -23,17 +23,19 @@ public class MainApp extends Application {
 
     private static LessonPlan currentLessonPlan;
 
-  //  private static Stage userScreen;
+    private static Stage userScreen;
+
+
 
     //HELLO THUNDERDOMEApp
     @Override
     public void start(Stage stage) throws IOException, CsvValidationException {
         CardDatabase.addCardsFromCSVFile();
-
         scene = new Scene(loadFXML("mainHomepage"), 640, 480);
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
+        userScreen = stage;
 
 
     }
@@ -66,6 +68,8 @@ public class MainApp extends Application {
     public static Scene getScene() {
         return scene;
     }
+
+
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxml + ".fxml"));
