@@ -28,7 +28,6 @@ public class NewLessonPlanController {
 
     @FXML
     private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
-    private LessonPlan lessonPlan;
     @FXML
     private VBox eventFilterOptionsVBox;
     @FXML
@@ -60,11 +59,6 @@ public class NewLessonPlanController {
     private ImageView targetImageView;
 
     @FXML
-    private FlowPane lessonFlowPane;
-
-    @FXML
-    private ImageView target;
-    @FXML
     private TextField searchBar;
     @FXML
     private ListView<Card> cardListView;
@@ -74,6 +68,7 @@ public class NewLessonPlanController {
     private Button addEvent;
     @FXML
     private Event eventSection;
+    private LessonPlan lessonPlan;
 
     private edu.augustana.ui.CardUndoRedoHandler undoRedoHandler;
 
@@ -85,9 +80,7 @@ public class NewLessonPlanController {
     @FXML
     private void initialize() {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
-        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
-        Background background = new Background(backgroundFill);
-        lessonFlowPane.setBackground(background);
+
 
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -432,7 +425,7 @@ public class NewLessonPlanController {
                 Card cardToDelete = CardDatabase.getCardFromUniqueID(uniqueID);
 
                 // Remove the node from the FlowPane
-                lessonFlowPane.getChildren().remove(selectedNode);
+                //lessonFlowPane.getChildren().remove(selectedNode);
 
                 // Remove the card from the lesson plan or any other data structure
                 this.eventSection.removeCard(cardToDelete);
@@ -464,7 +457,7 @@ public class NewLessonPlanController {
         fileChooser.setTitle("Open Course File");
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
         fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = lessonFlowPane.getScene().getWindow();
+        Window mainWindow = lessonVbox.getScene().getWindow();
         File chosenFile = fileChooser.showOpenDialog(mainWindow);
         if (chosenFile != null) {
             MainApp.openCurrentCourseFromFile(chosenFile); //make a try catch
@@ -487,7 +480,7 @@ public class NewLessonPlanController {
         fileChooser.setTitle("Save Course File");
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
         fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = lessonFlowPane.getScene().getWindow();
+        Window mainWindow = lessonVbox.getScene().getWindow();
         File chosenFile = fileChooser.showSaveDialog(mainWindow);
         saveCurrentCourseToFile(chosenFile);
     }
