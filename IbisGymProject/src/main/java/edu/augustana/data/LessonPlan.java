@@ -67,6 +67,7 @@ public class LessonPlan implements Cloneable{
 
     @Override
     public String toString() {
+        // change to better string for list view
         return "LessonPlan{" +
                 "lessonTitle='" + lessonTitle + '\'' +
                 ", events=" + eventList +
