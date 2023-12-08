@@ -1,0 +1,4 @@
+.card-image-view:selected {
+    -fx-border-color: blue;
+    -fx-border-width: 2px;
+}

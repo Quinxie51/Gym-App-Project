@@ -2,24 +2,28 @@ package edu.augustana.ui;
 
 import edu.augustana.data.Card;
 import javafx.animation.ScaleTransition;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.css.PseudoClass;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
 public class CardImageView extends ImageView {
+
+    private BooleanProperty selected = new SimpleBooleanProperty(false);
+
     private Card myCard;
     private boolean isZoomed = false;
+
+
 
     public CardImageView(Image image, Card myCard) {
         super(image);
         this.myCard = myCard;
 
-        setOnMouseClicked(event -> {
-            if (event.getClickCount() == 1) {
-                handleCardActivation();
-            }
-        });
 
 
         setOnMouseEntered(event -> {
@@ -31,25 +35,19 @@ public class CardImageView extends ImageView {
                 handleCardZoom(); // Zoom out when the mouse exits
             }
         });
+        setOnMouseClicked(event -> {
+            if (event.getClickCount() == 1) {
+                handleCardActivation();
+            }
+        });
+}
 
-    }
 
-    // Method to set the active mode for a selected card
-    private void setActiveMode() {
-        setStyle("-fx-border-color: blue; -fx-border-width: 2px;");
-    }
-
-    // Method to reset the style for all cards
-    private void resetStyles() {
-        setStyle(null); // Reset style to default
-    }
-
-    // Method to handle card activation
     private void handleCardActivation() {
-        if (getStyle() == null) {
-            setActiveMode();
+        if (selected.get()) {
+            setStyle("-fx-border-color: blue; -fx-border-width: 2px;");
         } else {
-            resetStyles();
+            setStyle(null);
         }
     }
 
@@ -59,7 +57,7 @@ public class CardImageView extends ImageView {
 
         if (!isZoomed) {
             // If the card is not zoomed in, zoom in
-            setActiveMode();
+
 
             DropShadow dropShadow = new DropShadow();
             dropShadow.setRadius(10.0);
@@ -76,7 +74,6 @@ public class CardImageView extends ImageView {
             isZoomed = true;
         } else {
             // If the card is already zoomed in, zoom out
-            resetStyles();
             setEffect(null);
             scaleTransition.setToX(1.0);
             scaleTransition.setToY(1.0);
