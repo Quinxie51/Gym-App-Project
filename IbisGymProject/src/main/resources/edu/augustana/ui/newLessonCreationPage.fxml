@@ -23,55 +23,63 @@
     <top>
         <VBox prefWidth="1386.0" BorderPane.alignment="CENTER">
             <children>
-                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="97.0" prefWidth="1386.0" spacing="70.0" style="-fx-background-color: #85B7CC;">
+                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="107.0" prefWidth="1492.0" spacing="60.0" style="-fx-background-color: #85B7CC;">
                     <children>
-                  <ImageView fitHeight="107.0" fitWidth="109.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/logo.png" />
-                     </image>
-                  </ImageView>
-                  <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="354.0">
-                     <children>
-                              <TextField fx:id="searchBar" onKeyReleased="#handleSearch" prefHeight="34.0" prefWidth="302.0" promptText="Search" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="555.0" spacing="15.0">
-                     <children>
-                        <Button fx:id="addEvent" mnemonicParsing="false" onAction="#handleAddEvent" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #196C8F;" text="Add event" textFill="WHITE">
-                           <font>
-                              <Font name="Open Sans Bold" size="13.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                           <opaqueInsets>
-                              <Insets left="10.0" right="10.0" />
-                           </opaqueInsets>
-                        </Button>
-                        <Button fx:id="deleteCard" mnemonicParsing="false" onAction="#actionDeleteCard" onMouseClicked="#actionDeleteCard" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: #898989;" text="Delete card" textFill="WHITE">
-                           <font>
-                              <Font name="Open Sans Bold" size="13.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </Button>
-                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#handleUndoButton" text="Undo" />
-                        <Button fx:id="redoButton" mnemonicParsing="false" onAction="#handleRedoButton" text="Redo" />
-                     </children>
-                  </HBox>
-                  <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: transparent;" text="File" textAlignment="CENTER">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#menuActionOpen" text="Open" />
-                        <MenuItem mnemonicParsing="false" onAction="#menuActionSave" text="Save" />
-                        <MenuItem mnemonicParsing="false" onAction="#menuActionSaveAs" text="Save As" />
-                        <MenuItem mnemonicParsing="false" onAction="#switchToPrintPreview" text="Print" />
-                        <MenuItem mnemonicParsing="false" onAction="#switchToPrintToTextPreview" text="Print as Text" />
-                     </items>
-                     <font>
-                        <Font name="Arial" size="16.0" />
-                     </font>
-                  </MenuButton>
+                        <ImageView fitHeight="107.0" fitWidth="109.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Image/logo.png" />
+                            </image>
+                        </ImageView>
+                        <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="354.0">
+                            <children>
+                                <TextField fx:id="searchBar" onKeyReleased="#handleSearch" prefHeight="34.0" prefWidth="302.0" promptText="Search" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="610.0" spacing="150.0">
+                            <children>
+                        <HBox alignment="CENTER" prefHeight="107.0" prefWidth="235.0" spacing="15.0">
+                           <children>
+                                      <Button fx:id="addEvent" mnemonicParsing="false" onAction="#handleAddEvent" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #196C8F;" text="Add event" textFill="WHITE">
+                                          <font>
+                                              <Font name="Open Sans Bold" size="13.0" />
+                                          </font>
+                                          <padding>
+                                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                          </padding>
+                                          <opaqueInsets>
+                                              <Insets left="10.0" right="10.0" />
+                                          </opaqueInsets>
+                                      </Button>
+                                      <Button fx:id="deleteCard" mnemonicParsing="false" onAction="#actionDeleteCard" onMouseClicked="#actionDeleteCard" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: #898989;" text="Delete card" textFill="WHITE">
+                                          <font>
+                                              <Font name="Open Sans Bold" size="13.0" />
+                                          </font>
+                                          <padding>
+                                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                          </padding>
+                                      </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                           <children>
+                                      <Button fx:id="undoButton" mnemonicParsing="false" onAction="#handleUndoButton" style="-fx-background-color: transparent;" />
+                                      <Button fx:id="redoButton" mnemonicParsing="false" onAction="#handleRedoButton" style="-fx-background-color: transparent;" />
+                           </children>
+                        </HBox>
+                            </children>
+                        </HBox>
+                        <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: transparent;" text="File" textAlignment="CENTER">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#menuActionOpen" text="Open" />
+                                <MenuItem mnemonicParsing="false" onAction="#menuActionSave" text="Save" />
+                                <MenuItem mnemonicParsing="false" onAction="#menuActionSaveAs" text="Save As" />
+                                <MenuItem mnemonicParsing="false" onAction="#switchToPrintPreview" text="Print" />
+                                <MenuItem mnemonicParsing="false" onAction="#switchToPrintToTextPreview" text="Print as Text" />
+                            </items>
+                            <font>
+                                <Font name="Arial" size="16.0" />
+                            </font>
+                        </MenuButton>
                     </children>
                     <opaqueInsets>
                         <Insets />
@@ -88,78 +96,78 @@
             <children>
                 <HBox prefHeight="739.0" prefWidth="1540.0">
                     <children>
-                  <Accordion prefHeight="739.0" prefWidth="198.0">
-                    <panes>
-                      <TitledPane animated="false" text="Gender">
-                           <content>
-                              <VBox fx:id="genderFilterOptionsVBox" prefHeight="305.0" prefWidth="196.0" spacing="5.0">
-                                 <padding>
-                                    <Insets left="10.0" top="10.0" />
-                                 </padding>
-                              </VBox>
-                           </content>
-                      </TitledPane>
-                      <TitledPane animated="false" text="Event">
-                        <content>
-                              <VBox fx:id="eventFilterOptionsVBox" prefHeight="305.0" prefWidth="196.0" spacing="5.0">
-                                 <padding>
-                                    <Insets left="10.0" top="10.0" />
-                                 </padding>
-                              </VBox>
-                        </content>
-                      </TitledPane>
-                        <TitledPane animated="false" text="Category">
-                            <content>
-                                  <VBox fx:id="categoryFilterOptionsVBox" prefHeight="320.0" prefWidth="186.0" spacing="5.0">
-                                      <opaqueInsets>
-                                          <Insets />
-                                      </opaqueInsets>
-                                      <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                      </padding>
-                                  </VBox>
-                            </content>
-                        </TitledPane>
-                        <TitledPane animated="false" prefHeight="635.0" prefWidth="243.0" text="Level">
-                            <content>
-                                  <VBox fx:id="levelFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                      <opaqueInsets>
-                                          <Insets />
-                                      </opaqueInsets>
-                                      <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                      </padding>
-                                  </VBox>
-                            </content>
-                        </TitledPane>
-                        <TitledPane animated="false" text="Equipment">
-                            <content>
-                                  <VBox fx:id="equipmentFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                      <opaqueInsets>
-                                          <Insets />
-                                      </opaqueInsets>
-                                      <padding>
-                                          <Insets left="10.0" top="10.0" />
-                                      </padding>
-                                  </VBox>
-                            </content>
-                        </TitledPane>
-                        <TitledPane animated="false" layoutX="10.0" layoutY="111.0" text="Model Sex">
-                           <content>
-                              <VBox fx:id="modelSexFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <padding>
-                                    <Insets left="10.0" top="10.0" />
-                                 </padding>
-                              </VBox>
-                           </content>
-                        </TitledPane>
-                    </panes>
-                  </Accordion>
-                          <ListView fx:id="cardListView" onDragDetected="#handleDragDetection" prefHeight="741.0" prefWidth="298.0" />
-                        <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="1041.0" spacing="20.0" style="-fx-background-color: F9F9F9;">
+                        <Accordion prefHeight="739.0" prefWidth="198.0">
+                            <panes>
+                                <TitledPane animated="false" text="Gender">
+                                    <content>
+                                        <VBox fx:id="genderFilterOptionsVBox" prefHeight="305.0" prefWidth="196.0" spacing="5.0">
+                                            <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                            </padding>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane animated="false" text="Event">
+                                    <content>
+                                        <VBox fx:id="eventFilterOptionsVBox" prefHeight="305.0" prefWidth="196.0" spacing="5.0">
+                                            <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                            </padding>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane animated="false" text="Category">
+                                    <content>
+                                        <VBox fx:id="categoryFilterOptionsVBox" prefHeight="320.0" prefWidth="186.0" spacing="5.0">
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                            </padding>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane animated="false" prefHeight="635.0" prefWidth="243.0" text="Level">
+                                    <content>
+                                        <VBox fx:id="levelFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                            </padding>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane animated="false" text="Equipment">
+                                    <content>
+                                        <VBox fx:id="equipmentFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                            </padding>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                <TitledPane animated="false" layoutX="10.0" layoutY="111.0" text="Model Sex">
+                                    <content>
+                                        <VBox fx:id="modelSexFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <padding>
+                                                <Insets left="10.0" top="10.0" />
+                                            </padding>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                            </panes>
+                        </Accordion>
+                        <ListView fx:id="cardListView" onDragDetected="#handleDragDetection" prefHeight="741.0" prefWidth="298.0" />
+                        <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="1001.0" spacing="20.0" style="-fx-background-color: F9F9F9;">
                             <children>
                                 <Label fx:id="lessonPlanName" alignment="TOP_CENTER" prefHeight="40.0" prefWidth="1005.0" style="-fx-background-color: #C6E3EF;" text="Enter lesson name" textAlignment="CENTER">
                                     <font>
@@ -172,7 +180,7 @@
                                         <Insets top="5.0" />
                                     </padding>
                                 </Label>
-                                <VBox fx:id="lessonVbox" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                                <VBox fx:id="lessonVbox" prefHeight="250.0" prefWidth="965.0" spacing="10.0">
                                     <children>
                                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Event name" wrappingWidth="122.9958724975586">
                                             <font>
@@ -186,7 +194,7 @@
                                                 <MenuItem mnemonicParsing="false" text="Wheel" />
                                             </items>
                                         </MenuButton>
-                                        <FlowPane fx:id="lessonFlowPane" prefHeight="160.0" prefWidth="243.0">
+                                        <FlowPane fx:id="lessonFlowPane" prefHeight="160.0" prefWidth="941.0">
                                             <children>
                                                 <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="180.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
                                                     <image>

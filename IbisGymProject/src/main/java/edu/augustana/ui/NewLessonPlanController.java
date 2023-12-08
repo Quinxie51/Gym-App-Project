@@ -89,15 +89,36 @@ public class NewLessonPlanController {
         Background background = new Background(backgroundFill);
         lessonFlowPane.setBackground(background);
 
-        final Tooltip tooltipAddEvent = new Tooltip();
+        cardListView.getItems().addAll(getAllCards());
+        cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        ImageView undoImg = new ImageView(new Image(NewLessonPlanController.class.getResourceAsStream("Image/undo.png")));
+        undoImg.setFitHeight(20);
+        undoImg.setFitWidth(20);
+        undoButton.setGraphic(undoImg);
+
+        ImageView redoImg = new ImageView(new Image(NewLessonPlanController.class.getResourceAsStream("Image/forward.png")));
+        redoImg.setFitHeight(20);
+        redoImg.setFitWidth(20);
+        redoButton.setGraphic(redoImg);
+
+        //Add tool tip to each button
+        Tooltip tooltipUndo = new Tooltip();
+        tooltipUndo.setText("Undo the action");
+        undoButton.setTooltip(tooltipUndo);
+
+        Tooltip tooltipAddEvent = new Tooltip();
         tooltipAddEvent.setText("Create a new even in your lesson plan");
         addEvent.setTooltip(tooltipAddEvent);
 
-        final Tooltip tooltipDeleteCard = new Tooltip();
+        Tooltip tooltipDeleteCard = new Tooltip();
         tooltipDeleteCard.setText("Delete card in event");
-        deleteCard.setTooltip(tooltipAddEvent);
-        cardListView.getItems().addAll(getAllCards());
-        cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        deleteCard.setTooltip(tooltipDeleteCard);
+
+        Tooltip tooltipRedo = new Tooltip();
+        tooltipRedo.setText("Redo the action");
+        redoButton.setTooltip(tooltipRedo);
+
 
         for (String genderOption : CardDatabase.getGenderSet()) {
             CheckBox cBox = new CheckBox(genderOption);
