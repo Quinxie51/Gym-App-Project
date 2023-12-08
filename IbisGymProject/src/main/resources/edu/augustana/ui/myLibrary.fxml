@@ -20,14 +20,15 @@
     <top>
         <VBox prefWidth="1386.0" BorderPane.alignment="CENTER">
             <children>
-                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="97.0" prefWidth="1386.0" spacing="70.0" style="-fx-background-color: C6E3EF;">
+                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="97.0" prefWidth="1386.0" spacing="200.0" style="-fx-background-color: #85B7CC;">
                     <children>
                   <ImageView fitHeight="107.0" fitWidth="109.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@Image/logo.png" />
                      </image>
                   </ImageView>
-                  <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: transparent;" text="File" textAlignment="CENTER">
+                  <TextField fx:id="searchBar" onKeyReleased="#handleSearch" prefHeight="34.0" prefWidth="302.0" promptText="Search" />
+                  <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="96.0" style="-fx-background-color: C6E3EF;" text="File" textAlignment="CENTER">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#menuActionOpen" text="Open" />
                         <MenuItem mnemonicParsing="false" onAction="#menuActionSave" text="Save" />
@@ -38,8 +39,6 @@
                         <Font name="Arial" size="16.0" />
                      </font>
                   </MenuButton>
-                  <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="555.0" spacing="15.0" />
-                  <TextField fx:id="searchBar" onKeyReleased="#handleSearch" prefHeight="34.0" prefWidth="302.0" promptText="Search" />
                     </children>
                <opaqueInsets>
                   <Insets />
@@ -58,14 +57,14 @@
                     <children>
                   <VBox prefHeight="739.0" prefWidth="1421.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="130.0" prefWidth="1387.0" text="Course Plan">
+                        <Label alignment="CENTER" prefHeight="108.0" prefWidth="1387.0" style="-fx-background-color: #196C8F;" text="Course Plan" textFill="WHITE">
                            <font>
                               <Font name="Noto Sans JP Bold" size="32.0" />
                            </font>
                         </Label>
                         <HBox prefHeight="618.0" prefWidth="1387.0">
                            <children>
-                              <VBox alignment="TOP_CENTER" prefHeight="614.0" prefWidth="387.0" style="-fx-background-color: C6E3EF;">
+                              <VBox alignment="TOP_CENTER" prefHeight="614.0" prefWidth="340.0" style="-fx-background-color: C6E3EF;">
                                  <children>
                                     <Button fx:id="newLessonButton" mnemonicParsing="false" onAction="#handleCreateNewLesson" prefHeight="58.0" prefWidth="181.0" style="-fx-background-color: #196C8F; -fx-effect: shadow;" text="+ Create new lesson " textFill="WHITE">
                                        <font>
