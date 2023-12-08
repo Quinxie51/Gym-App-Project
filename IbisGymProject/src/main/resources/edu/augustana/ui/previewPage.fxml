@@ -9,13 +9,13 @@
 
 <Group fx:id="printGroup" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.PrintPreviewController">
    <children>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="1653.0">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="790.0" prefWidth="1538.0">
          <children>
-            <Button fx:id="btnBack" layoutX="862.0" layoutY="608.0" mnemonicParsing="false" onAction="#switchToNewLessonCreationPage" text="Back" />
-            <Button layoutX="907.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnActionPrint" text="Print" />
-            <VBox fx:id="vboxPrintLayout" layoutX="14.0" layoutY="14.0" prefHeight="346.0" prefWidth="1624.0">
+            <Button fx:id="btnBack" layoutX="1360.0" layoutY="746.0" mnemonicParsing="false" onAction="#switchToNewLessonCreationPage" prefHeight="30.0" prefWidth="75.0" text="Back" />
+            <Button layoutX="1449.0" layoutY="746.0" mnemonicParsing="false" onAction="#btnActionPrint" prefHeight="30.0" prefWidth="75.0" text="Print" />
+            <VBox fx:id="vboxPrintLayout" layoutX="14.0" layoutY="14.0" prefHeight="693.0" prefWidth="1524.0">
                <children>
-                  <FlowPane fx:id="fpEventLayout" hgap="25.0" prefHeight="287.0" prefWidth="1624.0" vgap="25.0" />
+                  <FlowPane fx:id="fpEventLayout" hgap="10.0" prefHeight="287.0" prefWidth="1624.0" vgap="10.0" />
                </children>
             </VBox>
          </children>

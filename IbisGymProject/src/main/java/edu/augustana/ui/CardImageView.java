@@ -60,6 +60,7 @@ public class CardImageView extends ImageView {
         if (!isZoomed) {
                 // If the card is not zoomed in, zoom in
             setActiveMode();
+            // toFront();
             scaleTransition.setToX(2.0); // Adjust the scale factor as needed
             scaleTransition.setToY(2.0);
             isZoomed = true;
