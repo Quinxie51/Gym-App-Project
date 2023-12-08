@@ -89,15 +89,36 @@ public class NewLessonPlanController {
         Background background = new Background(backgroundFill);
         lessonFlowPane.setBackground(background);
 
-        final Tooltip tooltipAddEvent = new Tooltip();
+        cardListView.getItems().addAll(getAllCards());
+        cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        ImageView undoImg = new ImageView(new Image(NewLessonPlanController.class.getResourceAsStream("Image/undo.png")));
+        undoImg.setFitHeight(20);
+        undoImg.setFitWidth(20);
+        undoButton.setGraphic(undoImg);
+
+        ImageView redoImg = new ImageView(new Image(NewLessonPlanController.class.getResourceAsStream("Image/forward.png")));
+        redoImg.setFitHeight(20);
+        redoImg.setFitWidth(20);
+        redoButton.setGraphic(redoImg);
+
+        //Add tool tip to each button
+        Tooltip tooltipUndo = new Tooltip();
+        tooltipUndo.setText("Undo the action");
+        undoButton.setTooltip(tooltipUndo);
+
+        Tooltip tooltipAddEvent = new Tooltip();
         tooltipAddEvent.setText("Create a new even in your lesson plan");
         addEvent.setTooltip(tooltipAddEvent);
 
-        final Tooltip tooltipDeleteCard = new Tooltip();
+        Tooltip tooltipDeleteCard = new Tooltip();
         tooltipDeleteCard.setText("Delete card in event");
-        deleteCard.setTooltip(tooltipAddEvent);
-        cardListView.getItems().addAll(getAllCards());
-        cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        deleteCard.setTooltip(tooltipDeleteCard);
+
+        Tooltip tooltipRedo = new Tooltip();
+        tooltipRedo.setText("Redo the action");
+        redoButton.setTooltip(tooltipRedo);
+
 
         for (String genderOption : CardDatabase.getGenderSet()) {
             CheckBox cBox = new CheckBox(genderOption);
@@ -308,7 +329,11 @@ public class NewLessonPlanController {
         return false;
     }
 
-
+    /**
+     * detect drag card from list view
+     * @param event
+     *
+     */
     @FXML
     void handleDragDetection(MouseEvent event) {
         List<Card> selectedCards = cardListView.getSelectionModel().getSelectedItems();
@@ -323,6 +348,10 @@ public class NewLessonPlanController {
         event.consume();
     }
 
+    /**
+     * accept drag card over
+     * @param event
+     */
     @FXML
     void handleImageDragOver(DragEvent event) {
         if (event.getDragboard().hasString()) {
@@ -333,25 +362,24 @@ public class NewLessonPlanController {
     @FXML
     void handleImageDropped(DragEvent event) {
         String[] uniqueIDs = event.getDragboard().getString().split("\\*");
+        System.out.println("Event source: " + event.getSource());
+        EventBox targetEventBox = (EventBox) event.getSource();
+        List<Card> cardsToAdd = new ArrayList<>();
         for (String uniqueID : uniqueIDs) {
             Card card = CardDatabase.getCardFromUniqueID(uniqueID);
-            lessonPlan.getOneEvent().addCard(card);
-            // instead of adding each view at a time, we could
-            // after the loop, clear everything from the lesson plan view
-            // and recreate it in the right order, grouped by the event
-            // of each card
+            //lessonPlan.getOneEvent().addCard(card);
+            cardsToAdd.add(card);
         }
+        targetEventBox.addCards(cardsToAdd);
         undoRedoHandler.saveState(lessonPlan);
-
-        refreshLessonView();
+        refreshEventView(targetEventBox);
     }
+    private void refreshEventView(EventBox eventBox) {
+        // Clear the existing cards in the event box
+        eventBox.getEvent().clearCards();
 
-    private void refreshLessonView() {
-        Node firstThing = lessonFlowPane.getChildren().get(0);
-        lessonFlowPane.getChildren().clear();
-        lessonFlowPane.getChildren().add(firstThing);
-
-        for (Card card : MainApp.getCurrentCourse().getOneLessonPlan().getOneEvent().getCards()){
+        // Add the updated list of cards to the event box
+        for (Card card : eventBox.getEvent().getCards()) {
             Image image = card.getImage();
             CardImageView cardImageView = new CardImageView(image, card);
             cardImageView.setImage(image);
@@ -361,11 +389,10 @@ public class NewLessonPlanController {
                 toggleSelection(cardImageView);
                 event.consume();
             });
+
             // Set the Card as user data for later retrieval
             cardImageView.setUserData(card);
-            lessonFlowPane.setHgap(10); // should be set in scenebuilder
-            lessonFlowPane.setVgap(10);
-            lessonFlowPane.getChildren().add(cardImageView);
+            eventBox.getChildren().add(cardImageView);
         }
     }
 
@@ -382,10 +409,12 @@ public class NewLessonPlanController {
         result.ifPresent(eventName -> {
             Event newEvent = new Event(eventName);
             EventBox newEventBox = new EventBox(newEvent);
+            newEventBox.setOnDragOver(evt -> handleImageDragOver(evt));
+            newEventBox.setOnDragDropped(evt -> handleImageDropped(evt));
             lessonPlan.addEvent(newEvent);
             lessonVbox.getChildren().add(newEventBox);
             undoRedoHandler.saveState(lessonPlan);
-            refreshLessonView();  // Refresh the UI to display the new event
+            refreshEventView(newEventBox);  // Refresh the UI to display the new event
         });
     }
 
@@ -439,7 +468,7 @@ public class NewLessonPlanController {
         File chosenFile = fileChooser.showOpenDialog(mainWindow);
         if (chosenFile != null) {
             MainApp.openCurrentCourseFromFile(chosenFile); //make a try catch
-            refreshLessonView();
+            //refreshEventView();
         }
     }
 
@@ -476,14 +505,14 @@ public class NewLessonPlanController {
     private void handleUndoButton(ActionEvent event) {
         undoRedoHandler.undo(lessonPlan);
         undoRedoHandler.saveState(lessonPlan);
-        refreshLessonView();
+        //refreshEventView();
     }
 
     @FXML
     private void handleRedoButton(ActionEvent event) {
         undoRedoHandler.redo(lessonPlan);
         undoRedoHandler.saveState(lessonPlan);
-        refreshLessonView();
+        //refreshEventView();
     }
 }
 

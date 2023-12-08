@@ -2,7 +2,7 @@ package edu.augustana.ui;
 
 import edu.augustana.data.Card;
 import javafx.animation.ScaleTransition;
-import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -58,21 +58,38 @@ public class CardImageView extends ImageView {
         ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), this);
 
         if (!isZoomed) {
-                // If the card is not zoomed in, zoom in
+            // If the card is not zoomed in, zoom in
             setActiveMode();
-            scaleTransition.setToX(2.0); // Adjust the scale factor as needed
-            scaleTransition.setToY(2.0);
+
+            DropShadow dropShadow = new DropShadow();
+            dropShadow.setRadius(10.0);
+            dropShadow.setOffsetX(5.0);
+            dropShadow.setOffsetY(5.0);
+
+            setEffect(dropShadow);
+            scaleTransition.setToX(2.5);
+            scaleTransition.setToY(2.5);
+
+            // Set a lower viewOrder when zoomed in
+            setViewOrder(-1.0);
+
             isZoomed = true;
         } else {
-                // If the card is already zoomed in, zoom out
+            // If the card is already zoomed in, zoom out
             resetStyles();
+            setEffect(null);
             scaleTransition.setToX(1.0);
             scaleTransition.setToY(1.0);
+
+            
+            setViewOrder(0);
+
             isZoomed = false;
         }
 
-            scaleTransition.play();
+        scaleTransition.play();
     }
+
 
     public Card getMyCard() {
         return myCard;
