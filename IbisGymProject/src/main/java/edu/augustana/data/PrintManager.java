@@ -30,17 +30,10 @@ public class PrintManager {
                 PageLayout pageLayout = printer.createPageLayout(Paper.NA_LETTER,PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
                 printerJob.getJobSettings().setPageLayout(pageLayout);
 
-
-                // printerJob.getJobSettings().setPageLayout(pageLayout);
-//                WritableImage snapshot = printedVbox.snapshot(new SnapshotParameters(),null);
-//                double x = pageLayout.getPrintableWidth()/ snapshot.getWidth();
-//                double y =pageLayout.getPrintableHeight()/snapshot.getHeight();
-//                double scale = Math.min(x,y);
-
-                // printerJob.printPage(snapshot.getPixelReader(),pageLayout,0,0,snapshot.getWidth()*scale,snapshot.getHeight()*scale);
                 double scaleX = pageLayout.getPrintableWidth() / printedNode.getBoundsInParent().getWidth();
                 double scaleY = pageLayout.getPrintableHeight() / printedNode.getBoundsInParent().getHeight();
-                double scale = Math.max(scaleX, scaleY);
+                // changed from max to min to fill page
+                double scale = Math.min(scaleX, scaleY);
 
                 printedNode.getTransforms().add(new Scale(scale, scale));
                 if(printerJob.printPage(printedNode)){

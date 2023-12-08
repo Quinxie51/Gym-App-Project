@@ -28,7 +28,6 @@ public class NewLessonPlanController {
 
     @FXML
     private ObservableList<Card> observableCards = FXCollections.observableArrayList(allCards);
-    private LessonPlan lessonPlan;
     @FXML
     private VBox eventFilterOptionsVBox;
     @FXML
@@ -60,11 +59,6 @@ public class NewLessonPlanController {
     private ImageView targetImageView;
 
     @FXML
-    private FlowPane lessonFlowPane;
-
-    @FXML
-    private ImageView target;
-    @FXML
     private TextField searchBar;
     @FXML
     private ListView<Card> cardListView;
@@ -73,7 +67,7 @@ public class NewLessonPlanController {
     @FXML
     private Button addEvent;
     @FXML
-    private Event eventSection;
+    private LessonPlan lessonPlan;
 
     private edu.augustana.ui.CardUndoRedoHandler undoRedoHandler;
 
@@ -85,9 +79,7 @@ public class NewLessonPlanController {
     @FXML
     private void initialize() {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
-        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
-        Background background = new Background(backgroundFill);
-        lessonFlowPane.setBackground(background);
+
 
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -372,27 +364,17 @@ public class NewLessonPlanController {
         }
         targetEventBox.addCards(cardsToAdd);
         undoRedoHandler.saveState(lessonPlan);
-        refreshEventView(targetEventBox);
     }
-    private void refreshEventView(EventBox eventBox) {
-        // Clear the existing cards in the event box
-        eventBox.getEvent().clearCards();
+    private void refreshLesson() {
+        // Clear the existing events
+        lessonVbox.getChildren().clear();
 
-        // Add the updated list of cards to the event box
-        for (Card card : eventBox.getEvent().getCards()) {
-            Image image = card.getImage();
-            CardImageView cardImageView = new CardImageView(image, card);
-            cardImageView.setImage(image);
-            cardImageView.setFitWidth(180);
-            cardImageView.setFitHeight(120);
-            cardImageView.setOnMouseClicked(event -> {
-                toggleSelection(cardImageView);
-                event.consume();
-            });
-
-            // Set the Card as user data for later retrieval
-            cardImageView.setUserData(card);
-            eventBox.getChildren().add(cardImageView);
+        for (Event event : lessonPlan.getCopyOfEvents()) {
+            Event newEvent = new Event(event.getEventTitle());
+            EventBox newEventBox = new EventBox(newEvent);
+            newEventBox.setOnDragOver(evt -> handleImageDragOver(evt));
+            newEventBox.setOnDragDropped(evt -> handleImageDropped(evt));
+            lessonVbox.getChildren().add(newEventBox);
         }
     }
 
@@ -408,41 +390,29 @@ public class NewLessonPlanController {
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(eventName -> {
             Event newEvent = new Event(eventName);
+            lessonPlan.addEvent(newEvent);
             EventBox newEventBox = new EventBox(newEvent);
             newEventBox.setOnDragOver(evt -> handleImageDragOver(evt));
             newEventBox.setOnDragDropped(evt -> handleImageDropped(evt));
-            lessonPlan.addEvent(newEvent);
             lessonVbox.getChildren().add(newEventBox);
             undoRedoHandler.saveState(lessonPlan);
-            refreshEventView(newEventBox);  // Refresh the UI to display the new event
         });
     }
 
     @FXML
     private void actionDeleteCard() {
-        // Create a copy of the selectedNodes list
-        List<CardImageView> nodesToDelete = new ArrayList<>(selectedNodes);
-
-        if (!nodesToDelete.isEmpty()) {
-            Iterator<CardImageView> iterator = selectedNodes.iterator();
-
-            while (iterator.hasNext()) {
-                CardImageView selectedNode = iterator.next();
-                String uniqueID = selectedNode.getMyCard().getUniqueID();
-                Card cardToDelete = CardDatabase.getCardFromUniqueID(uniqueID);
-
-                // Remove the node from the FlowPane
-                lessonFlowPane.getChildren().remove(selectedNode);
-
-                // Remove the card from the lesson plan or any other data structure
-                this.eventSection.removeCard(cardToDelete);
-
-                // Remove the node from the selectedNodes list using the iterator
-                iterator.remove();
+        for (Node node :lessonVbox.getChildren()) {
+            if (node instanceof EventBox) {
+                EventBox eventBox = (EventBox) node;
+                eventBox.deleteSelectedCards();
             }
-        } else {
-            new Alert(Alert.AlertType.WARNING, "Select a card to delete").show();
         }
+        undoRedoHandler.saveState(lessonPlan);
+
+
+//        } else {
+//            new Alert(Alert.AlertType.WARNING, "Select a card to delete").show();
+//        }
     }
 
 
@@ -464,11 +434,14 @@ public class NewLessonPlanController {
         fileChooser.setTitle("Open Course File");
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
         fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = lessonFlowPane.getScene().getWindow();
+        Window mainWindow = lessonVbox.getScene().getWindow();
         File chosenFile = fileChooser.showOpenDialog(mainWindow);
         if (chosenFile != null) {
             MainApp.openCurrentCourseFromFile(chosenFile); //make a try catch
-            //refreshEventView();
+            //TODO: This is wrong... maybe don't let people open courses from the
+            // lesson editing page?
+            lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
+            refreshLesson();
         }
     }
 
@@ -487,7 +460,7 @@ public class NewLessonPlanController {
         fileChooser.setTitle("Save Course File");
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
         fileChooser.getExtensionFilters().add(filter);
-        Window mainWindow = lessonFlowPane.getScene().getWindow();
+        Window mainWindow = lessonVbox.getScene().getWindow();
         File chosenFile = fileChooser.showSaveDialog(mainWindow);
         saveCurrentCourseToFile(chosenFile);
     }
@@ -505,14 +478,14 @@ public class NewLessonPlanController {
     private void handleUndoButton(ActionEvent event) {
         undoRedoHandler.undo(lessonPlan);
         undoRedoHandler.saveState(lessonPlan);
-        //refreshEventView();
+        refreshLesson();
     }
 
     @FXML
     private void handleRedoButton(ActionEvent event) {
         undoRedoHandler.redo(lessonPlan);
         undoRedoHandler.saveState(lessonPlan);
-        //refreshEventView();
+        refreshLesson();
     }
 }
 

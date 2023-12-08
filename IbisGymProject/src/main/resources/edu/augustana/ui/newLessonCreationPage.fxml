@@ -12,12 +12,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane prefHeight="846.0" prefWidth="1540.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.NewLessonPlanController">
     <top>
@@ -37,35 +35,35 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="610.0" spacing="150.0">
                             <children>
-                        <HBox alignment="CENTER" prefHeight="107.0" prefWidth="235.0" spacing="15.0">
-                           <children>
-                                      <Button fx:id="addEvent" mnemonicParsing="false" onAction="#handleAddEvent" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #196C8F; -fx-effect: dropshadow;" styleClass="dropshadow" text="Add event" textFill="WHITE">
-                                          <font>
-                                              <Font name="Open Sans Bold" size="13.0" />
-                                          </font>
-                                          <padding>
-                                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                          </padding>
-                                          <opaqueInsets>
-                                              <Insets left="10.0" right="10.0" />
-                                          </opaqueInsets>
-                                      </Button>
-                                      <Button fx:id="deleteCard" mnemonicParsing="false" onAction="#actionDeleteCard" onMouseClicked="#actionDeleteCard" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: #898989;" text="Delete card" textFill="WHITE">
-                                          <font>
-                                              <Font name="Open Sans Bold" size="13.0" />
-                                          </font>
-                                          <padding>
-                                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                          </padding>
-                                      </Button>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
-                           <children>
-                                      <Button fx:id="undoButton" mnemonicParsing="false" onAction="#handleUndoButton" style="-fx-background-color: transparent;" />
-                                      <Button fx:id="redoButton" mnemonicParsing="false" onAction="#handleRedoButton" style="-fx-background-color: transparent;" />
-                           </children>
-                        </HBox>
+                                <HBox alignment="CENTER" prefHeight="107.0" prefWidth="235.0" spacing="15.0">
+                                    <children>
+                                        <Button fx:id="addEvent" mnemonicParsing="false" onAction="#handleAddEvent" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #196C8F; -fx-effect: dropshadow;" styleClass="dropshadow" text="Add event" textFill="WHITE">
+                                            <font>
+                                                <Font name="Open Sans Bold" size="13.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </padding>
+                                            <opaqueInsets>
+                                                <Insets left="10.0" right="10.0" />
+                                            </opaqueInsets>
+                                        </Button>
+                                        <Button fx:id="deleteCard" mnemonicParsing="false" onAction="#actionDeleteCard" onMouseClicked="#actionDeleteCard" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: #898989;" text="Delete card" textFill="WHITE">
+                                            <font>
+                                                <Font name="Open Sans Bold" size="13.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </padding>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                                    <children>
+                                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#handleUndoButton" style="-fx-background-color: transparent;" />
+                                        <Button fx:id="redoButton" mnemonicParsing="false" onAction="#handleRedoButton" style="-fx-background-color: transparent;" />
+                                    </children>
+                                </HBox>
                             </children>
                         </HBox>
                         <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: #C6E3EF;" text="File" textAlignment="CENTER">
@@ -106,9 +104,9 @@
                                             </padding>
                                         </VBox>
                                     </content>
-                           <font>
-                              <Font name="Lato Regular" size="16.0" />
-                           </font>
+                                    <font>
+                                        <Font name="Lato Regular" size="16.0" />
+                                    </font>
                                 </TitledPane>
                                 <TitledPane animated="false" style="-fx-background-color: #85B7CC;" text="Event">
                                     <content>
@@ -118,9 +116,9 @@
                                             </padding>
                                         </VBox>
                                     </content>
-                           <font>
-                              <Font name="Lato Regular" size="16.0" />
-                           </font>
+                                    <font>
+                                        <Font name="Lato Regular" size="16.0" />
+                                    </font>
                                 </TitledPane>
                                 <TitledPane animated="false" style="-fx-background-color: white;" text="Category">
                                     <content>
@@ -133,9 +131,9 @@
                                             </padding>
                                         </VBox>
                                     </content>
-                           <font>
-                              <Font name="Lato Regular" size="16.0" />
-                           </font>
+                                    <font>
+                                        <Font name="Lato Regular" size="16.0" />
+                                    </font>
                                 </TitledPane>
                                 <TitledPane animated="false" prefHeight="635.0" prefWidth="243.0" style="-fx-background-color: white;" text="Level">
                                     <content>
@@ -148,9 +146,9 @@
                                             </padding>
                                         </VBox>
                                     </content>
-                           <font>
-                              <Font name="Lato Regular" size="16.0" />
-                           </font>
+                                    <font>
+                                        <Font name="Lato Regular" size="16.0" />
+                                    </font>
                                 </TitledPane>
                                 <TitledPane animated="false" style="-fx-background-color: white;" text="Equipment">
                                     <content>
@@ -163,9 +161,9 @@
                                             </padding>
                                         </VBox>
                                     </content>
-                           <font>
-                              <Font name="Lato Regular" size="16.0" />
-                           </font>
+                                    <font>
+                                        <Font name="Lato Regular" size="16.0" />
+                                    </font>
                                 </TitledPane>
                                 <TitledPane animated="false" layoutX="10.0" layoutY="111.0" style="-fx-background-color: white;" text="Model Sex">
                                     <content>
@@ -178,9 +176,9 @@
                                             </padding>
                                         </VBox>
                                     </content>
-                           <font>
-                              <Font name="Lato Regular" size="16.0" />
-                           </font>
+                                    <font>
+                                        <Font name="Lato Regular" size="16.0" />
+                                    </font>
                                 </TitledPane>
                             </panes>
                         </Accordion>
@@ -199,38 +197,6 @@
                                     </padding>
                                 </Label>
                                 <VBox fx:id="lessonVbox" prefHeight="250.0" prefWidth="965.0" spacing="10.0">
-                                    <children>
-                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Event name" wrappingWidth="128.9642562866211">
-                                            <font>
-                                                <Font name="Noto Sans JP Bold" size="18.0" />
-                                            </font>
-                                        </Text>
-                                        <MenuButton mnemonicParsing="false" style="-fx-background-color: #85b7cc;" text="Event type">
-                                            <items>
-                                                <MenuItem mnemonicParsing="false" text="Floor" />
-                                                <MenuItem mnemonicParsing="false" text="Stand" />
-                                                <MenuItem mnemonicParsing="false" text="Wheel" />
-                                            </items>
-                                 <font>
-                                    <Font name="Lato Regular" size="14.0" />
-                                 </font>
-                                        </MenuButton>
-                                        <FlowPane fx:id="lessonFlowPane" prefHeight="160.0" prefWidth="941.0">
-                                            <children>
-                                                <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="180.0" onDragDropped="#handleImageDropped" onDragOver="#handleImageDragOver" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@Image/Drag card here.png" />
-                                                    </image>
-                                                    <FlowPane.margin>
-                                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                    </FlowPane.margin>
-                                                </ImageView>
-                                            </children>
-                                            <padding>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                            </padding>
-                                        </FlowPane>
-                                    </children>
                                     <padding>
                                         <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
                                     </padding>

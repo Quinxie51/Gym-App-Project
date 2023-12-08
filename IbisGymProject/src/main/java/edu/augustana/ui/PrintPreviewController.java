@@ -35,19 +35,14 @@ public class PrintPreviewController {
     private void initialize() {
         this.printedVBox = new PrintManager(vboxPrintLayout);
         for (Card card: currentLessonPlan.getOneEvent().getCards()) {
-
             ImageView cardImage = new ImageView(card.getImage());
-            Screen primaryScreen = Screen.getPrimary();
 
-            // Get the bounds of the primary screen
-            Rectangle2D bounds = primaryScreen.getBounds();
+            Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
+            double imageWidth = (primaryScreenBounds.getWidth() - 50) / 4; // 50 is padding & gap width
 
-            double screenWidth = bounds.getWidth();
-            double screenHeight = bounds.getHeight();
-            cardImage.setFitHeight(screenHeight/5.5);
-            cardImage.setFitWidth(screenWidth/5.5);
+            cardImage.setFitWidth(imageWidth);
+            cardImage.setPreserveRatio(true);
             fpEventLayout.getChildren().add(cardImage);
-
         }
     }
 

@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EventBox extends VBox {
@@ -27,11 +28,13 @@ public class EventBox extends VBox {
         BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
         Background background = new Background(backgroundFill);
         eventFlowPane.setBackground(background);
+        eventFlowPane.setPadding(new Insets(10));
         ImageView dragImageHereIcon = new ImageView(new Image(EventBox.class.getResourceAsStream("Image/Drag card here.png")));
         dragImageHereIcon.setFitHeight(120);
         dragImageHereIcon.setFitWidth(180);
         eventFlowPane.getChildren().add(dragImageHereIcon);
         this.getChildren().addAll(eventLabel, eventFlowPane);
+        addCards(event.getCards());
     }
 
 
@@ -62,8 +65,22 @@ public class EventBox extends VBox {
         return event;
     }
 
+    public void deleteSelectedCards(){
+        for (Node node : new ArrayList<>(eventFlowPane.getChildren())) {
+            if (node instanceof CardImageView) {
+                CardImageView cardImageView = (CardImageView) node;
+                if (cardImageView.isSelected()) {
+                    eventFlowPane.getChildren().remove(cardImageView);
+                    event.removeCard(cardImageView.getMyCard());
+                }
+            }
+        }
 
-}
+            }
+
+
+    }
+
 
 
 

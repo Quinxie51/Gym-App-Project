@@ -21,9 +21,7 @@ public class LessonPlanState {
 
     @Override
     public String toString() {
-        return "LessonPlanState{" +
-                "pastLessonPlan=" + pastLessonPlan +
-                '}';
+        return pastLessonPlan.getDebugText();
     }
 }
 
