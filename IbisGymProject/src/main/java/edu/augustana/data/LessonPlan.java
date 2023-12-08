@@ -96,4 +96,18 @@ public class LessonPlan implements Cloneable{
             throw new AssertionError();
         }
     }
+
+    public String getDebugText() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        for (Event event: this.eventList) {
+            sb.append("[" + event.getEventTitle() + ": ");
+            for (Card c : event.getCards()) {
+                sb.append(c.getCode() + " ");
+            }
+            sb.append("]");
+        }
+        sb.append("}");
+        return sb.toString();
+    }
 }
