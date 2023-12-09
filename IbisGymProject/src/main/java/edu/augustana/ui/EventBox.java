@@ -51,6 +51,7 @@ public class EventBox extends VBox {
             cardImageView.setUserData(card);
 
             eventFlowPane.setHgap(5);
+            eventFlowPane.setVgap(5);
             eventFlowPane.getChildren().add(cardImageView);
         }
 

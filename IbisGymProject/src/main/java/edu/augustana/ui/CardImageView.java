@@ -80,7 +80,6 @@ public class CardImageView extends ImageView {
             setEffect(null);
             scaleTransition.setToX(1.0);
             scaleTransition.setToY(1.0);
-
             // Restore the default viewOrder
             setViewOrder(0);
 
