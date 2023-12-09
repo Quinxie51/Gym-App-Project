@@ -427,21 +427,28 @@ public class NewLessonPlanController {
         }
     }
 
+    private void addCardsFromOpen() {
+        System.out.println(lessonPlan.getEventList());
+        for (Event event : lessonPlan.getEventList()) {
+            EventBox newEventBox = new EventBox(event);
+            lessonVbox.getChildren().add(newEventBox);
+
+        }
+    }
 
     @FXML
     private void menuActionOpen(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Course File");
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
+        fileChooser.setTitle("Save Lesson Plan File");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Plan (*.gymPlan)", "*.gymPlan");
         fileChooser.getExtensionFilters().add(filter);
         Window mainWindow = lessonVbox.getScene().getWindow();
         File chosenFile = fileChooser.showOpenDialog(mainWindow);
         if (chosenFile != null) {
             MainApp.openCurrentCourseFromFile(chosenFile); //make a try catch
-            //TODO: This is wrong... maybe don't let people open courses from the
-            // lesson editing page?
             lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
-            refreshLesson();
+            //refreshLesson();
+            addCardsFromOpen();
         }
     }
 
@@ -457,8 +464,8 @@ public class NewLessonPlanController {
     @FXML
     private void menuActionSaveAs(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Course File");
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Course (*.gymCourse)", "*.gymCourse");
+        fileChooser.setTitle("Save Lesson Plan File");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Gymnastics Plan (*.gymPlan)", "*.gymPlan");
         fileChooser.getExtensionFilters().add(filter);
         Window mainWindow = lessonVbox.getScene().getWindow();
         File chosenFile = fileChooser.showSaveDialog(mainWindow);

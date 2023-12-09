@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.text.Font?>
 
 <Group fx:id="printGroup" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.PrintPreviewController">
    <children>
@@ -15,6 +17,14 @@
             <Button layoutX="1449.0" layoutY="746.0" mnemonicParsing="false" onAction="#btnActionPrint" prefHeight="30.0" prefWidth="75.0" text="Print" />
             <VBox fx:id="vboxPrintLayout" layoutX="14.0" layoutY="14.0" prefHeight="693.0" prefWidth="1524.0">
                <children>
+                  <Label fx:id="eventLabel" prefHeight="18.0" prefWidth="852.0">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
                   <FlowPane fx:id="fpEventLayout" hgap="10.0" prefHeight="287.0" prefWidth="1624.0" vgap="10.0" />
                </children>
             </VBox>
