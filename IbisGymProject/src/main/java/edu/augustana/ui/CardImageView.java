@@ -5,6 +5,7 @@ import javafx.animation.ScaleTransition;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.css.PseudoClass;
+import javafx.scene.Parent;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,7 +13,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
 public class CardImageView extends ImageView {
-
     private boolean selected = false;
 
     private Card myCard;
@@ -25,10 +25,6 @@ public class CardImageView extends ImageView {
         this.myCard = myCard;
 
 
-
-//        setOnMouseEntered(event -> {
-//            handleCardZoom();
-//        });
 //
 //        setOnMouseExited(event -> {
 //            if (isZoomed) {
@@ -36,9 +32,12 @@ public class CardImageView extends ImageView {
 //            }
 //        });
         this.setOnMouseReleased(event -> {
-//            if (event.getClickCount() == 1) {
+            if (event.getClickCount() == 1) {
                 handleCardActivation();
-//            }
+           }
+            if (event.getClickCount() == 2) {
+                handleCardZoom();
+            }
         });
 }
 
@@ -68,7 +67,6 @@ public class CardImageView extends ImageView {
         if (!isZoomed) {
             // If the card is not zoomed in, zoom in
 
-
             DropShadow dropShadow = new DropShadow();
             dropShadow.setRadius(10.0);
             dropShadow.setOffsetX(5.0);
@@ -78,8 +76,8 @@ public class CardImageView extends ImageView {
             scaleTransition.setToX(2.5);
             scaleTransition.setToY(2.5);
 
-            // Set a lower viewOrder when zoomed in
-            setViewOrder(-1.0);
+            // Set a higher viewOrder when zoomed in
+            setViewOrder(-1);
             isZoomed = true;
         } else {
             // If the card is already zoomed in, zoom out
@@ -87,7 +85,7 @@ public class CardImageView extends ImageView {
             scaleTransition.setToX(1.0);
             scaleTransition.setToY(1.0);
 
-            
+            // Restore the default viewOrder
             setViewOrder(0);
 
             isZoomed = false;
