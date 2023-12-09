@@ -69,8 +69,8 @@ public class CardImageView extends ImageView {
             dropShadow.setOffsetY(5.0);
 
             setEffect(dropShadow);
-            scaleTransition.setToX(2.5);
-            scaleTransition.setToY(2.5);
+            scaleTransition.setToX(1.75);
+            scaleTransition.setToY(1.75);
 
             // Set a higher viewOrder when zoomed in
             setViewOrder(-1);
