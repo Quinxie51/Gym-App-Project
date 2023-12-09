@@ -47,15 +47,10 @@ public class EventBox extends VBox {
             cardImageView.setImage(image);
             cardImageView.setFitWidth(180);
             cardImageView.setFitHeight(120);
-            cardImageView.setOnMouseClicked(event -> {
-                //toggleSelection(cardImageView);
-                //event.consume();
-            });
-
             // Set the Card as user data for later retrieval
             cardImageView.setUserData(card);
 
-
+            eventFlowPane.setHgap(5);
             eventFlowPane.getChildren().add(cardImageView);
         }
 

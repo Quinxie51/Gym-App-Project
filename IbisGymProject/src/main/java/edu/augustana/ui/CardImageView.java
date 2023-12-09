@@ -6,6 +6,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.css.PseudoClass;
 import javafx.scene.Parent;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -45,15 +46,10 @@ public class CardImageView extends ImageView {
     private void handleCardActivation() {
         selected = !selected;
         System.out.println("Selected =" + selected);
-        if (selected) {
-            //setStyle("-fx-border-color: blue; -fx-border-width: 2px;");
-            DropShadow dropShadow = new DropShadow();
-            dropShadow.setRadius(10.0);
-            dropShadow.setOffsetX(5.0);
-            dropShadow.setOffsetY(5.0);
-
-            setEffect(dropShadow);
-
+        if (selected && !isZoomed) {
+            ColorAdjust colorAdjust = new ColorAdjust();
+            colorAdjust.setBrightness(-0.3);
+            this.setEffect(colorAdjust);
         } else {
             setStyle(null);
             setEffect(null);
