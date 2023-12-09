@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
@@ -183,29 +184,33 @@
                             </panes>
                         </Accordion>
                         <ListView fx:id="cardListView" onDragDetected="#handleDragDetection" prefHeight="741.0" prefWidth="298.0" />
-                        <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="1001.0" spacing="20.0" style="-fx-background-color: F9F9F9;">
-                            <children>
-                                <Label fx:id="lessonPlanName" alignment="TOP_CENTER" prefHeight="55.0" prefWidth="1001.0" style="-fx-background-color: #C6E3EF; -fx-border-color: lightgrey;" text="Enter lesson name" textAlignment="CENTER">
-                                    <font>
-                                        <Font name="Noto Sans JP Bold" size="23.0" />
-                                    </font>
-                                    <VBox.margin>
-                                        <Insets top="5.0" />
-                                    </VBox.margin>
-                                    <padding>
-                                        <Insets top="5.0" />
-                                    </padding>
-                                </Label>
-                                <VBox fx:id="lessonVbox" prefHeight="250.0" prefWidth="965.0" spacing="10.0">
-                                    <padding>
-                                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
-                                    </padding>
-                                </VBox>
-                            </children>
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                        </VBox>
+                  <ScrollPane prefHeight="739.0" prefWidth="945.0">
+                     <content>
+                              <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="1001.0" spacing="20.0" style="-fx-background-color: F9F9F9;">
+                                  <children>
+                                      <Label fx:id="lessonPlanName" alignment="TOP_CENTER" prefHeight="55.0" prefWidth="1001.0" style="-fx-background-color: #C6E3EF; -fx-border-color: lightgrey;" text="Enter lesson name" textAlignment="CENTER">
+                                          <font>
+                                              <Font name="Noto Sans JP Bold" size="23.0" />
+                                          </font>
+                                          <VBox.margin>
+                                              <Insets top="5.0" />
+                                          </VBox.margin>
+                                          <padding>
+                                              <Insets top="5.0" />
+                                          </padding>
+                                      </Label>
+                                      <VBox fx:id="lessonVbox" prefHeight="250.0" prefWidth="965.0" spacing="10.0">
+                                          <padding>
+                                              <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                                          </padding>
+                                      </VBox>
+                                  </children>
+                                  <opaqueInsets>
+                                      <Insets />
+                                  </opaqueInsets>
+                              </VBox>
+                     </content>
+                  </ScrollPane>
                     </children>
                 </HBox>
             </children>
