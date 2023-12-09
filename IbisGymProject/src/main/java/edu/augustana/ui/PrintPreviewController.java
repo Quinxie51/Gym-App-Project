@@ -56,6 +56,7 @@ public class PrintPreviewController {
     }
 
 
+
     @FXML
     private void switchToNewLessonCreationPage(){
         MainApp.switchToNewLessonCreationPage();

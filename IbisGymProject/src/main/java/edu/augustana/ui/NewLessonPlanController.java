@@ -78,9 +78,14 @@ public class NewLessonPlanController {
 
     @FXML
     private void initialize() {
-        this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
+        if (!MainApp.getCurrentCourse().getOneLessonPlan().isOpenFromList()) {
+            this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
 
-
+            this.lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
+        } else {
+            lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
+            addCardsFromOpen();
+        }
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -145,8 +150,6 @@ public class NewLessonPlanController {
         System.out.println(getAllCards());
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
-
-        this.lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
         this.undoRedoHandler = new CardUndoRedoHandler(lessonPlan);
     }
 
@@ -427,12 +430,15 @@ public class NewLessonPlanController {
         }
     }
 
-    private void addCardsFromOpen() {
+    public void addCardsFromOpen() {
+        this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
+        lessonVbox.getChildren().clear();
         System.out.println(lessonPlan.getEventList());
         for (Event event : lessonPlan.getEventList()) {
             EventBox newEventBox = new EventBox(event);
+            newEventBox.setOnDragOver(evt -> handleImageDragOver(evt));
+            newEventBox.setOnDragDropped(evt -> handleImageDropped(evt));
             lessonVbox.getChildren().add(newEventBox);
-
         }
     }
 

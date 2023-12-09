@@ -8,6 +8,14 @@ import java.util.List;
 public class LessonPlan implements Cloneable{
     private String lessonTitle;
     private List<Event> eventList = new ArrayList<Event>();
+    private boolean openFromList = false;
+
+    public void didOpenFromList() {
+        openFromList = true;
+    }
+    public boolean isOpenFromList() {
+        return openFromList;
+    }
 
     public Event getOneEvent() {
         return eventList.get(0);

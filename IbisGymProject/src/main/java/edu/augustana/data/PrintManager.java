@@ -21,6 +21,9 @@ public class PrintManager {
     }
 
 
+    /**
+     * prints the page :)
+     */
     public void printPage() {
         try {
             // Create a printing job
