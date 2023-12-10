@@ -12,13 +12,19 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Represents an event with a list of associated cards.
+ */
 public class Event implements Cloneable {
     //Add a list of cards
     private String eventName;
-
     private List<String> cardIdList = new ArrayList<>();
 
+    /**
+     * Constructs an Event object with the specified event name.
+     *
+     * @param eventName The name of the event.
+     */
     public Event(String eventName) {
         this.eventName = eventName;
     }

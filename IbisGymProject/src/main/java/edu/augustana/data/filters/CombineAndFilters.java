@@ -9,6 +9,11 @@ public class CombineAndFilters implements CardFilter {
     
     CardFilter[] filters;
 
+    /**
+     * Constructs a CombineAndFilters with the specified array of filters.
+     *
+     * @param filters The filters to be combined using the logical AND operation.
+     */
     public CombineAndFilters(CardFilter... filters) {
         this.filters = filters;
     }

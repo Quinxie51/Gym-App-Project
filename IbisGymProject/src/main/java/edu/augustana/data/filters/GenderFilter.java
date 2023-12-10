@@ -4,11 +4,17 @@ import edu.augustana.data.Card;
 import edu.augustana.data.filters.CardFilter;
 
 import java.util.List;
-
+/**
+ * A filter implementation for filtering cards based on their gender.
+ */
 public class GenderFilter implements CardFilter {
 
     private final List<String> selectedGenders;
-
+    /**
+     * Constructs a GenderFilter with the specified list of selected genders.
+     *
+     * @param selectedOption The list of selected genders for filtering.
+     */
     public GenderFilter(List<String> selectedOption) {
         this.selectedGenders = selectedOption;
     }

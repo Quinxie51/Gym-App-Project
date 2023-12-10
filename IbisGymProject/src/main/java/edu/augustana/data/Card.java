@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+
+/**
+ * Represents a card with various attributes such as unique ID, code, events, category, title, pack folder, image, gender,
+ * model sex, level, equipment, and keywords.
+ */
 public class Card implements Cloneable{
 
 
@@ -28,7 +34,22 @@ public class Card implements Cloneable{
     private String[] equipment;
     private String[] keywords;
 
-
+    /**
+     * Constructs a Card object with the specified attributes.
+     *
+     * @param selectedUniqueID     The unique identifier of the card.
+     * @param selectedCode         The code associated with the card.
+     * @param selectedEvent        The events associated with the card.
+     * @param selectedCategory     The category of the card.
+     * @param selectedTitle        The title of the card.
+     * @param selectedPackFolder   The pack folder of the card.
+     * @param selectedImagePath    The image path of the card.
+     * @param selectedGender       The gender associated with the card.
+     * @param selectedModelSex     The model sex associated with the card.
+     * @param selectedLevel        The level of the card.
+     * @param selectedEquipment    The equipment associated with the card.
+     * @param selectedKeyWords     The keywords associated with the card.
+     */
     public Card(String selectedUniqueID, String selectedCode, String selectedEvent, String selectedCategory, String selectedTitle, String selectedPackFolder,
                 String selectedImagePath, String selectedGender, String selectedModelSex, String selectedLevel,
                 String[] selectedEquipment, String[] selectedKeyWords) {
@@ -154,21 +175,6 @@ public class Card implements Cloneable{
         this.keywords = Arrays.copyOf(other.keywords, other.keywords.length);
     }
 
-    public void restoreState(Card savedState) {
-        this.uniqueID = savedState.uniqueID;
-        this.code = savedState.code;
-        this.events = savedState.events;
-        this.category = savedState.category;
-        this.title = savedState.title;
-        this.packFolder = savedState.packFolder;
-        this.imagePath = savedState.imagePath;
-        this.image = new Image("file:CardPack/" + savedState.packFolder + "/" + savedState.imagePath);
-        this.gender = savedState.gender;
-        this.modelSex = savedState.modelSex;
-        this.level = savedState.level;
-        this.equipment = Arrays.copyOf(savedState.equipment, savedState.equipment.length);
-        this.keywords = Arrays.copyOf(savedState.keywords, savedState.keywords.length);
-    }
 
 
     @Override
