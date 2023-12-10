@@ -2,15 +2,10 @@ package edu.augustana.ui;
 
 import edu.augustana.data.Card;
 import javafx.animation.ScaleTransition;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.css.PseudoClass;
-import javafx.scene.Parent;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
 public class CardImageView extends ImageView {

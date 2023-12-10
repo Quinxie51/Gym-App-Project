@@ -23,6 +23,7 @@ public class MyCourseController {
     @FXML
     private ListView<String> lessonListView;
 
+
     /**
      * Handles the action event for importing a course by selecting a directory.
      *
@@ -90,4 +91,15 @@ public class MyCourseController {
             MainApp.switchToNewLessonCreationPage();
         }
     }
+
+    @FXML
+    void handleSearch(KeyEvent event) {
+
+    }
+
+    @FXML
+    void switchToHomepage(MouseEvent event) {
+
+    }
+
 }
