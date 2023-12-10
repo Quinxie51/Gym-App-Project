@@ -3,10 +3,25 @@
     -fx-border-width: 2px;
 }
 
-.activated-button {
-    -fx-effect: brightness(-0.3);
-}
 
 .button-with-shadow {
     -fx-effect: dropshadow(three-pass-box, grey, 5, 0, 0, 0);
+}
+
+.round-button {
+    -fx-background-radius: 50em;
+}
+
+.button:hover {
+    -fx-background-color: derive(-fx-base, 20%);
+}
+
+/* Apply darkening effect on pressed state for all buttons */
+.button:pressed {
+    -fx-background-color: derive(-fx-base, 30%);
+}
+
+/* Apply darkening effect on focused state for all buttons */
+.button:focused {
+    -fx-background-color: derive(-fx-base, 20%);
 }
