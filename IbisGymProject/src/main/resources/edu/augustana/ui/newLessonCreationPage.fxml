@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
@@ -60,8 +61,7 @@
                                 </HBox>
                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                                     <children>
-                                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#handleUndoButton" style="-fx-background-color: transparent;" />
-                                        <Button fx:id="redoButton" mnemonicParsing="false" onAction="#handleRedoButton" style="-fx-background-color: transparent;" />
+                                        <Button fx:id="deleteEvent" mnemonicParsing="false" onAction="#deleteSelectedEvent" style="-fx-background-color: transparent;" />
                                     </children>
                                 </HBox>
                             </children>
@@ -94,118 +94,126 @@
             <children>
                 <HBox prefHeight="739.0" prefWidth="1540.0">
                     <children>
-                        <Accordion prefHeight="739.0" prefWidth="198.0" style="-fx-background-color: #196C8F;">
-                            <panes>
-                                <TitledPane animated="false" blendMode="SRC_ATOP" style="-fx-background-color: white;" text="Gender">
-                                    <content>
-                                        <VBox fx:id="genderFilterOptionsVBox" prefHeight="305.0" prefWidth="196.0" spacing="5.0" style="-fx-background-color: white;">
-                                            <padding>
-                                                <Insets left="10.0" top="10.0" />
-                                            </padding>
-                                        </VBox>
-                                    </content>
-                                    <font>
-                                        <Font name="Lato Regular" size="16.0" />
-                                    </font>
-                                </TitledPane>
-                                <TitledPane animated="false" style="-fx-background-color: #85B7CC;" text="Event">
-                                    <content>
-                                        <VBox fx:id="eventFilterOptionsVBox" prefHeight="305.0" prefWidth="196.0" spacing="5.0">
-                                            <padding>
-                                                <Insets left="10.0" top="10.0" />
-                                            </padding>
-                                        </VBox>
-                                    </content>
-                                    <font>
-                                        <Font name="Lato Regular" size="16.0" />
-                                    </font>
-                                </TitledPane>
-                                <TitledPane animated="false" style="-fx-background-color: white;" text="Category">
-                                    <content>
-                                        <VBox fx:id="categoryFilterOptionsVBox" prefHeight="320.0" prefWidth="186.0" spacing="5.0">
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                            <padding>
-                                                <Insets left="10.0" top="10.0" />
-                                            </padding>
-                                        </VBox>
-                                    </content>
-                                    <font>
-                                        <Font name="Lato Regular" size="16.0" />
-                                    </font>
-                                </TitledPane>
-                                <TitledPane animated="false" prefHeight="635.0" prefWidth="243.0" style="-fx-background-color: white;" text="Level">
-                                    <content>
-                                        <VBox fx:id="levelFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                            <padding>
-                                                <Insets left="10.0" top="10.0" />
-                                            </padding>
-                                        </VBox>
-                                    </content>
-                                    <font>
-                                        <Font name="Lato Regular" size="16.0" />
-                                    </font>
-                                </TitledPane>
-                                <TitledPane animated="false" style="-fx-background-color: white;" text="Equipment">
-                                    <content>
-                                        <VBox fx:id="equipmentFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                            <padding>
-                                                <Insets left="10.0" top="10.0" />
-                                            </padding>
-                                        </VBox>
-                                    </content>
-                                    <font>
-                                        <Font name="Lato Regular" size="16.0" />
-                                    </font>
-                                </TitledPane>
-                                <TitledPane animated="false" layoutX="10.0" layoutY="111.0" style="-fx-background-color: white;" text="Model Sex">
-                                    <content>
-                                        <VBox fx:id="modelSexFilterOptionsVBox" prefHeight="552.0" prefWidth="203.0" spacing="5.0">
-                                            <opaqueInsets>
-                                                <Insets />
-                                            </opaqueInsets>
-                                            <padding>
-                                                <Insets left="10.0" top="10.0" />
-                                            </padding>
-                                        </VBox>
-                                    </content>
-                                    <font>
-                                        <Font name="Lato Regular" size="16.0" />
-                                    </font>
-                                </TitledPane>
-                            </panes>
-                        </Accordion>
+                  <ScrollPane>
+                     <content>
+                              <Accordion prefHeight="739.0" prefWidth="198.0" style="-fx-background-color: #196C8F;">
+                                  <panes>
+                                      <TitledPane animated="false" blendMode="SRC_ATOP" style="-fx-background-color: white;" text="Gender">
+                                          <content>
+                                              <VBox fx:id="genderFilterOptionsVBox" prefHeight="305.0" prefWidth="196.0" spacing="5.0" style="-fx-background-color: white;">
+                                                  <padding>
+                                                      <Insets left="10.0" top="10.0" />
+                                                  </padding>
+                                              </VBox>
+                                          </content>
+                                          <font>
+                                              <Font name="Lato Regular" size="16.0" />
+                                          </font>
+                                      </TitledPane>
+                                      <TitledPane animated="false" style="-fx-background-color: #85B7CC;" text="Event">
+                                          <content>
+                                              <VBox fx:id="eventFilterOptionsVBox" prefHeight="305.0" prefWidth="196.0" spacing="5.0">
+                                                  <padding>
+                                                      <Insets left="10.0" top="10.0" />
+                                                  </padding>
+                                              </VBox>
+                                          </content>
+                                          <font>
+                                              <Font name="Lato Regular" size="16.0" />
+                                          </font>
+                                      </TitledPane>
+                                      <TitledPane animated="false" style="-fx-background-color: white;" text="Category">
+                                          <content>
+                                              <VBox fx:id="categoryFilterOptionsVBox" prefHeight="320.0" prefWidth="186.0" spacing="5.0">
+                                                  <opaqueInsets>
+                                                      <Insets />
+                                                  </opaqueInsets>
+                                                  <padding>
+                                                      <Insets left="10.0" top="10.0" />
+                                                  </padding>
+                                              </VBox>
+                                          </content>
+                                          <font>
+                                              <Font name="Lato Regular" size="16.0" />
+                                          </font>
+                                      </TitledPane>
+                                      <TitledPane animated="false" prefHeight="635.0" prefWidth="243.0" style="-fx-background-color: white;" text="Level">
+                                          <content>
+                                              <VBox fx:id="levelFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                  <opaqueInsets>
+                                                      <Insets />
+                                                  </opaqueInsets>
+                                                  <padding>
+                                                      <Insets left="10.0" top="10.0" />
+                                                  </padding>
+                                              </VBox>
+                                          </content>
+                                          <font>
+                                              <Font name="Lato Regular" size="16.0" />
+                                          </font>
+                                      </TitledPane>
+                                      <TitledPane animated="false" style="-fx-background-color: white;" text="Equipment">
+                                          <content>
+                                              <VBox fx:id="equipmentFilterOptionsVBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                                  <opaqueInsets>
+                                                      <Insets />
+                                                  </opaqueInsets>
+                                                  <padding>
+                                                      <Insets left="10.0" top="10.0" />
+                                                  </padding>
+                                              </VBox>
+                                          </content>
+                                          <font>
+                                              <Font name="Lato Regular" size="16.0" />
+                                          </font>
+                                      </TitledPane>
+                                      <TitledPane animated="false" layoutX="10.0" layoutY="111.0" style="-fx-background-color: white;" text="Model Sex">
+                                          <content>
+                                              <VBox fx:id="modelSexFilterOptionsVBox" prefHeight="552.0" prefWidth="203.0" spacing="5.0">
+                                                  <opaqueInsets>
+                                                      <Insets />
+                                                  </opaqueInsets>
+                                                  <padding>
+                                                      <Insets left="10.0" top="10.0" />
+                                                  </padding>
+                                              </VBox>
+                                          </content>
+                                          <font>
+                                              <Font name="Lato Regular" size="16.0" />
+                                          </font>
+                                      </TitledPane>
+                                  </panes>
+                              </Accordion>
+                     </content>
+                  </ScrollPane>
                         <ListView fx:id="cardListView" onDragDetected="#handleDragDetection" prefHeight="741.0" prefWidth="298.0" />
-                        <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="1001.0" spacing="20.0" style="-fx-background-color: F9F9F9;">
-                            <children>
-                                <Label fx:id="lessonPlanName" alignment="TOP_CENTER" prefHeight="55.0" prefWidth="1001.0" style="-fx-background-color: #C6E3EF; -fx-border-color: lightgrey;" text="Enter lesson name" textAlignment="CENTER">
-                                    <font>
-                                        <Font name="Noto Sans JP Bold" size="23.0" />
-                                    </font>
-                                    <VBox.margin>
-                                        <Insets top="5.0" />
-                                    </VBox.margin>
-                                    <padding>
-                                        <Insets top="5.0" />
-                                    </padding>
-                                </Label>
-                                <VBox fx:id="lessonVbox" prefHeight="250.0" prefWidth="965.0" spacing="10.0">
-                                    <padding>
-                                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
-                                    </padding>
-                                </VBox>
-                            </children>
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
-                        </VBox>
+                  <ScrollPane prefHeight="739.0" prefWidth="945.0">
+                     <content>
+                              <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="1001.0" spacing="20.0" style="-fx-background-color: F9F9F9;">
+                                  <children>
+                                      <Label fx:id="lessonPlanName" alignment="TOP_CENTER" prefHeight="55.0" prefWidth="1001.0" style="-fx-background-color: #C6E3EF; -fx-border-color: lightgrey;" text="Enter lesson name" textAlignment="CENTER">
+                                          <font>
+                                              <Font name="Noto Sans JP Bold" size="23.0" />
+                                          </font>
+                                          <VBox.margin>
+                                              <Insets top="5.0" />
+                                          </VBox.margin>
+                                          <padding>
+                                              <Insets top="5.0" />
+                                          </padding>
+                                      </Label>
+                                      <VBox fx:id="lessonVbox" prefHeight="250.0" prefWidth="965.0" spacing="10.0">
+                                          <padding>
+                                              <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                                          </padding>
+                                      </VBox>
+                                  </children>
+                                  <opaqueInsets>
+                                      <Insets />
+                                  </opaqueInsets>
+                              </VBox>
+                     </content>
+                  </ScrollPane>
                     </children>
                 </HBox>
             </children>

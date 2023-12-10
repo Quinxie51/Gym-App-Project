@@ -1,22 +1,31 @@
 package edu.augustana.data;
 
-import edu.augustana.ui.LessonPlanState;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class LessonPlan implements Cloneable{
     private String lessonTitle;
     private List<Event> eventList = new ArrayList<Event>();
+    private boolean openFromList = false;
+
+    public void didOpenFromList() {
+        openFromList = true;
+    }
+    public boolean isOpenFromList() {
+        return openFromList;
+    }
 
     public Event getOneEvent() {
         return eventList.get(0);
     }
 
+    public List<Event> getEventList() {
+        return eventList;
+    }
 
     public LessonPlan(String lessonTitle) {
         this.lessonTitle = lessonTitle;
-        this.eventList.add(new Event("Untitled"));
+        //this.eventList.add(new Event("Untitled"));
     }
 
     public String getLessonTitle() {
@@ -36,15 +45,11 @@ public class LessonPlan implements Cloneable{
         eventList.remove(event);
     }
 
-    public void restoreState(LessonPlanState state) {
-        // Clear existing cards and add cards from the state
-        clearCards();
-        for (Event evt : state.getPastLessonPlan().getCopyOfEvents()) {
-            addCards(evt.getCards(), evt.getEventTitle()); // TODO: add them to the correct event inside this clas
-        }
-    }
     public void clearCards() {
-        getOneEvent().clearCards();
+        for (Event event : getEventList()) {
+            event.clearCards();
+        }
+        //getOneEvent().clearCards();
     }
 
     public void addCards(List<Card> cards, String eventTitle) {
@@ -76,10 +81,10 @@ public class LessonPlan implements Cloneable{
 
     public List<Event> getCopyOfEvents() {
         List<Event> copyOfEvents = new ArrayList<>();
-
-        copyOfEvents.add(clone().getOneEvent());
-
-        return copyOfEvents;
+        for (Event event : getEventList()) {
+            copyOfEvents.add(clone().getOneEvent());
+        }
+        return clone().getEventList();
     }
 
     @Override

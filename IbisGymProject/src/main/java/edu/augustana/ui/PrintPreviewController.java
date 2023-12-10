@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -27,6 +28,8 @@ public class PrintPreviewController {
     @FXML
     private VBox vboxPrintLayout;
     private PrintManager printedVBox;
+    @FXML
+    private Label eventLabel;
 
 
     private LessonPlan currentLessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
@@ -34,6 +37,7 @@ public class PrintPreviewController {
     @FXML
     private void initialize() {
         this.printedVBox = new PrintManager(vboxPrintLayout);
+        eventLabel.setText(currentLessonPlan.getOneEvent().getEventTitle());
         for (Card card: currentLessonPlan.getOneEvent().getCards()) {
             ImageView cardImage = new ImageView(card.getImage());
 
@@ -50,6 +54,7 @@ public class PrintPreviewController {
     private void btnActionPrint() {
         printedVBox.printPage();
     }
+
 
 
     @FXML

@@ -10,7 +10,7 @@ import java.util.List;
 public class Course {
 
     //TODO: eventually make a list of lesson plans
-    private LessonPlan oneLessonPlan = new LessonPlan("Untitled");
+    private LessonPlan oneLessonPlan = new LessonPlan("Test");
 
     public LessonPlan getOneLessonPlan() {
         return oneLessonPlan;
