@@ -1,4 +1,5 @@
 package edu.augustana.ui;
+
 import com.opencsv.exceptions.CsvValidationException;
 import edu.augustana.data.CardDatabase;
 import edu.augustana.data.Course;
@@ -17,10 +18,8 @@ import java.io.IOException;
  */
 public class MainApp extends Application {
     private static Scene scene;
-
     private static Course currentCourse = new Course();
     private static File currentCourseFile = null;
-
     private static LessonPlan currentLessonPlan;
 
     private static Stage userScreen;
@@ -58,12 +57,10 @@ public class MainApp extends Application {
         switchToView("myLibrary.fxml");
     }
 
-
     public static void switchToNewLessonCreationPage() {
         System.out.println("switchToNewLessonCreationPage");
         switchToView("newLessonCreationPage.fxml");
     }
-
 
     public static Scene getScene() {
         return scene;
