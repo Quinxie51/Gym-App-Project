@@ -419,17 +419,6 @@ public class NewLessonPlanController {
     }
 
 
-    @FXML
-    private void toggleSelection(ImageView node) {
-        if (selectedNodes.contains(node)) {
-            node.getStyleClass().remove("selected");
-            selectedNodes.remove(node);
-        } else {
-            node.getStyleClass().add("selected");
-            selectedNodes.add((CardImageView) node);
-        }
-    }
-
     public void addCardsFromOpen() {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
         lessonVbox.getChildren().clear();
