@@ -1,7 +1,5 @@
 package edu.augustana.data;
 
-import edu.augustana.ui.LessonPlanState;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,13 +45,6 @@ public class LessonPlan implements Cloneable{
         eventList.remove(event);
     }
 
-    public void restoreState(LessonPlanState state) {
-        // Clear existing cards and add cards from the state
-        clearCards();
-        for (Event evt : state.getPastLessonPlan().getCopyOfEvents()) {
-            addCards(evt.getCards(), evt.getEventTitle()); // TODO: add them to the correct event inside this class
-        }
-    }
     public void clearCards() {
         for (Event event : getEventList()) {
             event.clearCards();

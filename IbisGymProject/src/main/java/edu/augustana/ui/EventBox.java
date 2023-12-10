@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
@@ -19,10 +20,13 @@ public class EventBox extends VBox {
     private final FlowPane eventFlowPane;
     private Event event;
 
+    private boolean selected;
+
 
     public EventBox(Event event) {
         super();
         this.event = event;
+        this.selected = false;
         this.eventLabel = new Label(event.getEventTitle());
         this.eventFlowPane = new FlowPane();
         BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
@@ -34,7 +38,23 @@ public class EventBox extends VBox {
         dragImageHereIcon.setFitWidth(180);
         eventFlowPane.getChildren().add(dragImageHereIcon);
         this.getChildren().addAll(eventLabel, eventFlowPane);
+
+        setOnMouseClicked(this::toggleSelection);
         addCards(event.getCards());
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+        setBorder(selected ? new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT))
+                : Border.EMPTY);
+    }
+
+    public void toggleSelection(MouseEvent event) {
+        setSelected(!isSelected());
     }
 
 
@@ -55,6 +75,9 @@ public class EventBox extends VBox {
             eventFlowPane.getChildren().add(cardImageView);
         }
 
+    }
+    public void clearSelection() {
+        setSelected(false);
     }
 
     public Event getEvent() {

@@ -11,14 +11,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
@@ -42,10 +40,10 @@ public class NewLessonPlanController {
     private VBox modelSexFilterOptionsVBox;
 
     @FXML
-    private Button undoButton;
+    private Button deleteEvent;
 
-    @FXML
-    private Button redoButton;
+    // @FXML
+    // private Button redoButton;
     @FXML
     private VBox lessonVbox;
 
@@ -69,8 +67,6 @@ public class NewLessonPlanController {
     @FXML
     private LessonPlan lessonPlan;
 
-    private edu.augustana.ui.CardUndoRedoHandler undoRedoHandler;
-
 
     public NewLessonPlanController() {
 
@@ -92,17 +88,17 @@ public class NewLessonPlanController {
         ImageView undoImg = new ImageView(new Image(NewLessonPlanController.class.getResourceAsStream("Image/undo.png")));
         undoImg.setFitHeight(20);
         undoImg.setFitWidth(20);
-        undoButton.setGraphic(undoImg);
+        deleteEvent.setGraphic(undoImg);
 
-        ImageView redoImg = new ImageView(new Image(NewLessonPlanController.class.getResourceAsStream("Image/forward.png")));
-        redoImg.setFitHeight(20);
-        redoImg.setFitWidth(20);
-        redoButton.setGraphic(redoImg);
+        //  ImageView redoImg = new ImageView(new Image(NewLessonPlanController.class.getResourceAsStream("Image/forward.png")));
+        // redoImg.setFitHeight(20);
+        // redoImg.setFitWidth(20);
+        // redoButton.setGraphic(redoImg);
 
         //Add tool tip to each button
         Tooltip tooltipUndo = new Tooltip();
         tooltipUndo.setText("Undo the action");
-        undoButton.setTooltip(tooltipUndo);
+        deleteEvent.setTooltip(tooltipUndo);
 
         Tooltip tooltipAddEvent = new Tooltip();
         tooltipAddEvent.setText("Create a new even in your lesson plan");
@@ -112,9 +108,9 @@ public class NewLessonPlanController {
         tooltipDeleteCard.setText("Delete card in event");
         deleteCard.setTooltip(tooltipDeleteCard);
 
-        Tooltip tooltipRedo = new Tooltip();
-        tooltipRedo.setText("Redo the action");
-        redoButton.setTooltip(tooltipRedo);
+        //Tooltip tooltipRedo = new Tooltip();
+        //tooltipRedo.setText("Redo the action");
+        // redoButton.setTooltip(tooltipRedo);
 
 
         for (String genderOption : CardDatabase.getGenderSet()) {
@@ -150,7 +146,7 @@ public class NewLessonPlanController {
         System.out.println(getAllCards());
         System.out.println(getAllCards().size());
         System.out.println(uniqueIdMap.keySet().size());
-        this.undoRedoHandler = new CardUndoRedoHandler(lessonPlan);
+
     }
 
 
@@ -236,7 +232,7 @@ public class NewLessonPlanController {
             if (cBox.isSelected()) {
                 selectedModelSexes.add(cBox.getText());
             }
-    }
+        }
         if (!selectedModelSexes.isEmpty()) {
             allFilters.add(new ModelSexFilter(selectedModelSexes));
         }
@@ -326,8 +322,8 @@ public class NewLessonPlanController {
 
     /**
      * detect drag card from list view
-     * @param event
      *
+     * @param event
      */
     @FXML
     void handleDragDetection(MouseEvent event) {
@@ -345,6 +341,7 @@ public class NewLessonPlanController {
 
     /**
      * accept drag card over
+     *
      * @param event
      */
     @FXML
@@ -362,12 +359,13 @@ public class NewLessonPlanController {
         List<Card> cardsToAdd = new ArrayList<>();
         for (String uniqueID : uniqueIDs) {
             Card card = CardDatabase.getCardFromUniqueID(uniqueID);
-            //lessonPlan.getOneEvent().addCard(card);
+            lessonPlan.getOneEvent().addCard(card);
             cardsToAdd.add(card);
         }
         targetEventBox.addCards(cardsToAdd);
-        undoRedoHandler.saveState(lessonPlan);
+
     }
+
     private void refreshLesson() {
         // Clear the existing events
         lessonVbox.getChildren().clear();
@@ -398,19 +396,17 @@ public class NewLessonPlanController {
             newEventBox.setOnDragOver(evt -> handleImageDragOver(evt));
             newEventBox.setOnDragDropped(evt -> handleImageDropped(evt));
             lessonVbox.getChildren().add(newEventBox);
-            undoRedoHandler.saveState(lessonPlan);
         });
     }
 
     @FXML
     private void actionDeleteCard() {
-        for (Node node :lessonVbox.getChildren()) {
+        for (Node node : lessonVbox.getChildren()) {
             if (node instanceof EventBox) {
                 EventBox eventBox = (EventBox) node;
                 eventBox.deleteSelectedCards();
             }
         }
-        undoRedoHandler.saveState(lessonPlan);
 
 
 //        } else {
@@ -487,20 +483,38 @@ public class NewLessonPlanController {
             }
         }
     }
-    @FXML
-    private void handleUndoButton(ActionEvent event) {
-        undoRedoHandler.undo(lessonPlan);
-        undoRedoHandler.saveState(lessonPlan);
-        refreshLesson();
-    }
 
     @FXML
-    private void handleRedoButton(ActionEvent event) {
-        undoRedoHandler.redo(lessonPlan);
-        undoRedoHandler.saveState(lessonPlan);
-        refreshLesson();
+    private void deleteSelectedEvent() {
+        List<Node> nodesToRemove = new ArrayList<>();
+        for (Node node : lessonVbox.getChildren()) {
+            if (node instanceof EventBox) {
+                EventBox eventBox = (EventBox) node;
+                if (eventBox.isSelected()) {
+                    nodesToRemove.add(eventBox);
+                }
+            }
+        }
+
+        if (!nodesToRemove.isEmpty()) {
+            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Delete Event(s)");
+            confirmationAlert.setHeaderText("Are you sure you want to delete the selected event(s)?");
+
+            Optional<ButtonType> result = confirmationAlert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // Create a copy of the list of children before iterating and modifying
+                List<Node> childrenCopy = new ArrayList<>(lessonVbox.getChildren());
+
+                for (Node node : childrenCopy) {
+                    if (nodesToRemove.contains(node)) {
+                        lessonPlan.removeEvent(((EventBox) node).getEvent());
+                        lessonVbox.getChildren().remove(node);
+                    }
+                }
+            }
+        }
     }
 }
-
 
 

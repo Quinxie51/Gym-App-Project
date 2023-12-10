@@ -61,8 +61,7 @@
                                 </HBox>
                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                                     <children>
-                                        <Button fx:id="undoButton" mnemonicParsing="false" onAction="#handleUndoButton" style="-fx-background-color: transparent;" />
-                                        <Button fx:id="redoButton" mnemonicParsing="false" onAction="#handleRedoButton" style="-fx-background-color: transparent;" />
+                                        <Button fx:id="deleteEvent" mnemonicParsing="false" onAction="#deleteSelectedEvent" style="-fx-background-color: transparent;" />
                                     </children>
                                 </HBox>
                             </children>
