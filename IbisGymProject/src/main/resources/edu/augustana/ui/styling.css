@@ -1,0 +1,12 @@
+.card-image-view:selected {
+    -fx-border-color: blue;
+    -fx-border-width: 2px;
+}
+
+.activated-button {
+    -fx-effect: brightness(-0.3);
+}
+
+.button-with-shadow {
+    -fx-effect: dropshadow(three-pass-box, grey, 5, 0, 0, 0);
+}

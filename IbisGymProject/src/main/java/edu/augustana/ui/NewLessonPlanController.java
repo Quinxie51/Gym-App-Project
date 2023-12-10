@@ -412,6 +412,12 @@ public class NewLessonPlanController {
         }
     }
 
+    /**
+     * Opens a file dialog to select and open a lesson plan file.
+     *
+     * @param event The ActionEvent triggering the method.
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     private void menuActionOpen(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -427,6 +433,11 @@ public class NewLessonPlanController {
         }
     }
 
+    /**
+     * Saves the current lesson plan.
+     *
+     * @param event The ActionEvent triggering the method.
+     */
     @FXML
     private void menuActionSave(ActionEvent event) {
         if (MainApp.getCurrentCourse() == null) {
@@ -436,6 +447,11 @@ public class NewLessonPlanController {
         }
     }
 
+    /**
+     * Saves the current lesson plan to a new file.
+     *
+     * @param event The ActionEvent triggering the method.
+     */
     @FXML
     private void menuActionSaveAs(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -447,6 +463,11 @@ public class NewLessonPlanController {
         saveCurrentCourseToFile(chosenFile);
     }
 
+    /**
+     * Saves the current course to the specified file.
+     *
+     * @param chosenFile The file to which the course will be saved.
+     */
     private void saveCurrentCourseToFile(File chosenFile) {
         if (chosenFile != null) {
             try {
