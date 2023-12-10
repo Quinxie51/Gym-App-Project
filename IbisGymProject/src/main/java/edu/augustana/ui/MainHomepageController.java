@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public class MainHomepageController {
 
-    // for mainHomepage.fxml
+    // for MainHomePage.fxml
     @FXML
     private Button allCardsButton;
     @FXML
@@ -69,12 +69,10 @@ public class MainHomepageController {
 
 
     @FXML
-
     private void handleLibrary() throws IOException {
-            MainApp.switchToLibrary();
+        MainApp.switchToLibrary();
 
     }
-
 
 
     @FXML

@@ -1,4 +1,5 @@
 package edu.augustana.ui;
+
 import com.opencsv.exceptions.CsvValidationException;
 import edu.augustana.data.CardDatabase;
 import edu.augustana.data.Course;
@@ -17,10 +18,8 @@ import java.io.IOException;
  */
 public class MainApp extends Application {
     private static Scene scene;
-
     private static Course currentCourse = new Course();
     private static File currentCourseFile = null;
-
     private static LessonPlan currentLessonPlan;
 
     //HELLO THUNDERDOME
@@ -34,14 +33,16 @@ public class MainApp extends Application {
      * @throws IOException            if an error occurs while loading FXML or other resources.
      * @throws CsvValidationException if an error occurs during CSV validation.
      */
+    private static Stage userScreen;
     @Override
     public void start(Stage stage) throws IOException, CsvValidationException {
         CardDatabase.addCardsFromCSVFile();
-
         scene = new Scene(loadFXML("mainHomepage"), 640, 480);
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();
+        userScreen = stage;
+
 
     }
     /**
@@ -67,7 +68,7 @@ public class MainApp extends Application {
      * Switches the scene to the library view.
      */
     public static void switchToLibrary() {
-        switchToView("myLibrary.fxml");
+        switchToView("MyLibrary.fxml");
     }
 
     /**
@@ -75,8 +76,9 @@ public class MainApp extends Application {
      */
     public static void switchToNewLessonCreationPage() {
         System.out.println("switchToNewLessonCreationPage");
-        switchToView("newLessonCreationPage.fxml");
+        switchToView("NewLessonCreationPage.fxml");
     }
+
 
     /**
      * Gets the current scene.
@@ -86,6 +88,8 @@ public class MainApp extends Application {
     public static Scene getScene() {
         return scene;
     }
+
+
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxml + ".fxml"));
