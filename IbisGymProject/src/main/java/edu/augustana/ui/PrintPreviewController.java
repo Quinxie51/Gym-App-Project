@@ -18,11 +18,6 @@ import javafx.stage.Screen;
 
 public class PrintPreviewController {
 
-
-    @FXML
-    private Button btnBack;
-    @FXML
-    private Group printGroup;
     @FXML
     private FlowPane fpEventLayout;
     @FXML
@@ -31,14 +26,16 @@ public class PrintPreviewController {
     @FXML
     private Label eventLabel;
 
-
     private LessonPlan currentLessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
 
+    /**
+     * Creates and initializes a PrintManager object and adds all the cards and event title to the print preview page
+     */
     @FXML
     private void initialize() {
         this.printedVBox = new PrintManager(vboxPrintLayout);
         eventLabel.setText(currentLessonPlan.getOneEvent().getEventTitle());
-        for (Card card: currentLessonPlan.getOneEvent().getCards()) {
+        for (Card card : currentLessonPlan.getOneEvent().getCards()) {
             ImageView cardImage = new ImageView(card.getImage());
 
             Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
@@ -50,16 +47,19 @@ public class PrintPreviewController {
         }
     }
 
+    /**
+     * When pressed uses the Print Manager class to print the VBox that contains all of the cards
+     */
     @FXML
     private void btnActionPrint() {
         printedVBox.printPage();
     }
 
-
-
     @FXML
-    private void switchToNewLessonCreationPage(){
+    private void switchToNewLessonCreationPage() {
         MainApp.switchToNewLessonCreationPage();
-    };
+    }
+
+    ;
 
 }
