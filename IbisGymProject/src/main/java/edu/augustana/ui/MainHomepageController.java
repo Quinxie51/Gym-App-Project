@@ -69,12 +69,10 @@ public class MainHomepageController {
 
 
     @FXML
-
     private void handleLibrary() throws IOException {
-            MainApp.switchToLibrary();
+        MainApp.switchToLibrary();
 
     }
-
 
 
     @FXML
