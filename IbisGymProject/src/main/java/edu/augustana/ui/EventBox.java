@@ -22,7 +22,11 @@ public class EventBox extends VBox {
 
     private boolean selected;
 
-
+    /**
+     * Constructs an EventBox with the specified event.
+     *
+     * @param event The Event object associated with this box.
+     */
     public EventBox(Event event) {
         super();
         this.event = event;
@@ -43,6 +47,11 @@ public class EventBox extends VBox {
         addCards(event.getCards());
     }
 
+    /**
+     * Checks if the EventBox is selected.
+     *
+     * @return True if the EventBox is selected; otherwise, false.
+     */
     public boolean isSelected() {
         return selected;
     }
@@ -53,11 +62,20 @@ public class EventBox extends VBox {
                 : Border.EMPTY);
     }
 
+    /**
+     * Toggles the selection state of the EventBox based on mouse click.
+     *
+     * @param event The MouseEvent triggering the selection toggle.
+     */
     public void toggleSelection(MouseEvent event) {
         setSelected(!isSelected());
     }
 
-
+    /**
+     * Adds cards to the EventBox, associating them with the current event.
+     *
+     * @param cards The list of Card objects to add to the EventBox.
+     */
     public void addCards(List<Card> cards) {
         for (Card card : cards) {
             event.addCard(card);
@@ -76,15 +94,15 @@ public class EventBox extends VBox {
         }
 
     }
-    public void clearSelection() {
-        setSelected(false);
-    }
 
     public Event getEvent() {
         return event;
     }
 
-    public void deleteSelectedCards(){
+    /**
+     * Deletes the selected cards from the EventBox and the associated event.
+     */
+    public void deleteSelectedCards() {
         for (Node node : new ArrayList<>(eventFlowPane.getChildren())) {
             if (node instanceof CardImageView) {
                 CardImageView cardImageView = (CardImageView) node;
@@ -94,12 +112,5 @@ public class EventBox extends VBox {
                 }
             }
         }
-
-            }
-
-
     }
-
-
-
-
+}

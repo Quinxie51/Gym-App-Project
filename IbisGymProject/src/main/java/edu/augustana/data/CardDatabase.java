@@ -31,15 +31,7 @@ public class CardDatabase {
 
 
 
-    public static void main(String[] args) throws IOException, CsvValidationException {
-        //CardDatabase.addCardsFromCSVFile();
-
-        //addCardsFromCSVFile(args);
-
-        List<CardFilter> filters = new ArrayList<>();
-
-        String targetCat = "Shapes";
-
+    public static void main(String[] args) {
         System.out.println(eventSet);
         System.out.println(categorySet);
         System.out.println(genderSet);
@@ -111,7 +103,6 @@ public class CardDatabase {
         }
     }
 
-
     public static Card getCardFromUniqueID(String id) {
         return uniqueIdMap.get(id);
     }
@@ -139,7 +130,5 @@ public class CardDatabase {
     public static Set<String> getEquipmentSet() {
         return equipmentSet;
     }
-
-
 
 }
