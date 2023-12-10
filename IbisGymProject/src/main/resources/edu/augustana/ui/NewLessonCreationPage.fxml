@@ -61,12 +61,13 @@
                                 </HBox>
                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                                     <children>
+                              <Button fx:id="btnHelp" mnemonicParsing="false" prefHeight="45.0" prefWidth="83.0" text="Help" />
                                         <Button fx:id="deleteEvent" mnemonicParsing="false" onAction="#deleteSelectedEvent" style="-fx-background-color: transparent;" />
                                     </children>
                                 </HBox>
                             </children>
                         </HBox>
-                        <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: #C6E3EF;" text="File" textAlignment="CENTER">
+                        <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="87.0" style="-fx-background-color: #C6E3EF;" text="File" textAlignment="CENTER">
                             <items>
                                 <MenuItem mnemonicParsing="false" onAction="#menuActionOpen" text="Open" />
                                 <MenuItem mnemonicParsing="false" onAction="#menuActionSave" text="Save" />

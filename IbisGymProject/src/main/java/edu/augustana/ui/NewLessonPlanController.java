@@ -67,6 +67,9 @@ public class NewLessonPlanController {
     @FXML
     private LessonPlan lessonPlan;
 
+    @FXML
+    private  Button btnHelp;
+
 
     public NewLessonPlanController() {
 
