@@ -9,7 +9,11 @@ public class CategoryFilter implements CardFilter {
 
 
     private final List<String> selectedCategorys;
-
+    /**
+     * Constructs a CategoryFilter with the specified list of selected categories.
+     *
+     * @param selectedOption The list of selected categories for filtering.
+     */
     public CategoryFilter(List<String> selectedOption) {
 
         this.selectedCategorys = selectedOption;

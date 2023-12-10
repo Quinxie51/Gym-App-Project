@@ -10,6 +10,10 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
 import edu.augustana.data.filters.CardFilter;
 
+
+/**
+ * Represents a database for managing a collection of cards.
+ */
 public class CardDatabase {
     private static final String CSV_MAIN_PATH = "CardPack";
 
@@ -30,7 +34,13 @@ public class CardDatabase {
     private static Set<String> equipmentSet = new TreeSet<>();
 
 
-
+    /**
+     * The main entry point for the application.
+     *
+     * @param args Command line arguments (not used in this application).
+     * @throws IOException            if an I/O error occurs while reading files.
+     * @throws CsvValidationException if an error occurs during CSV validation.
+     */
     public static void main(String[] args) throws IOException, CsvValidationException {
         //CardDatabase.addCardsFromCSVFile();
 
@@ -62,7 +72,11 @@ public class CardDatabase {
             }
         return filteredCardList;
     }
-
+    /**
+     * Adds cards to the database from CSV files located in the specified path.
+     *
+     * @throws IOException            if an I/O error occurs while reading files..
+     */
     public static void addCardsFromCSVFile() throws IOException {
         File mainFolder = new File(CSV_MAIN_PATH);
 

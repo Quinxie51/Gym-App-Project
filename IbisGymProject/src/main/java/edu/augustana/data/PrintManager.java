@@ -6,12 +6,20 @@ import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Scale;
 //EVent name to flowpane
+
+/**
+ * Manages the printing of a JavaFX node.
+ */
 public class PrintManager {
 
     @FXML
     private Node printedNode;
 
-
+    /**
+     * Constructs a PrintManager with the specified page node.
+     *
+     * @param page The node to be printed.
+     */
     public PrintManager(Node page){
         this.printedNode = page;
     }
