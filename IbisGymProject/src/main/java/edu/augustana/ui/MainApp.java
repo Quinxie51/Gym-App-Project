@@ -22,11 +22,18 @@ public class MainApp extends Application {
     private static File currentCourseFile = null;
     private static LessonPlan currentLessonPlan;
 
+    //HELLO THUNDERDOME
+
+    /**
+     * This method is called when the JavaFX application is launched.
+     * It initializes the application, loads cards from a CSV file,
+     * and sets up the main scene.
+     *
+     * @param stage The primary stage for this application.
+     * @throws IOException            if an error occurs while loading FXML or other resources.
+     * @throws CsvValidationException if an error occurs during CSV validation.
+     */
     private static Stage userScreen;
-
-
-
-    //HELLO THUNDERDOMEApp
     @Override
     public void start(Stage stage) throws IOException, CsvValidationException {
         CardDatabase.addCardsFromCSVFile();
@@ -38,7 +45,12 @@ public class MainApp extends Application {
 
 
     }
-
+    /**
+     * Sets the root of the scene to the specified FXML file.
+     *
+     * @param fxml The name of the FXML file (without the ".fxml" extension).
+     * @throws IOException if an error occurs while loading the FXML file.
+     */
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
@@ -52,16 +64,27 @@ public class MainApp extends Application {
             ex.printStackTrace();
         }
     }
-
+    /**
+     * Switches the scene to the library view.
+     */
     public static void switchToLibrary() {
         switchToView("MyLibrary.fxml");
     }
 
+    /**
+     * Switches the scene to the new lesson creation page.
+     */
     public static void switchToNewLessonCreationPage() {
         System.out.println("switchToNewLessonCreationPage");
         switchToView("NewLessonCreationPage.fxml");
     }
 
+
+    /**
+     * Gets the current scene.
+     *
+     * @return The current scene.
+     */
     public static Scene getScene() {
         return scene;
     }
@@ -72,25 +95,47 @@ public class MainApp extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
-
+    /**
+     * Opens the specified file and loads the associated course.
+     *
+     * @param chosenFile The file to open and load the course from.
+     * @throws IOException if an error occurs while reading the file or loading the course.
+     */
     public static void openCurrentCourseFromFile(File chosenFile) throws IOException {
         currentCourseFile = chosenFile;
         currentCourse = Course.loadFromFile(chosenFile);
     }
-
+    /**
+     * Saves the current course to the specified file.
+     *
+     * @param chosenFile The file to save the current course to.
+     * @throws IOException if an error occurs while writing to the file.
+     */
     public static void saveCurrentCourseToFile(File chosenFile) throws IOException {
         currentCourse.saveToFile(chosenFile);
         currentCourseFile = chosenFile;
     }
-
+    /**
+     * Gets the current course.
+     *
+     * @return The current course.
+     */
     public static Course getCurrentCourse() {
         return currentCourse;
     }
-
+    /**
+     * Gets the file associated with the current course.
+     *
+     * @return The file associated with the current course.
+     */
     public static File getCurrentCourseFile() {
         return currentCourseFile;
     }
-
+    /**
+     * The main entry point for the application.
+     *
+     * @param args Command line arguments (not used in this application).
+     */
     public static void main(String[] args) {
 
         System.out.println("Main is running!");

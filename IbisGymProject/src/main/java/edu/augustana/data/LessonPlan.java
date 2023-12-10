@@ -3,6 +3,9 @@ package edu.augustana.data;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a lesson plan with a title and a list of associated events.
+ */
 public class LessonPlan implements Cloneable{
     private String lessonTitle;
     private List<Event> eventList = new ArrayList<Event>();
@@ -22,7 +25,11 @@ public class LessonPlan implements Cloneable{
     public List<Event> getEventList() {
         return eventList;
     }
-
+    /**
+     * Constructs a LessonPlan object with the specified lesson title.
+     *
+     * @param lessonTitle The title of the lesson plan.
+     */
     public LessonPlan(String lessonTitle) {
         this.lessonTitle = lessonTitle;
         //this.eventList.add(new Event("Untitled"));
@@ -45,30 +52,6 @@ public class LessonPlan implements Cloneable{
         eventList.remove(event);
     }
 
-    public void clearCards() {
-        for (Event event : getEventList()) {
-            event.clearCards();
-        }
-        //getOneEvent().clearCards();
-    }
-
-    public void addCards(List<Card> cards, String eventTitle) {
-        List<Card> allCards = getAllCards();
-        for (Card card : cards) {
-
-            if (!allCards.contains(card)) {
-                getOneEvent().addCard(card);
-            }
-        }
-    }
-
-    public List<Card> getAllCards() {
-        List<Card> allCardsInLesson = new ArrayList<>();
-        for (Event event : eventList) {
-            allCardsInLesson.addAll(event.getCards());
-        }
-        return allCardsInLesson;
-    }
 
     @Override
     public String toString() {
