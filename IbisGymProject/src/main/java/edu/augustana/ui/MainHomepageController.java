@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public class MainHomepageController {
 
-    // for mainHomepage.fxml
+    // for MainHomePage.fxml
     @FXML
     private Button allCardsButton;
     @FXML

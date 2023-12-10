@@ -54,12 +54,12 @@ public class MainApp extends Application {
     }
 
     public static void switchToLibrary() {
-        switchToView("myLibrary.fxml");
+        switchToView("MyLibrary.fxml");
     }
 
     public static void switchToNewLessonCreationPage() {
         System.out.println("switchToNewLessonCreationPage");
-        switchToView("newLessonCreationPage.fxml");
+        switchToView("NewLessonCreationPage.fxml");
     }
 
     public static Scene getScene() {
