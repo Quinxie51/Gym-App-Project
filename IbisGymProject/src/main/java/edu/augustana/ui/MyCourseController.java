@@ -18,19 +18,16 @@ import java.util.Optional;
 
 public class MyCourseController {
 
-    private HashMap<String, File> fileMap = new HashMap<>();;
+    private HashMap<String, File> fileMap = new HashMap<>();
+
     @FXML
     private ListView<String> lessonListView;
 
-    @FXML
-    private Button newLessonButton;
-
-    @FXML
-    private TextField searchBar;
-    @FXML
-    private Button importCourse;
-
-
+    /**
+     * Handles the action event for importing a course by selecting a directory.
+     *
+     * @param event The ActionEvent triggered by importing a course.
+     */
     @FXML
     void handleImportCourse(ActionEvent event) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -59,7 +56,11 @@ public class MyCourseController {
         }
     }
 
-
+    /**
+     * Handles the action event for opening a course from the displayed list.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     private void handleOpenFromList() throws IOException {
         String selectedFileName = lessonListView.getSelectionModel().getSelectedItem();
@@ -70,6 +71,11 @@ public class MyCourseController {
         }
     }
 
+    /**
+     * Handles the action event for creating a new lesson.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     private void handleCreateNewLesson() throws IOException {
         //Stack overflow code
@@ -84,41 +90,4 @@ public class MyCourseController {
             MainApp.switchToNewLessonCreationPage();
         }
     }
-
-
-    @FXML
-    void handleDragDetection(MouseEvent event) {
-
-    }
-
-    @FXML
-    void handleSearch(KeyEvent event) {
-
-    }
-
-    @FXML
-    void menuActionOpen(ActionEvent event) {
-
-    }
-
-    @FXML
-    void menuActionSave(ActionEvent event) {
-
-    }
-
-    @FXML
-    void menuActionSaveAs(ActionEvent event) {
-
-    }
-
-    @FXML
-    void switchToHomepage(MouseEvent event) {
-
-    }
-
-    @FXML
-    void switchToPrintPreview(ActionEvent event) {
-
-    }
-
 }

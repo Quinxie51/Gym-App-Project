@@ -38,24 +38,12 @@ public class NewLessonPlanController {
     private VBox equipmentFilterOptionsVBox;
     @FXML
     private VBox modelSexFilterOptionsVBox;
-
     @FXML
     private Button deleteEvent;
-
-    // @FXML
-    // private Button redoButton;
     @FXML
     private VBox lessonVbox;
-
-    @FXML
-    private CheckBox beamEventCheck;
-
-    private MenuItem printMenuItem;
     @FXML
     public Label lessonPlanName;
-    @FXML
-    private ImageView targetImageView;
-
     @FXML
     private TextField searchBar;
     @FXML
@@ -71,10 +59,10 @@ public class NewLessonPlanController {
     private  Button btnHelp;
 
 
-    public NewLessonPlanController() {
-
-    }
-
+    /**
+     * Initializes the controller after its root element has been completely processed.
+     * Sets up initial data, UI components, and listeners.
+     */
     @FXML
     private void initialize() {
         if (!MainApp.getCurrentCourse().getOneLessonPlan().isOpenFromList()) {
@@ -104,11 +92,11 @@ public class NewLessonPlanController {
         deleteEvent.setTooltip(tooltipUndo);
 
         Tooltip tooltipAddEvent = new Tooltip();
-        tooltipAddEvent.setText("Create a new even in your lesson plan");
+        tooltipAddEvent.setText("Create a new event in your lesson plan");
         addEvent.setTooltip(tooltipAddEvent);
 
         Tooltip tooltipDeleteCard = new Tooltip();
-        tooltipDeleteCard.setText("Delete card in event");
+        tooltipDeleteCard.setText("Delete the selected card in the event");
         deleteCard.setTooltip(tooltipDeleteCard);
 
         //Tooltip tooltipRedo = new Tooltip();
@@ -152,7 +140,9 @@ public class NewLessonPlanController {
 
     }
 
-
+    /**
+     * Updates the filtered results based on the selected filters.
+     */
     private void updateFilterResults() {
         List<CardFilter> allFilters = new ArrayList<>();
 
@@ -254,7 +244,6 @@ public class NewLessonPlanController {
         // update the UI to display only those cards that were filtered
     }
 
-
     @FXML
     private void switchToHomepage() throws IOException {
         MainApp.setRoot("mainHomepage");
@@ -270,6 +259,9 @@ public class NewLessonPlanController {
         MainApp.setRoot("PrintText");
     }
 
+    /**
+     * Handles the search functionality in the lesson plan.
+     */
     @FXML
     private void handleSearch() {
         String searchText = searchBar.getText().toLowerCase().trim();
@@ -313,7 +305,13 @@ public class NewLessonPlanController {
         }
     }
 
-    // Helper method to check if any equipment contains the search text
+    /**
+     * Checks if any equipment contains the search text.
+     *
+     * @param equipment   The list of equipment to be checked.
+     * @param searchText  The search text to be checked in equipment.
+     * @return True if the search text is found in any equipment; otherwise, false.
+     */
     private boolean equipmentContainsSearchText(List<String> equipment, String searchText) {
         for (String item : equipment) {
             if (item.toLowerCase().contains(searchText)) {
@@ -324,9 +322,9 @@ public class NewLessonPlanController {
     }
 
     /**
-     * detect drag card from list view
+     * Detects drag card from list view.
      *
-     * @param event
+     * @param event The MouseEvent for drag detection.
      */
     @FXML
     void handleDragDetection(MouseEvent event) {
@@ -354,6 +352,11 @@ public class NewLessonPlanController {
         }
     }
 
+    /**
+     * Handles the dropping of a dragged card.
+     *
+     * @param event The DragEvent when a card is dropped.
+     */
     @FXML
     void handleImageDropped(DragEvent event) {
         String[] uniqueIDs = event.getDragboard().getString().split("\\*");
@@ -368,21 +371,6 @@ public class NewLessonPlanController {
         targetEventBox.addCards(cardsToAdd);
 
     }
-
-    private void refreshLesson() {
-        // Clear the existing events
-        lessonVbox.getChildren().clear();
-
-        for (Event event : lessonPlan.getCopyOfEvents()) {
-            Event newEvent = new Event(event.getEventTitle());
-            EventBox newEventBox = new EventBox(newEvent);
-            newEventBox.setOnDragOver(evt -> handleImageDragOver(evt));
-            newEventBox.setOnDragDropped(evt -> handleImageDropped(evt));
-            lessonVbox.getChildren().add(newEventBox);
-        }
-    }
-
-    private List<CardImageView> selectedNodes = new ArrayList<>();
 
     @FXML
     private void handleAddEvent(ActionEvent event) {
@@ -410,14 +398,11 @@ public class NewLessonPlanController {
                 eventBox.deleteSelectedCards();
             }
         }
-
-
-//        } else {
-//            new Alert(Alert.AlertType.WARNING, "Select a card to delete").show();
-//        }
     }
 
-
+    /**
+     * Adds cards from an opened lesson plan.
+     */
     public void addCardsFromOpen() {
         this.lessonPlanName.setText(MainApp.getCurrentCourse().getOneLessonPlan().getLessonTitle());
         lessonVbox.getChildren().clear();
@@ -430,6 +415,12 @@ public class NewLessonPlanController {
         }
     }
 
+    /**
+     * Opens a file dialog to select and open a lesson plan file.
+     *
+     * @param event The ActionEvent triggering the method.
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     private void menuActionOpen(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -441,11 +432,15 @@ public class NewLessonPlanController {
         if (chosenFile != null) {
             MainApp.openCurrentCourseFromFile(chosenFile); //make a try catch
             lessonPlan = MainApp.getCurrentCourse().getOneLessonPlan();
-            //refreshLesson();
             addCardsFromOpen();
         }
     }
 
+    /**
+     * Saves the current lesson plan.
+     *
+     * @param event The ActionEvent triggering the method.
+     */
     @FXML
     private void menuActionSave(ActionEvent event) {
         if (MainApp.getCurrentCourse() == null) {
@@ -455,6 +450,11 @@ public class NewLessonPlanController {
         }
     }
 
+    /**
+     * Saves the current lesson plan to a new file.
+     *
+     * @param event The ActionEvent triggering the method.
+     */
     @FXML
     private void menuActionSaveAs(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -466,6 +466,11 @@ public class NewLessonPlanController {
         saveCurrentCourseToFile(chosenFile);
     }
 
+    /**
+     * Saves the current course to the specified file.
+     *
+     * @param chosenFile The file to which the course will be saved.
+     */
     private void saveCurrentCourseToFile(File chosenFile) {
         if (chosenFile != null) {
             try {
@@ -476,6 +481,9 @@ public class NewLessonPlanController {
         }
     }
 
+    /**
+     * Deletes the selected event(s) from the lesson plan.
+     */
     @FXML
     private void deleteSelectedEvent() {
         List<Node> nodesToRemove = new ArrayList<>();
@@ -507,6 +515,5 @@ public class NewLessonPlanController {
             }
         }
     }
+
 }
-
-
