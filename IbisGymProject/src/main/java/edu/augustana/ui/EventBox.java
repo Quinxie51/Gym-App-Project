@@ -44,6 +44,8 @@ public class EventBox extends VBox {
         dragImageHereIcon.setFitWidth(180);
         eventFlowPane.getChildren().add(dragImageHereIcon);
         this.getChildren().addAll(eventLabel, eventFlowPane);
+        setId("event-box");
+        eventLabel.getStyleClass().add("event-title");
 
         setOnMouseClicked(this::toggleSelection);
         addCards(event.getCards());

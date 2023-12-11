@@ -3,5 +3,10 @@
     -fx-effect: dropshadow(three-pass-box, grey, 5, 0, 0, 0);
     -fx-border-radius: 50%;
 }
+#event-box .event-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
 
 
