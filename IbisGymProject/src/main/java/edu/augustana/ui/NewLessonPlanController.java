@@ -498,6 +498,7 @@ public class NewLessonPlanController {
 
 
 
+
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 // Create a copy of the list of children before iterating and modifying

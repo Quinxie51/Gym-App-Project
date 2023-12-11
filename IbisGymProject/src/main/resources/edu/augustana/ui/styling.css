@@ -9,5 +9,8 @@
     -fx-font-weight: bolder;
     -fx-text-fill: white;
 }
+.button-with-style:hover {
+    -fx-background-color: #13547a;
+}
 
 
