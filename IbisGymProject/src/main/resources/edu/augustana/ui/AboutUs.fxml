@@ -1,40 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="661.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.AboutUsController">
-   <children>
-      <HBox layoutY="-2.0" prefHeight="75.0" prefWidth="661.0">
+
+<ScrollPane prefHeight="1612.0" prefWidth="1629.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.AboutUsController">
+   <content>
+      <AnchorPane prefHeight="1604.0" prefWidth="1627.0" style="-fx-background-color: transparent;">
          <children>
-            <ImageView fitHeight="71.0" fitWidth="75.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Image/logo.png" />
-               </image>
-            </ImageView>
-            <Label prefHeight="67.0" prefWidth="149.0" text="About Us">
-               <font>
-                  <Font size="28.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets left="20.0" />
-               </opaqueInsets>
-            </Label>
+            <AnchorPane prefHeight="8.0" prefWidth="1598.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="132.0" stroke="#ffffff00" strokeType="INSIDE" width="1627.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.7529691211401425" startX="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.24313725531101227" green="0.615686297416687" blue="0.772549033164978" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.24313725531101227" green="0.615686297416687" blue="0.772549033164978" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.4434697926044464" green="0.7454515695571899" blue="0.8552631735801697" opacity="0.49000000953674316" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="129.0" prefWidth="1361.0" spacing="200.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <ImageView fitHeight="107.0" fitWidth="109.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#212936" strokeType="OUTSIDE" strokeWidth="0.0" text="GymPro ">
+                           <font>
+                              <Font name="Lato Black" size="46.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="30.0" right="50.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <VBox alignment="CENTER" layoutX="4.0" layoutY="158.0" prefHeight="1346.0" prefWidth="1623.0" spacing="40.0">
+               <children>
+                  <VBox alignment="CENTER" spacing="20.0">
+                     <children>
+                        <Text fill="#212936" strokeType="OUTSIDE" strokeWidth="0.0" text="About Us: Your GymPro App">
+                           <font>
+                              <Font name="Lato Black" size="29.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Your GymPro, the fitness app designed to revolutionize your gymnastic experience. Our team is passionate about health and well-being, and we've combined our expertise to create an app that empowers you to reach your fitness goals. Let us introduce the dedicated individuals behind the scenes who made this possible." wrappingWidth="570.0239523791149">
+                           <font>
+                              <Font name="Lato Light" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #85B7CC;">
+                     <children>
+                        <Text fill="#212936" strokeType="OUTSIDE" strokeWidth="0.0" text="Why we create this app?">
+                           <font>
+                              <Font name="Lato Black" size="29.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dr Samatha Keehn is the renowned instructor of Low-Brass at Augustana College,in Rock Island, IL. She teaches gymnastics in the Quad City area. It was herpassion for learning that pushed her to develop these printable training cardsin order to make teaching easier for other gymnastics gyms. These cards are acessable and make it easy for students to follow along. This software was developed at the request of Dr. Keehn and she choose students at her college tobuild her this app in order to empower the students in her community." wrappingWidth="570.0239523791149">
+                           <font>
+                              <Font name="Lato Light" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets bottom="40.0" left="20.0" right="20.0" top="40.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="40.0">
+                     <children>
+                        <Text fill="#212936" strokeType="OUTSIDE" strokeWidth="0.0" text="Development Team:">
+                           <font>
+                              <Font name="Lato Black" size="29.0" />
+                           </font>
+                        </Text>
+                        <HBox alignment="CENTER" spacing="20.0">
+                           <children>
+                              <ImageView fitHeight="305.0" fitWidth="422.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Image/team1.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="435.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Image/team2.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="357.0" prefWidth="1623.0" spacing="30.0" style="-fx-background-color: #85B7CC;">
+                     <children>
+                        <Text fill="#212936" strokeType="OUTSIDE" strokeWidth="0.0" text="Behind the success">
+                           <font>
+                              <Font name="Lato Black" size="29.0" />
+                           </font>
+                        </Text>
+                        <VBox alignment="CENTER" spacing="10.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Project Supervisor: Dr. Forrest Stonedahl" wrappingWidth="570.0239523791149">
+                                 <font>
+                                    <Font name="Lato Light" size="13.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Product Designer tester: Samantha Keehn" wrappingWidth="570.0239523791149">
+                                 <font>
+                                    <Font name="Lato Light" size="13.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Special Thanks: We extend our heartfelt gratitude to everyone who played a role in the success of GymPro. Special thanks go to:" wrappingWidth="570.0239523791149">
+                                 <font>
+                                    <Font name="Lato Light" size="13.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beta Testers: A big shoutout to our dedicated beta testers: Madelyn Lathrop, Kalyn Wead, Adele Shirkey, Set Morales and My Doan who provided valuable feedback, helping us fine-tune the app for optimal performance." wrappingWidth="570.0239523791149">
+                                 <font>
+                                    <Font name="Lato Light" size="13.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image Contributors: Thank you to Emily Sea from Unsplash who provided high-quality images, enhancing the visual appeal of the app." wrappingWidth="570.0239523791149">
+                                 <font>
+                                    <Font name="Lato Light" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="178.0" prefWidth="1623.0" spacing="20.0">
+                     <children>
+                        <Text fill="#212936" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank you!">
+                           <font>
+                              <Font name="Lato Black" size="29.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GymPro is more than just an app; it's a collaborative effort fueled by a shared passion for fitness and wellness. We're committed to continually improving and providing you with the best possible experience on your fitness journey.Thank you for choosing GymPro. Let's reach new heights together!" wrappingWidth="570.0239523791149">
+                           <font>
+                              <Font name="Lato Light" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
          </children>
-      </HBox>
-      <TextArea layoutX="207.0" layoutY="66.0" prefHeight="200.0" prefWidth="447.0" text="Dr Samatha Keehn is the renowned instructor of Low-Brass at Augustana College,&#10;in Rock Island, IL. She teaches gymnastics in the Quad City area. It was her&#10;passion for learning that pushed her to develop these printable training cards&#10;in order to make teaching easier for other gymnastics gyms. These cards are &#10;acessable and make it easy for students to follow along. This software was &#10;developed at the request of Dr. Keehn and she choose students at her college to&#10;build her this app in order to empower the students in her community.&#10;" />
-      <ImageView fitHeight="200.0" fitWidth="157.0" layoutX="21.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../../Users/Eva/Downloads/drKeehn.jpg" />
-         </image>
-      </ImageView>
-      <Button layoutX="596.0" layoutY="352.0" mnemonicParsing="false" text="Credits" />
-   </children>
-</AnchorPane>
+      </AnchorPane>
+   </content>
+</ScrollPane>
