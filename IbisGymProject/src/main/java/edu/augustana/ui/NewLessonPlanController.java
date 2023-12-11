@@ -353,7 +353,7 @@ public class NewLessonPlanController {
         List<Card> cardsToAdd = new ArrayList<>();
         for (String uniqueID : uniqueIDs) {
             Card card = CardDatabase.getCardFromUniqueID(uniqueID);
-            lessonPlan.getOneEvent().addCard(card);
+            //lessonPlan.getOneEvent().addCard(card);
             cardsToAdd.add(card);
         }
         targetEventBox.addCards(cardsToAdd);

@@ -45,10 +45,6 @@ public class Event implements Cloneable {
         return cards;
     }
 
-    public void clearCards() {
-        cardIdList.clear();
-    }
-
     @Override
     public Event clone() {
         try {
