@@ -13,7 +13,7 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <TextArea editable="false" layoutX="20.0" layoutY="54.0" prefHeight="200.0" prefWidth="385.0" text="1. Click add event to make your own custom event&#10;2. Drag the text on the left-hand side into the rectangle&#10;3. Click on the card now to zoom in&#10;4. To Save or Load in an existing lesson plan, click the &#10;file button and scroll&#10;5. To Print, click the file button and select &quot;Print&quot;&#10;6. To go back to the home screen, click the logo &#10; ">
+      <TextArea editable="false" layoutX="20.0" layoutY="54.0" prefHeight="200.0" prefWidth="385.0" text="1. Click add event to make your own custom event&#10;2. Drag the text on the left-hand side into the rectangle&#10;3. Click on the card 2x to zoom in&#10;4. To Save or Load in an existing lesson plan, click the &#10;file button and scroll&#10;5. If you wish to delete an event or card, select the item&#10;you wish to delete and press the corresponding button&#10;6. To Print, click the file button and select &quot;Print&quot;&#10;7. To go back to the home screen, click the logo &#10; ">
          <font>
             <Font size="15.0" />
          </font>
