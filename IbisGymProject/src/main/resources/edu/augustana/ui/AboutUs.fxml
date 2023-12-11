@@ -29,12 +29,12 @@
             </Label>
          </children>
       </HBox>
-      <TextArea layoutX="207.0" layoutY="66.0" prefHeight="200.0" prefWidth="447.0" text="Dr Samatha Keehn is the renowned instructor of Low-Brass at Augustana College,&#10;in Rock Island, IL. She teaches gymnastics in the Quad City area. It was her&#10;passion for learning that pushed her to develop these printable training cards&#10;in order to make teaching easier for other gymnastics gyms. These cards are &#10;acessable and make it easy for students to follow along. This software was &#10;developed at the request of Dr. Keehn and she choose students at her college to&#10;build her this app in order to empower the students in her community.&#10;" />
+      <TextArea layoutX="207.0" layoutY="66.0" prefHeight="200.0" prefWidth="447.0" text="Dr Samatha Keehn is the renowned instructor of Low-Brass at Augustana College,&#10;in Rock Island, IL. She teaches gymnastics in the Quad City area. It was her&#10;passion for learning that pushed her to develop these printable training cards&#10;in order to make teaching easier for other gymnastics gyms. These cards are &#10;accessible and make it easy for students to follow along. This software was &#10;developed at the request of Dr. Keehn and she choose students at her college to&#10;build her this app in order to empower the students in her community.&#10;" />
       <ImageView fitHeight="200.0" fitWidth="157.0" layoutX="21.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../../Users/Eva/Downloads/drKeehn.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="596.0" layoutY="352.0" mnemonicParsing="false" text="Credits" />
+      <Button layoutX="596.0" layoutY="352.0" mnemonicParsing="false" onAction="#switchToCredits" text="Credits" />
    </children>
 </AnchorPane>
