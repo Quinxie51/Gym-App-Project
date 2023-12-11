@@ -11,7 +11,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
@@ -20,9 +23,7 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+import javafx.stage.*;
 
 import static edu.augustana.data.CardDatabase.*;
 
@@ -60,7 +61,7 @@ public class NewLessonPlanController {
     private LessonPlan lessonPlan;
 
     @FXML
-    private  Button btnHelp;
+    private Button btnHelp;
 
 
     /**
@@ -299,8 +300,8 @@ public class NewLessonPlanController {
     /**
      * Checks if any equipment contains the search text.
      *
-     * @param equipment   The list of equipment to be checked.
-     * @param searchText  The search text to be checked in equipment.
+     * @param equipment  The list of equipment to be checked.
+     * @param searchText The search text to be checked in equipment.
      * @return True if the search text is found in any equipment; otherwise, false.
      */
     private boolean equipmentContainsSearchText(List<String> equipment, String searchText) {
@@ -497,8 +498,6 @@ public class NewLessonPlanController {
             confirmationAlert.getDialogPane().getStyleClass().add("dialog-pane");
 
 
-
-
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 // Create a copy of the list of children before iterating and modifying
@@ -512,6 +511,41 @@ public class NewLessonPlanController {
                 }
             }
         }
+    }
+
+    private void showPopup() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("HelpButtonPopup.fxml"));
+            Parent root = loader.load();
+
+            Stage popupStage = new Stage();
+            popupStage.initModality(Modality.APPLICATION_MODAL);
+            popupStage.initOwner(getStage());
+            popupStage.setScene(new Scene(root));
+
+
+
+            HelpButtonPopupController popupController = loader.getController();
+
+            Popup popup = new Popup();
+
+            popup.getContent().add(root);
+            popup.show(getStage());
+
+            popupController.setPopup(popup);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onHelpButtonClick(ActionEvent event) {
+        showPopup();
+    }
+
+    private Stage getStage() {
+        return (Stage) btnHelp.getScene().getWindow();
     }
 
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="303.0" prefWidth="435.0" style="-fx-background-color: #C6E3EF; -fx-border-color: #196C8F;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.HelpButtonPopupController">
+   <children>
+      <Label layoutX="203.0" layoutY="9.0" prefHeight="31.0" prefWidth="45.0" style="-fx-background-color: #898989; -fx-background-radius: 8;" text="Help" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <TextArea editable="false" layoutX="20.0" layoutY="54.0" prefHeight="200.0" prefWidth="385.0" text="1. Click add event to make your own custom event&#10;2. Drag the text on the left-hand side into the rectangle&#10;3. Click on the card now to zoom in&#10;4. To Save or Load in an existing lesson plan, click the &#10;file button and scroll&#10;5. To Print, click the file button and select &quot;Print&quot;&#10;6. To go back to the home screen, click the logo &#10; ">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextArea>
+      <Button layoutX="383.0" layoutY="268.0" mnemonicParsing="false" onAction="#onDoneButtonClicked" style="-fx-background-color: #196C8F; -fx-background-radius: 8;" text="Done" textFill="WHITE" />
+   </children>
+</AnchorPane>
