@@ -8,65 +8,131 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="846.0" prefWidth="1386.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.MyCourseController">
     <top>
         <VBox prefWidth="1386.0" BorderPane.alignment="CENTER">
             <children>
-                <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="97.0" prefWidth="1386.0" spacing="200.0" style="-fx-background-color: #85B7CC;">
-                    <children>
-                  <ImageView fitHeight="107.0" fitWidth="109.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Image/logo.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="searchBar" onKeyReleased="#handleSearch" prefHeight="34.0" prefWidth="302.0" promptText="Search" />
-                  <Button fx:id="importCourse" mnemonicParsing="false" onAction="#handleImportCourse" text="Import Course Plan" />
-                    </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="30.0" right="50.0" />
-               </padding>
-                </HBox>
+            <AnchorPane prefHeight="8.0" prefWidth="1598.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="132.0" stroke="#ffffff00" strokeType="INSIDE" width="1627.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.7529691211401425" startX="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.24313725531101227" green="0.615686297416687" blue="0.772549033164978" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.006711409395973154">
+                                 <color>
+                                    <Color red="0.24313725531101227" green="0.615686297416687" blue="0.772549033164978" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.4434697926044464" green="0.7454515695571899" blue="0.8552631735801697" opacity="0.49000000953674316" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                      <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="129.0" prefWidth="1598.0" spacing="200.0" style="-fx-background-color: transparent;">
+                          <children>
+                        <ImageView fitHeight="107.0" fitWidth="109.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/logo.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="searchBar" onKeyReleased="#handleSearch" prefHeight="34.0" prefWidth="302.0" promptText="Search" style="-fx-border-radius: 30%;" />
+                        <Button fx:id="importCourse" mnemonicParsing="false" onAction="#handleImportCourse" style="-fx-background-color: #196C8F;" styleClass="button-with-style" text="+ Import Course" textFill="WHITE">
+                           <font>
+                              <Font name="Lato Black" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </Button>
+                          </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="30.0" right="50.0" />
+                     </padding>
+                      </HBox>
+               </children>
+            </AnchorPane>
             </children>
         </VBox>
     </top>
     <center>
-        <Pane prefHeight="539.0" prefWidth="922.0" style="-fx-background-color: #85b7cc;" BorderPane.alignment="CENTER">
+        <Pane prefHeight="539.0" prefWidth="1445.0" style="-fx-background-color: #85b7cc;" BorderPane.alignment="CENTER">
             <children>
                 <HBox prefHeight="739.0" prefWidth="1387.0">
                     <children>
                   <VBox prefHeight="739.0" prefWidth="1421.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="108.0" prefWidth="1387.0" style="-fx-background-color: #196C8F;" text="Course Plan" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="108.0" prefWidth="1387.0" style="-fx-background-color: #196C8F;" text="COURSE PLAN" textFill="WHITE">
                            <font>
                               <Font name="Noto Sans JP Bold" size="32.0" />
                            </font>
                         </Label>
                         <HBox prefHeight="618.0" prefWidth="1387.0">
                            <children>
-                              <VBox alignment="TOP_CENTER" prefHeight="614.0" prefWidth="340.0" style="-fx-background-color: C6E3EF;">
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="newLessonButton" mnemonicParsing="false" onAction="#handleCreateNewLesson" styleClass="button-with-shadow" prefHeight="58.0" prefWidth="181.0" style="-fx-background-color: #196C8F; -fx-effect: shadow;" text="+ Create new lesson " textFill="WHITE">
-                                       <font>
-                                          <Font name="Noto Sans JP Bold" size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
-                                       <VBox.margin>
-                                          <Insets top="30.0" />
-                                       </VBox.margin>
-                                    </Button>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" height="617.0" stroke="#ffffff00" strokeType="INSIDE" width="275.0">
+                                       <fill>
+                                          <LinearGradient endX="0.9477434679334917" endY="0.18764845605700708" startX="0.49643705463182897" startY="0.9002375296912114">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.24313725531101227" green="0.615686297416687" blue="0.772549033164978" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="0.006711409395973154">
+                                                   <color>
+                                                      <Color red="0.24313725531101227" green="0.615686297416687" blue="0.772549033164978" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="1.0" green="1.0" blue="1.0" opacity="0.49000000953674316" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </fill>
+                                    </Rectangle>
+                                    <VBox alignment="TOP_CENTER" prefHeight="606.0" prefWidth="276.0" style="-fx-background-color: transparent;">
+                                       <children>
+                                          <Button fx:id="newLessonButton" mnemonicParsing="false" onAction="#handleCreateNewLesson" prefHeight="58.0" prefWidth="181.0" style="-fx-background-color: #196C8F;" styleClass="button-with-style" text="+ New Lesson" textFill="WHITE">
+                                             <font>
+                                                <Font name="Noto Sans JP Bold" size="16.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                             <VBox.margin>
+                                                <Insets top="30.0" />
+                                             </VBox.margin>
+                                          </Button>
+                                       </children>
+                                    </VBox>
                                  </children>
-                              </VBox>
+                              </AnchorPane>
                                     <ScrollPane maxHeight="1.7976931348623157E308" prefHeight="614.0" prefWidth="1204.0" style="-fx-background-color: transparent;">
                                         <content>
                                             <ListView fx:id="lessonListView" onMouseClicked="#handleOpenFromList" prefHeight="609.0" prefWidth="1206.0" />

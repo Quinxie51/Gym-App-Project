@@ -5,6 +5,7 @@ import edu.augustana.data.Event;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -33,15 +34,18 @@ public class EventBox extends VBox {
         this.selected = false;
         this.eventLabel = new Label(event.getEventTitle());
         this.eventFlowPane = new FlowPane();
-        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTGRAY, new CornerRadii(10), Insets.EMPTY);
+        BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(10), Insets.EMPTY);
         Background background = new Background(backgroundFill);
         eventFlowPane.setBackground(background);
         eventFlowPane.setPadding(new Insets(10));
+        eventFlowPane.setMaxWidth(955);
         ImageView dragImageHereIcon = new ImageView(new Image(EventBox.class.getResourceAsStream("Image/Drag card here.png")));
         dragImageHereIcon.setFitHeight(120);
         dragImageHereIcon.setFitWidth(180);
         eventFlowPane.getChildren().add(dragImageHereIcon);
         this.getChildren().addAll(eventLabel, eventFlowPane);
+        setId("event-box");
+        eventLabel.getStyleClass().add("event-title");
 
         setOnMouseClicked(this::toggleSelection);
         addCards(event.getCards());
@@ -58,9 +62,17 @@ public class EventBox extends VBox {
 
     public void setSelected(boolean selected) {
         this.selected = selected;
-        setBorder(selected ? new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT))
-                : Border.EMPTY);
+        if (selected) {
+            DropShadow dropShadow = new DropShadow();
+            dropShadow.setRadius(10.0);
+            dropShadow.setOffsetX(5.0);
+            dropShadow.setOffsetY(5.0);
+            setEffect(dropShadow);
+        }else{
+            setEffect(null);
+        }
     }
+
 
     /**
      * Toggles the selection state of the EventBox based on mouse click.
