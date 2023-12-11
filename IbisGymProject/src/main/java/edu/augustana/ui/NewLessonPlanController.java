@@ -356,7 +356,7 @@ public class NewLessonPlanController {
         List<Card> cardsToAdd = new ArrayList<>();
         for (String uniqueID : uniqueIDs) {
             Card card = CardDatabase.getCardFromUniqueID(uniqueID);
-            lessonPlan.getOneEvent().addCard(card);
+            //lessonPlan.getOneEvent().addCard(card);
             cardsToAdd.add(card);
         }
         targetEventBox.addCards(cardsToAdd);
@@ -369,11 +369,12 @@ public class NewLessonPlanController {
         TextInputDialog dialog = new TextInputDialog("Event Name");
         dialog.setTitle("New Event");
         dialog.setHeaderText("Enter the name for the new event:");
+        dialog.getDialogPane().getStylesheets().add(getClass().getResource("dialog.css").toExternalForm());
+        dialog.getDialogPane().getStyleClass().add("dialog-pane");
 
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(eventName -> {
-            String eventNameStyle = "-fx-font-family: 'Lato'; -fx-font-size: 16; -fx-text-fill: white;";
-            Event newEvent = new Event(eventName, eventNameStyle);
+            Event newEvent = new Event(eventName);
             lessonPlan.addEvent(newEvent);
             EventBox newEventBox = new EventBox(newEvent);
             newEventBox.setOnDragOver(evt -> handleImageDragOver(evt));
@@ -492,6 +493,10 @@ public class NewLessonPlanController {
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
             confirmationAlert.setTitle("Delete Event(s)");
             confirmationAlert.setHeaderText("Are you sure you want to delete the selected event(s)?");
+            confirmationAlert.getDialogPane().getStylesheets().add(getClass().getResource("dialog.css").toExternalForm());
+            confirmationAlert.getDialogPane().getStyleClass().add("dialog-pane");
+
+
 
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
