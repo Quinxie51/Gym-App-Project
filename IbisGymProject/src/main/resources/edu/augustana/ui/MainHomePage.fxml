@@ -63,7 +63,7 @@
                </font>
             </Text>
 
-            <Button layoutX="338.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleLibrary" prefHeight="61.0" prefWidth="175.0" style="-fx-background-color: #333333;" text="My library" textFill="WHITE">
+
 
             <Button fx:id="myLibraryButton" layoutX="338.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleLibrary" prefHeight="61.0" prefWidth="175.0" style="-fx-background-color: #333333;" styleClass="button-with-shadow" text="My library" textFill="WHITE">
 
