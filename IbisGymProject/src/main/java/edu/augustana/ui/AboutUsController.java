@@ -12,4 +12,9 @@ public class AboutUsController {
         MainApp.setRoot("mainHomepage");
     }
 
+    @FXML
+    private void switchToCredits() throws IOException {
+        MainApp.setRoot("Credits");
+    }
+
 }
