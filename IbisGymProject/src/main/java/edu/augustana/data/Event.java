@@ -9,13 +9,13 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 import java.util.List;
 /**
  * Represents an event with a list of associated cards.
  */
 public class Event implements Cloneable {
+
     //Add a list of cards
     private String eventName;
     private List<String> cardIdList = new ArrayList<>();
@@ -25,18 +25,20 @@ public class Event implements Cloneable {
      *
      * @param eventName The name of the event.
      */
-    public Event(String eventName) {
+    private String eventNameStyle; // Store the style information
+
+    public Event(String eventName, String eventNameStyle) {
         this.eventName = eventName;
+        this.eventNameStyle = eventNameStyle;
     }
 
 
     public String getEventTitle() {
+
         return eventName;
+
     }
 
-    public void setEventTitle(String eventTitle) {
-        this.eventName = eventTitle;
-    }
 
     public void removeCard(Card card) {
         cardIdList.remove(card.getUniqueID());

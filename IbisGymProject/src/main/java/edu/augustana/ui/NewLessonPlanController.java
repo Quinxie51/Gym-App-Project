@@ -18,6 +18,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -367,7 +369,8 @@ public class NewLessonPlanController {
 
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(eventName -> {
-            Event newEvent = new Event(eventName);
+            String eventNameStyle = "-fx-font-family: 'Lato'; -fx-font-size: 16; -fx-text-fill: white;";
+            Event newEvent = new Event(eventName, eventNameStyle);
             lessonPlan.addEvent(newEvent);
             EventBox newEventBox = new EventBox(newEvent);
             newEventBox.setOnDragOver(evt -> handleImageDragOver(evt));
