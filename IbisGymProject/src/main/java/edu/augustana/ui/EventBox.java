@@ -33,10 +33,12 @@ public class EventBox extends VBox {
         this.event = event;
         this.selected = false;
         this.eventLabel = new Label(event.getEventTitle());
+        eventLabel.setPadding(new Insets(5));
         this.eventFlowPane = new FlowPane();
         BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(10), Insets.EMPTY);
         Background background = new Background(backgroundFill);
         eventFlowPane.setBackground(background);
+        eventFlowPane.setVgap(15);
         eventFlowPane.setPadding(new Insets(10));
         eventFlowPane.setMaxWidth(955);
         ImageView dragImageHereIcon = new ImageView(new Image(EventBox.class.getResourceAsStream("Image/Drag card here.png")));

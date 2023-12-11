@@ -1,14 +1,5 @@
 package edu.augustana.data;
 
-import edu.augustana.ui.MainApp;
-import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.control.MenuBar;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -25,11 +16,9 @@ public class Event implements Cloneable {
      *
      * @param eventName The name of the event.
      */
-    private String eventNameStyle; // Store the style information
 
-    public Event(String eventName, String eventNameStyle) {
+    public Event(String eventName) {
         this.eventName = eventName;
-        this.eventNameStyle = eventNameStyle;
     }
 
 

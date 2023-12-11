@@ -4,9 +4,10 @@
     -fx-border-radius: 50%;
 }
 #event-box .event-title {
+    -fx-font-family: 'Noto Sans JP';
     -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333333;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
 }
 
 

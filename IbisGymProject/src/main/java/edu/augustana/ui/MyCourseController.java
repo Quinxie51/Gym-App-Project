@@ -83,6 +83,9 @@ public class MyCourseController {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Create New Lesson");
         dialog.setHeaderText("New lesson name:");
+        dialog.getDialogPane().getStylesheets().add(getClass().getResource("dialog.css").toExternalForm());
+        dialog.getDialogPane().getStyleClass().add("dialog-pane");
+
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
