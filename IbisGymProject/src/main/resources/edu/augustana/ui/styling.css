@@ -1,27 +1,6 @@
-.card-image-view:selected {
-    -fx-border-color: blue;
-    -fx-border-width: 2px;
-}
 
-
-.button-with-shadow {
+.button-with-style {
     -fx-effect: dropshadow(three-pass-box, grey, 5, 0, 0, 0);
+    -fx-border-radius: 50%;
 }
 
-.round-button {
-    -fx-background-radius: 50em;
-}
-
-.button:hover {
-    -fx-background-color: derive(-fx-base, 20%);
-}
-
-/* Apply darkening effect on pressed state for all buttons */
-.button:pressed {
-    -fx-background-color: derive(-fx-base, 30%);
-}
-
-/* Apply darkening effect on focused state for all buttons */
-.button:focused {
-    -fx-background-color: derive(-fx-base, 20%);
-}

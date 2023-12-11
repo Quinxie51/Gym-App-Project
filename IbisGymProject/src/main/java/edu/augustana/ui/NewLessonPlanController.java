@@ -13,11 +13,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import static edu.augustana.data.CardDatabase.*;
@@ -73,19 +75,10 @@ public class NewLessonPlanController {
         cardListView.getItems().addAll(getAllCards());
         cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        ImageView undoImg = new ImageView(new Image(NewLessonPlanController.class.getResourceAsStream("Image/undo.png")));
-        undoImg.setFitHeight(20);
-        undoImg.setFitWidth(20);
-        deleteEvent.setGraphic(undoImg);
-
-        //  ImageView redoImg = new ImageView(new Image(NewLessonPlanController.class.getResourceAsStream("Image/forward.png")));
-        // redoImg.setFitHeight(20);
-        // redoImg.setFitWidth(20);
-        // redoButton.setGraphic(redoImg);
 
         //Add tool tip to each button
         Tooltip tooltipUndo = new Tooltip();
-        tooltipUndo.setText("Undo the action");
+        tooltipUndo.setText("Delete event in your lesson plan");
         deleteEvent.setTooltip(tooltipUndo);
 
         Tooltip tooltipAddEvent = new Tooltip();
@@ -95,10 +88,6 @@ public class NewLessonPlanController {
         Tooltip tooltipDeleteCard = new Tooltip();
         tooltipDeleteCard.setText("Delete the selected card in the event");
         deleteCard.setTooltip(tooltipDeleteCard);
-
-        //Tooltip tooltipRedo = new Tooltip();
-        //tooltipRedo.setText("Redo the action");
-        // redoButton.setTooltip(tooltipRedo);
 
 
         for (String genderOption : CardDatabase.getGenderSet()) {
