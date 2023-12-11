@@ -1,6 +1,12 @@
 .dialog-pane {
-    -fx-font-family: 'Lato', sans-serif;
-    -fx-font-weight: bold;
+    -fx-background-color: #85B7CC;
+    -fx-font-family: 'Noto Sans JP';
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+}
+}
+.dialog-pane:header *.header-panel{
+    -fx-background-color: #85B7CC;
 }
 
 .dialog-pane .button {
