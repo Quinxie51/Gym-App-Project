@@ -79,7 +79,7 @@
                   <Font name="Noto Sans JP Bold" size="42.0" />
                </font>
             </Text>
-            <Button layoutX="333.0" layoutY="663.0" mnemonicParsing="false" style="-fx-background-color: void;" text="About us" textFill="#1a6e8f">
+            <Button layoutX="333.0" layoutY="663.0" mnemonicParsing="false" onAction="#handleAboutUs" style="-fx-background-color: void;" text="About us" textFill="#1a6e8f">
                <font>
                   <Font size="17.0" />
                </font>

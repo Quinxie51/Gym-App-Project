@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.augustana.ui.AboutUs"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="661.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.AboutUsController">
+   <children>
+      <HBox layoutY="-2.0" prefHeight="75.0" prefWidth="661.0">
+         <children>
+            <ImageView fitHeight="71.0" fitWidth="75.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Image/logo.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="67.0" prefWidth="149.0" text="About Us">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets left="20.0" />
+               </opaqueInsets>
+            </Label>
+         </children>
+      </HBox>
+      <TextArea layoutX="207.0" layoutY="66.0" prefHeight="200.0" prefWidth="447.0" text="Dr Samatha Keehn is the renowned instructor of Low-Brass at Augustana College,&#10;in Rock Island, IL. She teaches gymnastics in the Quad City area. It was her&#10;passion for learning that pushed her to develop these printable training cards&#10;in order to make teaching easier for other gymnastics gyms. These cards are &#10;acessable and make it easy for students to follow along. This software was &#10;developed at the request of Dr. Keehn and she choose students at her college to&#10;build her this app in order to empower the students in her community.&#10;" />
+      <ImageView fitHeight="200.0" fitWidth="157.0" layoutX="21.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Users/Eva/Downloads/drKeehn.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="596.0" layoutY="352.0" mnemonicParsing="false" text="Credits" />
+   </children>
 </AnchorPane>

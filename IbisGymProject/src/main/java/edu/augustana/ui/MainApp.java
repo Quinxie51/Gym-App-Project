@@ -81,6 +81,14 @@ public class MainApp extends Application {
 
 
     /**
+     * Switches the scene to the new lesson creation page.
+     */
+    public static void switchToAboutUsPage (){
+        switchToView("AboutUs.fxml");
+    }
+
+
+    /**
      * Gets the current scene.
      *
      * @return The current scene.

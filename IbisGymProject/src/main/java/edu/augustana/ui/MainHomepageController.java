@@ -19,4 +19,11 @@ public class MainHomepageController {
         MainApp.switchToLibrary();
 
     }
+
+
+    @FXML
+    private void handleAboutUs() throws IOException {
+        MainApp.switchToAboutUsPage();
+
+    }
 }
