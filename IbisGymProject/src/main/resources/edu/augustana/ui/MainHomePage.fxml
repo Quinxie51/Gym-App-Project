@@ -19,7 +19,7 @@
 
 
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="982.0" layoutX="-60.0" layoutY="-4.0" stroke="#ffffff00" strokeType="INSIDE" width="1591.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="982.0" layoutX="-74.0" layoutY="-39.0" stroke="#ffffff00" strokeType="INSIDE" width="1591.0">
                <fill>
                   <LinearGradient endX="1.0" endY="0.7529691211401425" startX="1.0">
                      <stops>
@@ -62,7 +62,11 @@
                   <Font name="Noto Sans JP Bold" size="42.0" />
                </font>
             </Text>
+
+
+
             <Button fx:id="myLibraryButton" layoutX="338.0" layoutY="542.0" mnemonicParsing="false" onAction="#handleLibrary" prefHeight="61.0" prefWidth="175.0" style="-fx-background-color: #333333;" styleClass="button-with-shadow" text="My library" textFill="WHITE">
+
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -75,17 +79,17 @@
                   <Font name="Noto Sans JP Bold" size="42.0" />
                </font>
             </Text>
-            <Text fill="#196c8f" layoutX="347.0" layoutY="720.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About us">
+            <Button layoutX="333.0" layoutY="663.0" mnemonicParsing="false" style="-fx-background-color: void;" text="About us" textFill="#1a6e8f">
                <font>
-                  <Font name="Noto Sans Kannada Black" size="17.0" />
+                  <Font size="17.0" />
                </font>
-            </Text>
-            <Text fill="#196c8f" layoutX="505.0" layoutY="720.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Q&amp;A">
+            </Button>
+            <Button layoutX="472.0" layoutY="663.0" mnemonicParsing="false" style="-fx-background-color: void;" text="Q&amp;A" textFill="#1a6e8f">
                <font>
-                  <Font name="Noto Sans Kannada Black" size="17.0" />
+                  <Font size="17.0" />
                </font>
-            </Text>
-            <Text fill="#196c8f" layoutX="663.0" layoutY="718.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terms and Privacy Policy">
+            </Button>
+            <Text fill="#196c8f" layoutX="584.0" layoutY="688.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Terms and Privacy Policy">
                <font>
                   <Font name="Noto Sans Kannada Black" size="17.0" />
                </font>

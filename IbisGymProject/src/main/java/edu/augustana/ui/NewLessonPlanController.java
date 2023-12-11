@@ -59,6 +59,9 @@ public class NewLessonPlanController {
     @FXML
     private LessonPlan lessonPlan;
 
+    @FXML
+    private  Button btnHelp;
+
 
     /**
      * Initializes the controller after its root element has been completely processed.

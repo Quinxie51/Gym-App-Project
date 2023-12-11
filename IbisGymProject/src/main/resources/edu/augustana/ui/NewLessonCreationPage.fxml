@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -13,115 +12,80 @@
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="846.0" prefWidth="1540.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.augustana.ui.NewLessonPlanController">
-    <stylesheets>
-        <URL value="@styling.css" />
-    </stylesheets>
     <top>
         <VBox prefWidth="1386.0" BorderPane.alignment="CENTER">
             <children>
-            <AnchorPane prefHeight="80.0" prefWidth="1627.0">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="132.0" stroke="#ffffff00" strokeType="INSIDE" width="1627.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="0.7529691211401425" startX="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="0.24313725531101227" green="0.615686297416687" blue="0.772549033164978" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="0.006711409395973154">
-                                 <color>
-                                    <Color red="0.24313725531101227" green="0.615686297416687" blue="0.772549033164978" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="0.4434697926044464" green="0.7454515695571899" blue="0.8552631735801697" opacity="0.49000000953674316" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="116.0" prefWidth="1540.0" spacing="60.0" style="-fx-background-color: transparent;">
-                          <children>
-                              <ImageView fitHeight="107.0" fitWidth="109.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
-                                  <image>
-                                      <Image url="@Image/logo.png" />
-                                  </image>
-                              </ImageView>
-                              <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="354.0">
-                                  <children>
-                                      <TextField fx:id="searchBar" onKeyReleased="#handleSearch" prefHeight="34.0" prefWidth="302.0" promptText="Search" />
-                                  </children>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="610.0" spacing="150.0">
-                                  <children>
-                                      <HBox alignment="CENTER" prefHeight="107.0" prefWidth="372.0" spacing="15.0">
-                                          <children>
-                                              <Button fx:id="addEvent" mnemonicParsing="false" onAction="#handleAddEvent" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #196C8F;" styleClass="button-with-style" text="Add event" textFill="WHITE">
-                                                  <font>
-                                                      <Font name="Open Sans Bold" size="13.0" />
-                                                  </font>
-                                                  <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                  </padding>
-                                                  <opaqueInsets>
-                                                      <Insets left="10.0" right="10.0" />
-                                                  </opaqueInsets>
-                                              </Button>
-                                              <Button fx:id="deleteEvent" mnemonicParsing="false" onAction="#deleteSelectedEvent" prefHeight="36.0" prefWidth="119.0" style="-fx-background-color: #898989;" styleClass="button-with-style" text="Remove Event" textFill="WHITE">
-                                       <font>
-                                          <Font name="Open Sans Bold" size="13.0" />
-                                       </font>
-                                    </Button>
-                                              <Button fx:id="deleteCard" mnemonicParsing="false" onAction="#actionDeleteCard" onMouseClicked="#actionDeleteCard" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: Lightblue;" styleClass="button-with-style" text="Delete card" textFill="#041a36">
-                                                  <font>
-                                                      <Font name="Open Sans Bold" size="13.0" />
-                                                  </font>
-                                                  <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                  </padding>
-                                              </Button>
-                                          </children>
-                                      </HBox>
-                                  </children>
-                              </HBox>
-                              <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: #C6E3EF;" text="File" textAlignment="CENTER">
-                                  <items>
-                                      <MenuItem mnemonicParsing="false" onAction="#menuActionOpen" text="Open" />
-                                      <MenuItem mnemonicParsing="false" onAction="#menuActionSave" text="Save" />
-                                      <MenuItem mnemonicParsing="false" onAction="#menuActionSaveAs" text="Save As" />
-                                      <MenuItem mnemonicParsing="false" onAction="#switchToPrintPreview" text="Print" />
-                                      <MenuItem mnemonicParsing="false" onAction="#switchToPrintToTextPreview" text="Print as Text" />
-                                  </items>
-                                  <font>
-                                      <Font name="Lato Regular" size="17.0" />
-                                  </font>
-                              </MenuButton>
-                          </children>
-                          <opaqueInsets>
-                              <Insets />
-                          </opaqueInsets>
-                          <padding>
-                              <Insets left="30.0" right="50.0" />
-                          </padding>
-                      </HBox>
-               </children>
-            </AnchorPane>
+                <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="107.0" prefWidth="1492.0" spacing="60.0" style="-fx-background-color: #85B7CC;">
+                    <children>
+                        <ImageView fitHeight="107.0" fitWidth="109.0" onMouseClicked="#switchToHomepage" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Image/logo.png" />
+                            </image>
+                        </ImageView>
+                        <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="354.0">
+                            <children>
+                                <TextField fx:id="searchBar" onKeyReleased="#handleSearch" prefHeight="34.0" prefWidth="302.0" promptText="Search" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="610.0" spacing="150.0">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="107.0" prefWidth="235.0" spacing="15.0">
+                                    <children>
+                                        <Button fx:id="addEvent" mnemonicParsing="false" onAction="#handleAddEvent" prefHeight="38.0" prefWidth="108.0" style="-fx-background-color: #196C8F; -fx-effect: dropshadow;" styleClass="dropshadow" text="Add event" textFill="WHITE">
+                                            <font>
+                                                <Font name="Open Sans Bold" size="13.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </padding>
+                                            <opaqueInsets>
+                                                <Insets left="10.0" right="10.0" />
+                                            </opaqueInsets>
+                                        </Button>
+                                        <Button fx:id="deleteCard" mnemonicParsing="false" onAction="#actionDeleteCard" onMouseClicked="#actionDeleteCard" prefHeight="38.0" prefWidth="104.0" style="-fx-background-color: #898989;" text="Delete card" textFill="WHITE">
+                                            <font>
+                                                <Font name="Open Sans Bold" size="13.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </padding>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                                    <children>
+                                        <Button fx:id="deleteEvent" mnemonicParsing="false" onAction="#deleteSelectedEvent" style="-fx-background-color: transparent;" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+                        <MenuButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: #C6E3EF;" text="File" textAlignment="CENTER">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#menuActionOpen" text="Open" />
+                                <MenuItem mnemonicParsing="false" onAction="#menuActionSave" text="Save" />
+                                <MenuItem mnemonicParsing="false" onAction="#menuActionSaveAs" text="Save As" />
+                                <MenuItem mnemonicParsing="false" onAction="#switchToPrintPreview" text="Print" />
+                                <MenuItem mnemonicParsing="false" onAction="#switchToPrintToTextPreview" text="Print as Text" />
+                            </items>
+                            <font>
+                                <Font name="Lato Regular" size="17.0" />
+                            </font>
+                        </MenuButton>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="30.0" right="50.0" />
+                    </padding>
+                </HBox>
             </children>
         </VBox>
     </top>
@@ -132,7 +96,7 @@
                     <children>
                   <ScrollPane>
                      <content>
-                              <Accordion prefHeight="739.0" prefWidth="166.0" style="-fx-background-color: #196C8F;" styleClass="custom-accordion">
+                              <Accordion prefHeight="739.0" prefWidth="198.0" style="-fx-background-color: #196C8F;">
                                   <panes>
                                       <TitledPane animated="false" blendMode="SRC_ATOP" style="-fx-background-color: white;" text="Gender">
                                           <content>
@@ -222,12 +186,12 @@
                               </Accordion>
                      </content>
                   </ScrollPane>
-                        <ListView fx:id="cardListView" onDragDetected="#handleDragDetection" prefHeight="739.0" prefWidth="266.0" />
-                  <ScrollPane prefHeight="739.0" prefWidth="1074.0">
+                        <ListView fx:id="cardListView" onDragDetected="#handleDragDetection" prefHeight="741.0" prefWidth="298.0" />
+                  <ScrollPane prefHeight="739.0" prefWidth="945.0">
                      <content>
-                              <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="1074.0" spacing="20.0" style="-fx-background-color: #196C8F;">
+                              <VBox fx:id="printedVbox" prefHeight="739.0" prefWidth="1001.0" spacing="20.0" style="-fx-background-color: F9F9F9;">
                                   <children>
-                                      <Label fx:id="lessonPlanName" alignment="TOP_CENTER" prefHeight="59.0" prefWidth="1023.0" style="-fx-background-color: transparent;" text="ENTER LESSON NAME" textAlignment="CENTER" textFill="WHITE">
+                                      <Label fx:id="lessonPlanName" alignment="TOP_CENTER" prefHeight="55.0" prefWidth="1001.0" style="-fx-background-color: #C6E3EF; -fx-border-color: lightgrey;" text="Enter lesson name" textAlignment="CENTER">
                                           <font>
                                               <Font name="Noto Sans JP Bold" size="23.0" />
                                           </font>
@@ -235,24 +199,18 @@
                                               <Insets top="5.0" />
                                           </VBox.margin>
                                           <padding>
-                                              <Insets top="20.0" />
+                                              <Insets top="5.0" />
                                           </padding>
                                       </Label>
-                                      <VBox fx:id="lessonVbox" prefHeight="250.0" prefWidth="1050.0" spacing="10.0" styleClass="custom-accordion">
-                                 <VBox.margin>
-                                    <Insets right="10.0" />
-                                 </VBox.margin>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" />
-                                 </padding>
+                                      <VBox fx:id="lessonVbox" prefHeight="250.0" prefWidth="965.0" spacing="10.0">
+                                          <padding>
+                                              <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                                          </padding>
                                       </VBox>
                                   </children>
                                   <opaqueInsets>
                                       <Insets />
                                   </opaqueInsets>
-                           <padding>
-                              <Insets left="10.0" right="10.0" />
-                           </padding>
                               </VBox>
                      </content>
                   </ScrollPane>
