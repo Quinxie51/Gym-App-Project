@@ -33,7 +33,7 @@ name of the card (Demo) pack.
 - Designed and implemented the user interface, focusing on intuitive and user-friendly experiences.
 - Developed features for organizing lesson plans into courses and group events.
 - Created drag-and-drop functionality for ease of use.
-- Implemented additional interactive features such as zoom in/out, delete, and active mode, and printing feature
+- Implemented additional interactive features such as zoom in/out, delete, active mode, and printing feature
   
 **Cami**
 - Managed the CSV file handling, ensuring efficient data import and export.
